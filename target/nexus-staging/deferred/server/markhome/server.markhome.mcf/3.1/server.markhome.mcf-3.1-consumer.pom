@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>server.markhome</groupId>
+  <artifactId>server.markhome.mcf</artifactId>
+  <version>3.1</version>
+  <packaging>pom</packaging>
+  <name>server.markhome.mcf</name>
+  <description>Mark's Code Fractal</description>
+  <distributionManagement>
+    <repository>
+      <id>nexus-releases</id>
+      <name>Nexus release repository</name>
+      <url>http://nexus3.mcf.markhome.server:8081/repository/mcf.markhome.server-hosted/</url>
+    </repository>
+    <snapshotRepository>
+      <id>nexus-snapshots</id>
+      <name>Nexus release repository</name>
+      <url>http://nexus3.mcf.markhome.server:8081/repository/mcf.markhome.server-hosted/</url>
+    </snapshotRepository>
+  </distributionManagement>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  <build>
+    <extensions>
+      <extension>
+        <groupId>org.apache.maven.wagon</groupId>
+        <artifactId>wagon-ssh-external</artifactId>
+        <version>1.0-beta-6</version>
+      </extension>
+    </extensions>
+    <plugins>
+      <plugin>
+        <artifactId>maven-deploy-plugin</artifactId>
+        <version>3.1.4</version>
+        <configuration>
+          <skip>true</skip>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.sonatype.plugins</groupId>
+        <artifactId>nexus-staging-maven-plugin</artifactId>
+        <version>1.5.1</version>
+        <executions>
+          <execution>
+            <id>default-deploy</id>
+            <phase>deploy</phase>
+            <goals>
+              <goal>deploy</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <serverId>nexus</serverId>
+          <nexusUrl>http://nexus3.mcf.markhome.server:8081/repository/mcf.markhome.server-hosted/</nexusUrl>
+          <skipStaging>true</skipStaging>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
