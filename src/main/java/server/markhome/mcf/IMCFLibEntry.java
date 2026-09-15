@@ -1,0 +1,171 @@
+package server.markhome.mcf.v3_1.cflib;
+
+public interface IMCFLibEntry {
+
+	/**
+	 *	The public resource name for the parent library.
+	 *
+	 *	Implementations should define a public static final constant string prefixed by the uppercase library name matching the following signature:
+	 *
+	 *	<tt>public static final String MCF_LIB_PARENT_NAME = "server.markhome";</tt>
+	 */
+
+	/**
+	 *	The parent resource name for this library.
+	 *
+	 *	Implementations should define a public static final constant string prefixed by the uppercase library name matching the following signature:
+	 *
+	 *	<tt>public static final String MCF_LIB_PARENT_VERSION = "3.1.42-2026091111";</tt>
+	 */
+
+	/**
+	 *	The public resource name for this library.
+	 *
+	 *	Implementations should define a public static final constant string prefixed by the uppercase library name matching the following signature:
+	 *
+	 *	<tt>public static final String MCF_LIB_NAME = LIB_PARENT_NAME + ".mcf";</tt>
+	 */
+
+	/**
+	 *	The public version string for this library.
+	 *
+	 *	Implementations should define a public static final constant string prefixed by the uppercase library name matching the following signature:
+	 *
+	 *	<tt>public static final String MCF_LIB_VERSION = LIB_PARENT_VERSION;</tt>
+	 */
+
+	/**
+	 *	Implementations must be a singleton, returning the same instance over and over after initialization. How this is achieved may vary.
+	 *
+	 *	<tt>protected final static singleton = new AtomicReference<MCFLibraryEntry>(null);</tt>
+	 */
+
+	/**
+	 *	Default constructor is protected so that only a singleton can be created.
+	 *
+	 *	<tt>protected MCFLibEntry { }</tt>
+	 */
+
+	/**
+	 *	Get the singleton.
+	 *
+	 *	Implementations should define a public static final method with the following signature, using the uppercase package name before "Lib" as appropriate.
+	 *
+	 *	<tt>public final static MCFLibEntry getMCFLibEntrySingleton()</tt>
+	 *
+	 *	@return Return the library singleton. Always returns the same instance after the first invocation unless reset(true) is invoked.
+	 */
+
+	/**
+	 *	Get an instance. Because this is a singleton, getInstance() always returns null, as it just invokes MCFLibEntry() under the hood.
+	 *
+	 *	Implementations should define a public static final method with the following signature, using the uppercase package name before "Lib" as appropriate.
+	 *
+	 *	<tt>public final static MCFLibraryEntry getMCFLibEntryInstance()</tt>
+	 *
+	 *	@return The instance, if any. Always returns null.
+	 */
+
+	/**
+	 *	Reset the singleton and any data caches after an application reload or other package or executable reloading event.
+	 *
+	 *	Implementations should define a public static final method with the following signature, using the uppercase package name before "Lib" as appropriate.
+	 *
+	 *	<tt>public static boolean execMCFLibEntryLibReset(boolean yesReally)</tt>
+	 *
+	 *	@param	yesReally Are you sure you want to reset the value?
+	 */
+
+	/**
+	 *	Get an instance, if possible.  Invokes getMCFLibEntryInstance() under the hood.
+	 *
+	 *	@return Return an instance if dynamically allocated, otherwise null. Because this is a singleton, null will always be returned.
+	 */
+	public MCFLibEntry getInstance();
+
+	/**
+	 *	Get the singleton instance, if any. Invokes getMCFLibEntrySingleton() under the hood.
+	 *
+	 *	@return Return the library singleton, if any. Always returns the same value after the first invocation unless reset(true) is invoked.
+	 */
+	public MCFLibEntry getSingleton();
+
+	/**
+	 *	Reset the singleton and any other data caches after an application reload or other package or executable reloading event.
+	 *
+	 *	Invokes execMCFLibEntryReset(false) under the hood.
+	 *
+	 *	@return True if the library was reinitialized, false if the code detected that the library has not been used since the last reinitialization.
+	 */
+	public boolean libReset();
+
+	/**
+	 *	Reset the singleton and any other data caches after an application reload or other package or executable reloading event.
+	 *
+	 *	Invokes execMCFLibEntryReset(yesReally) under the hood.
+	 *
+	 *	@param	yesReally Are you sure you want to reset the value?
+	 *
+	 *	@return True if the library was reinitialized, false if the code detected that the library has not been used since the last reinitialization.
+	 */
+	public boolean libReset(boolean yesReally);
+
+	/**
+	 *	Reset the singleton and any data caches after an application reload or other package or executable reloading event.
+	 *
+	 *	@param	yesReally Are you sure you want to reset the value?
+	 *
+	 *	@return	True if the singleton was reset, false if the singleton was set and yesReally was false.
+	 */
+	public boolean resetLib(boolean yesReally);
+
+	/**
+	 *	Reset the singleton and any data caches after an application reload or other package or executable reloading event.
+	 *
+	 *	@return	True if the value was reset, false if the singleton was already initialized.
+	 */
+	public boolean resetLib();
+
+	/**
+	 *	Get the parent's public resource name of this library or package, used in searches to resolve the package for runtimes or compilation and test.
+	 *
+	 *	@return The parent's public resource name used for named resource resolution.
+	 */
+	public String getParentLibName();
+
+	/**
+	 *	Get name public resource name of this library or package, used in searches to resolve the package for runtimes or compilation and test.
+	 *
+	 *	@return The name of this package used for public naming resolution.
+	 */
+	public String getParentLibVersion();
+
+	/**
+	 *	Get the public resource name of this library or package, used in searches to resolve the package for runtimes or compilation and test.
+	 *
+	 *	@return The name of this package used for public naming resolution.
+	 */
+	public String getLibName();
+
+	/**
+	 *	Get the public resource name of this library or package, used in searches to resolve the package for runtimes or compilation and test.
+	 *
+	 *	@return The name of this package used for public naming resolution.
+	 */
+	public String getLibVersion();
+
+	/**
+	 *	Reset the singleton after an application reload or other package or executable reloading event.
+	 *
+	 *	@param	yesReally Are you sure you want to reset the value?
+	 *
+	 *	@return	True if the singleton was reset, false if the singleton was set and yesReally was false.
+	
+	public boolean resetLib(boolean yesReally);
+
+	/**
+	 *	The default main does nothing.
+	 *
+	 *	<tt>public static int main(int argc, String[] argv) { return 0; }</tt>
+	 */
+}
