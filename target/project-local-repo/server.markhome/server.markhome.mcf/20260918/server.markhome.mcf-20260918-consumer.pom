@@ -150,6 +150,7 @@
     <sonar.host.url>https://analysis.apache.org/</sonar.host.url>
     <changes.announcementDirectory>.</changes.announcementDirectory>
     <changes.announcementFile>RELEASE-NOTES.txt</changes.announcementFile>
+    <commons.install-plugin.version>4.0.0-beta-2</commons.install-plugin.version>
   </properties>
   <dependencyManagement>
     <dependencies>
@@ -271,6 +272,10 @@
               <jdk>
                 <version>25-lts</version>
                 <vendor>adoptium</vendor>
+              </jdk>
+              <jdk>
+                <version>graalvm-ce-25</version>
+                <vendor>graalvm.org</vendor>
               </jdk>
             </toolchains>
           </configuration>
@@ -1193,6 +1198,7 @@
         <plugins>
           <plugin>
             <artifactId>maven-install-plugin</artifactId>
+            <version>${commons.install-plugin.version}</version>
           </plugin>
           <plugin>
             <artifactId>maven-release-plugin</artifactId>
@@ -1284,6 +1290,7 @@
           </plugin>
           <plugin>
             <artifactId>maven-install-plugin</artifactId>
+            <version>${commons.install-plugin.version}</version>
           </plugin>
           <plugin>
             <artifactId>maven-jar-plugin</artifactId>

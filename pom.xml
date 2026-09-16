@@ -219,6 +219,7 @@
 		<!-- allow override of changes.announcementFile and directory -->
 		<changes.announcementDirectory>.</changes.announcementDirectory>
 		<changes.announcementFile>RELEASE-NOTES.txt</changes.announcementFile>
+		<commons.install-plugin.version>4.0.0-beta-2</commons.install-plugin.version>
 	</properties>
 
 	<dependencyManagement>
@@ -380,6 +381,10 @@
 							<jdk>
 								<version>25-lts</version>
 								<vendor>adoptium</vendor>
+							</jdk>
+							<jdk>
+								<version>graalvm-ce-25</version>
+								<vendor>graalvm.org</vendor>
 							</jdk>
 						</toolchains>
 					</configuration>
@@ -1532,7 +1537,9 @@
 			<build>
 				<plugins>
 					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-install-plugin</artifactId>
+						<version>${commons.install-plugin.version}</version>
 					</plugin>
 					<plugin>
 						<artifactId>maven-release-plugin</artifactId>
@@ -1631,7 +1638,9 @@
 						</configuration>
 					</plugin>
 					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-install-plugin</artifactId>
+						<version>${commons.install-plugin.version}</version>
 					</plugin>
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
