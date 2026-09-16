@@ -435,50 +435,6 @@
 					</configuration>
 				</plugin>
 				<plugin>
-					<groupId>org.graalvm.buildtools</groupId>
-					<artifactId>native-maven-plugin</artifactId>
-					<version>${graalvm-buildtools.version}</version>
-					<extensions>true</extensions>
-					<executions>
-						<execution>
-							<id>build-native</id>
-							<goals>
-								<goal>compile-no-fork</goal>
-							</goals>
-							<phase>compile</phase>
-							<configuration>
-								<mainClass>${graal.mainClass}</mainClass>
-								<skipNativeBuildForPom>false</skipNativeBuildForPom>
-								<skipNativeTests>true</skipNativeTests>
-								<debug>true</debug>
-								<extensions>true</extensions>
-								<buildArgs>
-									<buildArg>-Duser.country=CA</buildArg>
-									<buildArg>-Duser.language=en</buildArg>
-									<buildArg>-HIncludeLocales=en,fr,de,es,pt,pt-br</buildArg>
-									<!--buildArg>-g</buildArg-->
-									<!--buildArg>&#45;&#45;enable-monitoring=heapdump,jfr,jvmstat,jmxserver,jmxclient,threaddump,nmt,jccmd</buildArg-->
-									<!--buildArg>&#45;&#45;enable-native-access=ALL-UNNAMED</buildArg-->
-									<!--buildArg>&#45;&#45;exact-reachability-metadata</buildArg-->
-									<!--buildArg>&#45;&#45;future-defaults</buildArg-->
-									<!--buildArg>&#45;&#45;implicit:class</buildArg-->
-									<!--buildArg>&#45;&#45;shared</buildArg-->
-									<buildArg>&#45;H:+UnlockExperimentalVMOptions</buildArg>
-									<buildArg>&#45;H:Preserve=package=server.markhome.mcf.*</buildArg>
-									<buildArg>&#45;&#45;language:js</buildArg>
-								</buildArgs>
-								<environmentVariables>
-									<NATIVE_IMAGE_OPTIONS>-Dgraal.CompilerConfiguration=community -H:TempDirectory=${env.TMP_DIR}/js </NATIVE_IMAGE_OPTIONS>
-									<skipNativeBuildForPom>false</skipNativeBuildForPom>
-									<skipNativeTests>true</skipNativeTests>
-									<org.graalvm.nativeimage.kind>${graal.nativeimage-kind}</org.graalvm.nativeimage.kind>
-									<project.build.directory>${project.basedir}/src/main/js/</project.build.directory>
-								</environmentVariables>
-							</configuration>
-						</execution>
-					</executions>
-				</plugin>
-				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-assembly-plugin</artifactId>
 					<version>${commons.assembly-plugin.version}</version>
@@ -616,6 +572,51 @@
 					<configuration>
 						<commons.release.name>${commons.release.name}</commons.release.name>
 					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.graalvm.buildtools</groupId>
+					<artifactId>native-maven-plugin</artifactId>
+					<version>${graalvm-buildtools.version}</version>
+					<extensions>true</extensions>
+					<executions>
+						<execution>
+							<id>build-native</id>
+							<goals>
+								<goal>compile</goal>
+							</goals>
+							<phase>compile</phase>
+							<configuration>
+								<executable>export PATH=${env.GV_HOME}/bin:${env.GV_HOME}/lib:${env.BASE_PATH} &amp;&amp; export GRAALVM_HOME=${env.GV_HOME} &amp;&amp; export JAVA_HOME=${env.GV_HOME} &amp;&amp; export JDK_HOME=${env.GV_HOME} &amp;&amp; native-image </executable>
+								<mainClass>${graal.mainClass}</mainClass>
+								<skipNativeBuildForPom>false</skipNativeBuildForPom>
+								<skipNativeTests>true</skipNativeTests>
+								<debug>true</debug>
+								<extensions>true</extensions>
+								<buildArgs>
+									<buildArg>-Duser.country=CA</buildArg>
+									<!--buildArg>-Duser.language=en</buildArg-->
+									<!--buildArg>-HIncludeLocales=en,fr,de,es,pt,pt-br</buildArg-->
+									<!--buildArg>-g</buildArg-->
+									<!--buildArg>&#45;&#45;enable-monitoring=heapdump,jfr,jvmstat,jmxserver,jmxclient,threaddump,nmt,jccmd</buildArg-->
+									<!--buildArg>&#45;&#45;enable-native-access=ALL-UNNAMED</buildArg-->
+									<!--buildArg>&#45;&#45;exact-reachability-metadata</buildArg-->
+									<!--buildArg>&#45;&#45;future-defaults</buildArg-->
+									<!--buildArg>&#45;&#45;implicit:class</buildArg-->
+									<!--buildArg>&#45;&#45;shared</buildArg-->
+									<buildArg>&#45;H:+UnlockExperimentalVMOptions</buildArg>
+									<buildArg>&#45;H:Preserve=package=server.markhome.mcf.*</buildArg>
+									<buildArg>&#45;&#45;language:js</buildArg>
+								</buildArgs>
+								<environmentVariables>
+									<NATIVE_IMAGE_OPTIONS>-Dgraal.CompilerConfiguration=community -H:TempDirectory=${env.TMP_DIR}/js </NATIVE_IMAGE_OPTIONS>
+									<skipNativeBuildForPom>false</skipNativeBuildForPom>
+									<skipNativeTests>true</skipNativeTests>
+									<org.graalvm.nativeimage.kind>${graal.nativeimage-kind}</org.graalvm.nativeimage.kind>
+									<project.build.directory>${project.basedir}/src/main/js/</project.build.directory>
+								</environmentVariables>
+							</configuration>
+						</execution>
+					</executions>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.commons</groupId>
