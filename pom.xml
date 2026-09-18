@@ -16,6 +16,7 @@
 		<project.url>https://github.com/msobkow/server.markhome.mcf/</project.url>
 		<project.scm.url>https://github.com/msobkow/server.markhome.mcf/</project.scm.url>
 		<project.build.outputTimestamp>2026-09-18T00:00:00Z</project.build.outputTimestamp>
+		<graal.mainClass>server.markhome.mcf.MCFLibEntry</graal.mainClass>
 		<mcf.version>3.1.42-20260918</mcf.version>
 		<commons.rc.version>MCFRC1</commons.rc.version>
 		<changes.announcementDirectory>.</changes.announcementDirectory>
@@ -436,11 +437,21 @@
 				<version>${maven-wagon.version}</version>
 			</extension>
 		</extensions>
-		<defaultGoal>clean verify apache-rat:check checkstyle:check japicmp:cmp spotbugs:check pmd:check</defaultGoal>
+		<defaultGoal>clean compile test-compile jar default-jar jar test-jar jar list-project-build-dir exec-maven-plugin:exec verify apache-rat:check checkstyle:check japicmp:cmp spotbugs:check pmd:check</defaultGoal>
 		<resources>
 			<!-- This is the default setting from the super-pom -->
 			<resource>
 			<directory>src/main/resources</directory>
+			</resource>
+			<resource>
+			<directory>src/main/resources</directory>
+			<targetPath>js</targetPath>
+			<includes>
+				<include>NOTICE.txt</include>
+				<include>LICENSE.txt</include>
+				<include>NOTICE</include>
+				<include>LICENSE</include>
+			</includes>
 			</resource>
 			<!-- hack to ensure the N&L appear in jars -->
 			<resource>
@@ -458,6 +469,16 @@
 			<!-- This is the default setting from the super-pom -->
 			<testResource>
 			<directory>src/test/resources</directory>
+			</testResource>
+			<testResource>
+			<directory>src/test/resources</directory>
+			<includes>
+				<include>NOTICE.txt</include>
+				<include>LICENSE.txt</include>
+				<include>NOTICE</include>
+				<include>LICENSE</include>
+			</includes>
+			<targetPath>js</targetPath>
 			</testResource>
 			<!-- hack to ensure the N&L appear in jars -->
 			<testResource>
@@ -681,7 +702,7 @@
 						<commons.release.name>${commons.release.name}</commons.release.name>
 					</configuration>
 				</plugin>
-				<plugin>
+				<!--plugin>
 					<groupId>org.graalvm.buildtools</groupId>
 					<artifactId>native-maven-plugin</artifactId>
 					<version>${graalvm-buildtools.version}</version>
@@ -706,13 +727,13 @@
 									<buildArg>-Dgraal.CompilerConfiguration=community</buildArg>
 									<buildArg>-H:TempDirectory=${env.TMP_DIR}/js</buildArg>
 									<buildArg>&#45;&#45;no-fallback</buildArg>
-									<!--buildArg>-Duser.language=en</buildArg-->
-									<!--buildArg>-HIncludeLocales=en,fr,de,es,pt,pt-br</buildArg-->
-									<!--buildArg>&#45;&#45;enable-monitoring=heapdump,jfr,jvmstat,jmxserver,jmxclient,threaddump,nmt,jccmd</buildArg-->
-									<!--buildArg>&#45;&#45;enable-native-access=ALL-UNNAMED</buildArg-->
-									<!--buildArg>&#45;&#45;exact-reachability-metadata</buildArg-->
-									<!--buildArg>&#45;&#45;future-defaults</buildArg-->
-									<!--buildArg>&#45;&#45;implicit:class</buildArg-->
+									<!- -buildArg>-Duser.language=en</buildArg- ->
+									<!- -buildArg>-HIncludeLocales=en,fr,de,es,pt,pt-br</buildArg- ->
+									<!- -buildArg>&#45;&#45;enable-monitoring=heapdump,jfr,jvmstat,jmxserver,jmxclient,threaddump,nmt,jccmd</buildArg- ->
+									<!- -buildArg>&#45;&#45;enable-native-access=ALL-UNNAMED</buildArg- ->
+									<!- -buildArg>&#45;&#45;exact-reachability-metadata</buildArg- ->
+									<!- -buildArg>&#45;&#45;future-defaults</buildArg- ->
+									<!- -buildArg>&#45;&#45;implicit:class</buildArg- ->
 									<buildArg>&#45;H:+UnlockExperimentalVMOptions</buildArg>
 									<buildArg>&#45;H:Preserve=package=server.markhome.mcf.*</buildArg>
 									<buildArg>&#45;&#45;language:js</buildArg>
@@ -728,7 +749,7 @@
 							</configuration>
 						</execution>
 					</executions>
-				</plugin>
+				</plugin-->
 				<plugin>
 					<groupId>org.apache.commons</groupId>
 					<artifactId>commons-release-plugin</artifactId>
@@ -920,7 +941,7 @@
 							<executions>
 								<execution>
 									<id>build-sbom-cyclonedx</id>
-									<phase>package</phase>
+									<phase>compile</phase>
 									<goals>
 										<goal>makeAggregateBom</goal>
 									</goals>
@@ -937,7 +958,7 @@
 							<executions>
 								<execution>
 									<id>build-sbom-spdx</id>
-									<phase>package</phase>
+									<phase>compile</phase>
 									<goals>
 										<goal>createSPDX</goal>
 									</goals>
@@ -962,11 +983,6 @@
 									<exclude>**/*.java</exclude>
 							</excludes>					
 							</configuration>
-						</plugin>
-						<plugin>
-							<groupId>org.codehaus.mojo</groupId>
-							<artifactId>exec-plugin</artifactId>
-							<version>${commons.exec-plugin.version}</version>
 						</plugin>
 						<plugin>
 							<groupId>org.codehaus.mojo</groupId>
@@ -1056,6 +1072,7 @@
 								<goals>
 									<goal>test-jar</goal>
 								</goals>
+								<phase>compile</phase>
 								<configuration>
 									<!-- Avoids an error when releasing the parent pom -->
 									<skipIfEmpty>true</skipIfEmpty>
@@ -1094,12 +1111,12 @@
 					</plugin>
 						<!--plugin>
 							<groupId>org.codehaus.mojo</groupId>
-							<artifactId>exec-plugin</artifactId>
+							<artifactId>exec-maven-plugin</artifactId>
 							<version>${commons.exec-plugin.version}</version>
 							<executions>
 								<execution>
 									<id>default-jar</id>
-									<phase>package</phase>
+									<phase>compile</phase>
 									<configuration>
 										<!- - Use the system java executable - ->
 										<executable>${env.JV_HOME}/bin/jar</executable>
@@ -1118,7 +1135,7 @@
 								</execution>
 								<execution>
 									<id>test-jar</id>
-									<phase>package</phase>
+									<phase>compile</phase>
 									<configuration>
 										<!- - Use the system java executable - ->
 										<executable>${env.JV_HOME}/bin/jar</executable>
@@ -1286,6 +1303,91 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-changes-plugin</artifactId>
 			</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>exec-maven-plugin</artifactId>
+					<version>${commons.exec-plugin.version}</version>
+					<extensions>true</extensions>
+					<configuration>
+						<mainClass>-DmainClass=${graal.mainClass}</mainClass>
+						<skipTestExecution>true</skipTestExecution>
+						<debug>true</debug>
+						<verbose>true</verbose>
+						<sharedLibrary>true</sharedLibrary>
+						<extensions>true</extensions>
+						<buildArgs>
+							<buildArg>-Duser.country=CA</buildArg>
+							<buildArg>-Dgraal.CompilerConfiguration=community</buildArg>
+							<buildArg>-H:TempDirectory=${env.TMP_DIR}/js</buildArg>
+							<buildArg>&#45;&#45;no-fallback</buildArg>
+							<!--buildArg>-Duser.language=en</buildArg-->
+							<!--buildArg>-HIncludeLocales=en,fr,de,es,pt,pt-br</buildArg-->
+							<!--buildArg>&#45;&#45;enable-monitoring=heapdump,jfr,jvmstat,jmxserver,jmxclient,threaddump,nmt,jccmd</buildArg-->
+							<!--buildArg>&#45;&#45;enable-native-access=ALL-UNNAMED</buildArg-->
+							<!--buildArg>&#45;&#45;exact-reachability-metadata</buildArg-->
+							<!--buildArg>&#45;&#45;future-defaults</buildArg-->
+							<!--buildArg>&#45;&#45;implicit:class</buildArg-->
+							<buildArg>&#45;H:+UnlockExperimentalVMOptions</buildArg>
+							<buildArg>&#45;H:Preserve=package=server.markhome.mcf.*</buildArg>
+							<buildArg>&#45;&#45;language:js</buildArg>
+							<buildArg>-DmainClass=${graal.mainClass}</buildArg>
+						</buildArgs>
+					</configuration>
+					<executions>
+						<execution>
+							<id>list-project-build-dir</id>
+							<goals>
+								<goal>exec</goal>
+							</goals>
+							<phase>compile</phase>
+							</configuration>
+						</execution>
+						<execution>
+							<id>build-native</id>
+							<goals>
+								<goal>exec</goal>
+							</goals>
+							<phase>compile</phase>
+							<configuration>
+								<executable>export PATH=${env.GV_HOME}/bin:${env.GV_HOME}/lib:${env.BASE_PATH} &amp;&amp; export GRAALVM_HOME=${env.GV_HOME} &amp;&amp; export JAVA_HOME=${env.GV_HOME} &amp;&amp; export JDK_HOME=${env.GV_HOME} &amp;&amp; if [ ! -d ${env.TMP_DIR} ]; then; mkdir ${env.TMP_DIR}; fi; &amp;&amp; if [ ! -d ${env.TMP_DIR}/js ]; then; mkdir ${env.TMP_DIR}/js; fi; &amp;&amp; echo "Executing native-image -Dgraal.CompilerConfiguration=community -H:TempDirectory=${env.TMP_DIR}/js -DskipNativeTests=$skipNativeTests -DnativeImageKind=${graal.nativeimage-kind} -DbuildDirectory=${project.basedir}/src/main/js/ -DCompilerConfiguration=community -community -DTempDirectory=${env.TMP_DIR}/js -DskipTestExecution=${skipTestExecutions} -Ddebug=true -g -v -DsharedLibrary=true -sharedLibrary=true -Dextensions=true -extensions=true -Dexec.mainClass=${graal.mainClass} -DmainClass=${graal.mainClass} " &amp;&amp; native-image $NATIVE_IMAGE_OPTIONS ${project.build.directory}/${project.artifactId}-${project.version}.jar </executable>
+								<NATIVE_IMAGE_OPTIONS> -Dgraal.CompilerConfiguration=community -H:TempDirectory=${env.TMP_DIR}/js -DskipNativeTests=$skipNativeTests -DnativeImageKind=${graal.nativeimage-kind} -DbuildDirectory=${project.basedir}/src/main/js/ -DCompilerConfiguration=community -community -DTempDirectory=${env.TMP_DIR}/js -DskipTestExecution=${skipTestExecutions} -Ddebug=true -g -v -DsharedLibrary=true -sharedLibrary=true -Dextensions=true -extensions=true -Dexec.mainClass=${graal.mainClass} -DmainClass=${graal.mainClass} </NATIVE_IMAGE_OPTIONS>
+								<skipNativeTests>true</skipNativeTests>
+								<org.graalvm.nativeimage.kind>${graal.nativeimage-kind}</org.graalvm.nativeimage.kind>
+								<project.build.directory>${project.basedir}/src/main/js/</project.build.directory>
+								<CompilerConfiguration>community</CompilerConfiguration>
+								<TempDirectory>${env.TMP_DIR}/js</TempDirectory>
+								<skipTestExecution>true</skipTestExecution>
+								<debug>true</debug>
+								<verbose>true</verbose>
+								<sharedLibrary>true</sharedLibrary>
+								<extensions>true</extensions>
+								<mainClass>-Dexec.mainClass=${graal.mainClass}</mainClass>
+							</configuration>
+						</execution>
+						<execution>
+							<id>build-native-test</id>
+							<goals>
+								<goal>exec</goal>
+							</goals>
+							<phase>compile</phase>
+							<configuration>
+								<executable>export PATH=${env.GV_HOME}/bin:${env.GV_HOME}/lib:${env.BASE_PATH} &amp;&amp; export GRAALVM_HOME=${env.GV_HOME} &amp;&amp; export JAVA_HOME=${env.GV_HOME} &amp;&amp; export JDK_HOME=${env.GV_HOME} &amp;&amp; if [ ! -d ${env.TMP_DIR} ]; then; mkdir ${env.TMP_DIR}; fi; &amp;&amp; if [ ! -d ${env.TMP_DIR}/js ]; then; mkdir ${env.TMP_DIR}/js; &amp;&amp; if [ ! -d ${env.TMP_DIR}/test ]; then; mkdir ${env.TMP_DIR}/test; fi; &amp;&amp; if [ ! -d ${env.TMP_DIR}/test/js ]; then; mkdir ${env.TMP_DIR}/test/js; fi;fi; &amp;&amp; echo "Executing native-image -Dgraal.CompilerConfiguration=community -H:TempDirectory=${env.TMP_DIR}/test/js -DskipNativeTests=$skipNativeTests -DnativeImageKind=${graal.nativeimage-kind} -DbuildDirectory=${project.basedir}/src/test/js/ -DCompilerConfiguration=community -community -DTempDirectory=${env.TMP_DIR}/test/js -DskipTestExecution=${skipTestExecutions} -Ddebug=true -g -v -DsharedLibrary=true -sharedLibrary=true -Dextensions=true -extensions=true -Dexec.mainClass=${graal.mainClass} -DmainClass=${graal.mainClass} " &amp;&amp; native-image $NATIVE_IMAGE_OPTIONS ${project.build.directory}/test-${project.artifactId}-${project.version}.jar </executable>
+								<NATIVE_IMAGE_OPTIONS> -Dgraal.CompilerConfiguration=community -H:TempDirectory=${env.TMP_DIR}/test/js -DskipNativeTests=$skipNativeTests -DnativeImageKind=${graal.nativeimage-kind} -DbuildDirectory=${project.basedir}/src/test/js/ -DCompilerConfiguration=community -community -DTempDirectory=${env.TMP_DIR}/test/js -DskipTestExecution=${skipTestExecutions} -Ddebug=true -g -v -DsharedLibrary=true -sharedLibrary=true -Dextensions=true -extensions=true -Dexec.mainClass=${graal.mainClass} </NATIVE_IMAGE_OPTIONS>
+								<skipNativeTests>true</skipNativeTests>
+								<org.graalvm.nativeimage.kind>${graal.nativeimage-kind}</org.graalvm.nativeimage.kind>
+								<project.build.directory>${project.basedir}/src/test/js/</project.build.directory>
+								<CompilerConfiguration>community</CompilerConfiguration>
+								<TempDirectory>${env.TMP_DIR}/test/js</TempDirectory>
+								<skipTestExecution>true</skipTestExecution>
+								<debug>true</debug>
+								<verbose>true</verbose>
+								<sharedLibrary>true</sharedLibrary>
+								<extensions>true</extensions>
+								<mainClass>-Dexec.mainClass=${graal.mainClass}</mainClass>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
 		</plugins>
 	</build>
 	<reporting>
@@ -1686,41 +1788,13 @@
 									<goal>javadoc</goal>
 									<goal>jar</goal>
 								</goals>
-								<phase>package</phase>
+								<phase>compile</phase>
 							</execution>
 						</executions>
 						<configuration>
 							<source>${maven.compiler.source}</source>
 							<javadocExecutable>${commons.compiler.javadoc}</javadocExecutable>
 						</configuration>
-					</plugin>
-					<plugin>
-						<artifactId>maven-assembly-plugin</artifactId>
-						<version>${commons.assembly-plugin.version}</version>
-						<inherited>true</inherited>
-						<executions>
-							<execution>
-								<goals>
-									<goal>single</goal>
-								</goals>
-								<!-- COMMONSSITE-87 Ensure this runs after all package phase plugins -->
-								<phase>verify</phase>
-							</execution>
-						</executions>
-					</plugin>
-					<!-- We want to sign the artifact, the POM, and all attached artifacts -->
-					<plugin>
-						<artifactId>maven-gpg-plugin</artifactId>
-						<version>${commons.gpg.version}</version>
-						<executions>
-							<execution>
-								<id>sign-artifacts</id>
-								<phase>verify</phase>
-								<goals>
-									<goal>sign</goal>
-								</goals>
-							</execution>
-						</executions>
 					</plugin>
 					<plugin>
 						<groupId>org.apache.commons</groupId>
@@ -1783,6 +1857,7 @@
 								<goals>
 									<goal>test-jar</goal>
 								</goals>
+								<phase>compile</phase>
 							</execution>
 						</executions>
 					</plugin>
@@ -1898,14 +1973,14 @@
 					<!-- Hook the benchmarks to the test phase -->
 					<plugin>
 						<groupId>org.codehaus.mojo</groupId>
-						<artifactId>exec-plugin</artifactId>
+						<artifactId>exec-maven-plugin</artifactId>
 						<version>${commons.exec-plugin.version}</version>
 						<executions>
 							<execution>
 								<id>benchmark</id>
 								<phase>test</phase>
 								<goals>
-									<goal>exec</goal>
+									<goal>jar</goal>
 								</goals>
 								<configuration>
 									<classpathScope>test</classpathScope>
