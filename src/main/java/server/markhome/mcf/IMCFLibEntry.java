@@ -1,4 +1,23 @@
-package server.markhome.mcf.v3_1.cflib;
+/*
+ * Copyright 2026 Mark Stephen Sobkow (mark.sobkow@gmail.com)
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://apache.org
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+package server.markhome.mcf;
+
 
 public interface IMCFLibEntry {
 
@@ -23,7 +42,7 @@ public interface IMCFLibEntry {
 	 *
 	 *	Implementations should define a public static final constant string prefixed by the uppercase library name matching the following signature:
 	 *
-	 *	<tt>public static final String MCF_LIB_NAME = LIB_PARENT_NAME + ".mcf";</tt>
+	 *	<tt>public static final String MCF_LIB_NAME = MCF_LIB_PARENT_NAME + ".mcf";</tt>
 	 */
 
 	/**
@@ -31,13 +50,13 @@ public interface IMCFLibEntry {
 	 *
 	 *	Implementations should define a public static final constant string prefixed by the uppercase library name matching the following signature:
 	 *
-	 *	<tt>public static final String MCF_LIB_VERSION = LIB_PARENT_VERSION;</tt>
+	 *	<tt>public static final String MCF_LIB_VERSION = MCF_LIB_PARENT_VERSION;</tt>
 	 */
 
 	/**
 	 *	Implementations must be a singleton, returning the same instance over and over after initialization. How this is achieved may vary.
 	 *
-	 *	<tt>protected final static singleton = new AtomicReference<MCFLibraryEntry>(null);</tt>
+	 *	<tt>protected final static singleton = new AtomicReference<MCFLibEntry>(null);</tt>
 	 */
 
 	/**
@@ -61,7 +80,7 @@ public interface IMCFLibEntry {
 	 *
 	 *	Implementations should define a public static final method with the following signature, using the uppercase package name before "Lib" as appropriate.
 	 *
-	 *	<tt>public final static MCFLibraryEntry getMCFLibEntryInstance()</tt>
+	 *	<tt>public final static MCFLibEntry getMCFLibEntryInstance()</tt>
 	 *
 	 *	@return The instance, if any. Always returns null.
 	 */

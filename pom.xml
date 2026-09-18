@@ -1,226 +1,203 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.1.0 http://maven.apache.org/xsd/maven-4.1.0.xsd" root="true">
+	<modelVersion>4.1.0</modelVersion>
 	<artifactId>server.markhome.mcf</artifactId>
 	<version>20260918</version>
 	<groupId>server.markhome</groupId>
 	<name>server.markhome.mcf</name>
 	<description>Mark's Code Fractal</description>
-	<packaging>pom</packaging>
+	<packaging>jar</packaging>
 
 	<modules></modules>
 
 	<properties>
-		<graal.mainClass>server.markhome.mcf.MCFLibEntry</graal.mainClass>
-		<graal.nativeimage-kind>shared</graal.nativeimage-kind>
-		<project.build.outputTimestamp>20260918</project.build.outputTimestamp>
-		<js.output.name>server.markhome.mcf.js</js.output.name>
-		<project.domainName>mcf.markhome.server</project.domainName>
-		<project.parent.isDomain>true</project.parent.isDomain>
+		<rat.skip>true</rat.skip>
+		<url>https://github.com/msobkow/server.markhome.mcf/</url>
+		<project.url>https://github.com/msobkow/server.markhome.mcf/</project.url>
+		<project.scm.url>https://github.com/msobkow/server.markhome.mcf/</project.scm.url>
+		<project.build.outputTimestamp>2026-09-18T00:00:00Z</project.build.outputTimestamp>
 		<mcf.version>3.1.42-20260918</mcf.version>
-		<graaljs.version>25.3.4.1</graaljs.version>
 		<commons.rc.version>MCFRC1</commons.rc.version>
-		<maven.javadoc.skip>false</maven.javadoc.skip>
-		<commons.javadoc.failOnWarnings>false</commons.javadoc.failOnWarnings>
-		<maven.test.failure.ignore>false</maven.test.failure.ignore>
-		<!-- Minimum Maven version required by the plugins -->
-		<minimalMavenBuildVersion>3.9</minimalMavenBuildVersion>
-		<!-- Minimum Java version required by build -->
-		<minimalJavaBuildVersion>8</minimalJavaBuildVersion>
-		<!-- configuration bits for cutting a release candidate, must be overridden by components -->
-		<!-- TODO How can we make project.build.outputTimestamp and changes.xml's release data the same? -->
-		<!-- project.build.outputTimestamp is managed by Maven plugins, see https://maven.apache.org/guides/mini/guide-reproducible-builds.html -->
-		<project.build.outputTimestamp>2026-08-20T14:23:47Z</project.build.outputTimestamp>
-		<commons.main.branch>master</commons.main.branch>
-		<commons.release.branch>release</commons.release.branch>
-		<commons.release.version>104</commons.release.version>
-		<commons.release.next>105</commons.release.next>
-		<commons.jira.id>COMMONSSITE</commons.jira.id>
-		<!-- Commons Release Plugin -->
-		<!-- Previous version of the component (used for reporting binary compatibility check)-->
-		<commons.bc.version>103</commons.bc.version>
-		<commons.release.isDistModule>true</commons.release.isDistModule>
-		<!--
-			Define the following in ~/.m2/settings.xml in an active profile:
-			(or provide them on the command line)
-			commons.releaseManagerName
-			commons.releaseManagerKey
-		-->
-		<!-- Default configuration for compiler source and target JVM -->
-		<!-- Do NOT change this; it must remain as 1.3 -->
-		<!--
-			It's important that child POMs don't need to change when the parent POM is updated.
-			At the time when these properties were introduced, the default Java version was 1.3.
-			Thus components that failed to define the version would not be affected by updates
-			to the Commons Parent or its parent the Apache pom.
-			Of course most if not all components now define the properties.
-			However it's still important to keep the properties as they effectively
-			force child poms to define the Java version they require.
-		-->
-		<maven.compiler.source>1.3</maven.compiler.source>
-		<maven.compiler.target>1.3</maven.compiler.target>
-		<!-- Java >= 9 -->
-		<commons.compiler.release>8</commons.compiler.release>
-		<!-- compiler and surefire plugin settings for "java" profiles -->
-		<commons.compiler.fork>false</commons.compiler.fork>
-		<commons.compiler.compilerVersion />
-		<commons.compiler.javac />
-		<commons.compiler.javadoc />
-		<version.maven-source-plugin>3.4.0</version.maven-source-plugin>
-		<!-- plugin versions (allows same value in reporting and build sections; also allows easy override) -->
-		<commons.animal-sniffer.version>1.27</commons.animal-sniffer.version>
-		<!-- Almost all signatures use version 1.0. Allow override just in case -->
+		<changes.announcementDirectory>.</changes.announcementDirectory>
+		<changes.announcementFile>RELEASE-NOTES.txt</changes.announcementFile>
+		<commons.animal-sniffer-maven-plugin.version>1.27</commons.animal-sniffer-maven-plugin.version>
 		<commons.animal-sniffer.signature.version>1.0</commons.animal-sniffer.signature.version>
+		<commons.animal-sniffer.version>1.27</commons.animal-sniffer.version>
+		<commons.antrun-plugin.version>3.2.0</commons.antrun-plugin.version>
+		<commons.artifact-plugin.version>3.6.1</commons.artifact-plugin.version>
+		<commons.asm.version>9.10.1</commons.asm.version>
 		<commons.assembly-plugin.version>3.8.0</commons.assembly-plugin.version>
+		<commons.bcel.version>6.12.0</commons.bcel.version>
+		<commons.bc.version>103</commons.bc.version>
+		<commons.binary.suffix>-bin</commons.binary.suffix>
+		<commons.biz.aQute.bndlib.version>6.4.1</commons.biz.aQute.bndlib.version>
 		<commons.build-helper.version>3.6.1</commons.build-helper.version>
 		<commons.build-plugin.version>1.16.1</commons.build-plugin.version>
+		<commons.bundle-plugin.version>6.1.0</commons.bundle-plugin.version>
+		<commons.changes.maxEntries>100</commons.changes.maxEntries>
+		<commons.changes.onlyCurrentVersion>false</commons.changes.onlyCurrentVersion>
+		<commons.changes-plugin.version>3.0.0-M3</commons.changes-plugin.version>
+		<commons.changes.runOnlyAtExecutionRoot>false</commons.changes.runOnlyAtExecutionRoot>
 		<commons.changes.version>3.0.0-M3</commons.changes.version>
 		<commons.checkstyle-plugin.version>3.6.0</commons.checkstyle-plugin.version>
-		<commons.checkstyle.version>13.2.0</commons.checkstyle.version>
+		<commons.checkstyle.version>14.0.0</commons.checkstyle.version>
+		<commons.commons-build-plugin.version>1.16.1</commons.commons-build-plugin.version>
+		<commons.commons-release-plugin.version>1.9.2</commons.commons-release-plugin.version>
+		<commons.compiler.compilerVersion />
+		<commons.compiler.fork>false</commons.compiler.fork>
+		<commons.compiler.javac />
+		<commons.compiler.javadoc />
+		<commons.compiler.release>25</commons.compiler.release>
 		<commons.compiler.version>3.15.0</commons.compiler.version>
+		<commons.componentid>parent</commons.componentid>
+		<commons.conf.dir>src/conf</commons.conf.dir>
 		<commons.cyclonedx.version>2.9.2</commons.cyclonedx.version>
-		<commons.spdx.version>1.0.4</commons.spdx.version>
+		<commons.deployment.protocol>scp</commons.deployment.protocol>
+		<commons.deploy-plugin.version>3.1.4</commons.deploy-plugin.version>
+		<commons.docEncoding>${commons.encoding}</commons.docEncoding>
+		<commons.encoding>UTF-8</commons.encoding>
+		<commons.exec-plugin.version>3.6.3</commons.exec-plugin.version>
 		<commons.failsafe.version>3.5.6</commons.failsafe.version>
-		<commons.felix.version>5.1.9</commons.felix.version>
+		<commons.felix.version>6.1.0</commons.felix.version>
+		<commons.gpg.version>3.2.8</commons.gpg.version>
+		<commons.install-plugin.version>4.0.0-beta-2</commons.install-plugin.version>
+		<commons.jacoco.branchRatio>1.00</commons.jacoco.branchRatio>
+		<commons.jacoco.classRatio>1.00</commons.jacoco.classRatio>
+		<commons.jacoco.complexityRatio>1.00</commons.jacoco.complexityRatio>
+		<commons.jacoco.haltOnFailure>false</commons.jacoco.haltOnFailure>
+		<commons.jacoco.instructionRatio>1.00</commons.jacoco.instructionRatio>
+		<commons.jacoco.lineRatio>1.00</commons.jacoco.lineRatio>
+		<commons.jacoco.methodRatio>1.00</commons.jacoco.methodRatio>
 		<commons.jacoco.version>0.8.15</commons.jacoco.version>
+		<commons.japicmp.breakBuildOnBinaryIncompatibleModifications>true</commons.japicmp.breakBuildOnBinaryIncompatibleModifications>
+		<commons.japicmp.breakBuildOnSourceIncompatibleModifications>false</commons.japicmp.breakBuildOnSourceIncompatibleModifications>
+		<commons.japicmp.ignoreMissingClasses>false</commons.japicmp.ignoreMissingClasses>
 		<commons.japicmp.version>0.26.1</commons.japicmp.version>
 		<commons.jar-plugin.version>3.5.1</commons.jar-plugin.version>
-		<commons.javadoc.version>3.12.0</commons.javadoc.version>
-		<commons.jxr.version>3.6.0</commons.jxr.version>
-		<commons.pmd.version>3.28.0</commons.pmd.version>
-		<commons.pmd-impl.version>7.26.0</commons.pmd-impl.version>
-		<commons.project-info.version>3.9.0</commons.project-info.version>
-		<commons.rat.version>0.17</commons.rat.version>
-		<commons.release-plugin.version>1.9.2</commons.release-plugin.version>
-		<commons.scm-publish.version>1.1</commons.scm-publish.version>
-		<commons.moditect-maven-plugin.version>1.3.0.Final</commons.moditect-maven-plugin.version>
-		<commons.moditect-maven-plugin.addServiceUses>true</commons.moditect-maven-plugin.addServiceUses>
-		<!-- bndlib 7 requires Java 17 -->
-		<commons.biz.aQute.bndlib.version>6.4.1</commons.biz.aQute.bndlib.version>
-		<!-- JUnit 6 requires Java 17 -->
-		<commons.junit.version>5.14.4</commons.junit.version>
-		<!-- JUnit Pioneer 2 requires Java 11 -->
-		<commons.junit-pioneer.version>1.9.1</commons.junit-pioneer.version>
-		<!-- Mockito 5 requires Java 11 -->
-		<commons.mockito.version>4.11.0</commons.mockito.version>
-		<commons.jmh.version>1.37</commons.jmh.version>
-		<commons.asm.version>9.10.1</commons.asm.version>
-		<commons.taglist.version>3.2.2</commons.taglist.version>
-		<commons.site-plugin.version>3.22.0</commons.site-plugin.version>
-		<commons.spotbugs.plugin.version>4.9.8.3</commons.spotbugs.plugin.version>
-		<commons.spotbugs.impl.version>4.10.4</commons.spotbugs.impl.version>
-		<commons.surefire-report.version>3.5.6</commons.surefire-report.version>
-		<commons.surefire.version>3.5.6</commons.surefire.version>
-		<commons.wagon-ssh.version>3.5.3</commons.wagon-ssh.version>
-		<commons.maven-remote-resources-plugin.version>3.3.0</commons.maven-remote-resources-plugin.version>
-		<!-- Default values for the download-page generation by commons-build-plugin -->
-		<commons.release.name>${project.artifactId}-${commons.release.version}</commons.release.name>
-		<commons.release.desc />
-		<commons.binary.suffix>-bin</commons.binary.suffix>
-		<commons.release.2.name>${project.artifactId}-${commons.release.2.version}</commons.release.2.name>
-		<commons.release.2.desc />
-		<commons.release.2.binary.suffix>-bin</commons.release.2.binary.suffix>
-		<commons.release.3.name>${project.artifactId}-${commons.release.3.version}</commons.release.3.name>
-		<commons.release.3.desc />
-		<commons.release.3.binary.suffix>-bin</commons.release.3.binary.suffix>
-		<commons.release.4.desc />
-		<commons.release.4.binary.suffix>-bin</commons.release.4.binary.suffix>
-		<!-- Default values for jacoco-maven-plugin -->
-		<commons.jacoco.haltOnFailure>false</commons.jacoco.haltOnFailure>
-		<commons.jacoco.classRatio>1.00</commons.jacoco.classRatio>
-		<commons.jacoco.instructionRatio>1.00</commons.jacoco.instructionRatio>
-		<commons.jacoco.methodRatio>1.00</commons.jacoco.methodRatio>
-		<commons.jacoco.branchRatio>1.00</commons.jacoco.branchRatio>
-		<commons.jacoco.lineRatio>1.00</commons.jacoco.lineRatio>
-		<commons.jacoco.complexityRatio>1.00</commons.jacoco.complexityRatio>
-		<!-- The Commons component id is used on the distribution server, for example:
-			 - Use dbcp instead of dbcp2.
-			 - Use collections instead of collections4.
-			 - Use lang instead of lang3.
-			 - Use pool instead of pool2.
-			 - and so on...
-		-->
-		<commons.componentid>parent</commons.componentid>
-		<!-- The package id is substring of the package name from o.a.commons.(.*)., for example:
-			 - Use dbcp2 instead of dbcp.
-			 - Use collections4 instead of collections.
-			 - Use lang3 instead of lang.
-			 - Use pool2 instead of pool.
-			 - and so on...
-		-->
-		<commons.packageId>${project.artifactId}</commons.packageId>
-		<commons.repo.name>commons-${commons.componentid}</commons.repo.name>
-		<!-- JPMS -->
-		<commons.module.name>org.apache.commons.${commons.packageId}</commons.module.name>
-		<!-- Configuration properties for the OSGi maven-bundle-plugin -->
-		<commons.osgi.symbolicName>org.apache.commons.${commons.packageId}</commons.osgi.symbolicName>
-		<commons.osgi.export>org.apache.commons.*;version=${project.version};-noimport:=true</commons.osgi.export>
-		<commons.osgi.import>*</commons.osgi.import>
-		<commons.osgi.dynamicImport />
-		<commons.osgi.private />
-		<commons.osgi.excludeDependencies>true</commons.osgi.excludeDependencies>
-		<!-- location of any manifest file used by maven-jar-plugin -->
-		<commons.manifestfile>${project.build.directory}/osgi/MANIFEST.MF</commons.manifestfile>
-		<!--
-			Make the deployment protocol pluggable. This allows to switch to
-			other protocols like scpexe, which some users prefer over scp.
-		-->
-		<commons.deployment.protocol>scp</commons.deployment.protocol>
-		<!--
-			Encoding of Java source files: ensures that the compiler and
-			the javadoc generator use the right encoding. Subprojects may
-			overwrite this, if they are using another encoding.
-		-->
-		<commons.encoding>UTF-8</commons.encoding>
-		<!-- used in this pom to provide the Javadoc HTML file encoding -->
-		<commons.docEncoding>${commons.encoding}</commons.docEncoding>
-		<!-- Define source encoding for filtering; used by general plugins -->
-		<project.build.sourceEncoding>${commons.encoding}</project.build.sourceEncoding>
-		<!-- This is used by reporting plugins -->
-		<project.reporting.outputEncoding>${commons.encoding}</project.reporting.outputEncoding>
-		<!-- Javadoc link to Java API LTS versions. -->
-		<!-- Modern Javadoc versions redirect to newest site (Java 22) when you ask for older links like Java 8. -->
-		<commons.javadoc.java.link>https://docs.oracle.com/en/java/javase/21/docs/api/</commons.javadoc.java.link>
+		<commons.javadoc.failOnWarnings>false</commons.javadoc.failOnWarnings>
+		<commons.javadoc.javaee10.link>https://jakarta.ee/specifications/platform/10/apidocs/</commons.javadoc.javaee10.link>
 		<commons.javadoc.javaee5.link>https://docs.oracle.com/javaee/5/api/</commons.javadoc.javaee5.link>
 		<commons.javadoc.javaee6.link>https://docs.oracle.com/javaee/6/api/</commons.javadoc.javaee6.link>
 		<commons.javadoc.javaee7.link>https://docs.oracle.com/javaee/7/api/</commons.javadoc.javaee7.link>
 		<commons.javadoc.javaee8.link>https://jakarta.ee/specifications/platform/8/apidocs/</commons.javadoc.javaee8.link>
-		<commons.javadoc.javaee9.link>https://jakarta.ee/specifications/platform/9/apidocs/</commons.javadoc.javaee9.link>
 		<commons.javadoc.javaee9.1.link>https://jakarta.ee/specifications/platform/9.1/apidocs/</commons.javadoc.javaee9.1.link>
-		<commons.javadoc.javaee10.link>https://jakarta.ee/specifications/platform/10/apidocs/</commons.javadoc.javaee10.link>
+		<commons.javadoc.javaee9.link>https://jakarta.ee/specifications/platform/9/apidocs/</commons.javadoc.javaee9.link>
 		<commons.javadoc.javaee.link>${commons.javadoc.javaee8.link}</commons.javadoc.javaee.link>
-		<!-- Allow Clirr severity to be overriden by the command-line option -DminSeverity=level -->
-		<minSeverity>info</minSeverity>
-		<!-- Allow surefire-report aggregation to be easily configured for multi-module projects -->
-		<commons.surefire-report.aggregate>false</commons.surefire-report.aggregate>
-		<!-- Allow changes Jira report to be restricted to just the current version (plugin default is false) -->
-		<commons.changes.onlyCurrentVersion>false</commons.changes.onlyCurrentVersion>
-		<!-- Allow changes Jira report maxEntries to be overridden (plugin default 100) -->
-		<commons.changes.maxEntries>100</commons.changes.maxEntries>
-		<!-- Allow changes Jira report runOnlyAtExecutionRoot to be overridden (plugin default is false) -->
-		<commons.changes.runOnlyAtExecutionRoot>false</commons.changes.runOnlyAtExecutionRoot>
-		<!-- scm publish plugin configuration -->
+		<commons.javadoc.java.link>https://docs.oracle.com/en/java/javase/21/docs/api/</commons.javadoc.java.link>
+		<commons.javadoc.version>3.12.0</commons.javadoc.version>
+		<commons.javancss-plugin.version>2.1</commons.javancss-plugin.version>
+		<commons.javancss.version>33.54</commons.javancss.version>
+		<commons.jira.id>COMMONSSITE</commons.jira.id>
+		<commons.jmh.version>1.37</commons.jmh.version>
+		<commons.junit-pioneer.version>1.9.1</commons.junit-pioneer.version>
+		<commons.junit-platform.version>1.14.4</commons.junit-platform.version>
+		<commons.junit.version>5.14.4</commons.junit.version>
+		<commons.jxr-plugin.version>3.6.0</commons.jxr-plugin.version>
+		<commons.jxr.version>3.6.0</commons.jxr.version>
+		<commons.main.branch>master</commons.main.branch>
+		<commons.manifestfile>${project.build.directory}/osgi/MANIFEST.MF</commons.manifestfile>
+		<commons.remote-resources-plugin.version>3.3.0</commons.remote-resources-plugin.version>
+		<commons.resources-plugin.version>3.3.1</commons.resources-plugin.version>
+		<commons.site-plugin.version>3.22.0</commons.site-plugin.version>
+		<commons.toolchains-plugin.version>???</commons.toolchains-plugin.version>
+		<commons.mockito.version>4.11.0</commons.mockito.version>
+		<commons.moditect-maven-plugin.addServiceUses>true</commons.moditect-maven-plugin.addServiceUses>
+		<commons.moditect-maven-plugin.version>1.3.0.Final</commons.moditect-maven-plugin.version>
+		<commons.module.name>org.apache.commons.${commons.packageId}</commons.module.name>
+		<commons.native-maven-plugin.version>1.1.10</commons.native-maven-plugin.version>
+		<commons.osgi.dynamicImport />
+		<commons.osgi.excludeDependencies>true</commons.osgi.excludeDependencies>
+		<commons.osgi.export>server.markhomemcf.*;version=${project.version};-noimport:=true</commons.osgi.export>
+		<commons.osgi.import>*</commons.osgi.import>
+		<commons.osgi.private />
+		<commons.osgi.symbolicName>server.markhome.mcf.${commons.packageId}</commons.osgi.symbolicName>
+		<commons.packageId>${project.artifactId}</commons.packageId>
+		<commons.pmd-core.version>${commons.pmd.version}</commons.pmd-core.version>
+		<commons.pmd-impl.version>${commons.pmd.version}</commons.pmd-impl.version>
+		<commons.pmd-javascript.version>${commons.pmd.version}</commons.pmd-javascript.version>
+		<commons.pmd-java.version>${commons.pmd.version}</commons.pmd-java.version>
+		<commons.pmd-jsp.version>${commons.pmd.version}</commons.pmd-jsp.version>
+		<commons.pmd.version>7.26.0</commons.pmd.version>
+		<commons.project-info.version>3.9.0</commons.project-info.version>
+		<commons.rat.version>0.17</commons.rat.version>
+		<commons.release.2.binary.suffix>-bin</commons.release.2.binary.suffix>
+		<commons.release.2.desc />
+		<commons.release.2.name>${project.artifactId}-${commons.release.2.version}</commons.release.2.name>
+		<commons.release.3.binary.suffix>-bin</commons.release.3.binary.suffix>
+		<commons.release.3.desc />
+		<commons.release.3.name>${project.artifactId}-${commons.release.3.version}</commons.release.3.name>
+		<commons.release.4.binary.suffix>-bin</commons.release.4.binary.suffix>
+		<commons.release.4.desc />
+		<commons.release.branch>release</commons.release.branch>
+		<commons.release.desc />
+		<commons.release.isDistModule>true</commons.release.isDistModule>
+		<commons.release.name>${project.artifactId}-${commons.release.version}</commons.release.name>
+		<commons.release.next>105</commons.release.next>
+		<commons.release-plugin.version>1.9.2</commons.release-plugin.version>
+		<commons.release.version>104</commons.release.version>
+		<commons.repo.name>commons-${commons.componentid}</commons.repo.name>
+		<commons.scm-publish.version>1.1</commons.scm-publish.version>
 		<commons.site.cache>${user.home}/commons-sites</commons.site.cache>
-		<!-- value modules can override it -->
 		<commons.site.path>${commons.componentid}</commons.site.path>
-		<!-- SCM -->
-		<commons.scmPubUrl>https://svn.apache.org/repos/infra/websites/production/commons/content/proper/commons-${commons.componentid}</commons.scmPubUrl>
-		<commons.scmPubCheckoutDirectory>${commons.site.cache}/${commons.site.path}</commons.scmPubCheckoutDirectory>
-		<commons.scmPubServer>commons.site</commons.scmPubServer>
-		<!-- allow japicmp's breakBuildOnBinaryIncompatibleModifications
-			to be overridden, plugin's default is false -->
-		<commons.japicmp.breakBuildOnBinaryIncompatibleModifications>true</commons.japicmp.breakBuildOnBinaryIncompatibleModifications>
-		<commons.japicmp.breakBuildOnSourceIncompatibleModifications>false</commons.japicmp.breakBuildOnSourceIncompatibleModifications>
-		<commons.japicmp.ignoreMissingClasses>false</commons.japicmp.ignoreMissingClasses>
-		<!-- Commons Release plugin: dist dev site -->
-		<commons.distSvnStagingUrl>scm:svn:https://dist.apache.org/repos/dist/dev/commons/${commons.componentid}</commons.distSvnStagingUrl>
-		<commons.conf.dir>src/conf</commons.conf.dir>
-		<sonar.host.url>https://analysis.apache.org/</sonar.host.url>
-		<!-- allow override of changes.announcementFile and directory -->
-		<changes.announcementDirectory>.</changes.announcementDirectory>
-		<changes.announcementFile>RELEASE-NOTES.txt</changes.announcementFile>
-		<commons.install-plugin.version>4.0.0-beta-2</commons.install-plugin.version>
+		<commons.site-plugin.version>3.22.0</commons.site-plugin.version>
+		<commons.source-plugin.version>3.4.0</commons.source-plugin.version>
+		<commons.spdx.version>1.0.4</commons.spdx.version>
+		<commons.spotbugs.impl.version>4.10.4</commons.spotbugs.impl.version>
+		<commons.spotbugs.plugin.version>4.9.8.3</commons.spotbugs.plugin.version>
+		<commons.spotbugs.version>4.10.4</commons.spotbugs.version>
+		<commons.surefire-report.aggregate>false</commons.surefire-report.aggregate>
+		<commons.surefire-report.version>3.5.6</commons.surefire-report.version>
+		<commons.surefire.version>3.5.6</commons.surefire.version>
+		<commons.taglist-maven-plugin.version>3.2.2</commons.taglist-maven-plugin.version>
+		<commons.taglist.version>3.2.2</commons.taglist.version>
+		<commons.text.version>1.15.0</commons.text.version>
+		<commons.versions-plugin.version>2.21.0</commons.versions-plugin.version>
+		<commons.wagon-ssh.version>3.5.3</commons.wagon-ssh.version>
+		<easymock.version>5.6.0</easymock.version>
+		<google-code-findbugs.version>3.0.2</google-code-findbugs.version>
+		<graaljs.version>25.3.4.1</graaljs.version>
+		<graalvm-buildtools.version>1.1.10</graalvm-buildtools.version>
+		<maven.compiler.source>25</maven.compiler.source>
+		<maven.compiler.target>25</maven.compiler.target>
+		<maven.javadoc.skip>false</maven.javadoc.skip>
+		<maven.test.failure.ignore>false</maven.test.failure.ignore>
+		<maven-toolchains.version>3.3.0</maven-toolchains.version>
+		<maven-wagon.version>1.0-beta-6</maven-wagon.version>
+		<minimalJavaBuildVersion>25</minimalJavaBuildVersion>
+		<minimalMavenBuildVersion>3.9</minimalMavenBuildVersion>
+		<minSeverity>info</minSeverity>
+		<nexus-staging-plugin.version>1.5.1</nexus-staging-plugin.version>
+		<project.build.sourceEncoding>${commons.encoding}</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>${commons.encoding}</project.reporting.outputEncoding>
 	</properties>
+
+	<licenses>
+		<license>
+			<name>Apache-2.0-or-later</name>
+			<url>https://apache.org/</url>
+			<distribution>repo</distribution>
+		</license>
+		<license>
+			<name>LGPL-3.0-or-later</name>
+			<url>https://gnu.org/</url>
+			<distribution>repo</distribution>
+		</license>
+		<license>
+			<name>LicenseRef-MCFDualLGPL-3.0-or-later</name>
+			<url>https://msobkow.github.io/licenses/</url>
+			<distribution>repo</distribution>
+		</license>
+		<license>
+			<name>GPL-3.0-or-later</name>
+			<url>https://gnu.org/</url>
+			<distribution>repo</distribution>
+		</license>
+		<license>
+			<name>LicenseRef-MCFDualGPL-3.0-or-later</name>
+			<url>https://msobkow.github.io/licenses/</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
 
 	<dependencyManagement>
 		<dependencies>
@@ -243,29 +220,160 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
-			<!--dependency>
-				<groupId>org.junit.jupiter</groupId>
-				<artifactId>junit-jupiter-api</artifactId>
-				<version>${junit-jupiter.version}</version>
-				<scope>test</scope->
-			</dependency-->
-			<!--dependency>
-				<groupId>org.junit.jupiter</groupId>
-				<artifactId>junit-jupiter-engine</artifactId>
-				<version>${junit-jupiter.version}</version>
+			<dependency>
+				<groupId>org.mockito</groupId>
+				<artifactId>mockito-core</artifactId>
+				<version>${commons.mockito.version}</version>
 				<scope>test</scope>
-			</dependency-->
-			<!-- testing -->
-			<!--dependency>
+			</dependency>
+			<dependency>
+				<groupId>org.mockito</groupId>
+				<artifactId>mockito-android</artifactId>
+				<version>${commons.mockito.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.mockito</groupId>
+				<artifactId>mockito-errorprone</artifactId>
+				<version>${commons.mockito.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.mockito</groupId>
+				<artifactId>mockito-inline</artifactId>
+				<version>${commons.mockito.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.mockito</groupId>
+				<artifactId>mockito-junit-jupiter</artifactId>
+				<version>${commons.mockito.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.mockito</groupId>
+				<artifactId>mockito-proxy</artifactId>
+				<version>${commons.mockito.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.mockito</groupId>
+				<artifactId>mockito-subclass</artifactId>
+				<version>${commons.mockito.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
 				<groupId>org.junit.jupiter</groupId>
 				<artifactId>junit-jupiter</artifactId>
-				<version>${junit-jupiter.version}</version>
+				<version>${commons.junit.version}</version>
 				<scope>test</scope>
-			</dependency-->
+			</dependency>
+			<dependency>
+				<groupId>org.junit.jupiter</groupId>
+				<artifactId>junit-jupiter-api</artifactId>
+				<version>${commons.junit.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.junit.jupiter</groupId>
+				<artifactId>junit-jupiter-engine</artifactId>
+				<version>${commons.junit.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.junit.jupiter</groupId>
+				<artifactId>junit-jupiter-migrationsupport</artifactId>
+				<version>${commons.junit.version}</version>
+				<scope>test</scope>
+			</dependency>
 			<dependency>
 				<groupId>org.graalvm.polyglot</groupId>
 				<artifactId>polyglot</artifactId>
 				<version>${graaljs.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.junit.jupiter</groupId>
+				<artifactId>junit-jupiter-params</artifactId>
+				<version>${commons.junit.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.junit.platform</groupId>
+				<artifactId>junit-platform-commons</artifactId>
+				<version>${commons.junit-platform.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.junit.platform</groupId>
+				<artifactId>junit-platform-console</artifactId>
+				<version>${commons.junit-platform.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.junit.platform</groupId>
+				<artifactId>junit-platform-engine</artifactId>
+				<version>${commons.junit-platform.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.junit.platform</groupId>
+				<artifactId>junit-platform-jfr</artifactId>
+				<version>${commons.junit-platform.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.junit.platform</groupId>
+				<artifactId>junit-platform-launcher</artifactId>
+				<version>${commons.junit-platform.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.junit.platform</groupId>
+				<artifactId>junit-platform-reporting</artifactId>
+				<version>${commons.junit-platform.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.junit.platform</groupId>
+				<artifactId>junit-platform-runner</artifactId>
+				<version>${commons.junit-platform.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.junit.platform</groupId>
+				<artifactId>junit-platform-suite</artifactId>
+				<version>${commons.junit-platform.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.junit.platform</groupId>
+				<artifactId>junit-platform-suite-api</artifactId>
+				<version>${commons.junit-platform.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.junit.platform</groupId>
+				<artifactId>junit-platform-suite-commons</artifactId>
+				<version>${commons.junit-platform.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.junit.platform</groupId>
+				<artifactId>junit-platform-suite-engine</artifactId>
+				<version>${commons.junit-platform.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.junit.platform</groupId>
+				<artifactId>junit-platform-testkit</artifactId>
+				<version>${commons.junit-platform.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.junit.vintage</groupId>
+				<artifactId>junit-vintage-engine</artifactId>
+				<version>${commons.junit.version}</version>
+				<scope>test</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.graalvm.polyglot</groupId>
@@ -274,9 +382,16 @@
 				<type>pom</type>
 			</dependency>
 			<dependency>
+				<groupId>org.graalvm.buildtools</groupId>
+				<artifactId>graalvm-reachability-metadata</artifactId>
+				<version>${graalvm-buildtools.version}</version>
+				<classifier>repository</classifier>
+				<type>zip</type>
+			</dependency>
+			<dependency>
 				<groupId>org.easymock</groupId>
 				<artifactId>easymock</artifactId>
-				<version>5.6.0</version>
+				<version>${easymock.version}</version>
 				<scope>test</scope>
 			</dependency>
 			<!-- For Javadoc links -->
@@ -301,7 +416,7 @@
 			<dependency>
 				<groupId>com.google.code.findbugs</groupId>
 				<artifactId>jsr305</artifactId>
-				<version>3.0.2</version>
+				<version>${google-code-findbugs.version}</version>
 				<scope>test</scope>
 			</dependency>
 		</dependencies>
@@ -325,10 +440,10 @@
 			<extension>
 				<groupId>org.apache.maven.wagon</groupId>
 				<artifactId>wagon-ssh-external</artifactId>
-				<version>1.0-beta-6</version>
+				<version>${maven-wagon.version}</version>
 			</extension>
 		</extensions>
-		<defaultGoal>clean verify apache-rat:check checkstyle:check japicmp:cmp spotbugs:check pmd:check maven-exec-plugin:jar maven-exec-plugin:test-jar</defaultGoal>
+		<defaultGoal>clean verify apache-rat:check checkstyle:check japicmp:cmp spotbugs:check pmd:check</defaultGoal>
 		<resources>
 			<!-- This is the default setting from the super-pom -->
 			<resource>
@@ -392,7 +507,7 @@
 				<plugin>
 					<groupId>org.sonatype.plugins</groupId>
 					<artifactId>nexus-staging-maven-plugin</artifactId>
-					<version>1.5.1</version>
+					<version>${nexus-staging-plugin.version}</version>
 					<executions>
 						<execution>
 							<id>default-deploy</id>
@@ -473,7 +588,7 @@
 					<!-- TODO see above - find better way to add N&L files to jars and test jars -->
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-remote-resources-plugin</artifactId>
-					<version>${commons.maven-remote-resources-plugin.version}</version>
+					<version>${commons.remote-resources-plugin.version}</version>
 					<configuration>
 						<!--
 							Apache parent POM automatically adds "LICENSE" and "NOTICE" files
@@ -586,33 +701,36 @@
 							</goals>
 							<phase>compile</phase>
 							<configuration>
-								<executable>export PATH=${env.GV_HOME}/bin:${env.GV_HOME}/lib:${env.BASE_PATH} &amp;&amp; export GRAALVM_HOME=${env.GV_HOME} &amp;&amp; export JAVA_HOME=${env.GV_HOME} &amp;&amp; export JDK_HOME=${env.GV_HOME} &amp;&amp; native-image </executable>
+								<executable>export PATH=${env.GV_HOME}/bin:${env.GV_HOME}/lib:${env.BASE_PATH} &amp;&amp; export GRAALVM_HOME=${env.GV_HOME} &amp;&amp; export JAVA_HOME=${env.GV_HOME} &amp;&amp; export JDK_HOME=${env.GV_HOME} &amp;&amp; if [ ! -d ${env.TMP_DIR} ]; then; mkdir ${env.TMP_DIR}; fi; &amp;&amp; if [ ! -d ${env.TMP_DIR}/js ]; then; mkdir ${env.TMP_DIR}/js; fi; &amp;&amp; native-image -H:TempDirectory=${env.TMP_DIR}/js </executable>
 								<mainClass>${graal.mainClass}</mainClass>
-								<skipNativeBuildForPom>false</skipNativeBuildForPom>
-								<skipNativeTests>true</skipNativeTests>
+								<skipTestExecution>true</skipTestExecution>
 								<debug>true</debug>
+								<verbose>true</verbose>
+								<sharedLibrary>true</sharedLibrary>
 								<extensions>true</extensions>
 								<buildArgs>
 									<buildArg>-Duser.country=CA</buildArg>
+									<buildArg>-Dgraal.CompilerConfiguration=community</buildArg>
+									<buildArg>-H:TempDirectory=${env.TMP_DIR}/js</buildArg>
+									<buildArg>&#45;&#45;no-fallback</buildArg>
 									<!--buildArg>-Duser.language=en</buildArg-->
 									<!--buildArg>-HIncludeLocales=en,fr,de,es,pt,pt-br</buildArg-->
-									<!--buildArg>-g</buildArg-->
 									<!--buildArg>&#45;&#45;enable-monitoring=heapdump,jfr,jvmstat,jmxserver,jmxclient,threaddump,nmt,jccmd</buildArg-->
 									<!--buildArg>&#45;&#45;enable-native-access=ALL-UNNAMED</buildArg-->
 									<!--buildArg>&#45;&#45;exact-reachability-metadata</buildArg-->
 									<!--buildArg>&#45;&#45;future-defaults</buildArg-->
 									<!--buildArg>&#45;&#45;implicit:class</buildArg-->
-									<!--buildArg>&#45;&#45;shared</buildArg-->
 									<buildArg>&#45;H:+UnlockExperimentalVMOptions</buildArg>
 									<buildArg>&#45;H:Preserve=package=server.markhome.mcf.*</buildArg>
 									<buildArg>&#45;&#45;language:js</buildArg>
 								</buildArgs>
 								<environmentVariables>
-									<NATIVE_IMAGE_OPTIONS>-Dgraal.CompilerConfiguration=community -H:TempDirectory=${env.TMP_DIR}/js </NATIVE_IMAGE_OPTIONS>
-									<skipNativeBuildForPom>false</skipNativeBuildForPom>
+									<NATIVE_IMAGE_OPTIONS> -Dgraal.CompilerConfiguration=community -H:TempDirectory=${env.TMP_DIR}/js </NATIVE_IMAGE_OPTIONS>
 									<skipNativeTests>true</skipNativeTests>
 									<org.graalvm.nativeimage.kind>${graal.nativeimage-kind}</org.graalvm.nativeimage.kind>
 									<project.build.directory>${project.basedir}/src/main/js/</project.build.directory>
+									<CompilerConfiguration>community</CompilerConfiguration>
+									<TempDirectory>${env.TMP_DIR}/js</TempDirectory>
 								</environmentVariables>
 							</configuration>
 						</execution>
@@ -640,7 +758,7 @@
 						<plugin>
 							<groupId>org.apache.maven.plugins</groupId>
 							<artifactId>maven-artifact-plugin</artifactId>
-							<version>3.6.1</version>
+							<version>${commons.artifact-plugin.version}</version>
 						</plugin>
 						<plugin>
 							<groupId>org.codehaus.mojo</groupId>
@@ -650,7 +768,7 @@
 						<plugin>
 							<groupId>org.codehaus.mojo</groupId>
 							<artifactId>versions-maven-plugin</artifactId>
-							<version>2.21.0</version>
+							<version>${commons.versions-plugin.version}</version>
 						</plugin>
 						<plugin>
 							<groupId>org.jacoco</groupId>
@@ -737,7 +855,7 @@
 								<dependency>
 									<groupId>org.apache.bcel</groupId>
 									<artifactId>bcel</artifactId>
-									<version>6.12.0</version>
+									<version>${commons.bcel.version}</version>
 								</dependency>
 							</dependencies>
 						</plugin>
@@ -836,27 +954,26 @@
 						<plugin>
 							<groupId>org.codehaus.mojo</groupId>
 							<artifactId>javancss-maven-plugin</artifactId>
-							<version>2.1</version>
+							<version>${commons.javancss-plugin.version}</version>
 							<dependencies>
 								<!-- javancss 33.54 is used by default
 								<dependency>
 									<groupId>org.codehaus.javancss</groupId>
 									<artifactId>javancss</artifactId>
-									<version>33.54</version>
+									<version>${commons.javancss.version}</version>
 								</dependency>
 								-->
 							</dependencies>
 							<configuration>
 								<excludes>
-									<!-- The latest javancss 33.54 in Maven Central fails on Java 8 sources and maybe even older Java versions -->
 									<exclude>**/*.java</exclude>
 							</excludes>					
 							</configuration>
 						</plugin>
 						<plugin>
 							<groupId>org.codehaus.mojo</groupId>
-							<artifactId>exec-maven-plugin</artifactId>
-							<version>3.6.3</version>
+							<artifactId>exec-plugin</artifactId>
+							<version>${commons.exec-plugin.version}</version>
 						</plugin>
 						<plugin>
 							<groupId>org.codehaus.mojo</groupId>
@@ -886,6 +1003,7 @@
 					<plugin>
 						<!-- Parent POM is released, so needs source archive for ASF mirrors -->
 						<artifactId>maven-assembly-plugin</artifactId>
+						<version>${commons.assembly-plugin.version}</version>
 						<configuration>
 							<descriptors>
 								<descriptor>src/assembly/src.xml</descriptor>
@@ -893,13 +1011,14 @@
 							<tarLongFileMode>gnu</tarLongFileMode>
 						</configuration>
 					</plugin>
-					<plugin>
-						<!--
+					<!--plugin>
+						<!- -
 							- Copy LICENSE.txt and NOTICE.txt so that they are included
 							- in the -javadoc jar file for the component.
-						-->
+						- ->
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-antrun-plugin</artifactId>
+						<version>${commons.antrun-plugin.version}</version>
 						<executions>
 							<execution>
 								<id>javadoc.resources</id>
@@ -921,15 +1040,16 @@
 								</configuration>
 							</execution>
 						</executions>
-					</plugin>
+					</plugin-->
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-compiler-plugin</artifactId>
+						<version>${commons.compiler.version}</version>
 					</plugin>
 						<plugin>
 							<groupId>org.apache.maven.plugins</groupId>
 							<artifactId>maven-deploy-plugin</artifactId>
-							<version>3.1.4</version>
+							<version>${commons.deploy-plugin.version}</version>
 							<configuration>
 								<skip>true</skip>
 							</configuration>
@@ -968,6 +1088,7 @@
 					</plugin>
 					<plugin>
 						<artifactId>maven-source-plugin</artifactId>
+						<version>${commons.source-plugin.version}</version>
 						<executions>
 							<execution>
 								<id>attach-sources</id>
@@ -980,8 +1101,8 @@
 					</plugin>
 						<!--plugin>
 							<groupId>org.codehaus.mojo</groupId>
-							<artifactId>exec-maven-plugin</artifactId>
-							<version>3.6.3</version>
+							<artifactId>exec-plugin</artifactId>
+							<version>${commons.exec-plugin.version}</version>
 							<executions>
 								<execution>
 									<id>default-jar</id>
@@ -1036,10 +1157,12 @@
 					<plugin>
 						<groupId>org.apache.commons</groupId>
 						<artifactId>commons-build-plugin</artifactId>
+						<version>${commons.build-plugin.version}</version>
 					</plugin>
 					<plugin>
 						<groupId>org.apache.felix</groupId>
 						<artifactId>maven-bundle-plugin</artifactId>
+						<version>${commons.felix.version}</version>
 						<configuration>
 							<!--
 								dummy entry to stop bundle plugin from picking up jar config and reporting
@@ -1076,6 +1199,7 @@
 			<plugin>
 				<groupId>org.apache.rat</groupId>
 				<artifactId>apache-rat-plugin</artifactId>
+				<version>${commons.rat.version}</version>
 				<!-- Should agree with config in reporting section -->
 				<configuration>
 					<ignoreErrors>true</ignoreErrors>
@@ -1118,6 +1242,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-artifact-plugin</artifactId>
+				<version>${commons.artifact-plugin.version}</version>
 				<executions>
 					<execution>
 						<id>check-buildplan</id>
@@ -1128,9 +1253,10 @@
 					</execution>
 				</executions>
 			</plugin>			
-			<plugin>
+			<!--plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-scm-publish-plugin</artifactId>
+				<version>${commons.scm-publish.version}</version>
 				<configuration>
 					<content>${project.reporting.outputDirectory}</content>
 					<pubScmUrl>scm:svn:${commons.scmPubUrl}</pubScmUrl>
@@ -1141,24 +1267,27 @@
 				<executions>
 					<execution>
 						<id>scm-publish</id>
-						<phase>site-deploy</phase><!-- deploy site with maven-scm-publish-plugin -->
+						<phase>site-deploy</phase>
 						<goals>
 							<goal>publish-scm</goal>
 						</goals>
 					</execution>
 				</executions>
-			</plugin>
+			</plugin-->
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>versions-maven-plugin</artifactId>
+				<version>${commons.versions-plugin.version}</version>
 			</plugin>
 			<plugin>
 				<groupId>org.cyclonedx</groupId>
 				<artifactId>cyclonedx-maven-plugin</artifactId>
+				<version>${commons.cyclonedx.version}</version>
 			</plugin>
 			<plugin>
 				<groupId>org.spdx</groupId>
 				<artifactId>spdx-maven-plugin</artifactId>
+				<version>${commons.spdx.version}</version>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -1174,6 +1303,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-changes-plugin</artifactId>
+				<version>${commons.install-plugin.version}</version>
 				<configuration>
 					<xmlPath>${basedir}/src/changes/changes.xml</xmlPath>
 					<columnNames>Fix Version,Key,Component,Summary,Type,Resolution,Status</columnNames>
@@ -1329,6 +1459,7 @@
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-jar-plugin</artifactId>
+						<version>${commons.jar-plugin.version}</version>
 						<configuration>
 							<archive combine.children="append">
 								<manifestEntries>
@@ -1362,6 +1493,7 @@
 					<plugin>
 						<groupId>org.codehaus.mojo</groupId>
 						<artifactId>build-helper-maven-plugin</artifactId>
+						<version>${commons.build-helper.version}</version>
 						<executions>
 							<execution>
 								<id>parse-version</id>
@@ -1488,6 +1620,7 @@
 					<plugin>
 						<groupId>com.github.siom79.japicmp</groupId>
 						<artifactId>japicmp-maven-plugin</artifactId>
+						<version>${commons.japicmp.version}</version>
 						<executions>
 							<execution>
 								<phase>verify</phase>
@@ -1544,6 +1677,7 @@
 					</plugin>
 					<plugin>
 						<artifactId>maven-release-plugin</artifactId>
+							<version>${commons.release-plugin.version}</version>
 						<configuration>
 							<!-- Pass these arguments to the deploy plugin. -->
 							<arguments>-Prelease</arguments>
@@ -1551,6 +1685,7 @@
 					</plugin>
 					<plugin>
 						<artifactId>maven-javadoc-plugin</artifactId>
+						<version>${commons.javadoc.version}</version>
 						<executions>
 							<execution>
 								<id>create-javadoc-jar</id>
@@ -1583,6 +1718,7 @@
 					<!-- We want to sign the artifact, the POM, and all attached artifacts -->
 					<plugin>
 						<artifactId>maven-gpg-plugin</artifactId>
+						<version>${commons.gpg.version}</version>
 						<executions>
 							<execution>
 								<id>sign-artifacts</id>
@@ -1596,6 +1732,7 @@
 					<plugin>
 						<groupId>org.apache.commons</groupId>
 						<artifactId>commons-release-plugin</artifactId>
+						<version>${commons.release-plugin.version}</version>
 						<executions>
 							<execution>
 								<id>clean-staging</id>
@@ -1634,6 +1771,7 @@
 				<plugins>
 					<plugin>
 						<artifactId>maven-release-plugin</artifactId>
+						<version>${commons.release-plugin.version}</version>
 						<configuration>
 							<releaseProfiles>apache-release</releaseProfiles>
 						</configuration>
@@ -1646,6 +1784,7 @@
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-jar-plugin</artifactId>
+						<version>${commons.jar-plugin.version}</version>
 						<executions>
 							<execution>
 								<goals>
@@ -1656,34 +1795,6 @@
 					</plugin>
 				</plugins>
 			</build>
-		</profile>
-		<!--
-			Profile for running the build using JDK 8
-			(JAVA_1_8_HOME needs to be defined, e.g. in settings.xml or an environment variable)
-		-->
-		<profile>
-			<id>java-1.8</id>
-			<properties>
-				<commons.compiler.fork>true</commons.compiler.fork>
-				<commons.compiler.compilerVersion>1.8</commons.compiler.compilerVersion>
-				<commons.compiler.javac>${JAVA_1_8_HOME}/bin/javac</commons.compiler.javac>
-				<commons.compiler.javadoc>${JAVA_1_8_HOME}/bin/javadoc</commons.compiler.javadoc>
-				<commons.surefire.java>${JAVA_1_8_HOME}/bin/java</commons.surefire.java>
-			</properties>
-		</profile>
-		<!--
-			Profile for running the build using JDK 11
-			(JAVA_1_11_HOME needs to be defined, e.g. in settings.xml or an environment variable)
-		-->
-		<profile>
-			<id>java-1.11</id>
-			<properties>
-				<commons.compiler.fork>true</commons.compiler.fork>
-				<commons.compiler.compilerVersion>1.11</commons.compiler.compilerVersion>
-				<commons.compiler.javac>${JAVA_1_11_HOME}/bin/javac</commons.compiler.javac>
-				<commons.compiler.javadoc>${JAVA_1_11_HOME}/bin/javadoc</commons.compiler.javadoc>
-				<commons.surefire.java>${JAVA_1_11_HOME}/bin/java</commons.surefire.java>
-			</properties>
 		</profile>
 		<!-- When adding new java profiles, be sure to update
 			the _removeheaders list in the maven_bundle_plugin configuration -->
@@ -1717,6 +1828,7 @@
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-changes-plugin</artifactId>
+						<version>${commons.changes.version}</version>
 						<configuration>
 							<template>release-notes.vm</template>
 							<templateDirectory>src/changes</templateDirectory>
@@ -1741,131 +1853,6 @@
 			</build>
 		</profile>
 		<!-- profile to allow the use of plugin versions that require Java 7 -->
-		<profile>
-			<id>jdk7-plugin-fix-version</id>
-			<activation>
-				<jdk>[1.7,1.8)</jdk>
-			</activation>
-			<properties>
-				<commons.felix.version>3.5.1</commons.felix.version>
-				<commons.animal-sniffer.version>1.17</commons.animal-sniffer.version>
-				<commons.biz.aQute.bndlib.version>3.5.0</commons.biz.aQute.bndlib.version>
-				<commons.spotbugs.impl.version>4.8.6</commons.spotbugs.impl.version>
-			</properties>
-		</profile>
-		<profile>
-			<id>jdk8-plugin-fix-version</id>
-			<activation>
-				<jdk>[1.8,1.9)</jdk>
-			</activation>
-			<properties>
-				<commons.spdx.version>0.6.3</commons.spdx.version>
-				<commons.spotbugs.impl.version>4.8.6</commons.spotbugs.impl.version>
-				<commons.checkstyle.version>9.3</commons.checkstyle.version>
-			</properties>
-		</profile>
-		<profile>
-			<id>java-9-up</id>
-				<activation>
-				<jdk>[9,)</jdk>
-				</activation>
-				<properties>
-					<moditect.java.version>9</moditect.java.version>
-					<commons.moditect-maven-plugin.addServiceUses>true</commons.moditect-maven-plugin.addServiceUses>
-					<!--
-						The "release" compiler property (available in JDK 9+) must be set in order to generate
-						binary-compatible artifacts for the target JVM. This flag sets the version of the platform
-						APIs to compile against, which is necessary when building with a later JDK but targeting
-						an earlier one. For example, a covariant return type was added to java.nio.ByteBuffer.rewind()
-						in Java 9. If the release property is not set when compiling with JDK 9 for Java 8, then the
-						Java 9 method will be referenced in the bytecode, causing a runtime error when running on 8.
-						See also https://issues.apache.org/jira/browse/MCOMPILER-534
-					-->
-					<maven.compiler.release>${commons.compiler.release}</maven.compiler.release>
-			</properties>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.moditect</groupId>
-						<artifactId>moditect-maven-plugin</artifactId>
-						<version>${commons.moditect-maven-plugin.version}</version>
-						<executions>
-							<execution>
-								<id>add-module-infos</id>
-								<phase>package</phase>
-								<goals>
-									<goal>add-module-info</goal>
-								</goals>
-								<configuration>
-									<jvmVersion>${moditect.java.version}</jvmVersion>
-									<jdepsExtraArgs>
-										<arg>--multi-release=${moditect.java.version}</arg>
-									</jdepsExtraArgs>
-									<outputDirectory>${project.build.directory}</outputDirectory>
-									<overwriteExistingFiles>true</overwriteExistingFiles>
-									<failOnWarning>false</failOnWarning>
-									<module>
-										<moduleInfo>
-											<name>${commons.module.name}</name>
-											<addServiceUses>${commons.moditect-maven-plugin.addServiceUses}</addServiceUses>
-										</moduleInfo>
-									</module>
-								</configuration>
-							</execution>
-						</executions>
-					</plugin>
-		</plugins>
-		</build>
-		</profile>
-		<profile>
-			<!-- Java 8-9 -->
-			<id>java-8-9</id>
-			<activation>
-			<jdk>[1.8,10]</jdk>
-			</activation>
-			<properties>
-				<!-- SpotBugs 4.9.0 requires Java 11 -->
-				<commons.spotbugs.plugin.version>4.8.6.6</commons.spotbugs.plugin.version>
-				<commons.spotbugs.impl.version>4.8.6</commons.spotbugs.impl.version>
-				<commons.checkstyle.version>9.3</commons.checkstyle.version>
-				<!-- Java EE Javadoc has been republished with a Java > 8 and is no longer compatible with Javadoc 8 -->
-				<commons.javadoc.javaee.link></commons.javadoc.javaee.link>
-			</properties>
-		</profile>
-		<profile>
-			<!-- Java 11-16 -->
-			<id>java-11-16</id>
-			<activation>
-			<jdk>[11,16]</jdk>
-			</activation>
-			<properties>
-				<commons.checkstyle.version>10.26.1</commons.checkstyle.version>
-				<!-- spdx can require Java 17 depending on undocumented behavior which kicks in for us here on macOS (but not on Java 8 somehow). -->
-				<commons.spdx.version>0.5.5</commons.spdx.version>
-			</properties>
-		</profile>
-		<profile>
-			<!-- Java 17-20 -->
-			<id>java-17-20</id>
-			<activation>
-			<jdk>[17,20]</jdk>
-			</activation>
-			<properties>
-				<commons.checkstyle.version>12.3.1</commons.checkstyle.version>
-			</properties>
-		</profile>
-		<profile>
-			<!-- Java 17 and up -->
-			<id>java-17-up</id>
-			<activation>
-				<jdk>[17,)</jdk>
-		</activation>
-			<properties>
-				<commons.felix.version>6.0.2</commons.felix.version>
-				<commons.biz.aQute.bndlib.version>7.4.0</commons.biz.aQute.bndlib.version>
-				<commons.rat.version>0.18</commons.rat.version>
-			</properties>
-		</profile>
 		<profile>
 			<!-- Java 21 and up -->
 			<!-- Use -XX:+EnableDynamicAgentLoading on the argument line to avoid JVM warnings when tests use Mockito and ByteBuddy:
@@ -1918,7 +1905,8 @@
 					<!-- Hook the benchmarks to the test phase -->
 					<plugin>
 						<groupId>org.codehaus.mojo</groupId>
-						<artifactId>exec-maven-plugin</artifactId>
+						<artifactId>exec-plugin</artifactId>
+						<version>${commons.exec-plugin.version}</version>
 						<executions>
 							<execution>
 								<id>benchmark</id>

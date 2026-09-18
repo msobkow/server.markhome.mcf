@@ -18,7 +18,7 @@
     "type": "git",
     "url": "git+https://github.com/msobkow/server.markhome.mcf.git"
   },
-  "license": "GPL-3.0",
+  "license": "Apache-2.0",
   "author": "Mark Sobkow (mark.sobkow@gmail.com)",
   "type": "commonjs",
   "main": "index.js",
