@@ -17,6 +17,7 @@
 		<project.scm.url>https://github.com/msobkow/server.markhome.mcf/</project.scm.url>
 		<project.build.outputTimestamp>2026-09-18T00:00:00Z</project.build.outputTimestamp>
 		<graal.mainClass>server.markhome.mcf.MCFLibEntry</graal.mainClass>
+		<graal.nativeimage.kind>shared</graal.nativeimage.kind>
 		<mcf.version>3.1.42-20260918</mcf.version>
 		<commons.rc.version>MCFRC1</commons.rc.version>
 		<changes.announcementDirectory>.</changes.announcementDirectory>
@@ -437,7 +438,7 @@
 				<version>${maven-wagon.version}</version>
 			</extension>
 		</extensions>
-		<defaultGoal>clean compile test-compile jar default-jar jar test-jar jar list-project-build-dir exec-maven-plugin:exec verify apache-rat:check checkstyle:check japicmp:cmp spotbugs:check pmd:check</defaultGoal>
+		<defaultGoal>clean compile test-compile jar default-jar jar test-jar jar exec-maven-plugin:exec verify apache-rat:check checkstyle:check japicmp:cmp spotbugs:check pmd:check</defaultGoal>
 		<resources>
 			<!-- This is the default setting from the super-pom -->
 			<resource>
@@ -702,6 +703,28 @@
 						<commons.release.name>${commons.release.name}</commons.release.name>
 					</configuration>
 				</plugin>
+				<plugin>
+					<groupId>org.graalvm.buildtools</groupId>
+					<artifactId>native-maven-plugin</artifactId>
+					<version>${graalvm-buildtools.version}</version>
+					<extensions>true</extensions>
+					<executions>
+						<execution>
+							<id>build-native</id>
+							<goals>
+								<goal>compile</goal>
+							</goals>
+							<phase>none</phase>
+						</execution>
+						<execution>
+							<id>build-test-native</id>
+							<goals>
+								<goal>compile-test</goal>
+							</goals>
+							<phase>none</phase>
+						</execution>
+					</executions>
+				</plugin>
 				<!--plugin>
 					<groupId>org.graalvm.buildtools</groupId>
 					<artifactId>native-maven-plugin</artifactId>
@@ -715,7 +738,7 @@
 							</goals>
 							<phase>compile</phase>
 							<configuration>
-								<executable>export PATH=${env.GV_HOME}/bin:${env.GV_HOME}/lib:${env.BASE_PATH} &amp;&amp; export GRAALVM_HOME=${env.GV_HOME} &amp;&amp; export JAVA_HOME=${env.GV_HOME} &amp;&amp; export JDK_HOME=${env.GV_HOME} &amp;&amp; if [ ! -d ${env.TMP_DIR} ]; then; mkdir ${env.TMP_DIR}; fi; &amp;&amp; if [ ! -d ${env.TMP_DIR}/js ]; then; mkdir ${env.TMP_DIR}/js; fi; &amp;&amp; native-image -H:TempDirectory=${env.TMP_DIR}/js </executable>
+								<executable>/usr/bin/ls -l ${project.build.directory}/ &amp;&amp; export PATH=${env.GV_HOME}/bin:${env.GV_HOME}/lib:${env.BASE_PATH} &amp;&amp; export GRAALVM_HOME=${env.GV_HOME} &amp;&amp; export JAVA_HOME=${env.GV_HOME} &amp;&amp; export JDK_HOME=${env.GV_HOME} &amp;&amp; if [ ! -d ${env.TMP_DIR} ]; then mkdir ${env.TMP_DIR}; fi &amp;&amp; if [ ! -d ${env.TMP_DIR}/js ]; then mkdir ${env.TMP_DIR}/js; fi &amp;&amp; native-image -H:TempDirectory=${env.TMP_DIR}/js ${project.build.directory}/target/lib/${artifactId}-${version}.jar </executable>
 								<mainClass>${graal.mainClass}</mainClass>
 								<skipTestExecution>true</skipTestExecution>
 								<debug>true</debug>
@@ -741,7 +764,7 @@
 								<environmentVariables>
 									<NATIVE_IMAGE_OPTIONS> -Dgraal.CompilerConfiguration=community -H:TempDirectory=${env.TMP_DIR}/js </NATIVE_IMAGE_OPTIONS>
 									<skipNativeTests>true</skipNativeTests>
-									<org.graalvm.nativeimage.kind>${graal.nativeimage-kind}</org.graalvm.nativeimage.kind>
+									<org.graalvm.nativeimage.kind>${graal.nativeimage.kind}</org.graalvm.nativeimage.kind>
 									<project.build.directory>${project.basedir}/src/main/js/</project.build.directory>
 									<CompilerConfiguration>community</CompilerConfiguration>
 									<TempDirectory>${env.TMP_DIR}/js</TempDirectory>
@@ -1055,45 +1078,12 @@
 						<artifactId>maven-compiler-plugin</artifactId>
 						<version>${commons.compiler.version}</version>
 					</plugin>
-						<plugin>
-							<groupId>org.apache.maven.plugins</groupId>
-							<artifactId>maven-deploy-plugin</artifactId>
-							<version>${commons.deploy-plugin.version}</version>
-							<configuration>
-								<skip>true</skip>
-							</configuration>
-						</plugin>
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-jar-plugin</artifactId>
-						<version>${commons.jar-plugin.version}</version>
-						<executions>
-							<execution>
-								<goals>
-									<goal>test-jar</goal>
-								</goals>
-								<phase>compile</phase>
-								<configuration>
-									<!-- Avoids an error when releasing the parent pom -->
-									<skipIfEmpty>true</skipIfEmpty>
-								</configuration>
-							</execution>
-						</executions>
+						<artifactId>maven-deploy-plugin</artifactId>
+						<version>${commons.deploy-plugin.version}</version>
 						<configuration>
-							<archive>
-								<manifestFile>${commons.manifestfile}</manifestFile>
-								<manifestEntries>
-									<Specification-Title>${project.name}</Specification-Title>
-									<Specification-Version>${project.version}</Specification-Version>
-									<Specification-Vendor>${project.organization.name}</Specification-Vendor>
-									<Implementation-Title>${project.name}</Implementation-Title>
-									<Implementation-Version>${project.version}</Implementation-Version>
-									<Implementation-Vendor>${project.organization.name}</Implementation-Vendor>
-									<Implementation-Vendor-Id>org.apache</Implementation-Vendor-Id>
-									<X-Compile-Source-JDK>${maven.compiler.source}</X-Compile-Source-JDK>
-									<X-Compile-Target-JDK>${maven.compiler.target}</X-Compile-Target-JDK>
-								</manifestEntries>
-							</archive>
+							<skip>true</skip>
 						</configuration>
 					</plugin>
 					<plugin>
@@ -1303,43 +1293,108 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-changes-plugin</artifactId>
 			</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-jar-plugin</artifactId>
+						<version>${commons.jar-plugin.version}</version>
+						<configuration>
+							<skipIfEmpty>true</skipIfEmpty>
+							<archive combine.children="append">
+								<manifestFile>${commons.manifestfile}</manifestFile>
+								<manifestEntries>
+									<Automatic-Module-Name>${commons.module.name}</Automatic-Module-Name>
+									<addClasspath>true</addClasspath>
+									<mainClass>${graal.mainClass}</mainClass>
+									<Specification-Title>${project.name}</Specification-Title>
+									<Specification-Version>${project.version}</Specification-Version>
+									<Specification-Vendor>${project.organization.name}</Specification-Vendor>
+									<Implementation-Title>${project.name}</Implementation-Title>
+									<Implementation-Version>${project.version}</Implementation-Version>
+									<Implementation-Vendor>${project.organization.name}</Implementation-Vendor>
+									<Implementation-Vendor-Id>org.apache</Implementation-Vendor-Id>
+									<X-Compile-Source-JDK>${maven.compiler.source}</X-Compile-Source-JDK>
+									<X-Compile-Target-JDK>${maven.compiler.target}</X-Compile-Target-JDK>
+								</manifestEntries>
+							</archive>
+						</configuration>
+						<executions>
+							<execution>
+								<goals>
+									<goal>test-jar</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>exec-maven-plugin</artifactId>
 					<version>${commons.exec-plugin.version}</version>
 					<extensions>true</extensions>
-					<configuration>
-						<mainClass>-DmainClass=${graal.mainClass}</mainClass>
-						<skipTestExecution>true</skipTestExecution>
-						<debug>true</debug>
-						<verbose>true</verbose>
-						<sharedLibrary>true</sharedLibrary>
-						<extensions>true</extensions>
-						<buildArgs>
-							<buildArg>-Duser.country=CA</buildArg>
-							<buildArg>-Dgraal.CompilerConfiguration=community</buildArg>
-							<buildArg>-H:TempDirectory=${env.TMP_DIR}/js</buildArg>
-							<buildArg>&#45;&#45;no-fallback</buildArg>
-							<!--buildArg>-Duser.language=en</buildArg-->
-							<!--buildArg>-HIncludeLocales=en,fr,de,es,pt,pt-br</buildArg-->
-							<!--buildArg>&#45;&#45;enable-monitoring=heapdump,jfr,jvmstat,jmxserver,jmxclient,threaddump,nmt,jccmd</buildArg-->
-							<!--buildArg>&#45;&#45;enable-native-access=ALL-UNNAMED</buildArg-->
-							<!--buildArg>&#45;&#45;exact-reachability-metadata</buildArg-->
-							<!--buildArg>&#45;&#45;future-defaults</buildArg-->
-							<!--buildArg>&#45;&#45;implicit:class</buildArg-->
-							<buildArg>&#45;H:+UnlockExperimentalVMOptions</buildArg>
-							<buildArg>&#45;H:Preserve=package=server.markhome.mcf.*</buildArg>
-							<buildArg>&#45;&#45;language:js</buildArg>
-							<buildArg>-DmainClass=${graal.mainClass}</buildArg>
-						</buildArgs>
-					</configuration>
 					<executions>
 						<execution>
-							<id>list-project-build-dir</id>
+							<id>repackage-jar</id>
 							<goals>
 								<goal>exec</goal>
 							</goals>
 							<phase>compile</phase>
+							<configuration>
+								<executable>jar</executable>
+								<skipIfEmpty>true</skipIfEmpty>
+								<arguments>
+									<argument>ufe</argument>
+									<argument>${project.build.directory}/${project.build.finalName}.jar</argument>
+									<argument>${graal.mainClass}</argument>
+								</arguments>
+								<archive combine.children="append">
+									<manifestFile>${commons.manifestfile}</manifestFile>
+									<manifestEntries>
+										<Automatic-Module-Name>${commons.module.name}</Automatic-Module-Name>
+										<addClasspath>true</addClasspath>
+										<mainClass>${graal.mainClass}</mainClass>
+										<Specification-Title>${project.name}</Specification-Title>
+										<Specification-Version>${project.version}</Specification-Version>
+										<Specification-Vendor>${project.organization.name}</Specification-Vendor>
+										<Implementation-Title>${project.name}</Implementation-Title>
+										<Implementation-Version>${project.version}</Implementation-Version>
+										<Implementation-Vendor>${project.organization.name}</Implementation-Vendor>
+										<Implementation-Vendor-Id>org.apache</Implementation-Vendor-Id>
+										<X-Compile-Source-JDK>${maven.compiler.source}</X-Compile-Source-JDK>
+										<X-Compile-Target-JDK>${maven.compiler.target}</X-Compile-Target-JDK>
+									</manifestEntries>
+								</archive>
+							</configuration>
+						</execution>
+						<execution>
+							<id>repackage-test-jar</id>
+							<goals>
+								<goal>exec</goal>
+							</goals>
+							<phase>none</phase>
+							<configuration>
+								<executable>jar</executable>
+								<skipIfEmpty>true</skipIfEmpty>
+								<arguments>
+									<argument>ufe</argument>
+									<argument>${project.build.directory}/test-${project.build.finalName}.jar</argument>
+									<argument>${graal.mainClass}</argument>
+								</arguments>
+								<archive combine.children="append">
+									<manifestFile>${commons.manifestfile}</manifestFile>
+									<manifestEntries>
+										<Automatic-Module-Name>${commons.module.name}</Automatic-Module-Name>
+										<addClasspath>true</addClasspath>
+										<mainClass>${graal.mainClass}</mainClass>
+										<Specification-Title>${project.name}</Specification-Title>
+										<Specification-Version>${project.version}</Specification-Version>
+										<Specification-Vendor>${project.organization.name}</Specification-Vendor>
+										<Implementation-Title>${project.name}</Implementation-Title>
+										<Implementation-Version>${project.version}</Implementation-Version>
+										<Implementation-Vendor>${project.organization.name}</Implementation-Vendor>
+										<Implementation-Vendor-Id>org.apache</Implementation-Vendor-Id>
+										<X-Compile-Source-JDK>${maven.compiler.source}</X-Compile-Source-JDK>
+										<X-Compile-Target-JDK>${maven.compiler.target}</X-Compile-Target-JDK>
+									</manifestEntries>
+								</archive>
 							</configuration>
 						</execution>
 						<execution>
@@ -1349,13 +1404,23 @@
 							</goals>
 							<phase>compile</phase>
 							<configuration>
-								<executable>export PATH=${env.GV_HOME}/bin:${env.GV_HOME}/lib:${env.BASE_PATH} &amp;&amp; export GRAALVM_HOME=${env.GV_HOME} &amp;&amp; export JAVA_HOME=${env.GV_HOME} &amp;&amp; export JDK_HOME=${env.GV_HOME} &amp;&amp; if [ ! -d ${env.TMP_DIR} ]; then; mkdir ${env.TMP_DIR}; fi; &amp;&amp; if [ ! -d ${env.TMP_DIR}/js ]; then; mkdir ${env.TMP_DIR}/js; fi; &amp;&amp; echo "Executing native-image -Dgraal.CompilerConfiguration=community -H:TempDirectory=${env.TMP_DIR}/js -DskipNativeTests=$skipNativeTests -DnativeImageKind=${graal.nativeimage-kind} -DbuildDirectory=${project.basedir}/src/main/js/ -DCompilerConfiguration=community -community -DTempDirectory=${env.TMP_DIR}/js -DskipTestExecution=${skipTestExecutions} -Ddebug=true -g -v -DsharedLibrary=true -sharedLibrary=true -Dextensions=true -extensions=true -Dexec.mainClass=${graal.mainClass} -DmainClass=${graal.mainClass} " &amp;&amp; native-image $NATIVE_IMAGE_OPTIONS ${project.build.directory}/${project.artifactId}-${project.version}.jar </executable>
-								<NATIVE_IMAGE_OPTIONS> -Dgraal.CompilerConfiguration=community -H:TempDirectory=${env.TMP_DIR}/js -DskipNativeTests=$skipNativeTests -DnativeImageKind=${graal.nativeimage-kind} -DbuildDirectory=${project.basedir}/src/main/js/ -DCompilerConfiguration=community -community -DTempDirectory=${env.TMP_DIR}/js -DskipTestExecution=${skipTestExecutions} -Ddebug=true -g -v -DsharedLibrary=true -sharedLibrary=true -Dextensions=true -extensions=true -Dexec.mainClass=${graal.mainClass} -DmainClass=${graal.mainClass} </NATIVE_IMAGE_OPTIONS>
-								<skipNativeTests>true</skipNativeTests>
-								<org.graalvm.nativeimage.kind>${graal.nativeimage-kind}</org.graalvm.nativeimage.kind>
-								<project.build.directory>${project.basedir}/src/main/js/</project.build.directory>
+								<executable>/bin/bash</executable>
+								<arguments>
+									<argument>-c</argument>
+									<argument>
+                        export PATH=${env.GV_HOME}/bin:${env.GV_HOME}/lib:${env.BASE_PATH} &amp;&amp;
+						export GRAALVM_HOME=${env.GV_HOME} &amp;&amp;
+                        export JAVA_HOME=${env.GV_HOME} &amp;&amp;
+                        export JDK_HOME=${env.GV_HOME} &amp;&amp;
+                        if [ ! -d ${env.TMP_DIR} ]; then mkdir ${env.TMP_DIR}; fi &amp;&amp; 
+                        if [ ! -d ${env.TMP_DIR}/js ]; then mkdir ${env.TMP_DIR}/js; fi &amp;&amp;
+                        ls -l ${project.basedir}/target &amp;&amp;
+                        native-image -Dgraal.CompilerConfiguration=community -H:TempDirectory=${env.TMP_DIR}/js -DskipNativeTests=${skipNativeTests} -DnativeImageKind=${graal.nativeimage.kind} -DbuildDirectory=/opt/mcf/v3_1/java/server.markhome.mcf/src/main/js/ -DCompilerConfiguration=community -DTempDirectory=${env.TMP_DIR}/js -DskipTestExecution=${skipTestExecutions} -Ddebug=true -g -v -DsharedLibrary=true -Dextensions=true -Dexec.mainClass=server.markhome.mcf.MCFLibEntry -DmainClass=server.markhome.mcf.MCFLibEntry -classpath ${classpath} -jar ${project.basedir}/target/${artifactId}-${version}.jar
+</argument>
+								</arguments>
+								<project.build.directory>${project.basedir}/src/test/js/</project.build.directory>
 								<CompilerConfiguration>community</CompilerConfiguration>
-								<TempDirectory>${env.TMP_DIR}/js</TempDirectory>
+								<TempDirectory>${env.TMP_DIR}/test/js</TempDirectory>
 								<skipTestExecution>true</skipTestExecution>
 								<debug>true</debug>
 								<verbose>true</verbose>
@@ -1369,12 +1434,23 @@
 							<goals>
 								<goal>exec</goal>
 							</goals>
-							<phase>compile</phase>
+							<phase>package-test</phase>
 							<configuration>
-								<executable>export PATH=${env.GV_HOME}/bin:${env.GV_HOME}/lib:${env.BASE_PATH} &amp;&amp; export GRAALVM_HOME=${env.GV_HOME} &amp;&amp; export JAVA_HOME=${env.GV_HOME} &amp;&amp; export JDK_HOME=${env.GV_HOME} &amp;&amp; if [ ! -d ${env.TMP_DIR} ]; then; mkdir ${env.TMP_DIR}; fi; &amp;&amp; if [ ! -d ${env.TMP_DIR}/js ]; then; mkdir ${env.TMP_DIR}/js; &amp;&amp; if [ ! -d ${env.TMP_DIR}/test ]; then; mkdir ${env.TMP_DIR}/test; fi; &amp;&amp; if [ ! -d ${env.TMP_DIR}/test/js ]; then; mkdir ${env.TMP_DIR}/test/js; fi;fi; &amp;&amp; echo "Executing native-image -Dgraal.CompilerConfiguration=community -H:TempDirectory=${env.TMP_DIR}/test/js -DskipNativeTests=$skipNativeTests -DnativeImageKind=${graal.nativeimage-kind} -DbuildDirectory=${project.basedir}/src/test/js/ -DCompilerConfiguration=community -community -DTempDirectory=${env.TMP_DIR}/test/js -DskipTestExecution=${skipTestExecutions} -Ddebug=true -g -v -DsharedLibrary=true -sharedLibrary=true -Dextensions=true -extensions=true -Dexec.mainClass=${graal.mainClass} -DmainClass=${graal.mainClass} " &amp;&amp; native-image $NATIVE_IMAGE_OPTIONS ${project.build.directory}/test-${project.artifactId}-${project.version}.jar </executable>
-								<NATIVE_IMAGE_OPTIONS> -Dgraal.CompilerConfiguration=community -H:TempDirectory=${env.TMP_DIR}/test/js -DskipNativeTests=$skipNativeTests -DnativeImageKind=${graal.nativeimage-kind} -DbuildDirectory=${project.basedir}/src/test/js/ -DCompilerConfiguration=community -community -DTempDirectory=${env.TMP_DIR}/test/js -DskipTestExecution=${skipTestExecutions} -Ddebug=true -g -v -DsharedLibrary=true -sharedLibrary=true -Dextensions=true -extensions=true -Dexec.mainClass=${graal.mainClass} </NATIVE_IMAGE_OPTIONS>
-								<skipNativeTests>true</skipNativeTests>
-								<org.graalvm.nativeimage.kind>${graal.nativeimage-kind}</org.graalvm.nativeimage.kind>
+								<executable>/bin/bash</executable>
+								<arguments>
+									<argument>-c</argument>
+									<argument>
+                        export PATH=${env.GV_HOME}/bin:${env.GV_HOME}/lib:${env.BASE_PATH} &amp;&amp;
+						export GRAALVM_HOME=${env.GV_HOME} &amp;&amp;
+                        export JAVA_HOME=${env.GV_HOME} &amp;&amp;
+                        export JDK_HOME=${env.GV_HOME} &amp;&amp;
+                        if [ ! -d ${env.TMP_DIR} ]; then mkdir ${env.TMP_DIR}; fi &amp;&amp; 
+                        if [ ! -d ${env.TMP_DIR}/test ]; then mkdir ${env.TMP_DIR}/test; fi &amp;&amp;
+                        if [ ! -d ${env.TMP_DIR}/test/js ]; then mkdir ${env.TMP_DIR}/test/js; fi &amp;&amp;
+                        ls -l ${project.basedir}/target &amp;&amp;
+                        native-image -Dgraal.CompilerConfiguration=community -H:TempDirectory=${env.TMP_DIR}/test/js -DskipNativeTests=${skipNativeTests} -DnativeImageKind=${graal.nativeimage.kind} -DbuildDirectory=/opt/mcf/v3_1/java/server.markhome.mcf/src/main/js/ -DCompilerConfiguration=community -DTempDirectory=${env.TMP_DIR}/test/js -DskipTestExecution=${skipTestExecutions} -Ddebug=true -g -v -DsharedLibrary=true -Dextensions=true -Dexec.mainClass=${graal.mainClass} -DmainClass=${graal.mainClass} -classpath ${classpath} -jar ${project.basedir}/target/test-${artifactId}-${version}.jar
+</argument>
+								</arguments>
 								<project.build.directory>${project.basedir}/src/test/js/</project.build.directory>
 								<CompilerConfiguration>community</CompilerConfiguration>
 								<TempDirectory>${env.TMP_DIR}/test/js</TempDirectory>
@@ -1551,18 +1627,6 @@
 			</activation>
 			<build>
 				<plugins>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-jar-plugin</artifactId>
-						<version>${commons.jar-plugin.version}</version>
-						<configuration>
-							<archive combine.children="append">
-								<manifestEntries>
-									<Automatic-Module-Name>${commons.module.name}</Automatic-Module-Name>
-								</manifestEntries>
-							</archive>
-						</configuration>
-					</plugin>
 				</plugins>
 			</build>
 		</profile>
@@ -1847,19 +1911,6 @@
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-install-plugin</artifactId>
 						<version>${commons.install-plugin.version}</version>
-					</plugin>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-jar-plugin</artifactId>
-						<version>${commons.jar-plugin.version}</version>
-						<executions>
-							<execution>
-								<goals>
-									<goal>test-jar</goal>
-								</goals>
-								<phase>compile</phase>
-							</execution>
-						</executions>
 					</plugin>
 				</plugins>
 			</build>
