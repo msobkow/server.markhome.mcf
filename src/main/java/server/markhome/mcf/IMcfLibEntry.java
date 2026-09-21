@@ -19,8 +19,10 @@
 package server.markhome.mcf;
 
 import org.teavm.jso.JSExport;
+import org.teavm.jso.JSObject;
+import org.teavm.jso.JSProperty;
 
-public interface IMcfLibEntry {
+public interface IMcfLibEntry extends JSObject {
 
 	/**
 	 *	The public resource name for the parent library.
@@ -101,7 +103,7 @@ public interface IMcfLibEntry {
 	 *
 	 *	@return Return an instance if dynamically allocated, otherwise null. Because this is a singleton, null will always be returned.
 	 */
-	@JSExport
+	@JSProperty
 	public McfLibEntry getInstance();
 
 	/**
@@ -109,7 +111,7 @@ public interface IMcfLibEntry {
 	 *
 	 *	@return Return the library singleton, if any. Always returns the same value after the first invocation unless reset(true) is invoked.
 	 */
-	@JSExport
+	@JSProperty
 	public McfLibEntry getSingleton();
 
 	/**
@@ -157,7 +159,7 @@ public interface IMcfLibEntry {
 	 *
 	 *	@return The parent's public resource name used for named resource resolution.
 	 */
-	@JSExport
+	@JSProperty
 	public String getParentLibName();
 
 	/**
@@ -165,7 +167,7 @@ public interface IMcfLibEntry {
 	 *
 	 *	@return The name of this package used for public naming resolution.
 	 */
-	@JSExport
+	@JSProperty
 	public String getParentLibVersion();
 
 	/**
@@ -173,7 +175,7 @@ public interface IMcfLibEntry {
 	 *
 	 *	@return The name of this package used for public naming resolution.
 	 */
-	@JSExport
+	@JSProperty
 	public String getLibName();
 
 	/**
@@ -181,7 +183,7 @@ public interface IMcfLibEntry {
 	 *
 	 *	@return The name of this package used for public naming resolution.
 	 */
-	@JSExport
+	@JSProperty
 	public String getLibVersion();
 
 	/**

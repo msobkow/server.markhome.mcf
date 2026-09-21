@@ -1,4 +1,15 @@
 "use strict";
+(function(module) {
+    if (typeof define === 'function' && define.amd) {
+        define(['exports'], function(exports)  {
+            module(exports);
+        });
+    } else if (typeof exports === 'object' && exports !== null && typeof exports.nodeName !== 'string') {
+        module(exports);
+    } else {
+        module(typeof self !== 'undefined' ? self : this);
+}
+}(function($rt_exports) {
 let $rt_seed = 2463534242,
 $rt_nextId = () => {
     let x = $rt_seed;
@@ -975,51 +986,47 @@ smm_McfLibEntry__clinit_ = () => {
     smm_McfLibEntry_$assertionsDisabled = jl_Class_desiredAssertionStatus($rt_cls(smm_McfLibEntry)) ? 0 : 1;
     smm_McfLibEntry_singleton = juca_AtomicReference__init_0(null);
 },
-smm_McfLibEntry__init_$exported$0 = () => {
-    smm_McfLibEntry_$callClinit();
-    return smm_McfLibEntry__init_0();
-},
-smm_McfLibEntry_getSingleton$exported$1 = var$1 => {
+smm_McfLibEntry_getSingleton$exported$0 = var$1 => {
     smm_McfLibEntry_$callClinit();
     return smm_McfLibEntry_getSingleton($rt_nullCheck(var$1));
 },
-smm_McfLibEntry_getParentLibName$exported$2 = var$1 => {
+smm_McfLibEntry_getParentLibName$exported$1 = var$1 => {
     smm_McfLibEntry_$callClinit();
     return $rt_ustr(smm_McfLibEntry_getParentLibName($rt_nullCheck(var$1)));
 },
-smm_McfLibEntry_resetLib$exported$3 = (var$1, var$2) => {
+smm_McfLibEntry_resetLib$exported$2 = (var$1, var$2) => {
     let var$3;
     smm_McfLibEntry_$callClinit();
     var$3 = var$2 ? 1 : 0;
     return !!smm_McfLibEntry_resetLib($rt_nullCheck(var$1), var$3);
 },
-smm_McfLibEntry_getInstance$exported$4 = var$1 => {
+smm_McfLibEntry_getInstance$exported$3 = var$1 => {
     smm_McfLibEntry_$callClinit();
     return smm_McfLibEntry_getInstance($rt_nullCheck(var$1));
 },
-smm_McfLibEntry_libReset$exported$5 = var$1 => {
+smm_McfLibEntry_libReset$exported$4 = var$1 => {
     smm_McfLibEntry_$callClinit();
     return !!smm_McfLibEntry_libReset0($rt_nullCheck(var$1));
 },
-smm_McfLibEntry_libReset$exported$6 = (var$1, var$2) => {
+smm_McfLibEntry_libReset$exported$5 = (var$1, var$2) => {
     let var$3;
     smm_McfLibEntry_$callClinit();
     var$3 = var$2 ? 1 : 0;
     return !!smm_McfLibEntry_libReset($rt_nullCheck(var$1), var$3);
 },
-smm_McfLibEntry_getParentLibVersion$exported$7 = var$1 => {
+smm_McfLibEntry_getParentLibVersion$exported$6 = var$1 => {
     smm_McfLibEntry_$callClinit();
     return $rt_ustr(smm_McfLibEntry_getParentLibVersion($rt_nullCheck(var$1)));
 },
-smm_McfLibEntry_resetLib$exported$8 = var$1 => {
+smm_McfLibEntry_resetLib$exported$7 = var$1 => {
     smm_McfLibEntry_$callClinit();
     return !!smm_McfLibEntry_resetLib0($rt_nullCheck(var$1));
 },
-smm_McfLibEntry_getLibName$exported$9 = var$1 => {
+smm_McfLibEntry_getLibName$exported$8 = var$1 => {
     smm_McfLibEntry_$callClinit();
     return $rt_ustr(smm_McfLibEntry_getLibName($rt_nullCheck(var$1)));
 },
-smm_McfLibEntry_getLibVersion$exported$10 = var$1 => {
+smm_McfLibEntry_getLibVersion$exported$9 = var$1 => {
     smm_McfLibEntry_$callClinit();
     return $rt_ustr(smm_McfLibEntry_getLibVersion($rt_nullCheck(var$1)));
 },
@@ -1203,7 +1210,7 @@ jl_String, 0, jl_Object, [ji_Serializable, jl_Comparable, jl_CharSequence], 1, 0
 otjc_JSString, 0, jl_Object, [otj_JSObject], 1025, 0, 0, 0,
 jlr_AnnotatedElement, 0, jl_Object, [], 1537, 0, 0, 0,
 jlr_GenericDeclaration, 0, jl_Object, [jlr_AnnotatedElement], 1537, 0, 0, 0,
-smm_IMcfLibEntry, 0, jl_Object, [], 1537, 0, 0, 0,
+smm_IMcfLibEntry, 0, jl_Object, [otj_JSObject], 1537, 0, 0, 0,
 otji_JS, 0, jl_Object, [], 17, 0, 0, 0,
 jl_Appendable, 0, jl_Object, [], 1537, 0, 0, 0,
 smm_McfLibEntry, 0, jl_Object, [smm_IMcfLibEntry], 17, 0, () => smm_McfLibEntry_$callClinit(), ["$_init_", $rt_wrapFunction0(smm_McfLibEntry__init_), "$getInstance", $rt_wrapFunction0(smm_McfLibEntry_getInstance), "$getSingleton", $rt_wrapFunction0(smm_McfLibEntry_getSingleton), "$libReset0", $rt_wrapFunction0(smm_McfLibEntry_libReset0), "$libReset", $rt_wrapFunction1(smm_McfLibEntry_libReset), "$resetLib", $rt_wrapFunction1(smm_McfLibEntry_resetLib), "$resetLib0", $rt_wrapFunction0(smm_McfLibEntry_resetLib0),
@@ -1236,16 +1243,37 @@ let $rt_jso_marker = Symbol('jsoClass');
 (() => {
     let c;
     c = smm_McfLibEntry.prototype;
-    c.libReset = $rt_callWithReceiver(smm_McfLibEntry_libReset$exported$6);
-    c.getParentLibName = $rt_callWithReceiver(smm_McfLibEntry_getParentLibName$exported$2);
-    c.getLibVersion = $rt_callWithReceiver(smm_McfLibEntry_getLibVersion$exported$10);
-    c.resetLib = $rt_callWithReceiver(smm_McfLibEntry_resetLib$exported$8);
-    c.getInstance = $rt_callWithReceiver(smm_McfLibEntry_getInstance$exported$4);
-    c.getParentLibVersion = $rt_callWithReceiver(smm_McfLibEntry_getParentLibVersion$exported$7);
-    c.getSingleton = $rt_callWithReceiver(smm_McfLibEntry_getSingleton$exported$1);
-    c.getLibName = $rt_callWithReceiver(smm_McfLibEntry_getLibName$exported$9);
+    c.libReset = $rt_callWithReceiver(smm_McfLibEntry_libReset$exported$5);
+    c.resetLib = $rt_callWithReceiver(smm_McfLibEntry_resetLib$exported$7);
+    Object.defineProperty(c, "singleton", {
+        get: $rt_callWithReceiver(smm_McfLibEntry_getSingleton$exported$0)
+    });
+    Object.defineProperty(c, "parentLibVersion", {
+        get: $rt_callWithReceiver(smm_McfLibEntry_getParentLibVersion$exported$6)
+    });
+    Object.defineProperty(c, "parentLibName", {
+        get: $rt_callWithReceiver(smm_McfLibEntry_getParentLibName$exported$1)
+    });
+    Object.defineProperty(c, "instance", {
+        get: $rt_callWithReceiver(smm_McfLibEntry_getInstance$exported$3)
+    });
+    Object.defineProperty(c, "libName", {
+        get: $rt_callWithReceiver(smm_McfLibEntry_getLibName$exported$8)
+    });
+    Object.defineProperty(c, "libVersion", {
+        get: $rt_callWithReceiver(smm_McfLibEntry_getLibVersion$exported$9)
+    });
 })();
-export { $rt_export_main as main, smm_McfLibEntry_getSingleton$exported$1 as getSingleton, smm_McfLibEntry_getParentLibName$exported$2 as getParentLibName, smm_McfLibEntry_resetLib$exported$3 as resetLib, smm_McfLibEntry_getInstance$exported$4 as getInstance, smm_McfLibEntry_libReset$exported$5 as libReset, smm_McfLibEntry_libReset$exported$6 as libReset, smm_McfLibEntry_getParentLibVersion$exported$7 as getParentLibVersion, smm_McfLibEntry_resetLib$exported$8 as resetLib, smm_McfLibEntry_getLibName$exported$9 as getLibName,
-smm_McfLibEntry_getLibVersion$exported$10 as getLibVersion, smm_McfLibEntry_getMcfLibEntrySingleton$exported$0 as getMcfLibEntrySingleton, smm_McfLibEntry_getMcfLibEntryInstance$exported$1 as getMcfLibEntryInstance, smm_McfLibEntry_execMcfLibEntryLibReset$exported$2 as execMcfLibEntryLibReset, smm_McfLibEntry_main$exported$3 as main, smm_McfLibEntry_main$exported$4 as main };
+$rt_exports.main = $rt_export_main;
+$rt_exports.resetLib = smm_McfLibEntry_resetLib$exported$2;
+$rt_exports.libReset = smm_McfLibEntry_libReset$exported$4;
+$rt_exports.libReset = smm_McfLibEntry_libReset$exported$5;
+$rt_exports.resetLib = smm_McfLibEntry_resetLib$exported$7;
+$rt_exports.getMcfLibEntrySingleton = smm_McfLibEntry_getMcfLibEntrySingleton$exported$0;
+$rt_exports.getMcfLibEntryInstance = smm_McfLibEntry_getMcfLibEntryInstance$exported$1;
+$rt_exports.execMcfLibEntryLibReset = smm_McfLibEntry_execMcfLibEntryLibReset$exported$2;
+$rt_exports.main = smm_McfLibEntry_main$exported$3;
+$rt_exports.main = smm_McfLibEntry_main$exported$4;
+}));
 
 //# sourceMappingURL=server.markhome.mcfClasses.js.map

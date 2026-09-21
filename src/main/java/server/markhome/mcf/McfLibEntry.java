@@ -20,6 +20,8 @@ package server.markhome.mcf;
 
 import org.teavm.jso.JSExport;
 import org.teavm.jso.JSExportClasses;
+import org.teavm.jso.JSObject;
+import org.teavm.jso.JSProperty;
 import java.util.concurrent.atomic.AtomicReference;
 
 @JSExportClasses({IMcfLibEntry.class, McfLibEntry.class })

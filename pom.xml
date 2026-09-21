@@ -1498,7 +1498,7 @@
 								<executable>/usr/bin/bash</executable>
 								<arguments>
 									<argument>-c</argument>
-									<argument>java &#45;cp "${project.build.directory}/exported-libs/*" org.teavm.cli.TeaVMRunner &#45;&#45;targetdir ${project.basedir}/src/main/resources/META-INF/js &#45;&#45;targetfile ${artifactId}Classes.js &#45;&#45;entry-point main &#45;&#45;debug &#45;&#45;sourcemaps &#45;&#45;js-module-type es2015 -O 1 &#45;&#45;strict -t js ${package.mainClass}</argument>
+									<argument>java &#45;cp "${project.build.directory}/exported-libs/*" org.teavm.cli.TeaVMRunner &#45;&#45;targetdir ${project.basedir}/src/main/resources/META-INF/js &#45;&#45;targetfile ${artifactId}Classes.js &#45;&#45;entry-point main &#45;&#45;debug &#45;&#45;sourcemaps &#45;&#45;js-module-type umd -O 1 &#45;&#45;strict -t js ${package.mainClass}</argument>
 								</arguments>
 							</configuration>
 						</execution>
@@ -1512,7 +1512,7 @@
 								<executable>/usr/bin/bash</executable>
 								<arguments>
 									<argument>-c</argument>
-									<argument>if [ -f ${project.build.directory}/exported-libs/test-${artifactId}-${version}.jar ]; then java &#45;cp "${project.build.directory}/exported-libs/*" org.teavm.cli.TeaVMRunner &#45;&#45;targetdir ${project.basedir}/src/test/resources/META-INF/js &#45;&#45;targetfile test${artifactId}Classes.js &#45;&#45;entry-point main &#45;&#45;debug &#45;&#45;sourcemaps &#45;&#45;js-module-type es2015 -O 1 &#45;&#45;strict -t js ${package.testMainClass}; fi</argument>
+									<argument>if [ -f ${project.build.directory}/exported-libs/test-${artifactId}-${version}.jar ]; then java &#45;cp "${project.build.directory}/exported-libs/*" org.teavm.cli.TeaVMRunner &#45;&#45;targetdir ${project.basedir}/src/test/resources/META-INF/js &#45;&#45;targetfile test${artifactId}Classes.js &#45;&#45;entry-point main &#45;&#45;debug &#45;&#45;sourcemaps &#45;&#45;js-module-type umd -O 1 &#45;&#45;strict -t js ${package.testMainClass}; fi</argument>
 								</arguments>
 							</configuration>
 						</execution>
