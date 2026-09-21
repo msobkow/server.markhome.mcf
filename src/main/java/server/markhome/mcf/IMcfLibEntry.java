@@ -18,8 +18,9 @@
 
 package server.markhome.mcf;
 
+import org.teavm.jso.JSExport;
 
-public interface IMCFLibEntry {
+public interface IMcfLibEntry {
 
 	/**
 	 *	The public resource name for the parent library.
@@ -56,13 +57,13 @@ public interface IMCFLibEntry {
 	/**
 	 *	Implementations must be a singleton, returning the same instance over and over after initialization. How this is achieved may vary.
 	 *
-	 *	<tt>protected final static singleton = new AtomicReference<MCFLibEntry>(null);</tt>
+	 *	<tt>protected final static singleton = new AtomicReference<McfLibEntry>(null);</tt>
 	 */
 
 	/**
 	 *	Default constructor is protected so that only a singleton can be created.
 	 *
-	 *	<tt>protected MCFLibEntry { }</tt>
+	 *	<tt>protected McfLibEntry { }</tt>
 	 */
 
 	/**
@@ -70,17 +71,17 @@ public interface IMCFLibEntry {
 	 *
 	 *	Implementations should define a public static final method with the following signature, using the uppercase package name before "Lib" as appropriate.
 	 *
-	 *	<tt>public final static MCFLibEntry getMCFLibEntrySingleton()</tt>
+	 *	<tt>public final static McfLibEntry getMcfLibEntrySingleton()</tt>
 	 *
 	 *	@return Return the library singleton. Always returns the same instance after the first invocation unless reset(true) is invoked.
 	 */
 
 	/**
-	 *	Get an instance. Because this is a singleton, getInstance() always returns null, as it just invokes MCFLibEntry() under the hood.
+	 *	Get an instance. Because this is a singleton, getInstance() always returns null, as it just invokes McfLibEntry() under the hood.
 	 *
 	 *	Implementations should define a public static final method with the following signature, using the uppercase package name before "Lib" as appropriate.
 	 *
-	 *	<tt>public final static MCFLibEntry getMCFLibEntryInstance()</tt>
+	 *	<tt>public final static McfLibEntry getMcfLibEntryInstance()</tt>
 	 *
 	 *	@return The instance, if any. Always returns null.
 	 */
@@ -90,43 +91,47 @@ public interface IMCFLibEntry {
 	 *
 	 *	Implementations should define a public static final method with the following signature, using the uppercase package name before "Lib" as appropriate.
 	 *
-	 *	<tt>public static boolean execMCFLibEntryLibReset(boolean yesReally)</tt>
+	 *	<tt>public static boolean execMcfLibEntryLibReset(boolean yesReally)</tt>
 	 *
 	 *	@param	yesReally Are you sure you want to reset the value?
 	 */
 
 	/**
-	 *	Get an instance, if possible.  Invokes getMCFLibEntryInstance() under the hood.
+	 *	Get an instance, if possible.  Invokes getMcfLibEntryInstance() under the hood.
 	 *
 	 *	@return Return an instance if dynamically allocated, otherwise null. Because this is a singleton, null will always be returned.
 	 */
-	public MCFLibEntry getInstance();
+	@JSExport
+	public McfLibEntry getInstance();
 
 	/**
-	 *	Get the singleton instance, if any. Invokes getMCFLibEntrySingleton() under the hood.
+	 *	Get the singleton instance, if any. Invokes getMcfLibEntrySingleton() under the hood.
 	 *
 	 *	@return Return the library singleton, if any. Always returns the same value after the first invocation unless reset(true) is invoked.
 	 */
-	public MCFLibEntry getSingleton();
+	@JSExport
+	public McfLibEntry getSingleton();
 
 	/**
 	 *	Reset the singleton and any other data caches after an application reload or other package or executable reloading event.
 	 *
-	 *	Invokes execMCFLibEntryReset(false) under the hood.
+	 *	Invokes execMcfLibEntryReset(false) under the hood.
 	 *
 	 *	@return True if the library was reinitialized, false if the code detected that the library has not been used since the last reinitialization.
 	 */
+	@JSExport
 	public boolean libReset();
 
 	/**
 	 *	Reset the singleton and any other data caches after an application reload or other package or executable reloading event.
 	 *
-	 *	Invokes execMCFLibEntryReset(yesReally) under the hood.
+	 *	Invokes execMcfLibEntryReset(yesReally) under the hood.
 	 *
 	 *	@param	yesReally Are you sure you want to reset the value?
 	 *
 	 *	@return True if the library was reinitialized, false if the code detected that the library has not been used since the last reinitialization.
 	 */
+	@JSExport
 	public boolean libReset(boolean yesReally);
 
 	/**
@@ -136,6 +141,7 @@ public interface IMCFLibEntry {
 	 *
 	 *	@return	True if the singleton was reset, false if the singleton was set and yesReally was false.
 	 */
+	@JSExport
 	public boolean resetLib(boolean yesReally);
 
 	/**
@@ -143,6 +149,7 @@ public interface IMCFLibEntry {
 	 *
 	 *	@return	True if the value was reset, false if the singleton was already initialized.
 	 */
+	@JSExport
 	public boolean resetLib();
 
 	/**
@@ -150,6 +157,7 @@ public interface IMCFLibEntry {
 	 *
 	 *	@return The parent's public resource name used for named resource resolution.
 	 */
+	@JSExport
 	public String getParentLibName();
 
 	/**
@@ -157,6 +165,7 @@ public interface IMCFLibEntry {
 	 *
 	 *	@return The name of this package used for public naming resolution.
 	 */
+	@JSExport
 	public String getParentLibVersion();
 
 	/**
@@ -164,6 +173,7 @@ public interface IMCFLibEntry {
 	 *
 	 *	@return The name of this package used for public naming resolution.
 	 */
+	@JSExport
 	public String getLibName();
 
 	/**
@@ -171,20 +181,13 @@ public interface IMCFLibEntry {
 	 *
 	 *	@return The name of this package used for public naming resolution.
 	 */
+	@JSExport
 	public String getLibVersion();
-
-	/**
-	 *	Reset the singleton after an application reload or other package or executable reloading event.
-	 *
-	 *	@param	yesReally Are you sure you want to reset the value?
-	 *
-	 *	@return	True if the singleton was reset, false if the singleton was set and yesReally was false.
-	
-	public boolean resetLib(boolean yesReally);
 
 	/**
 	 *	The default main does nothing.
 	 *
-	 *	<tt>public static int main(int argc, String[] argv) { return 0; }</tt>
+	 *	<tt>public static void main(int argc, String[] argv) { return 0; }</tt>
+	 *	<tt>public static void main(String[] argv) { main(argv.length, argv); }</tt>
 	 */
 }

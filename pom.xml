@@ -16,8 +16,8 @@
 		<project.url>https://github.com/msobkow/server.markhome.mcf/</project.url>
 		<project.scm.url>https://github.com/msobkow/server.markhome.mcf/</project.scm.url>
 		<project.build.outputTimestamp>2026-09-18T00:00:00Z</project.build.outputTimestamp>
-		<graal.mainClass>server.markhome.mcf.MCFLibEntry</graal.mainClass>
-		<graal.nativeimage.kind>shared</graal.nativeimage.kind>
+		<package.mainClass>server.markhome.mcf.McfLibEntry</package.mainClass>
+		<package.testMainClass>server.markhome.mcf.testMcfLibEntry</package.testMainClass>
 		<mcf.version>3.1.42-20260918</mcf.version>
 		<commons.rc.version>MCFRC1</commons.rc.version>
 		<changes.announcementDirectory>.</changes.announcementDirectory>
@@ -145,14 +145,13 @@
 		<commons.surefire-report.aggregate>false</commons.surefire-report.aggregate>
 		<commons.surefire.version>3.5.6</commons.surefire.version>
 		<commons.taglist.version>3.2.2</commons.taglist.version>
-		<commons.teavm.version>0.15.0</commons.teavm.version>
+		<commons.teavm.version>0.14.1</commons.teavm.version>
+		<commons.teavmcli.version>0.14.1</commons.teavmcli.version>
 		<commons.text.version>1.15.0</commons.text.version>
 		<commons.versions-plugin.version>2.21.0</commons.versions-plugin.version>
 		<commons.wagon-ssh.version>3.5.3</commons.wagon-ssh.version>
 		<easymock.version>5.6.0</easymock.version>
 		<google-code-findbugs.version>3.0.2</google-code-findbugs.version>
-		<graaljs.version>25.3.4.1</graaljs.version>
-		<graalvm-buildtools.version>1.1.10</graalvm-buildtools.version>
 		<maven.compiler.source>25</maven.compiler.source>
 		<maven.compiler.target>25</maven.compiler.target>
 		<maven.javadoc.skip>false</maven.javadoc.skip>
@@ -195,25 +194,36 @@
 		</license>
 	</licenses>
 
-	<dependencyManagement>
 		<dependencies>
 			<dependency>
 				<groupId>org.teavm</groupId>
 				<artifactId>teavm-jso</artifactId>
 				<version>${commons.teavm.version}</version>
-				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.teavm</groupId>
+				<artifactId>teavm-jso-apis</artifactId>
+				<version>${commons.teavm.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.teavm</groupId>
 				<artifactId>teavm-classlib</artifactId>
 				<version>${commons.teavm.version}</version>
-				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.teavm</groupId>
+				<artifactId>teavm-browser-runner</artifactId>
+				<version>${commons.teavm.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.teavm</groupId>
 				<artifactId>teavm-tooling</artifactId>
 				<version>${commons.teavm.version}</version>
-				<scope>compile</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.teavm</groupId>
+				<artifactId>teavm-cli</artifactId>
+				<version>${commons.teavmcli.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.junit</groupId>
@@ -301,17 +311,6 @@
 				<scope>test</scope>
 			</dependency>
 			<dependency>
-				<groupId>org.graalvm.polyglot</groupId>
-				<artifactId>polyglot</artifactId>
-				<version>${graaljs.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.graalvm.polyglot</groupId>
-				<artifactId>js-community</artifactId>
-				<version>${graaljs.version}</version>
-				<type>pom</type>
-			</dependency>
-			<dependency>
 				<groupId>org.junit.jupiter</groupId>
 				<artifactId>junit-jupiter-params</artifactId>
 				<version>${commons.junit.version}</version>
@@ -396,13 +395,6 @@
 				<scope>test</scope>
 			</dependency>
 			<dependency>
-				<groupId>org.graalvm.buildtools</groupId>
-				<artifactId>graalvm-reachability-metadata</artifactId>
-				<version>${graalvm-buildtools.version}</version>
-				<classifier>repository</classifier>
-				<type>zip</type>
-			</dependency>
-			<dependency>
 				<groupId>org.easymock</groupId>
 				<artifactId>easymock</artifactId>
 				<version>${easymock.version}</version>
@@ -434,7 +426,6 @@
 				<scope>test</scope>
 			</dependency>
 		</dependencies>
-	</dependencyManagement>
 
 	<distributionManagement>
 		<repository>
@@ -530,10 +521,6 @@
 							<jdk>
 								<version>25-lts</version>
 								<vendor>adoptium</vendor>
-							</jdk>
-							<jdk>
-								<version>graalvm-ce-25</version>
-								<vendor>graalvm.org</vendor>
 							</jdk>
 						</toolchains>
 					</configuration>
@@ -722,75 +709,6 @@
 						<commons.release.name>${commons.release.name}</commons.release.name>
 					</configuration>
 				</plugin>
-				<plugin>
-					<groupId>org.graalvm.buildtools</groupId>
-					<artifactId>native-maven-plugin</artifactId>
-					<version>${graalvm-buildtools.version}</version>
-					<extensions>true</extensions>
-					<executions>
-						<execution>
-							<id>build-native</id>
-							<goals>
-								<goal>compile</goal>
-							</goals>
-							<phase>none</phase>
-						</execution>
-						<execution>
-							<id>build-test-native</id>
-							<goals>
-								<goal>compile-test</goal>
-							</goals>
-							<phase>none</phase>
-						</execution>
-					</executions>
-				</plugin>
-				<!--plugin>
-					<groupId>org.graalvm.buildtools</groupId>
-					<artifactId>native-maven-plugin</artifactId>
-					<version>${graalvm-buildtools.version}</version>
-					<extensions>true</extensions>
-					<executions>
-						<execution>
-							<id>build-native</id>
-							<goals>
-								<goal>compile</goal>
-							</goals>
-							<phase>compile</phase>
-							<configuration>
-								<executable>/usr/bin/ls -l ${project.build.directory}/ &amp;&amp; export PATH=${env.GV_HOME}/bin:${env.GV_HOME}/lib:${env.BASE_PATH} &amp;&amp; export GRAALVM_HOME=${env.GV_HOME} &amp;&amp; export JAVA_HOME=${env.GV_HOME} &amp;&amp; export JDK_HOME=${env.GV_HOME} &amp;&amp; if [ ! -d ${env.TMP_DIR} ]; then mkdir ${env.TMP_DIR}; fi &amp;&amp; if [ ! -d ${env.TMP_DIR}/js ]; then mkdir ${env.TMP_DIR}/js; fi &amp;&amp; native-image -H:TempDirectory=${env.TMP_DIR}/js ${project.build.directory}/target/lib/${artifactId}-${version}.jar </executable>
-								<mainClass>${graal.mainClass}</mainClass>
-								<skipTestExecution>true</skipTestExecution>
-								<debug>true</debug>
-								<verbose>true</verbose>
-								<sharedLibrary>true</sharedLibrary>
-								<extensions>true</extensions>
-								<buildArgs>
-									<buildArg>-Duser.country=CA</buildArg>
-									<buildArg>-Dgraal.CompilerConfiguration=community</buildArg>
-									<buildArg>-H:TempDirectory=${env.TMP_DIR}/js</buildArg>
-									<buildArg>&#45;&#45;no-fallback</buildArg>
-									<!- -buildArg>-Duser.language=en</buildArg- ->
-									<!- -buildArg>-HIncludeLocales=en,fr,de,es,pt,pt-br</buildArg- ->
-									<!- -buildArg>&#45;&#45;enable-monitoring=heapdump,jfr,jvmstat,jmxserver,jmxclient,threaddump,nmt,jccmd</buildArg- ->
-									<!- -buildArg>&#45;&#45;enable-native-access=ALL-UNNAMED</buildArg- ->
-									<!- -buildArg>&#45;&#45;exact-reachability-metadata</buildArg- ->
-									<!- -buildArg>&#45;&#45;future-defaults</buildArg- ->
-									<!- -buildArg>&#45;&#45;implicit:class</buildArg- ->
-									<buildArg>&#45;H:+UnlockExperimentalVMOptions</buildArg>
-									<buildArg>&#45;H:Preserve=package=server.markhome.mcf.*</buildArg>
-								</buildArgs>
-								<environmentVariables>
-									<NATIVE_IMAGE_OPTIONS> -Dgraal.CompilerConfiguration=community -H:TempDirectory=${env.TMP_DIR}/js </NATIVE_IMAGE_OPTIONS>
-									<skipNativeTests>true</skipNativeTests>
-									<org.graalvm.nativeimage.kind>${graal.nativeimage.kind}</org.graalvm.nativeimage.kind>
-									<project.build.directory>${project.basedir}/src/main/js/</project.build.directory>
-									<CompilerConfiguration>community</CompilerConfiguration>
-									<TempDirectory>${env.TMP_DIR}/js</TempDirectory>
-								</environmentVariables>
-							</configuration>
-						</execution>
-					</executions>
-				</plugin-->
 				<plugin>
 					<groupId>org.apache.commons</groupId>
 					<artifactId>commons-release-plugin</artifactId>
@@ -1322,7 +1240,7 @@
 								<manifestEntries>
 									<Automatic-Module-Name>${commons.module.name}</Automatic-Module-Name>
 									<addClasspath>true</addClasspath>
-									<mainClass>${graal.mainClass}</mainClass>
+									<mainClass>${package.mainClass}</mainClass>
 									<Specification-Title>${project.name}</Specification-Title>
 									<Specification-Version>${project.version}</Specification-Version>
 									<Specification-Vendor>${project.organization.name}</Specification-Vendor>
@@ -1459,7 +1377,7 @@
 								<executable>/usr/bin/bash</executable>
 								<arguments>
 									<argument>-c</argument>
-									<argument>if [ ! -d target/exported-libs ]; then mkdir target/exported-libs; fi</argument>
+									<argument>if [ ! -d ${project.build.directory}/exported-libs ]; then mkdir ${project.build.directory}/exported-libs; fi</argument>
 								</arguments>
 							</configuration>
 						</execution>
@@ -1473,7 +1391,7 @@
 								<executable>mvn</executable>
 								<arguments>
 									<argument>dependency:copy-dependencies</argument>
-									<argument>-DoutputDirectory=target/exported-libs</argument>
+									<argument>-DoutputDirectory=${project.build.directory}/exported-libs</argument>
 								</arguments>
 							</configuration>
 						</execution>
@@ -1488,14 +1406,14 @@
 								<arguments>
 									<argument>ufe</argument>
 									<argument>${project.build.directory}/${project.build.finalName}.jar</argument>
-									<argument>${graal.mainClass}</argument>
+									<argument>${package.mainClass}</argument>
 								</arguments>
 								<archive combine.children="append">
 									<manifestFile>${commons.manifestfile}</manifestFile>
 									<manifestEntries>
 										<Automatic-Module-Name>${commons.module.name}</Automatic-Module-Name>
 										<addClasspath>true</addClasspath>
-										<mainClass>${graal.mainClass}</mainClass>
+										<mainClass>${package.mainClass}</mainClass>
 										<Specification-Title>${project.name}</Specification-Title>
 										<Specification-Version>${project.version}</Specification-Version>
 										<Specification-Vendor>${project.organization.name}</Specification-Vendor>
@@ -1519,7 +1437,7 @@
 								<executable>/usr/bin/bash</executable>
 								<arguments>
 									<argument>-c</argument>
-									<argument>if [ -f ${project.build.directory}/test-${project.build.finalName}.jar ]; then jar ufe ${project.build.directory}/test-${project.build.finalName}.jar ${graal.mainClass}; fi</argument>
+									<argument>if [ -f ${project.build.directory}/test-${project.build.finalName}.jar ]; then jar ufe ${project.build.directory}/test-${project.build.finalName}.jar ${package.mainClass}; fi</argument>
 								</arguments>
 								<skipIfEmpty>true</skipIfEmpty>
 								<archive combine.children="append">
@@ -1527,7 +1445,7 @@
 									<manifestEntries>
 										<Automatic-Module-Name>${commons.module.name}</Automatic-Module-Name>
 										<addClasspath>true</addClasspath>
-										<mainClass>${graal.mainClass}</mainClass>
+										<mainClass>${package.mainClass}</mainClass>
 										<Specification-Title>${project.name}</Specification-Title>
 										<Specification-Version>${project.version}</Specification-Version>
 										<Specification-Vendor>${project.organization.name}</Specification-Vendor>
@@ -1552,7 +1470,7 @@
 								<arguments>
 									<argument>-v</argument>
 									<argument>target/${artifactId}-${version}.jar</argument>
-									<argument>target/exported-libs/</argument>
+									<argument>${project.build.directory}/exported-libs/</argument>
 								</arguments>
 							</configuration>
 						</execution>
@@ -1566,79 +1484,8 @@
 								<executable>/usr/bin/bash</executable>
 								<arguments>
 									<argument>-c</argument>
-									<argument>if [ -f target/test-${artifactId}-${version}.jar ]; then cp -v target/${artifactId}-${version}.jar target/exported-libs/; fi</argument>
+									<argument>if [ -f target/test-${artifactId}-${version}.jar ]; then cp -v target/${artifactId}-${version}.jar ${project.build.directory}/exported-libs/; fi</argument>
 								</arguments>
-							</configuration>
-						</execution>
-						<execution>
-							<id>build-native</id>
-							<goals>
-								<goal>exec</goal>
-							</goals>
-							<phase>package</phase>
-							<configuration>
-								<executable>/bin/bash</executable>
-								<arguments>
-									<argument>-c</argument>
-									<argument>
-                        export PATH=${env.GV_HOME}/bin:${env.GV_HOME}/lib:${env.BASE_PATH} &amp;&amp;
-						export GRAALVM_HOME=${env.GV_HOME} &amp;&amp;
-                        export JAVA_HOME=${env.GV_HOME} &amp;&amp;
-                        export JDK_HOME=${env.GV_HOME} &amp;&amp;
-						export CLASSPATH=target/exported-libs/* &amp;&amp;
-                        export NATIVE_IMAGE_OPTIONS=" -Dgraal.CompilerConfiguration=community -H:TempDirectory=${env.TMP_DIR}/js -DskipNativeTests=${skipNativeTests} -DnativeImageKind=${graal.nativeimage.kind} -DbuildDirectory=/opt/mcf/v3_1/java/server.markhome.mcf/src/main/js/ -DCompilerConfiguration=community -DTempDirectory=${env.TMP_DIR}/js -DskipTestExecution=${skipTestExecutions} -Ddebug=true -g -DsharedLibrary=true -Dextensions=true -Dexec.mainClass=server.markhome.mcf.MCFLibEntry -DmainClass=server.markhome.mcf.MCFLibEntry -classpath target/exported-libs/* "&amp;&amp;
-                        if [ ! -d ${env.TMP_DIR} ]; then mkdir ${env.TMP_DIR}; fi &amp;&amp; 
-                        if [ ! -d ${env.TMP_DIR}/js ]; then mkdir ${env.TMP_DIR}/js; fi &amp;&amp;
-                        native-image -Dgraal.CompilerConfiguration=community -H:TempDirectory=${env.TMP_DIR}/js -DskipNativeTests=${skipNativeTests} -DnativeImageKind=${graal.nativeimage.kind} -DbuildDirectory=/opt/mcf/v3_1/java/server.markhome.mcf/src/main/js/ -DCompilerConfiguration=community -DTempDirectory=${env.TMP_DIR}/js -DskipTestExecution=${skipTestExecutions} -Ddebug=true -g -DsharedLibrary=true -Dextensions=true -Dexec.mainClass=server.markhome.mcf.MCFLibEntry -DmainClass=server.markhome.mcf.MCFLibEntry -classpath target/exported-libs/* -jar target/${artifactId}-${version}.jar ${graal.mainClass} &amp;&amp;
-						cp -Rv ${env.TMP_DIR}/js/`ls -1tr ${env.TMP_DIR}/js/ | tail -1`/* src/main/resources/META-INF/js/
-</argument>
-								</arguments>
-								<project.build.directory>${project.basedir}/src/test/js/</project.build.directory>
-								<CompilerConfiguration>community</CompilerConfiguration>
-								<TempDirectory>${env.TMP_DIR}/test/js</TempDirectory>
-								<skipTestExecution>true</skipTestExecution>
-								<debug>true</debug>
-								<verbose>true</verbose>
-								<sharedLibrary>true</sharedLibrary>
-								<extensions>true</extensions>
-								<mainClass>-Dexec.mainClass=${graal.mainClass}</mainClass>
-                        		<NATIVE_IMAGE_OPTIONS> -Dgraal.CompilerConfiguration=community -H:TempDirectory=${env.TMP_DIR}/js -DskipNativeTests=${skipNativeTests} -DnativeImageKind=${graal.nativeimage.kind} -DbuildDirectory=/opt/mcf/v3_1/java/server.markhome.mcf/src/main/js/ -DCompilerConfiguration=community -DTempDirectory=${env.TMP_DIR}/js -DskipTestExecution=${skipTestExecutions} -Ddebug=true -g -DsharedLibrary=true -Dextensions=true -Dexec.mainClass=server.markhome.mcf.MCFLibEntry -DmainClass=server.markhome.mcf.MCFLibEntry -classpath target/exported-libs/* </NATIVE_IMAGE_OPTIONS>
-							</configuration>
-						</execution>
-						<execution>
-							<id>build-native-test</id>
-							<goals>
-								<goal>exec</goal>
-							</goals>
-							<phase>package-test</phase>
-							<configuration>
-								<executable>/bin/bash</executable>
-								<arguments>
-									<argument>-c</argument>
-									<argument>
-                        export PATH=${env.GV_HOME}/bin:${env.GV_HOME}/lib:${env.BASE_PATH} &amp;&amp;
-						export GRAALVM_HOME=${env.GV_HOME} &amp;&amp;
-                        export JAVA_HOME=${env.GV_HOME} &amp;&amp;
-                        export JDK_HOME=${env.GV_HOME} &amp;&amp;
-						export CLASSPATH=target/exported-libs/* &amp;&amp;
-                        export NATIVE_IMAGE_OPTIONS=" -Dgraal.CompilerConfiguration=community -H:TempDirectory=${env.TMP_DIR}/test/js -DskipNativeTests=${skipNativeTests} -DnativeImageKind=${graal.nativeimage.kind} -DbuildDirectory=${project.basedir}/src/test/js/ -DCompilerConfiguration=community -DTempDirectory=${env.TMP_DIR}/test/js -DskipTestExecution=${skipTestExecutions} -Ddebug=true -g -DsharedLibrary=true -Dextensions=true -Dexec.mainClass=${graal.mainClass} -DmainClass=${graal.mainClass} -classpath target/exported-libs/* "&amp;&amp;
-                        if [ ! -d ${env.TMP_DIR} ]; then mkdir ${env.TMP_DIR}; fi &amp;&amp; 
-                        if [ ! -d ${env.TMP_DIR}/test ]; then mkdir ${env.TMP_DIR}/test; fi &amp;&amp;
-                        if [ ! -d ${env.TMP_DIR}/test/js ]; then mkdir ${env.TMP_DIR}/test/js; fi &amp;&amp;
-                        if [ -f ${project.build.directory}/exported-libs/test-${artifactId}-${version}.jar]; then native-image -Dgraal.CompilerConfiguration=community -H:TempDirectory=${env.TMP_DIR}/test/js -DskipNativeTests=${skipNativeTests} -DnativeImageKind=${graal.nativeimage.kind} -DbuildDirectory=/opt/mcf/v3_1/java/server.markhome.mcf/src/main/js/ -DCompilerConfiguration=community -DTempDirectory=${env.TMP_DIR}/test/js -DskipTestExecution=${skipTestExecutions} -Ddebug=true -g -DsharedLibrary=true -Dextensions=true -Dexec.mainClass=${graal.mainClass} -DmainClass=${graal.mainClass} -classpath target/exported-libs/* -jar target/test-${artifactId}-${version}.jar ${graal.mainClass} ; fi&amp;&amp;
-						cp -Rv ${env.TMP_DIR}/test/js/`ls -1tr ${env.TMP_DIR}/test/js/ | tail -1`/* src/test/resources/META-INF/js/
-</argument>
-								</arguments>
-								<project.build.directory>${project.basedir}/src/test/js/</project.build.directory>
-								<CompilerConfiguration>community</CompilerConfiguration>
-								<TempDirectory>${env.TMP_DIR}/test/js</TempDirectory>
-								<skipTestExecution>true</skipTestExecution>
-								<debug>true</debug>
-								<verbose>true</verbose>
-								<sharedLibrary>true</sharedLibrary>
-								<extensions>true</extensions>
-								<mainClass>-Dexec.mainClass=${graal.mainClass}</mainClass>
-                        		<NATIVE_IMAGE_OPTIONS> -Dgraal.CompilerConfiguration=community -H:TempDirectory=${env.TMP_DIR}/test/js -DskipNativeTests=${skipNativeTests} -DnativeImageKind=${graal.nativeimage.kind} -DbuildDirectory=${project.basedir}/src/main/js/ -DCompilerConfiguration=community -DTempDirectory=${env.TMP_DIR}/js -DskipTestExecution=${skipTestExecutions} -Ddebug=true -g -DsharedLibrary=true -Dextensions=true -Dexec.mainClass=${graal.mainClass} -DmainClass=${graal.mainClass} -classpath target/exported-libs/* </NATIVE_IMAGE_OPTIONS>
 							</configuration>
 						</execution>
 						<execution>
@@ -1651,7 +1498,7 @@
 								<executable>/usr/bin/bash</executable>
 								<arguments>
 									<argument>-c</argument>
-									<argument>pushd ${project.build.directory}/exported-libs; java org.teavm.tooling.TeaVMToolRunner &#45;&#45;targetdir ${project.basedir}/src/main/resources/META-INF/js &#45;&#45;targetfile ${artifactId}-${version}-classes.js &#45;&#45;mainclass &#45;&#45;${graal.mainClass} &#45;&#45;debugInformationGenerated true &#45;&#45;optimization SIMPLE &#45;&#45;minifying false &#45;&#45;preserveclass server.markhome.mcf.MCFLibEntry &#45;&#45;preserveclass server.markhome.mcf.IMCFLibEntry; popd</argument>
+									<argument>java &#45;cp "${project.build.directory}/exported-libs/*" org.teavm.cli.TeaVMRunner &#45;&#45;targetdir ${project.basedir}/src/main/resources/META-INF/js &#45;&#45;targetfile ${artifactId}Classes.js &#45;&#45;entry-point main &#45;&#45;debug &#45;&#45;sourcemaps &#45;&#45;js-module-type es2015 -O 1 &#45;&#45;strict -t js ${package.mainClass}</argument>
 								</arguments>
 							</configuration>
 						</execution>
@@ -1665,7 +1512,7 @@
 								<executable>/usr/bin/bash</executable>
 								<arguments>
 									<argument>-c</argument>
-									<argument>if [ -f ${project.build.directory}/exported-libs/test-${artifactId}-${version}.jar ]; then pushd ${project-build-directory}/exported-libs; java org.teavm.tooling.TeaVMToolRunner &#45;&#45;targetdir ${project.basedir}/src/test/resources/META-INF/js &#45;&#45;targetfile test-${artifactId}-${version}-classes.js &#45;&#45;mainclass &#45;&#45;${graal.mainClass} &#45;&#45;debugInformationGenerated true &#45;&#45;optimization SIMPLE &#45;&#45;minifying false; popd; fi</argument>
+									<argument>if [ -f ${project.build.directory}/exported-libs/test-${artifactId}-${version}.jar ]; then java &#45;cp "${project.build.directory}/exported-libs/*" org.teavm.cli.TeaVMRunner &#45;&#45;targetdir ${project.basedir}/src/test/resources/META-INF/js &#45;&#45;targetfile test${artifactId}Classes.js &#45;&#45;entry-point main &#45;&#45;debug &#45;&#45;sourcemaps &#45;&#45;js-module-type es2015 -O 1 &#45;&#45;strict -t js ${package.testMainClass}; fi</argument>
 								</arguments>
 							</configuration>
 						</execution>
