@@ -145,6 +145,7 @@
 		<commons.surefire-report.aggregate>false</commons.surefire-report.aggregate>
 		<commons.surefire.version>3.5.6</commons.surefire.version>
 		<commons.taglist.version>3.2.2</commons.taglist.version>
+		<commons.teavm.version>0.15.0</commons.teavm.version>
 		<commons.text.version>1.15.0</commons.text.version>
 		<commons.versions-plugin.version>2.21.0</commons.versions-plugin.version>
 		<commons.wagon-ssh.version>3.5.3</commons.wagon-ssh.version>
@@ -196,6 +197,24 @@
 
 	<dependencyManagement>
 		<dependencies>
+			<dependency>
+				<groupId>org.teavm</groupId>
+				<artifactId>teavm-jso</artifactId>
+				<version>${commons.teavm.version}</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.teavm</groupId>
+				<artifactId>teavm-classlib</artifactId>
+				<version>${commons.teavm.version}</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.teavm</groupId>
+				<artifactId>teavm-tooling</artifactId>
+				<version>${commons.teavm.version}</version>
+				<scope>compile</scope>
+			</dependency>
 			<dependency>
 				<groupId>org.junit</groupId>
 				<artifactId>junit-bom</artifactId>
@@ -438,7 +457,7 @@
 				<version>${maven-wagon.version}</version>
 			</extension>
 		</extensions>
-		<defaultGoal>clean compile test-compile jar default-jar jar test-jar jar exec-maven-plugin:exec verify apache-rat:check checkstyle:check japicmp:cmp spotbugs:check pmd:check</defaultGoal>
+		<defaultGoal>clean compile test-compile jar default-jar jar test-jar jar exec-maven-plugin:exec exec-maven-plugin:java verify apache-rat:check checkstyle:check japicmp:cmp spotbugs:check pmd:check</defaultGoal>
 		<resources>
 			<!-- This is the default setting from the super-pom -->
 			<resource>
@@ -535,84 +554,84 @@
 					<configuration>
 						<serverId>nexus</serverId>
 						<nexusUrl>http://nexus3.mcf.markhome.server:8081/repository/mcf.markhome.server-hosted/</nexusUrl>
-						<skipStaging>true</skipStaging>
-					</configuration>
-				</plugin>
-				<!-- org.apache.maven.plugins, alpha order by artifact id -->
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-compiler-plugin</artifactId>
-					<version>${commons.compiler.version}</version>
-					<configuration>
-						<source>${maven.compiler.source}</source>
-						<target>${maven.compiler.target}</target>
-						<encoding>${commons.encoding}</encoding>
-						<!--
-							fork is set true by the java-1.x profiles
-							This allows the use of a different version of the compiler from the
-							JDK being used to run Maven
-						-->
-						<fork>${commons.compiler.fork}</fork>
-						<!-- the following are only needed if fork is true -->
-						<compilerVersion>${commons.compiler.compilerVersion}</compilerVersion>
-						<executable>${commons.compiler.javac}</executable>
-						<compilerArgs>
-							<!-- Disable annotation processing during compile -->
-							<!-- Background: https://www.oracle.com/java/technologies/javase/23-relnote-issues.html#JDK-8321314 -->
-							<!-- Background: https://xdev.software/en/news/detail/discovering-the-perfect-java-supply-chain-attack-vector-and-how-it-got-fixed -->
-							<arg>-proc:none</arg>
-						</compilerArgs>
-					</configuration>
-				</plugin>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-assembly-plugin</artifactId>
-					<version>${commons.assembly-plugin.version}</version>
-				</plugin>
-				<!-- Apache parent includes docck -->
-				<!-- Apache parent: invoker -->
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-javadoc-plugin</artifactId>
-					<version>${commons.javadoc.version}</version>
-					<configuration>						
-						<!-- Keep only errors and warnings -->
-						<quiet>true</quiet>
-						<source>${maven.compiler.source}</source>
-						<javadocExecutable>${commons.compiler.javadoc}</javadocExecutable>
-						<encoding>${commons.encoding}</encoding>
-						<docencoding>${commons.docEncoding}</docencoding>
-						<!-- Prevent too many SCM changes -->
-						<notimestamp>true</notimestamp>
-						<linksource>true</linksource>
-						<links>
-							<link>${commons.javadoc.javaee.link}</link>
-						</links>
-						<additionalOptions>${commons.javadoc.options}</additionalOptions>
-						<!-- &#160; is non-breaking space -->
-						<bottom>
-							Copyright © {inceptionYear}-{currentYear} {organizationName}. All rights reserved.&lt;/br&gt;
-							&lt;a href="${project.url}">${project.name}&lt;/a&gt; |&#160;
-							&lt;a href="${project.issueManagement.url}">Issue management&lt;/a&gt; |&#160;
-							&lt;a href="${project.scm.url}">Source repository&lt;/a&gt;
-						</bottom>
-						<failOnWarnings>${commons.javadoc.failOnWarnings}</failOnWarnings>
-					</configuration>
-				</plugin>
-				<plugin>
-					<!-- TODO see above - find better way to add N&L files to jars and test jars -->
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-remote-resources-plugin</artifactId>
-					<version>${common.resources-plugin.version}</version>
-					<configuration>
-						<!--
-							Apache parent POM automatically adds "LICENSE" and "NOTICE" files
-							to jars - duplicating the "LICENSE.txt" and "NOTICE.txt"
-							files that components already have.
-						-->
-						<skip>true</skip>
-					</configuration>
-				</plugin>
+								<skipStaging>true</skipStaging>
+							</configuration>
+						</plugin>
+						<!-- org.apache.maven.plugins, alpha order by artifact id -->
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-compiler-plugin</artifactId>
+							<version>${commons.compiler.version}</version>
+							<configuration>
+								<source>${maven.compiler.source}</source>
+								<target>${maven.compiler.target}</target>
+								<encoding>${commons.encoding}</encoding>
+								<!--
+									fork is set true by the java-1.x profiles
+									This allows the use of a different version of the compiler from the
+									JDK being used to run Maven
+								-->
+								<fork>${commons.compiler.fork}</fork>
+								<!-- the following are only needed if fork is true -->
+								<compilerVersion>${commons.compiler.compilerVersion}</compilerVersion>
+								<executable>${commons.compiler.javac}</executable>
+								<compilerArgs>
+									<!-- Disable annotation processing during compile -->
+									<!-- Background: https://www.oracle.com/java/technologies/javase/23-relnote-issues.html#JDK-8321314 -->
+									<!-- Background: https://xdev.software/en/news/detail/discovering-the-perfect-java-supply-chain-attack-vector-and-how-it-got-fixed -->
+									<arg>-proc:none</arg>
+								</compilerArgs>
+							</configuration>
+						</plugin>
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-assembly-plugin</artifactId>
+							<version>${commons.assembly-plugin.version}</version>
+						</plugin>
+						<!-- Apache parent includes docck -->
+						<!-- Apache parent: invoker -->
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-javadoc-plugin</artifactId>
+							<version>${commons.javadoc.version}</version>
+							<configuration>						
+								<!-- Keep only errors and warnings -->
+								<quiet>true</quiet>
+								<source>${maven.compiler.source}</source>
+								<javadocExecutable>${commons.compiler.javadoc}</javadocExecutable>
+								<encoding>${commons.encoding}</encoding>
+								<docencoding>${commons.docEncoding}</docencoding>
+								<!-- Prevent too many SCM changes -->
+								<notimestamp>true</notimestamp>
+								<linksource>true</linksource>
+								<links>
+									<link>${commons.javadoc.javaee.link}</link>
+								</links>
+								<additionalOptions>${commons.javadoc.options}</additionalOptions>
+								<!-- &#160; is non-breaking space -->
+								<bottom>
+									Copyright © {inceptionYear}-{currentYear} {organizationName}. All rights reserved.&lt;/br&gt;
+									&lt;a href="${project.url}">${project.name}&lt;/a&gt; |&#160;
+									&lt;a href="${project.issueManagement.url}">Issue management&lt;/a&gt; |&#160;
+									&lt;a href="${project.scm.url}">Source repository&lt;/a&gt;
+								</bottom>
+								<failOnWarnings>${commons.javadoc.failOnWarnings}</failOnWarnings>
+							</configuration>
+						</plugin>
+						<plugin>
+							<!-- TODO see above - find better way to add N&L files to jars and test jars -->
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-remote-resources-plugin</artifactId>
+							<version>${common.resources-plugin.version}</version>
+							<configuration>
+								<!--
+									Apache parent POM automatically adds "LICENSE" and "NOTICE" files
+									to jars - duplicating the "LICENSE.txt" and "NOTICE.txt"
+									files that components already have.
+								-->
+								<skip>true</skip>
+							</configuration>
+						</plugin>
 				<!-- Apache parent: scm -->
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
@@ -759,7 +778,6 @@
 									<!- -buildArg>&#45;&#45;implicit:class</buildArg- ->
 									<buildArg>&#45;H:+UnlockExperimentalVMOptions</buildArg>
 									<buildArg>&#45;H:Preserve=package=server.markhome.mcf.*</buildArg>
-									<!- -buildArg>&#45;&#45;language:js</buildArg- ->
 								</buildArgs>
 								<environmentVariables>
 									<NATIVE_IMAGE_OPTIONS> -Dgraal.CompilerConfiguration=community -H:TempDirectory=${env.TMP_DIR}/js </NATIVE_IMAGE_OPTIONS>
@@ -1330,7 +1348,135 @@
 					<artifactId>exec-maven-plugin</artifactId>
 					<version>${commons.exec-plugin.version}</version>
 					<extensions>true</extensions>
-					<executions>
+				<executions>
+						<execution>
+							<id>mkdir-src-main-resources</id>
+							<goals>
+								<goal>exec</goal>
+							</goals>
+							<phase>package</phase>
+							<configuration>
+								<executable>/bin/bash</executable>
+								<arguments>
+									<argument>-c</argument>
+									<argument>if [ ! -d src/main/resources ]; then mkdir src/main/resources; fi</argument>
+								</arguments>
+							</configuration>
+						</execution>
+						<execution>
+							<id>mkdir-src-main-resources-META-INF</id>
+							<goals>
+								<goal>exec</goal>
+							</goals>
+							<phase>package</phase>
+							<configuration>
+								<mainClass>bogus</mainClass>
+								<executable>/bin/bash</executable>
+								<arguments>
+									<argument>-c</argument>
+									<argument>if [ ! -d src/main/resources/META-INF ]; then mkdir src/main/resources/META-INF; fi</argument>
+								</arguments>
+							</configuration>
+						</execution>
+						<execution>
+							<id>mkdir-src-main-resources-META-INF-js</id>
+							<goals>
+								<goal>exec</goal>
+							</goals>
+							<phase>package</phase>
+							<configuration>
+								<mainClass>bogus</mainClass>
+								<executable>/bin/bash</executable>
+								<arguments>
+									<argument>-c</argument>
+									<argument>if [ ! -d src/main/resources/META-INF/js ]; then mkdir src/main/resources/META-INF/js; fi</argument>
+								</arguments>
+							</configuration>
+						</execution>
+						<execution>
+							<id>mkdir-src-test</id>
+							<goals>
+								<goal>exec</goal>
+							</goals>
+							<phase>package</phase>
+							<configuration>
+								<executable>/bin/bash</executable>
+								<arguments>
+									<argument>-c</argument>
+									<argument>if [ ! -d src/test ]; then mkdir src/test ;fi</argument>
+								</arguments>
+							</configuration>
+						</execution>
+						<execution>
+							<id>mkdir-src-test-resources</id>
+							<goals>
+								<goal>exec</goal>
+							</goals>
+							<phase>package</phase>
+							<configuration>
+								<executable>/bin/bash</executable>
+								<arguments>
+									<argument>-c</argument>
+									<argument>if [ ! -d src/test/resources ]; then mkdir src/test/resources; fi</argument>
+								</arguments>
+							</configuration>
+						</execution>
+						<execution>
+							<id>mkdir-src-test-resources-META-INF</id>
+							<goals>
+								<goal>exec</goal>
+							</goals>
+							<phase>package</phase>
+							<configuration>
+								<executable>/bin/bash</executable>
+								<arguments>
+									<argument>-c</argument>
+									<argument>if [ ! -d src/test/resources/META-INF ]; then mkdir src/test/resources/META-INF; fi</argument>
+								</arguments>
+							</configuration>
+						</execution>
+						<execution>
+							<id>mkdir-src-test-resources-META-INF-js</id>
+							<goals>
+								<goal>exec</goal>
+							</goals>
+							<phase>package</phase>
+							<configuration>
+								<executable>/bin/bash</executable>
+								<arguments>
+									<argument>-c</argument>
+									<argument>if [ ! -d src/test/resources/META-INF/js ]; then mkdir src/test/resources/META-INF/js; fi</argument>
+								</arguments>
+							</configuration>
+						</execution>
+						<execution>
+							<id>mkdir-exported-libs</id>
+							<goals>
+								<goal>exec</goal>
+							</goals>
+							<phase>package</phase>
+							<configuration>
+								<executable>/usr/bin/bash</executable>
+								<arguments>
+									<argument>-c</argument>
+									<argument>if [ ! -d target/exported-libs ]; then mkdir target/exported-libs; fi</argument>
+								</arguments>
+							</configuration>
+						</execution>
+						<execution>
+							<id>copy-dependencies-to-exported-libs</id>
+							<goals>
+								<goal>exec</goal>
+							</goals>
+							<phase>package</phase>
+							<configuration>
+								<executable>mvn</executable>
+								<arguments>
+									<argument>dependency:copy-dependencies</argument>
+									<argument>-DoutputDirectory=target/exported-libs</argument>
+								</arguments>
+							</configuration>
+						</execution>
 						<execution>
 							<id>repackage-jar</id>
 							<goals>
@@ -1368,15 +1514,14 @@
 							<goals>
 								<goal>exec</goal>
 							</goals>
-							<phase>none</phase>
+							<phase>package-test</phase>
 							<configuration>
-								<executable>jar</executable>
-								<skipIfEmpty>true</skipIfEmpty>
+								<executable>/usr/bin/bash</executable>
 								<arguments>
-									<argument>ufe</argument>
-									<argument>${project.build.directory}/test-${project.build.finalName}.jar</argument>
-									<argument>${graal.mainClass}</argument>
+									<argument>-c</argument>
+									<argument>if [ -f ${project.build.directory}/test-${project.build.finalName}.jar ]; then jar ufe ${project.build.directory}/test-${project.build.finalName}.jar ${graal.mainClass}; fi</argument>
 								</arguments>
+								<skipIfEmpty>true</skipIfEmpty>
 								<archive combine.children="append">
 									<manifestFile>${commons.manifestfile}</manifestFile>
 									<manifestEntries>
@@ -1397,46 +1542,6 @@
 							</configuration>
 						</execution>
 						<execution>
-							<id>mkdir-META-INF</id>
-							<goals>
-								<goal>exec</goal>
-							</goals>
-							<phase>package</phase>
-							<configuration>
-								<executable>mkdir</executable>
-								<arguments>
-									<argument>target/classes/META-INF</argument>
-								</arguments>
-							</configuration>
-						</execution>
-						<execution>
-							<id>mkdir-exported-libs</id>
-							<goals>
-								<goal>exec</goal>
-							</goals>
-							<phase>package</phase>
-							<configuration>
-								<executable>mkdir</executable>
-								<arguments>
-									<argument>target/classes/META-INF/exported-libs</argument>
-								</arguments>
-							</configuration>
-						</execution>
-						<execution>
-							<id>copy-dependencies-to-exported-libs</id>
-							<goals>
-								<goal>exec</goal>
-							</goals>
-							<phase>package</phase>
-							<configuration>
-								<executable>mvn</executable>
-								<arguments>
-									<argument>dependency:copy-dependencies</argument>
-									<argument>-DoutputDirectory=target/classes/META-INF/exported-libs</argument>
-								</arguments>
-							</configuration>
-						</execution>
-						<execution>
 							<id>copy-project-jars-to-exported-libs</id>
 							<goals>
 								<goal>exec</goal>
@@ -1447,7 +1552,7 @@
 								<arguments>
 									<argument>-v</argument>
 									<argument>target/${artifactId}-${version}.jar</argument>
-									<argument>target/classes/META-INF/exported-libs</argument>
+									<argument>target/exported-libs/</argument>
 								</arguments>
 							</configuration>
 						</execution>
@@ -1456,13 +1561,12 @@
 							<goals>
 								<goal>exec</goal>
 							</goals>
-							<phase>none</phase>
+							<phase>package-test</phase>
 							<configuration>
-								<executable>cp</executable>
+								<executable>/usr/bin/bash</executable>
 								<arguments>
-									<argument>-v</argument>
-									<argument>target/test-${artifactId}-${version}.jar</argument>
-									<argument>target/classes/META-INF/exported-libs</argument>
+									<argument>-c</argument>
+									<argument>if [ -f target/test-${artifactId}-${version}.jar ]; then cp -v target/${artifactId}-${version}.jar target/exported-libs/; fi</argument>
 								</arguments>
 							</configuration>
 						</execution>
@@ -1481,12 +1585,12 @@
 						export GRAALVM_HOME=${env.GV_HOME} &amp;&amp;
                         export JAVA_HOME=${env.GV_HOME} &amp;&amp;
                         export JDK_HOME=${env.GV_HOME} &amp;&amp;
-						export CLASSPATH=target/classes/META-INF/exported-libs/* &amp;&amp;
+						export CLASSPATH=target/exported-libs/* &amp;&amp;
+                        export NATIVE_IMAGE_OPTIONS=" -Dgraal.CompilerConfiguration=community -H:TempDirectory=${env.TMP_DIR}/js -DskipNativeTests=${skipNativeTests} -DnativeImageKind=${graal.nativeimage.kind} -DbuildDirectory=/opt/mcf/v3_1/java/server.markhome.mcf/src/main/js/ -DCompilerConfiguration=community -DTempDirectory=${env.TMP_DIR}/js -DskipTestExecution=${skipTestExecutions} -Ddebug=true -g -DsharedLibrary=true -Dextensions=true -Dexec.mainClass=server.markhome.mcf.MCFLibEntry -DmainClass=server.markhome.mcf.MCFLibEntry -classpath target/exported-libs/* "&amp;&amp;
                         if [ ! -d ${env.TMP_DIR} ]; then mkdir ${env.TMP_DIR}; fi &amp;&amp; 
                         if [ ! -d ${env.TMP_DIR}/js ]; then mkdir ${env.TMP_DIR}/js; fi &amp;&amp;
-                        ls -l ${project.basedir}/target &amp;&amp;
-                        native-image -Dgraal.CompilerConfiguration=community -H:TempDirectory=${env.TMP_DIR}/js -DskipNativeTests=${skipNativeTests} -DnativeImageKind=${graal.nativeimage.kind} -DbuildDirectory=/opt/mcf/v3_1/java/server.markhome.mcf/src/main/js/ -DCompilerConfiguration=community -DTempDirectory=${env.TMP_DIR}/js -DskipTestExecution=${skipTestExecutions} -Ddebug=true -g -DsharedLibrary=true -Dextensions=true -Dexec.mainClass=server.markhome.mcf.MCFLibEntry -DmainClass=server.markhome.mcf.MCFLibEntry -classpath target/classes/META-INF/exported-libs/* -jar target/${artifactId}-${version}.jar ${graal.mainClass} &amp;&amp;
-						cp -Rv ${env.TMP_DIR}/js/`ls -1tr ${env.TMP_DIR}/js/ | tail -1`/* src/main/js/
+                        native-image -Dgraal.CompilerConfiguration=community -H:TempDirectory=${env.TMP_DIR}/js -DskipNativeTests=${skipNativeTests} -DnativeImageKind=${graal.nativeimage.kind} -DbuildDirectory=/opt/mcf/v3_1/java/server.markhome.mcf/src/main/js/ -DCompilerConfiguration=community -DTempDirectory=${env.TMP_DIR}/js -DskipTestExecution=${skipTestExecutions} -Ddebug=true -g -DsharedLibrary=true -Dextensions=true -Dexec.mainClass=server.markhome.mcf.MCFLibEntry -DmainClass=server.markhome.mcf.MCFLibEntry -classpath target/exported-libs/* -jar target/${artifactId}-${version}.jar ${graal.mainClass} &amp;&amp;
+						cp -Rv ${env.TMP_DIR}/js/`ls -1tr ${env.TMP_DIR}/js/ | tail -1`/* src/main/resources/META-INF/js/
 </argument>
 								</arguments>
 								<project.build.directory>${project.basedir}/src/test/js/</project.build.directory>
@@ -1498,6 +1602,7 @@
 								<sharedLibrary>true</sharedLibrary>
 								<extensions>true</extensions>
 								<mainClass>-Dexec.mainClass=${graal.mainClass}</mainClass>
+                        		<NATIVE_IMAGE_OPTIONS> -Dgraal.CompilerConfiguration=community -H:TempDirectory=${env.TMP_DIR}/js -DskipNativeTests=${skipNativeTests} -DnativeImageKind=${graal.nativeimage.kind} -DbuildDirectory=/opt/mcf/v3_1/java/server.markhome.mcf/src/main/js/ -DCompilerConfiguration=community -DTempDirectory=${env.TMP_DIR}/js -DskipTestExecution=${skipTestExecutions} -Ddebug=true -g -DsharedLibrary=true -Dextensions=true -Dexec.mainClass=server.markhome.mcf.MCFLibEntry -DmainClass=server.markhome.mcf.MCFLibEntry -classpath target/exported-libs/* </NATIVE_IMAGE_OPTIONS>
 							</configuration>
 						</execution>
 						<execution>
@@ -1515,13 +1620,13 @@
 						export GRAALVM_HOME=${env.GV_HOME} &amp;&amp;
                         export JAVA_HOME=${env.GV_HOME} &amp;&amp;
                         export JDK_HOME=${env.GV_HOME} &amp;&amp;
-						export CLASSPATH=target/classes/META-INF/exported-libs/* &amp;&amp;
+						export CLASSPATH=target/exported-libs/* &amp;&amp;
+                        export NATIVE_IMAGE_OPTIONS=" -Dgraal.CompilerConfiguration=community -H:TempDirectory=${env.TMP_DIR}/test/js -DskipNativeTests=${skipNativeTests} -DnativeImageKind=${graal.nativeimage.kind} -DbuildDirectory=${project.basedir}/src/test/js/ -DCompilerConfiguration=community -DTempDirectory=${env.TMP_DIR}/test/js -DskipTestExecution=${skipTestExecutions} -Ddebug=true -g -DsharedLibrary=true -Dextensions=true -Dexec.mainClass=${graal.mainClass} -DmainClass=${graal.mainClass} -classpath target/exported-libs/* "&amp;&amp;
                         if [ ! -d ${env.TMP_DIR} ]; then mkdir ${env.TMP_DIR}; fi &amp;&amp; 
                         if [ ! -d ${env.TMP_DIR}/test ]; then mkdir ${env.TMP_DIR}/test; fi &amp;&amp;
                         if [ ! -d ${env.TMP_DIR}/test/js ]; then mkdir ${env.TMP_DIR}/test/js; fi &amp;&amp;
-                        ls -l ${project.basedir}/target &amp;&amp;
-                        native-image -Dgraal.CompilerConfiguration=community -H:TempDirectory=${env.TMP_DIR}/test/js -DskipNativeTests=${skipNativeTests} -DnativeImageKind=${graal.nativeimage.kind} -DbuildDirectory=/opt/mcf/v3_1/java/server.markhome.mcf/src/main/js/ -DCompilerConfiguration=community -DTempDirectory=${env.TMP_DIR}/test/js -DskipTestExecution=${skipTestExecutions} -Ddebug=true -g -DsharedLibrary=true -Dextensions=true -Dexec.mainClass=${graal.mainClass} -DmainClass=${graal.mainClass} -classpath target/classes/META-INF/exported-libs/* -jar target/test-${artifactId}-${version}.jar ${graal.mainClass} &amp;&amp;
-						cp -Rv ${env.TMP_DIR}/test/js/`ls -1tr ${env.TMP_DIR}/js/ | tail -1`/* src/test/js/
+                        if [ -f ${project.build.directory}/exported-libs/test-${artifactId}-${version}.jar]; then native-image -Dgraal.CompilerConfiguration=community -H:TempDirectory=${env.TMP_DIR}/test/js -DskipNativeTests=${skipNativeTests} -DnativeImageKind=${graal.nativeimage.kind} -DbuildDirectory=/opt/mcf/v3_1/java/server.markhome.mcf/src/main/js/ -DCompilerConfiguration=community -DTempDirectory=${env.TMP_DIR}/test/js -DskipTestExecution=${skipTestExecutions} -Ddebug=true -g -DsharedLibrary=true -Dextensions=true -Dexec.mainClass=${graal.mainClass} -DmainClass=${graal.mainClass} -classpath target/exported-libs/* -jar target/test-${artifactId}-${version}.jar ${graal.mainClass} ; fi&amp;&amp;
+						cp -Rv ${env.TMP_DIR}/test/js/`ls -1tr ${env.TMP_DIR}/test/js/ | tail -1`/* src/test/resources/META-INF/js/
 </argument>
 								</arguments>
 								<project.build.directory>${project.basedir}/src/test/js/</project.build.directory>
@@ -1533,6 +1638,35 @@
 								<sharedLibrary>true</sharedLibrary>
 								<extensions>true</extensions>
 								<mainClass>-Dexec.mainClass=${graal.mainClass}</mainClass>
+                        		<NATIVE_IMAGE_OPTIONS> -Dgraal.CompilerConfiguration=community -H:TempDirectory=${env.TMP_DIR}/test/js -DskipNativeTests=${skipNativeTests} -DnativeImageKind=${graal.nativeimage.kind} -DbuildDirectory=${project.basedir}/src/main/js/ -DCompilerConfiguration=community -DTempDirectory=${env.TMP_DIR}/js -DskipTestExecution=${skipTestExecutions} -Ddebug=true -g -DsharedLibrary=true -Dextensions=true -Dexec.mainClass=${graal.mainClass} -DmainClass=${graal.mainClass} -classpath target/exported-libs/* </NATIVE_IMAGE_OPTIONS>
+							</configuration>
+						</execution>
+						<execution>
+							<id>run-teavm-compile-javascript</id>
+							<phase>package</phase>
+							<goals>
+								<goal>exec</goal>
+							</goals>
+							<configuration>
+								<executable>/usr/bin/bash</executable>
+								<arguments>
+									<argument>-c</argument>
+									<argument>pushd ${project.build.directory}/exported-libs; java org.teavm.tooling.TeaVMToolRunner &#45;&#45;targetdir ${project.basedir}/src/main/resources/META-INF/js &#45;&#45;targetfile ${artifactId}-${version}-classes.js &#45;&#45;mainclass &#45;&#45;${graal.mainClass} &#45;&#45;debugInformationGenerated true &#45;&#45;optimization SIMPLE &#45;&#45;minifying false &#45;&#45;preserveclass server.markhome.mcf.MCFLibEntry &#45;&#45;preserveclass server.markhome.mcf.IMCFLibEntry; popd</argument>
+								</arguments>
+							</configuration>
+						</execution>
+						<execution>
+							<id>run-teavm-compile-test-javascript</id>
+							<phase>package-test</phase>
+							<goals>
+								<goal>exec</goal>
+							</goals>
+							<configuration>
+								<executable>/usr/bin/bash</executable>
+								<arguments>
+									<argument>-c</argument>
+									<argument>if [ -f ${project.build.directory}/exported-libs/test-${artifactId}-${version}.jar ]; then pushd ${project-build-directory}/exported-libs; java org.teavm.tooling.TeaVMToolRunner &#45;&#45;targetdir ${project.basedir}/src/test/resources/META-INF/js &#45;&#45;targetfile test-${artifactId}-${version}-classes.js &#45;&#45;mainclass &#45;&#45;${graal.mainClass} &#45;&#45;debugInformationGenerated true &#45;&#45;optimization SIMPLE &#45;&#45;minifying false; popd; fi</argument>
+								</arguments>
 							</configuration>
 						</execution>
 					</executions>
