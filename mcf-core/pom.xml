@@ -3,13 +3,13 @@
 	<modelVersion>4.1.0</modelVersion>
 	<parent>
 		<groupId>server.markhome</groupId>
-		<artifactId>server.markhome.mcf</artifactId>
+		<artifactId>server.markhome.ycf</artifactId>
 		<version>20260930</version>
 	</parent>
-	<artifactId>server.markhome.mcf</artifactId>
+	<artifactId>server.markhome.ycf</artifactId>
 	<version>20260930</version>
-	<groupId>server.markhome.mcf</groupId>
-	<name>server.markhome.mcf-core</name>
+	<groupId>server.markhome.ycf</groupId>
+	<name>server.markhome.ycf-core</name>
 	<description>Mark's Code Fractal Core Services</description>
 	<packaging>jar</packaging>
 
@@ -18,14 +18,14 @@
 
 	<properties>
 		<rat.skip>true</rat.skip>
-		<url>https://github.com/msobkow/server.markhome.mcf/</url>
-		<project.url>https://github.com/msobkow/server.markhome.mcf/</project.url>
-		<project.scm.url>https://github.com/msobkow/server.markhome.mcf/</project.scm.url>
+		<url>https://github.com/msobkow/server.markhome.ycf/</url>
+		<project.url>https://github.com/msobkow/server.markhome.ycf/</project.url>
+		<project.scm.url>https://github.com/msobkow/server.markhome.ycf/</project.scm.url>
 		<project.build.outputTimestamp>2026-09-30T00:00:00Z</project.build.outputTimestamp>
-		<package.mainClass>server.markhome.mcf.MCFLibEntry</package.mainClass>
-		<package.testMainClass>server.markhome.mcf.testMCFLibEntry</package.testMainClass>
-		<mcf.version>3.1.42-20260930</mcf.version>
-		<commons.rc.version>MCFRC1</commons.rc.version>
+		<package.mainClass>server.markhome.ycf.YCFLibEntry</package.mainClass>
+		<package.testMainClass>server.markhome.ycf.testYCFLibEntry</package.testMainClass>
+		<ycf.version>3.1.42-20260930</ycf.version>
+		<commons.rc.version>YCFRC1</commons.rc.version>
 		<changes.announcementDirectory>.</changes.announcementDirectory>
 		<changes.announcementFile>RELEASE-NOTES.txt</changes.announcementFile>
 		<commons.animal-sniffer.signature.version>1.0</commons.animal-sniffer.signature.version>
@@ -111,10 +111,10 @@
 		<commons.native-plugin.version>1.1.10</commons.native-plugin.version>
 		<commons.osgi.dynamicImport />
 		<commons.osgi.excludeDependencies>true</commons.osgi.excludeDependencies>
-		<commons.osgi.export>server.markhome.mcf.*;version=${project.version};-noimport:=true</commons.osgi.export>
+		<commons.osgi.export>server.markhome.ycf.*;version=${project.version};-noimport:=true</commons.osgi.export>
 		<commons.osgi.import>*</commons.osgi.import>
 		<commons.osgi.private />
-		<commons.osgi.symbolicName>server.markhome.mcf.${commons.packageId}</commons.osgi.symbolicName>
+		<commons.osgi.symbolicName>server.markhome.ycf.${commons.packageId}</commons.osgi.symbolicName>
 		<commons.packageId>${project.artifactId}</commons.packageId>
 		<commons.pmd-core.version>${commons.pmd.version}</commons.pmd-core.version>
 		<commons.pmd-impl.version>${commons.pmd.version}</commons.pmd-impl.version>
@@ -184,7 +184,7 @@
 			<distribution>repo</distribution>
 		</license>
 		<license>
-			<name>LicenseRef-MCFDualLGPL-3.0-or-later</name>
+			<name>LicenseRef-YCFDualLGPL-3.0-or-later</name>
 			<url>https://msobkow.github.io/licenses/</url>
 			<distribution>repo</distribution>
 		</license>
@@ -194,7 +194,7 @@
 			<distribution>repo</distribution>
 		</license>
 		<license>
-			<name>LicenseRef-MCFDualGPL-3.0-or-later</name>
+			<name>LicenseRef-YCFDualGPL-3.0-or-later</name>
 			<url>https://msobkow.github.io/licenses/</url>
 			<distribution>repo</distribution>
 		</license>
@@ -437,12 +437,12 @@
 		<repository>
 			<id>nexus-releases</id>
 			<name>Nexus release repository</name>
-			<url>http://nexus3.mcf.markhome.server:8081/repository/mcf.markhome.server-hosted/</url>
+			<url>http://nexus3.ycf.markhome.server:8081/repository/ycf.markhome.server-hosted/</url>
 		</repository>
 		<snapshotRepository>
 			<id>nexus-snapshots</id>
 			<name>Nexus release repository</name>
-			<url>http://nexus3.mcf.markhome.server:8081/repository/mcf.markhome.server-hosted/</url>
+			<url>http://nexus3.ycf.markhome.server:8081/repository/ycf.markhome.server-hosted/</url>
 		</snapshotRepository>
 	</distributionManagement>
 
@@ -546,7 +546,7 @@
 					</executions>
 					<configuration>
 						<serverId>nexus</serverId>
-						<nexusUrl>http://nexus3.mcf.markhome.server:8081/repository/mcf.markhome.server-hosted/</nexusUrl>
+						<nexusUrl>http://nexus3.ycf.markhome.server:8081/repository/ycf.markhome.server-hosted/</nexusUrl>
 								<skipStaging>true</skipStaging>
 							</configuration>
 						</plugin>

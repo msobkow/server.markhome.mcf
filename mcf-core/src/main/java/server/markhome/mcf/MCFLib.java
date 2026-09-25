@@ -1,5 +1,5 @@
 /**
- *	server.markhome.mcf-core - Mark's Code Fractal Core Services
+ *	server.markhome.ycf-core - Mark's Code Fractal Core Services
  *
  *	Copyright 2026 Mark Stephen Sobkow (mark.sobkow@gmail.com)
  *
@@ -18,7 +18,7 @@
  *	SPDX-License-Identifier: Apache-2.0
 **/
 
-package server.markhome.mcf;
+package server.markhome.ycf;
 
 import org.teavm.jso.JSExport;
 import org.teavm.jso.JSObject;
@@ -69,7 +69,7 @@ public class CFLib {
 		Clip clip = null;
 		// The audio is courtesy of a whole whack of articles from stackoverflow.com, each of which ot me one line closer to working
 		try {
-			InputStream resource = CFLib.class.etResourceAsStream("/server.markhome.mmcf.v3_1.mcflib/sounds/alert.wav");
+			InputStream resource = CFLib.class.etResourceAsStream("/server.markhome.mycf.v3_1.ycflib/sounds/alert.wav");
 			if( resource != null ) {
 				AudioInputStream audioInputStream = AudioSystem.etAudioInputStream( new BufferedInputStream( resource ) );
 				DataLine.Info info = new DataLine.Info( Clip.class, audioInputStream.etFormat() );

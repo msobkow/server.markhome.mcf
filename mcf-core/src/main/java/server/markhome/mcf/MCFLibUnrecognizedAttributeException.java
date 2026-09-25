@@ -1,5 +1,5 @@
 /**
- *	server.markhome.mcf-core - Mark's Code Fractal Core Services
+ *	server.markhome.ycf-core - Mark's Code Fractal Core Services
  *
  *	Copyright 2026 Mark Stephen Sobkow (mark.sobkow@gmail.com)
  *
@@ -18,7 +18,7 @@
  *	SPDX-License-Identifier: Apache-2.0
 **/
 
-package server.markhome.mcf;
+package server.markhome.ycf;
 
 import org.teavm.jso.JSExport;
 import org.teavm.jso.JSObject;
@@ -26,18 +26,18 @@ import org.teavm.jso.JSProperty;
 
 import java.util.*;
 
-import server.markhome.mcf.Inz;
+import server.markhome.ycf.Inz;
 
 /**
- * MCFLibUnrecognizedAttributeException is primarily thrown by the manufacted XML parsers.
+ * YCFLibUnrecognizedAttributeException is primarily thrown by the manufacted XML parsers.
  */
-public class MCFLibUnrecognizedAttributeException extends NoSuchElementException {
+public class YCFLibUnrecognizedAttributeException extends NoSuchElementException {
 
 	protected String localMessage = null;
 	protected String locInfo = null;
 	protected String attrName = null;
 
-	public MCFLibUnrecognizedAttributeException(
+	public YCFLibUnrecognizedAttributeException(
 		String enMsg,
 		String xMsg )
 	{
@@ -45,7 +45,7 @@ public class MCFLibUnrecognizedAttributeException extends NoSuchElementException
 		this.localMessage = xMsg;
 	}
 
-	public MCFLibUnrecognizedAttributeException(
+	public YCFLibUnrecognizedAttributeException(
 		String enMsg,
 		String xMsg,
 		Throwable th)
@@ -54,37 +54,37 @@ public class MCFLibUnrecognizedAttributeException extends NoSuchElementException
 			this.localMessage = xMsg;
 	}
 
-	// public MCFLibUnrecognizedAttributeException(
+	// public YCFLibUnrecognizedAttributeException(
 	// 	Class<?> throwingClass,
 	// 	String methName,
 	// 	String enMsg,
 	// 	String xMsg )
 	// {
-	// 	super( String.format(Inz.s("mcflib.MCFLibArgumentException.TcmnMsg"),
+	// 	super( String.format(Inz.s("ycflib.YCFLibArgumentException.TcmnMsg"),
 	// 			throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 	// 			( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg : "" )));
-	// 	this.localMessage = String.format(Inz.x("mcflib.MCFLibArgumentException.TcmnMsg"),
+	// 	this.localMessage = String.format(Inz.x("ycflib.YCFLibArgumentException.TcmnMsg"),
 	// 			throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 	// 			( ( ( xMsg != null ) && ( xMsg.length() > 0 ) ) ? xMsg : (enMsg != null && enMsg.length() > 0) ? enMsg : ""));
 	// }
 
-	// public MCFLibUnrecognizedAttributeException(
+	// public YCFLibUnrecognizedAttributeException(
 	// 	Class<?> throwingClass,
 	// 	String methName,
 	// 	String enMsg,
 	// 	String xMsg,
 	// 	Throwable th )
 	// {
-	// 	super( String.format(Inz.s("mcflib.MCFLibArgumentException.TcmnMsg"),
+	// 	super( String.format(Inz.s("ycflib.YCFLibArgumentException.TcmnMsg"),
 	// 			throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 	// 			( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg : "" )),
 	// 			th );
-	// 	this.localMessage = String.format(Inz.x("mcflib.MCFLibArgumentException.TcmnMsg"),
+	// 	this.localMessage = String.format(Inz.x("ycflib.YCFLibArgumentException.TcmnMsg"),
 	// 			throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 	// 			( ( ( xMsg != null ) && ( xMsg.length() > 0 ) ) ? xMsg : (enMsg != null && enMsg.length() > 0) ? enMsg : ""));
 	// }
 
-	public MCFLibUnrecognizedAttributeException(
+	public YCFLibUnrecognizedAttributeException(
 		Class<?> throwingClass,
 		String methName,
 		int argNo,
@@ -92,19 +92,19 @@ public class MCFLibUnrecognizedAttributeException extends NoSuchElementException
 		String enMsg,
 		String xMsg )
 	{
-		super( String.format(Inz.s("mcflib.MCFLibArgumentException.TcmnArgMsg"),
+		super( String.format(Inz.s("ycflib.YCFLibArgumentException.TcmnArgMsg"),
 				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				argNo,
 				argName,
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg	: "" ) ));
-		this.localMessage = String.format(Inz.x("mcflib.MCFLibArgumentException.TcmnArgMsg"),
+		this.localMessage = String.format(Inz.x("ycflib.YCFLibArgumentException.TcmnArgMsg"),
 				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				argNo,
 				argName,
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg	: "" ) );
 	}
 
-	public MCFLibUnrecognizedAttributeException(
+	public YCFLibUnrecognizedAttributeException(
 		Class<?> throwingClass,
 		String methName,
 		int argNo,
@@ -113,49 +113,49 @@ public class MCFLibUnrecognizedAttributeException extends NoSuchElementException
 		String xMsg,
 		Throwable th )
 	{
-		super( String.format(Inz.s("mcflib.MCFLibArgumentException.TcmnArgMsg"),
+		super( String.format(Inz.s("ycflib.YCFLibArgumentException.TcmnArgMsg"),
 				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				argNo,
 				argName,
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg	: "" ) ),
 				th );
-		this.localMessage = String.format(Inz.x("mcflib.MCFLibArgumentException.TcmnArgMsg"),
+		this.localMessage = String.format(Inz.x("ycflib.YCFLibArgumentException.TcmnArgMsg"),
 				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				argNo,
 				argName,
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg	: "" ) );
 	}
 
-	// public MCFLibUnrecognizedAttributeException(
+	// public YCFLibUnrecognizedAttributeException(
 	// 	String enFieldName,
 	// 	String xFieldName,
 	// 	String enMsg,
 	// 	String xMsg )
 	// {
-	// 	super( String.format(Inz.s("mcflib.MCFLibArgumentException.FldMsg"),
+	// 	super( String.format(Inz.s("ycflib.YCFLibArgumentException.FldMsg"),
 	// 			enFieldName,
 	// 			( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg	: "" ) ));
-	// 	this.localMessage = String.format(Inz.x("mcflib.MCFLibArgumentException.FldMsg"),
+	// 	this.localMessage = String.format(Inz.x("ycflib.YCFLibArgumentException.FldMsg"),
 	// 			(xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName,
 	// 			( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg	: "" ) );
 	// }
 
-	// public MCFLibUnrecognizedAttributeException(
+	// public YCFLibUnrecognizedAttributeException(
 	// 	String enFieldName,
 	// 	String xFieldName,
 	// 	String methName,
 	// 	String enMsg,
 	// 	String xMsg )
 	// {
-	// 	super( String.format(Inz.s("mcflib.MCFLibArgumentException.FldMsg"),
+	// 	super( String.format(Inz.s("ycflib.YCFLibArgumentException.FldMsg"),
 	// 			enFieldName + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "()"	: "" ),
 	// 			( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg : "" ) ));
-	// 	this.localMessage = String.format(Inz.x("mcflib.MCFLibArgumentException.FldMsg"),
+	// 	this.localMessage = String.format(Inz.x("ycflib.YCFLibArgumentException.FldMsg"),
 	// 			((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName)	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 	// 			( ( ( xMsg != null ) && ( xMsg.length() > 0 ) ) ? xMsg : (enMsg != null && enMsg.length() > 0) ? enMsg : "") );
 	// }
 
-	// public MCFLibUnrecognizedAttributeException(
+	// public YCFLibUnrecognizedAttributeException(
 	// 	String enFieldName,
 	// 	String xFieldName,
 	// 	String methName,
@@ -163,16 +163,16 @@ public class MCFLibUnrecognizedAttributeException extends NoSuchElementException
 	// 	String xMsg,
 	// 	Throwable th )
 	// {
-	// 	super( String.format(Inz.s("mcflib.MCFLibArgumentException.FldMsg"),
+	// 	super( String.format(Inz.s("ycflib.YCFLibArgumentException.FldMsg"),
 	// 			enFieldName + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "()"	: "" ),
 	// 			( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg : "" ) ),
 	// 			th );
-	// 	this.localMessage = String.format(Inz.x("mcflib.MCFLibArgumentException.FldMsg"),
+	// 	this.localMessage = String.format(Inz.x("ycflib.YCFLibArgumentException.FldMsg"),
 	// 			((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName)	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 	// 			( ( ( xMsg != null ) && ( xMsg.length() > 0 ) ) ? xMsg : (enMsg != null && enMsg.length() > 0) ? enMsg : "") );
 	// }
 
-	public MCFLibUnrecognizedAttributeException(
+	public YCFLibUnrecognizedAttributeException(
 		String enFieldName,
 		String xFieldName,
 		String methName,
@@ -181,19 +181,19 @@ public class MCFLibUnrecognizedAttributeException extends NoSuchElementException
 		String enMsg,
 		String xMsg )
 	{
-		super(String.format(Inz.s("mcflib.MCFLibArgumentException.FldArgMsg"),
+		super(String.format(Inz.s("ycflib.YCFLibArgumentException.FldArgMsg"),
 				enFieldName + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				argNo,
 				argName,
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg : "" ) ));
-		this.localMessage = String.format(Inz.x("mcflib.MCFLibArgumentException.FldArgMsg"),
+		this.localMessage = String.format(Inz.x("ycflib.YCFLibArgumentException.FldArgMsg"),
 				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName)	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				argNo,
 				argName,
 				( ( ( xMsg != null ) && ( xMsg.length() > 0 ) ) ? xMsg : (enMsg != null && enMsg.length() > 0) ? enMsg : "") );
 	}
 
-	public MCFLibUnrecognizedAttributeException(
+	public YCFLibUnrecognizedAttributeException(
 		String enFieldName,
 		String xFieldName,
 		String methName,
@@ -203,74 +203,74 @@ public class MCFLibUnrecognizedAttributeException extends NoSuchElementException
 		String xMsg,
 		Throwable th )
 	{
-		super( String.format(Inz.s("mcflib.MCFLibArgumentException.FldArgMsg"),
+		super( String.format(Inz.s("ycflib.YCFLibArgumentException.FldArgMsg"),
 				enFieldName + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				argNo,
 				argName,
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg : "" ) ),
 				th );
-		this.localMessage = String.format(Inz.x("mcflib.MCFLibArgumentException.FldArgMsg"),
+		this.localMessage = String.format(Inz.x("ycflib.YCFLibArgumentException.FldArgMsg"),
 				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName)	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				argNo,
 				argName,
 				( ( ( xMsg != null ) && ( xMsg.length() > 0 ) ) ? xMsg : (enMsg != null && enMsg.length() > 0) ? enMsg : "") );
 	}
 
-	public MCFLibUnrecognizedAttributeException()
+	public YCFLibUnrecognizedAttributeException()
 	{
-		super(String.format(Inz.s("mcflib.MCFLibUnrecognizedAttributeException.default"),
+		super(String.format(Inz.s("ycflib.YCFLibUnrecognizedAttributeException.default"),
 				"").trim());
-		this.localMessage = String.format(Inz.x("mcflib.MCFLibUnrecognizedAttributeException.default"),
+		this.localMessage = String.format(Inz.x("ycflib.YCFLibUnrecognizedAttributeException.default"),
 				"").trim();
 	}
 
-	public MCFLibUnrecognizedAttributeException(
+	public YCFLibUnrecognizedAttributeException(
 		Class<?> throwingClass,
 		String methName )
 	{
-		super(String.format(Inz.s("mcflib.MCFLibUnrecognizedAttributeException.default"),
+		super(String.format(Inz.s("ycflib.YCFLibUnrecognizedAttributeException.default"),
 				throwingClass.getName() + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" )));
-		this.localMessage = String.format(Inz.x("mcflib.MCFLibUnrecognizedAttributeException.default"),
+		this.localMessage = String.format(Inz.x("ycflib.YCFLibUnrecognizedAttributeException.default"),
 				throwingClass.getName() + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ));
 	}
 
-	public MCFLibUnrecognizedAttributeException(
+	public YCFLibUnrecognizedAttributeException(
 		Class<?> throwingClass,
 		String methName,
 		String locInfo,
 		String attrName )
 	{
 		super( (locInfo != null && !locInfo.isEmpty()) ?
-					((attrName != null && attrName.length() > 0) ? String.format(Inz.s("mcflib.MCFLibUnrecognizedAttributeException.locattr"),
+					((attrName != null && attrName.length() > 0) ? String.format(Inz.s("ycflib.YCFLibUnrecognizedAttributeException.locattr"),
 							throwingClass.getName() + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 							locInfo,
 							attrName)
-					: String.format(Inz.s("mcflib.MCFLibUnrecognizedAttributeException.loc"),
+					: String.format(Inz.s("ycflib.YCFLibUnrecognizedAttributeException.loc"),
 							throwingClass.getName() + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 							locInfo))
-				: ((attrName != null && attrName.length() > 0) ? String.format(Inz.s("mcflib.MCFLibUnrecognizedAttributeException.attr"),
+				: ((attrName != null && attrName.length() > 0) ? String.format(Inz.s("ycflib.YCFLibUnrecognizedAttributeException.attr"),
 							throwingClass.getName() + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 							attrName)
-					: String.format(Inz.s("mcflib.MCFLibUnrecognizedAttributeException.default"),
+					: String.format(Inz.s("ycflib.YCFLibUnrecognizedAttributeException.default"),
 							throwingClass.getName() + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ))));
 		this.localMessage = (locInfo != null && !locInfo.isEmpty()) ?
-					((attrName != null && attrName.length() > 0) ? String.format(Inz.x("mcflib.MCFLibUnrecognizedAttributeException.locattr"),
+					((attrName != null && attrName.length() > 0) ? String.format(Inz.x("ycflib.YCFLibUnrecognizedAttributeException.locattr"),
 							throwingClass.getName() + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 							locInfo,
 							attrName)
-					: String.format(Inz.x("mcflib.MCFLibUnrecognizedAttributeException.loc"),
+					: String.format(Inz.x("ycflib.YCFLibUnrecognizedAttributeException.loc"),
 							throwingClass.getName() + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 							locInfo))
-				: ((attrName != null && attrName.length() > 0) ? String.format(Inz.x("mcflib.MCFLibUnrecognizedAttributeException.attr"),
+				: ((attrName != null && attrName.length() > 0) ? String.format(Inz.x("ycflib.YCFLibUnrecognizedAttributeException.attr"),
 							throwingClass.getName() + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 							attrName)
-					: String.format(Inz.x("mcflib.MCFLibUnrecognizedAttributeException.default"),
+					: String.format(Inz.x("ycflib.YCFLibUnrecognizedAttributeException.default"),
 							throwingClass.getName() + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" )));
 		this.locInfo = locInfo;
 		this.attrName = attrName;
 	}
 
-	public MCFLibUnrecognizedAttributeException(
+	public YCFLibUnrecognizedAttributeException(
 		Class<?> throwingClass,
 		String methName,
 		String locInfo,
@@ -278,31 +278,31 @@ public class MCFLibUnrecognizedAttributeException extends NoSuchElementException
 		Throwable th )
 	{
 		super( (locInfo != null && !locInfo.isEmpty()) ?
-					((attrName != null && attrName.length() > 0) ? String.format(Inz.s("mcflib.MCFLibUnrecognizedAttributeException.locattr"),
+					((attrName != null && attrName.length() > 0) ? String.format(Inz.s("ycflib.YCFLibUnrecognizedAttributeException.locattr"),
 							throwingClass.getName() + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 							locInfo,
 							attrName)
-					: String.format(Inz.s("mcflib.MCFLibUnrecognizedAttributeException.loc"),
+					: String.format(Inz.s("ycflib.YCFLibUnrecognizedAttributeException.loc"),
 							throwingClass.getName() + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 							locInfo))
-				: ((attrName != null && attrName.length() > 0) ? String.format(Inz.s("mcflib.MCFLibUnrecognizedAttributeException.attr"),
+				: ((attrName != null && attrName.length() > 0) ? String.format(Inz.s("ycflib.YCFLibUnrecognizedAttributeException.attr"),
 							throwingClass.getName() + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 							attrName)
-					: String.format(Inz.s("mcflib.MCFLibUnrecognizedAttributeException.default"),
+					: String.format(Inz.s("ycflib.YCFLibUnrecognizedAttributeException.default"),
 							throwingClass.getName() + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ))),
 			th);
 		this.localMessage = (locInfo != null && !locInfo.isEmpty()) ?
-					((attrName != null && attrName.length() > 0) ? String.format(Inz.x("mcflib.MCFLibUnrecognizedAttributeException.locattr"),
+					((attrName != null && attrName.length() > 0) ? String.format(Inz.x("ycflib.YCFLibUnrecognizedAttributeException.locattr"),
 							throwingClass.getName() + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 							locInfo,
 							attrName)
-					: String.format(Inz.x("mcflib.MCFLibUnrecognizedAttributeException.loc"),
+					: String.format(Inz.x("ycflib.YCFLibUnrecognizedAttributeException.loc"),
 							throwingClass.getName() + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 							locInfo))
-				: ((attrName != null && attrName.length() > 0) ? String.format(Inz.x("mcflib.MCFLibUnrecognizedAttributeException.attr"),
+				: ((attrName != null && attrName.length() > 0) ? String.format(Inz.x("ycflib.YCFLibUnrecognizedAttributeException.attr"),
 							throwingClass.getName() + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 							attrName)
-					: String.format(Inz.x("mcflib.MCFLibUnrecognizedAttributeException.default"),
+					: String.format(Inz.x("ycflib.YCFLibUnrecognizedAttributeException.default"),
 							throwingClass.getName() + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" )));
 		this.locInfo = locInfo;
 		this.attrName = attrName;
@@ -310,18 +310,18 @@ public class MCFLibUnrecognizedAttributeException extends NoSuchElementException
 
 
 
-	public MCFLibUnrecognizedAttributeException(
+	public YCFLibUnrecognizedAttributeException(
 		String enFieldName,
 		String xFieldName,
 		String methName )
 	{
-		super(String.format(Inz.s("mcflib.MCFLibUnrecognizedAttributeException.default"),
+		super(String.format(Inz.s("ycflib.YCFLibUnrecognizedAttributeException.default"),
 				enFieldName + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" )));
-		this.localMessage = String.format(Inz.x("mcflib.MCFLibUnrecognizedAttributeException.default"),
+		this.localMessage = String.format(Inz.x("ycflib.YCFLibUnrecognizedAttributeException.default"),
 				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName) + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ));
 	}
 
-	public MCFLibUnrecognizedAttributeException(
+	public YCFLibUnrecognizedAttributeException(
 		String enFieldName,
 		String xFieldName,
 		String methName,
@@ -329,36 +329,36 @@ public class MCFLibUnrecognizedAttributeException extends NoSuchElementException
 		String attrName )
 	{
 		super( (locInfo != null && !locInfo.isEmpty()) ?
-					((attrName != null && attrName.length() > 0) ? String.format(Inz.s("mcflib.MCFLibUnrecognizedAttributeException.locattr"),
+					((attrName != null && attrName.length() > 0) ? String.format(Inz.s("ycflib.YCFLibUnrecognizedAttributeException.locattr"),
 							(enFieldName + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" )),
 							locInfo,
 							attrName)
-					: String.format(Inz.s("mcflib.MCFLibUnrecognizedAttributeException.loc"),
+					: String.format(Inz.s("ycflib.YCFLibUnrecognizedAttributeException.loc"),
 							(enFieldName + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" )),
 							locInfo))
-				: ((attrName != null && attrName.length() > 0) ? String.format(Inz.s("mcflib.MCFLibUnrecognizedAttributeException.attr"),
+				: ((attrName != null && attrName.length() > 0) ? String.format(Inz.s("ycflib.YCFLibUnrecognizedAttributeException.attr"),
 							(enFieldName + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" )),
 							attrName)
-					: String.format(Inz.s("mcflib.MCFLibUnrecognizedAttributeException.default"),
+					: String.format(Inz.s("ycflib.YCFLibUnrecognizedAttributeException.default"),
 							(enFieldName + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" )))));
 		this.localMessage = (locInfo != null && !locInfo.isEmpty()) ?
-					((attrName != null && attrName.length() > 0) ? String.format(Inz.x("mcflib.MCFLibUnrecognizedAttributeException.locattr"),
+					((attrName != null && attrName.length() > 0) ? String.format(Inz.x("ycflib.YCFLibUnrecognizedAttributeException.locattr"),
 							(((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName) + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" )),
 							locInfo,
 							attrName)
-					: String.format(Inz.x("mcflib.MCFLibUnrecognizedAttributeException.loc"),
+					: String.format(Inz.x("ycflib.YCFLibUnrecognizedAttributeException.loc"),
 							(((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName) + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" )),
 							locInfo))
-				: ((attrName != null && attrName.length() > 0) ? String.format(Inz.x("mcflib.MCFLibUnrecognizedAttributeException.attr"),
+				: ((attrName != null && attrName.length() > 0) ? String.format(Inz.x("ycflib.YCFLibUnrecognizedAttributeException.attr"),
 							((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName) + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 							attrName)
-					: String.format(Inz.x("mcflib.MCFLibUnrecognizedAttributeException.default"),
+					: String.format(Inz.x("ycflib.YCFLibUnrecognizedAttributeException.default"),
 							((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName) + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" )));
 		this.locInfo = locInfo;
 		this.attrName = attrName;
 	}
 
-	public MCFLibUnrecognizedAttributeException(
+	public YCFLibUnrecognizedAttributeException(
 		String enFieldName,
 		String xFieldName,
 		String methName,
@@ -367,31 +367,31 @@ public class MCFLibUnrecognizedAttributeException extends NoSuchElementException
 		Throwable th )
 	{
 		super( (locInfo != null && !locInfo.isEmpty()) ?
-					((attrName != null && attrName.length() > 0) ? String.format(Inz.s("mcflib.MCFLibUnrecognizedAttributeException.locattr"),
+					((attrName != null && attrName.length() > 0) ? String.format(Inz.s("ycflib.YCFLibUnrecognizedAttributeException.locattr"),
 							enFieldName + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 							locInfo,
 							attrName)
-					: String.format(Inz.s("mcflib.MCFLibUnrecognizedAttributeException.loc"),
+					: String.format(Inz.s("ycflib.YCFLibUnrecognizedAttributeException.loc"),
 							enFieldName + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 							locInfo))
-				: ((attrName != null && attrName.length() > 0) ? String.format(Inz.s("mcflib.MCFLibUnrecognizedAttributeException.attr"),
+				: ((attrName != null && attrName.length() > 0) ? String.format(Inz.s("ycflib.YCFLibUnrecognizedAttributeException.attr"),
 							enFieldName + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 							attrName)
-					: String.format(Inz.s("mcflib.MCFLibUnrecognizedAttributeException.default"),
+					: String.format(Inz.s("ycflib.YCFLibUnrecognizedAttributeException.default"),
 							enFieldName + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ))),
 			th);
 		this.localMessage = (locInfo != null && !locInfo.isEmpty()) ?
-					((attrName != null && attrName.length() > 0) ? String.format(Inz.x("mcflib.MCFLibUnrecognizedAttributeException.locattr"),
+					((attrName != null && attrName.length() > 0) ? String.format(Inz.x("ycflib.YCFLibUnrecognizedAttributeException.locattr"),
 							((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName) + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 							locInfo,
 							attrName)
-					: String.format(Inz.x("mcflib.MCFLibUnrecognizedAttributeException.loc"),
+					: String.format(Inz.x("ycflib.YCFLibUnrecognizedAttributeException.loc"),
 							((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName) + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 							locInfo))
-				: ((attrName != null && attrName.length() > 0) ? String.format(Inz.x("mcflib.MCFLibUnrecognizedAttributeException.attr"),
+				: ((attrName != null && attrName.length() > 0) ? String.format(Inz.x("ycflib.YCFLibUnrecognizedAttributeException.attr"),
 							((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName) + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 							attrName)
-					: String.format(Inz.x("mcflib.MCFLibUnrecognizedAttributeException.default"),
+					: String.format(Inz.x("ycflib.YCFLibUnrecognizedAttributeException.default"),
 							((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName) + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" )));
 		this.locInfo = locInfo;
 		this.attrName = attrName;

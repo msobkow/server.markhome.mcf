@@ -1,5 +1,5 @@
 /**
- *	server.markhome.mcf-core - Mark's Code Fractal Core Services
+ *	server.markhome.ycf-core - Mark's Code Fractal Core Services
  *
  *	Copyright 2026 Mark Stephen Sobkow (mark.sobkow@gmail.com)
  *
@@ -18,7 +18,7 @@
  *	SPDX-License-Identifier: Apache-2.0
 **/
 
-package server.markhome.mcf;
+package server.markhome.ycf;
 
 import org.teavm.jso.JSExport;
 import org.teavm.jso.JSObject;
@@ -28,7 +28,7 @@ import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.text.Format;
 
-public class MCFLibBigDecimalUtil {
+public class YCFLibBigDecimalUtil {
 
 	public final static int MAX_DIGITS = 31;
 	public final static int MAX_PRECISION = 30;
@@ -41,14 +41,14 @@ public class MCFLibBigDecimalUtil {
 		final String S_ProcName = "getNumberFormat";
 
 		if( ( enFieldName == null ) || ( enFieldName.length() <= 0 ) ) {
-			throw new MCFLibNullArgumentException( MCFLibBigDecimalUtil.class,
+			throw new YCFLibNullArgumentException( YCFLibBigDecimalUtil.class,
 				S_ProcName,
 				1,
 				"enFieldName" );
 		}
 
 		if( argDigits < 1 ) {
-			throw new MCFLibArgumentUnderflowException( enFieldName,
+			throw new YCFLibArgumentUnderflowException( enFieldName,
 				xFieldName,
 				S_ProcName,
 				3,
@@ -57,7 +57,7 @@ public class MCFLibBigDecimalUtil {
 				1 );
 		}
 		else if( argDigits > MAX_DIGITS ) {
-			throw new MCFLibArgumentOverflowException( enFieldName,
+			throw new YCFLibArgumentOverflowException( enFieldName,
 				xFieldName,
 				S_ProcName,
 				3,
@@ -67,7 +67,7 @@ public class MCFLibBigDecimalUtil {
 		}
 
 		if( argPrecis < 0 ) {
-			throw new MCFLibArgumentUnderflowException( enFieldName,
+			throw new YCFLibArgumentUnderflowException( enFieldName,
 				xFieldName,
 				S_ProcName,
 				4,
@@ -76,7 +76,7 @@ public class MCFLibBigDecimalUtil {
 				0 );
 		}
 		else if( argPrecis > MAX_PRECISION ) {
-			throw new MCFLibArgumentOverflowException( enFieldName,
+			throw new YCFLibArgumentOverflowException( enFieldName,
 				xFieldName,
 				S_ProcName,
 				4,
@@ -86,7 +86,7 @@ public class MCFLibBigDecimalUtil {
 		}
 
 		if( argPrecis >= argDigits ) {
-			throw new MCFLibArgumentOverflowException( enFieldName,
+			throw new YCFLibArgumentOverflowException( enFieldName,
 				xFieldName,
 				S_ProcName,
 				4,
@@ -117,14 +117,14 @@ public class MCFLibBigDecimalUtil {
 		final String S_ProcName = "getNumberFormat";
 
 		if( ( clazz == null ) ) {
-			throw new MCFLibNullArgumentException( MCFLibBigDecimalUtil.class,
+			throw new YCFLibNullArgumentException( YCFLibBigDecimalUtil.class,
 				S_ProcName,
 				1,
 				"clazz" );
 		}
 
 		if( argDigits < 1 ) {
-			throw new MCFLibArgumentUnderflowException( clazz,
+			throw new YCFLibArgumentUnderflowException( clazz,
 				S_ProcName,
 				3,
 				"argDigits",
@@ -132,7 +132,7 @@ public class MCFLibBigDecimalUtil {
 				1 );
 		}
 		else if( argDigits > MAX_DIGITS ) {
-			throw new MCFLibArgumentOverflowException( clazz,
+			throw new YCFLibArgumentOverflowException( clazz,
 				S_ProcName,
 				3,
 				"argDigits",
@@ -141,7 +141,7 @@ public class MCFLibBigDecimalUtil {
 		}
 
 		if( argPrecis < 0 ) {
-			throw new MCFLibArgumentUnderflowException( clazz,
+			throw new YCFLibArgumentUnderflowException( clazz,
 				S_ProcName,
 				4,
 				"argPrecis",
@@ -149,7 +149,7 @@ public class MCFLibBigDecimalUtil {
 				0 );
 		}
 		else if( argPrecis > MAX_PRECISION ) {
-			throw new MCFLibArgumentOverflowException( clazz,
+			throw new YCFLibArgumentOverflowException( clazz,
 				S_ProcName,
 				4,
 				"argPrecis",
@@ -158,7 +158,7 @@ public class MCFLibBigDecimalUtil {
 		}
 
 		if( argPrecis >= argDigits ) {
-			throw new MCFLibArgumentOverflowException( clazz,
+			throw new YCFLibArgumentOverflowException( clazz,
 				S_ProcName,
 				4,
 				"argPrecis",
@@ -188,14 +188,14 @@ public class MCFLibBigDecimalUtil {
 		final String S_ProcName = "getAbsoluteMinValue";
 
 		if( ( enFieldName == null ) || ( enFieldName.length() <= 0 ) ) {
-			throw new MCFLibNullArgumentException( MCFLibBigDecimalUtil.class,
+			throw new YCFLibNullArgumentException( YCFLibBigDecimalUtil.class,
 				S_ProcName,
 				1,
 				"enFieldName" );
 		}
 
 		if( argDigits < 1 ) {
-			throw new MCFLibArgumentUnderflowException( enFieldName,
+			throw new YCFLibArgumentUnderflowException( enFieldName,
 				xFieldName,
 				S_ProcName,
 				3,
@@ -204,7 +204,7 @@ public class MCFLibBigDecimalUtil {
 				1 );
 		}
 		else if( argDigits > MAX_DIGITS ) {
-			throw new MCFLibArgumentOverflowException( enFieldName,
+			throw new YCFLibArgumentOverflowException( enFieldName,
 				xFieldName,
 				S_ProcName,
 				3,
@@ -214,7 +214,7 @@ public class MCFLibBigDecimalUtil {
 		}
 
 		if( argPrecis < 0 ) {
-			throw new MCFLibArgumentUnderflowException( enFieldName,
+			throw new YCFLibArgumentUnderflowException( enFieldName,
 				xFieldName,
 				S_ProcName,
 				4,
@@ -223,7 +223,7 @@ public class MCFLibBigDecimalUtil {
 				0 );
 		}
 		else if( argPrecis > MAX_PRECISION ) {
-			throw new MCFLibArgumentOverflowException( enFieldName,
+			throw new YCFLibArgumentOverflowException( enFieldName,
 				xFieldName,
 				S_ProcName,
 				4,
@@ -233,7 +233,7 @@ public class MCFLibBigDecimalUtil {
 		}
 
 		if( argPrecis >= argDigits ) {
-			throw new MCFLibArgumentOverflowException( enFieldName,
+			throw new YCFLibArgumentOverflowException( enFieldName,
 				xFieldName,
 				S_ProcName,
 				4,
@@ -261,14 +261,14 @@ public class MCFLibBigDecimalUtil {
 		final String S_ProcName = "getAbsoluteMaxValue";
 
 		if( ( enFieldName == null ) || ( enFieldName.length() <= 0 ) ) {
-			throw new MCFLibNullArgumentException( MCFLibBigDecimalUtil.class,
+			throw new YCFLibNullArgumentException( YCFLibBigDecimalUtil.class,
 				S_ProcName,
 				1,
 				"enFieldName" );
 		}
 
 		if( argDigits < 1 ) {
-			throw new MCFLibArgumentUnderflowException( enFieldName,
+			throw new YCFLibArgumentUnderflowException( enFieldName,
 				xFieldName,
 				S_ProcName,
 				3,
@@ -277,7 +277,7 @@ public class MCFLibBigDecimalUtil {
 				1 );
 		}
 		else if( argDigits > MAX_DIGITS ) {
-			throw new MCFLibArgumentOverflowException( enFieldName,
+			throw new YCFLibArgumentOverflowException( enFieldName,
 				xFieldName,
 				S_ProcName,
 				3,
@@ -287,7 +287,7 @@ public class MCFLibBigDecimalUtil {
 		}
 
 		if( argPrecis < 0 ) {
-			throw new MCFLibArgumentUnderflowException( enFieldName,
+			throw new YCFLibArgumentUnderflowException( enFieldName,
 				xFieldName,
 				S_ProcName,
 				4,
@@ -296,7 +296,7 @@ public class MCFLibBigDecimalUtil {
 				0 );
 		}
 		else if( argPrecis > MAX_PRECISION ) {
-			throw new MCFLibArgumentOverflowException( enFieldName,
+			throw new YCFLibArgumentOverflowException( enFieldName,
 				xFieldName,
 				S_ProcName,
 				4,
@@ -306,7 +306,7 @@ public class MCFLibBigDecimalUtil {
 		}
 
 		if( argPrecis >= argDigits ) {
-			throw new MCFLibArgumentOverflowException( enFieldName,
+			throw new YCFLibArgumentOverflowException( enFieldName,
 				xFieldName,
 				S_ProcName,
 				4,
@@ -334,14 +334,14 @@ public class MCFLibBigDecimalUtil {
 		final String S_ProcName = "coerce";
 
 		if( ( enFieldName == null ) || ( enFieldName.length() <= 0 ) ) {
-			throw new MCFLibNullArgumentException( MCFLibBigDecimalUtil.class,
+			throw new YCFLibNullArgumentException( YCFLibBigDecimalUtil.class,
 				S_ProcName,
 				1,
 				"enFieldName" );
 		}
 
 		if( value == null ) {
-			throw new MCFLibNullArgumentException( enFieldName,
+			throw new YCFLibNullArgumentException( enFieldName,
 				xFieldName,
 				S_ProcName,
 				5,
@@ -349,7 +349,7 @@ public class MCFLibBigDecimalUtil {
 		}
 		
 		if( argDigits < 1 ) {
-			throw new MCFLibArgumentUnderflowException( enFieldName,
+			throw new YCFLibArgumentUnderflowException( enFieldName,
 				xFieldName,
 				S_ProcName,
 				3,
@@ -358,7 +358,7 @@ public class MCFLibBigDecimalUtil {
 				1 );
 		}
 		else if( argDigits > MAX_DIGITS ) {
-			throw new MCFLibArgumentOverflowException( enFieldName,
+			throw new YCFLibArgumentOverflowException( enFieldName,
 				xFieldName,
 				S_ProcName,
 				3,
@@ -368,7 +368,7 @@ public class MCFLibBigDecimalUtil {
 		}
 
 		if( argPrecis < 0 ) {
-			throw new MCFLibArgumentUnderflowException( enFieldName,
+			throw new YCFLibArgumentUnderflowException( enFieldName,
 				xFieldName,
 				S_ProcName,
 				4,
@@ -377,7 +377,7 @@ public class MCFLibBigDecimalUtil {
 				0 );
 		}
 		else if( argPrecis > MAX_PRECISION ) {
-			throw new MCFLibArgumentOverflowException( enFieldName,
+			throw new YCFLibArgumentOverflowException( enFieldName,
 				xFieldName,
 				S_ProcName,
 				4,
@@ -387,7 +387,7 @@ public class MCFLibBigDecimalUtil {
 		}
 
 		if( argPrecis >= argDigits ) {
-			throw new MCFLibArgumentOverflowException( enFieldName,
+			throw new YCFLibArgumentOverflowException( enFieldName,
 				xFieldName,
 				S_ProcName,
 				4,
@@ -398,7 +398,7 @@ public class MCFLibBigDecimalUtil {
 
 		BigDecimal minValue = getAbsoluteMinValue( enFieldName, xFieldName, argDigits, argPrecis );
 		if( value.compareTo( minValue ) < 0 ) {
-			throw new MCFLibArgumentUnderflowException( enFieldName,
+			throw new YCFLibArgumentUnderflowException( enFieldName,
 				xFieldName,
 				S_ProcName,
 				5,
@@ -409,7 +409,7 @@ public class MCFLibBigDecimalUtil {
 		
 		BigDecimal maxValue = getAbsoluteMaxValue( enFieldName, xFieldName, argDigits, argPrecis );
 		if( value.compareTo( maxValue ) > 0 ) {
-			throw new MCFLibArgumentOverflowException( enFieldName,
+			throw new YCFLibArgumentOverflowException( enFieldName,
 				xFieldName,
 				S_ProcName,
 				5,
@@ -429,7 +429,7 @@ public class MCFLibBigDecimalUtil {
 		final String S_ProcName = "parse";
 
 		if( ( enFieldName == null ) || ( enFieldName.length() <= 0 ) ) {
-			throw new MCFLibNullArgumentException( MCFLibBigDecimalUtil.class,
+			throw new YCFLibNullArgumentException( YCFLibBigDecimalUtil.class,
 				S_ProcName,
 				1,
 				"enFieldName" );
@@ -440,7 +440,7 @@ public class MCFLibBigDecimalUtil {
 		}
 		
 		if( argDigits < 1 ) {
-			throw new MCFLibArgumentUnderflowException( enFieldName,
+			throw new YCFLibArgumentUnderflowException( enFieldName,
 				xFieldName,
 				S_ProcName,
 				3,
@@ -449,7 +449,7 @@ public class MCFLibBigDecimalUtil {
 				1 );
 		}
 		else if( argDigits > MAX_DIGITS ) {
-			throw new MCFLibArgumentOverflowException( enFieldName,
+			throw new YCFLibArgumentOverflowException( enFieldName,
 				xFieldName,
 				S_ProcName,
 				3,
@@ -459,7 +459,7 @@ public class MCFLibBigDecimalUtil {
 		}
 
 		if( argPrecis < 0 ) {
-			throw new MCFLibArgumentUnderflowException( enFieldName,
+			throw new YCFLibArgumentUnderflowException( enFieldName,
 				xFieldName,
 				S_ProcName,
 				4,
@@ -468,7 +468,7 @@ public class MCFLibBigDecimalUtil {
 				0 );
 		}
 		else if( argPrecis > MAX_PRECISION ) {
-			throw new MCFLibArgumentOverflowException( enFieldName,
+			throw new YCFLibArgumentOverflowException( enFieldName,
 				xFieldName,
 				S_ProcName,
 				4,
@@ -478,7 +478,7 @@ public class MCFLibBigDecimalUtil {
 		}
 
 		if( argPrecis >= argDigits ) {
-			throw new MCFLibArgumentOverflowException( enFieldName,
+			throw new YCFLibArgumentOverflowException( enFieldName,
 				xFieldName,
 				S_ProcName,
 				4,
@@ -492,7 +492,7 @@ public class MCFLibBigDecimalUtil {
 		BigDecimal maxValue = getAbsoluteMaxValue( enFieldName, xFieldName, argDigits, argPrecis );
 
 		if( rawValue.compareTo( minValue ) < 0 ) {
-			throw new MCFLibArgumentUnderflowException( enFieldName,
+			throw new YCFLibArgumentUnderflowException( enFieldName,
 				xFieldName,
 				S_ProcName,
 				5,
@@ -502,7 +502,7 @@ public class MCFLibBigDecimalUtil {
 		}
 		
 		if( rawValue.compareTo( maxValue ) > 0 ) {
-			throw new MCFLibArgumentOverflowException( enFieldName,
+			throw new YCFLibArgumentOverflowException( enFieldName,
 				xFieldName,
 				S_ProcName,
 				5,
@@ -522,14 +522,14 @@ public class MCFLibBigDecimalUtil {
 		final String S_ProcName = "format";
 
 		if( ( enFieldName == null ) || ( enFieldName.length() <= 0 ) ) {
-			throw new MCFLibNullArgumentException( MCFLibBigDecimalUtil.class,
+			throw new YCFLibNullArgumentException( YCFLibBigDecimalUtil.class,
 				S_ProcName,
 				1,
 				"enFieldName" );
 		}
 
 		if( value == null ) {
-			throw new MCFLibNullArgumentException( enFieldName,
+			throw new YCFLibNullArgumentException( enFieldName,
 				xFieldName,
 				S_ProcName,
 				5,
@@ -537,7 +537,7 @@ public class MCFLibBigDecimalUtil {
 		}
 		
 		if( argDigits < 1 ) {
-			throw new MCFLibArgumentUnderflowException( enFieldName,
+			throw new YCFLibArgumentUnderflowException( enFieldName,
 				xFieldName,
 				S_ProcName,
 				3,
@@ -546,7 +546,7 @@ public class MCFLibBigDecimalUtil {
 				1 );
 		}
 		else if( argDigits > MAX_DIGITS ) {
-			throw new MCFLibArgumentOverflowException( enFieldName,
+			throw new YCFLibArgumentOverflowException( enFieldName,
 				xFieldName,
 				S_ProcName,
 				3,
@@ -556,7 +556,7 @@ public class MCFLibBigDecimalUtil {
 		}
 
 		if( argPrecis < 0 ) {
-			throw new MCFLibArgumentUnderflowException( enFieldName,
+			throw new YCFLibArgumentUnderflowException( enFieldName,
 				xFieldName,
 				S_ProcName,
 				4,
@@ -565,7 +565,7 @@ public class MCFLibBigDecimalUtil {
 				0 );
 		}
 		else if( argPrecis > MAX_PRECISION ) {
-			throw new MCFLibArgumentOverflowException( enFieldName,
+			throw new YCFLibArgumentOverflowException( enFieldName,
 				xFieldName,
 				S_ProcName,
 				4,
@@ -575,7 +575,7 @@ public class MCFLibBigDecimalUtil {
 		}
 
 		if( argPrecis >= argDigits ) {
-			throw new MCFLibArgumentOverflowException( enFieldName,
+			throw new YCFLibArgumentOverflowException( enFieldName,
 				xFieldName,
 				S_ProcName,
 				4,
@@ -586,7 +586,7 @@ public class MCFLibBigDecimalUtil {
 
 		BigDecimal minValue = getAbsoluteMinValue( enFieldName, xFieldName, argDigits, argPrecis );
 		if( value.compareTo( minValue ) < 0 ) {
-			throw new MCFLibArgumentUnderflowException( enFieldName,
+			throw new YCFLibArgumentUnderflowException( enFieldName,
 				xFieldName,
 				S_ProcName,
 				5,
@@ -597,7 +597,7 @@ public class MCFLibBigDecimalUtil {
 		
 		BigDecimal maxValue = getAbsoluteMaxValue( enFieldName, xFieldName, argDigits, argPrecis );
 		if( value.compareTo( maxValue ) > 0 ) {
-			throw new MCFLibArgumentOverflowException( enFieldName,
+			throw new YCFLibArgumentOverflowException( enFieldName,
 				xFieldName,
 				S_ProcName,
 				5,

@@ -1,5 +1,5 @@
 /**
- *	server.markhome.mcf-core - Mark's Code Fractal Core Services
+ *	server.markhome.ycf-core - Mark's Code Fractal Core Services
  *
  *	Copyright 2026 Mark Stephen Sobkow (mark.sobkow@gmail.com)
  *
@@ -18,29 +18,30 @@
  *	SPDX-License-Identifier: Apache-2.0
 **/
 
-package server.markhome.mcf;
+package server.markhome.ycf;
+
 
 import org.teavm.jso.JSExport;
 import org.teavm.jso.JSObject;
 import org.teavm.jso.JSProperty;
 
-import server.markhome.mcf.Inz;
+import server.markhome.ycf.Inz;
 
 /**
- * MCFLibInvalidArgumentException is thrown when an argument is invalid for some reason, usually specified by nationalized cause phrases.
+ * YCFLibInvalidArgumentException is thrown when an argument is invalid for some reason, usually specified by nationalized cause phrases.
  */
-public class MCFLibInvalidArgumentException extends MCFLibArgumentException {
+public class YCFLibInvalidArgumentException extends YCFLibArgumentException {
 
 	// Inherited constructor patterns
 
-	public MCFLibInvalidArgumentException(
+	public YCFLibInvalidArgumentException(
 		String enMsg,
 		String xMsg )
 	{
 		super(enMsg, xMsg);
 	}
 
-	public MCFLibInvalidArgumentException(
+	public YCFLibInvalidArgumentException(
 		String enMsg,
 		String xMsg,
 		Throwable th)
@@ -48,7 +49,7 @@ public class MCFLibInvalidArgumentException extends MCFLibArgumentException {
 		super(enMsg, xMsg, th);
 	}
 
-	public MCFLibInvalidArgumentException(
+	public YCFLibInvalidArgumentException(
 		Class<?> throwingClass,
 		String methName,
 		String enMsg,
@@ -57,7 +58,7 @@ public class MCFLibInvalidArgumentException extends MCFLibArgumentException {
 		super(throwingClass, methName, enMsg, xMsg);
 	}
 
-	public MCFLibInvalidArgumentException(
+	public YCFLibInvalidArgumentException(
 		Class<?> throwingClass,
 		String methName,
 		String enMsg,
@@ -67,7 +68,7 @@ public class MCFLibInvalidArgumentException extends MCFLibArgumentException {
 		super(throwingClass, methName, enMsg, xMsg, th);
 	}
 
-	public MCFLibInvalidArgumentException(
+	public YCFLibInvalidArgumentException(
 	 	Class<?> throwingClass,
 	 	String methName,
 	 	int argNo,
@@ -78,7 +79,7 @@ public class MCFLibInvalidArgumentException extends MCFLibArgumentException {
 	 	super(throwingClass, methName, argNo, argName, enMsg, xMsg);
 	}
 
-	public MCFLibInvalidArgumentException(
+	public YCFLibInvalidArgumentException(
 	 	Class<?> throwingClass,
 	 	String methName,
 	 	int argNo,
@@ -90,7 +91,7 @@ public class MCFLibInvalidArgumentException extends MCFLibArgumentException {
 	 	super(throwingClass, methName, argNo, argName, enMsg, xMsg, th);
 	}
 
-	// public MCFLibInvalidArgumentException(
+	// public YCFLibInvalidArgumentException(
 	// 	String enFieldName,
 	// 	String xFieldName,
 	// 	String enMsg,
@@ -99,7 +100,7 @@ public class MCFLibInvalidArgumentException extends MCFLibArgumentException {
 	// 	super(enFieldName, xFieldName, enMsg, xMsg);
 	// }
 
-	public MCFLibInvalidArgumentException(
+	public YCFLibInvalidArgumentException(
 		String enFieldName,
 		String xFieldName,
 		String methName,
@@ -109,7 +110,7 @@ public class MCFLibInvalidArgumentException extends MCFLibArgumentException {
 		super(enFieldName, xFieldName, methName, enMsg, xMsg);
 	}
 
-	public MCFLibInvalidArgumentException(
+	public YCFLibInvalidArgumentException(
 		String enFieldName,
 		String xFieldName,
 		String methName,
@@ -120,7 +121,7 @@ public class MCFLibInvalidArgumentException extends MCFLibArgumentException {
 		super(enFieldName, xFieldName, methName, enMsg, xMsg, th);
 	}
 
-	public MCFLibInvalidArgumentException(
+	public YCFLibInvalidArgumentException(
 	 	String enFieldName,
 		String xFieldName,
 	 	String methName,
@@ -132,7 +133,7 @@ public class MCFLibInvalidArgumentException extends MCFLibArgumentException {
 	 	super(enFieldName, xFieldName, methName, argNo, argName, enMsg, xMsg);
 	}
 
-	public MCFLibInvalidArgumentException(
+	public YCFLibInvalidArgumentException(
 	 	String enFieldName,
 		String xFieldName,
 	 	String methName,
@@ -147,104 +148,104 @@ public class MCFLibInvalidArgumentException extends MCFLibArgumentException {
 
 	// Custom/most-often-used constructors
 
-	public MCFLibInvalidArgumentException(
+	public YCFLibInvalidArgumentException(
 		Class<?> throwingClass,
 		String methName)
 	{
-		super(String.format(Inz.s("mcflib.MCFLibInvalidArgumentException.TcmnMsg"),
+		super(String.format(Inz.s("ycflib.YCFLibInvalidArgumentException.TcmnMsg"),
 				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" )),
-			String.format(Inz.x("mcflib.MCFLibInvalidArgumentException.TcmnMsg"),
+			String.format(Inz.x("ycflib.YCFLibInvalidArgumentException.TcmnMsg"),
 				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" )));
 	}
 
-	public MCFLibInvalidArgumentException(
+	public YCFLibInvalidArgumentException(
 		Class<?> throwingClass,
 		String methName,
 		Throwable th)
 	{
-		super(String.format(Inz.s("mcflib.MCFLibInvalidArgumentException.TcmnMsg"),
+		super(String.format(Inz.s("ycflib.YCFLibInvalidArgumentException.TcmnMsg"),
 				throwingClass.getName()	+ ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "()" : "" )),
-			String.format(Inz.x("mcflib.MCFLibInvalidArgumentException.TcmnMsg"),
+			String.format(Inz.x("ycflib.YCFLibInvalidArgumentException.TcmnMsg"),
 				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" )),
 			th);
 	}
 
-	public MCFLibInvalidArgumentException(
+	public YCFLibInvalidArgumentException(
 		Class<?> throwingClass,
 		String methName,
 		int argNo,
 		String argName)
 	{
-		super(String.format(Inz.s("mcflib.MCFLibInvalidArgumentException.TcmnArgMsg"),
+		super(String.format(Inz.s("ycflib.YCFLibInvalidArgumentException.TcmnArgMsg"),
 				throwingClass.getName()	+ ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "()" : "" ),
 				argNo,
 				argName),
-			String.format(Inz.x("mcflib.MCFLibInvalidArgumentException.TcmnArgMsg"),
+			String.format(Inz.x("ycflib.YCFLibInvalidArgumentException.TcmnArgMsg"),
 				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				argNo,
 				argName));
 	}
 
-	public MCFLibInvalidArgumentException(
+	public YCFLibInvalidArgumentException(
 		Class<?> throwingClass,
 		String methName,
 		int argNo,
 		String argName,
 		Throwable th )
 	{
-		super(String.format(Inz.s("mcflib.MCFLibInvalidArgumentException.TcmnArgMsg"),
+		super(String.format(Inz.s("ycflib.YCFLibInvalidArgumentException.TcmnArgMsg"),
 				throwingClass.getName()	+ ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "()" : "" ),
 				argNo,
 				argName),
-			String.format(Inz.x("mcflib.MCFLibInvalidArgumentException.TcmnArgMsg"),
+			String.format(Inz.x("ycflib.YCFLibInvalidArgumentException.TcmnArgMsg"),
 				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				argNo,
 				argName),
 			th);
 	}
 
-	public MCFLibInvalidArgumentException(
+	public YCFLibInvalidArgumentException(
 		String enFieldName,
 		String xFieldName,
 		String methName)
 	{
-		super(String.format(Inz.s("mcflib.MCFLibInvalidArgumentException.FldMsg"),
+		super(String.format(Inz.s("ycflib.YCFLibInvalidArgumentException.FldMsg"),
 				enFieldName + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "()" : "" )),
-			String.format(Inz.x("mcflib.MCFLibInvalidArgumentException.FldMsg"),
+			String.format(Inz.x("ycflib.YCFLibInvalidArgumentException.FldMsg"),
 				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName) + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" )));
 	}
 
-	public MCFLibInvalidArgumentException(
+	public YCFLibInvalidArgumentException(
 		String enFieldName,
 		String xFieldName,
 		String methName,
 		Throwable th)
 	{
-		super(String.format(Inz.s("mcflib.MCFLibInvalidArgumentException.FldMsg"),
+		super(String.format(Inz.s("ycflib.YCFLibInvalidArgumentException.FldMsg"),
 				enFieldName + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "()" : "" )),
-			String.format(Inz.x("mcflib.MCFLibInvalidArgumentException.FldMsg"),
+			String.format(Inz.x("ycflib.YCFLibInvalidArgumentException.FldMsg"),
 				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName) + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" )),
 			th);
 	}
 
-	public MCFLibInvalidArgumentException(
+	public YCFLibInvalidArgumentException(
 		String enFieldName,
 		String xFieldName,
 		String methName,
 		int argNo,
 		String argName )
 	{
-		super(String.format(Inz.s("mcflib.MCFLibInvalidArgumentException.FldArgMsg"),
+		super(String.format(Inz.s("ycflib.YCFLibInvalidArgumentException.FldArgMsg"),
 				enFieldName + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "()" : "" ),
 				argNo,
 				argName),
-			String.format(Inz.x("mcflib.MCFLibInvalidArgumentException.FldArgMsg"),
+			String.format(Inz.x("ycflib.YCFLibInvalidArgumentException.FldArgMsg"),
 				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName) + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				argNo,
 				argName));
 	}
 
-	public MCFLibInvalidArgumentException(
+	public YCFLibInvalidArgumentException(
 		String enFieldName,
 		String xFieldName,
 		String methName,
@@ -252,11 +253,11 @@ public class MCFLibInvalidArgumentException extends MCFLibArgumentException {
 		String argName,
 		Throwable th )
 	{
-		super(String.format(Inz.s("mcflib.MCFLibInvalidArgumentException.FldArgMsg"),
+		super(String.format(Inz.s("ycflib.YCFLibInvalidArgumentException.FldArgMsg"),
 				enFieldName + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "()" : "" ),
 				argNo,
 				argName),
-			String.format(Inz.x("mcflib.MCFLibInvalidArgumentException.FldArgMsg"),
+			String.format(Inz.x("ycflib.YCFLibInvalidArgumentException.FldArgMsg"),
 				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName) + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				argNo,
 				argName),

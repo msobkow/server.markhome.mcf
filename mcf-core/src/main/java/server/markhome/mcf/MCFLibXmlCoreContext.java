@@ -1,5 +1,5 @@
 /**
- *	server.markhome.mcf-core - Mark's Code Fractal Core Services
+ *	server.markhome.ycf-core - Mark's Code Fractal Core Services
  *
  *	Copyright 2026 Mark Stephen Sobkow (mark.sobkow@gmail.com)
  *
@@ -18,7 +18,7 @@
  *	SPDX-License-Identifier: Apache-2.0
 **/
 
-package server.markhome.mcf;
+package server.markhome.ycf;
 
 import org.teavm.jso.JSExport;
 import org.teavm.jso.JSObject;
@@ -27,14 +27,14 @@ import org.teavm.jso.JSProperty;
 import java.util.HashMap;
 import java.util.Map;
 
-import server.markhome.mcf.IMCFLibMessageLog;
+import server.markhome.ycf.IYCFLibMessageLog;
 
 /**
  *	An XML Core Context is a processing stack entry pushed
  *	at the start of each element or document and popped
  *	at the end of their processing.
  */
-public class MCFLibXmlCoreContext {
+public class YCFLibXmlCoreContext {
 
 	/**
 	 *	Context stack chain.
@@ -42,7 +42,7 @@ public class MCFLibXmlCoreContext {
 	 *	This had been handled via Java collections, but that
 	 *	made the access of stack top - 1 inefficient.
 	 */
-	private MCFLibXmlCoreContext prevContext = null;
+	private YCFLibXmlCoreContext prevContext = null;
 
 	/**
 	 *	The StringBuilder to receive character event data.
@@ -53,19 +53,19 @@ public class MCFLibXmlCoreContext {
 	 *	The XmlCoreElementHandler selected to handle the
 	 *	beginElement and endElement events.
 	 */
-	private MCFLibXmlCoreElementHandler elementHandler = null;
+	private YCFLibXmlCoreElementHandler elementHandler = null;
 
 	/**
 	 *	The Log4J log to receive parser processing messages.
 	 *	<p>
 	 *	Programmer debug and trace messages should go to <tt>debuglog</tt>.
 	 */
-	private IMCFLibMessageLog log = null;
+	private IYCFLibMessageLog log = null;
 
 	/**
 	 *	The XML Core Parser which owns this processing Context.
 	 */
-	private MCFLibXmlCoreParser parser = null;
+	private YCFLibXmlCoreParser parser = null;
 
 	/**
 	 *	The QName of the element being processed.
@@ -88,10 +88,10 @@ public class MCFLibXmlCoreContext {
 	 *	@param	qName	The QName of the element about to be processed.
 	 *	@param	handler	The XmlCoreElementHandler which will be used for processing.
 	 */
-	public MCFLibXmlCoreContext(
-		MCFLibXmlCoreContext src,
+	public YCFLibXmlCoreContext(
+		YCFLibXmlCoreContext src,
 		String qName,
-		MCFLibXmlCoreElementHandler handler )
+		YCFLibXmlCoreElementHandler handler )
 	{
 		assert src != null : "src (arg 1) is null";
 
@@ -111,10 +111,10 @@ public class MCFLibXmlCoreContext {
 	 *	@param	jlog	Log4J log to use, if null, use parser's log.
 	 *	@param	handler	The XmlCoreElementHandler which will be processing the doc root.
 	 */
-	public MCFLibXmlCoreContext(
-		MCFLibXmlCoreParser coreParser,
-		IMCFLibMessageLog jlog,
-		MCFLibXmlCoreElementHandler elementHandler )
+	public YCFLibXmlCoreContext(
+		YCFLibXmlCoreParser coreParser,
+		IYCFLibMessageLog jlog,
+		YCFLibXmlCoreElementHandler elementHandler )
 	{
 		assert coreParser != null : "coreParser (arg 1) is null";
 		assert elementHandler != null : "elementHandler (arg 3) is null";
@@ -141,7 +141,7 @@ public class MCFLibXmlCoreContext {
 	 *	@return	The previous context or null if this is
 	 *			the bottom of the stack.
 	 */
-	public MCFLibXmlCoreContext getPrevContext() {
+	public YCFLibXmlCoreContext getPrevContext() {
 		return( prevContext );
 	}
 
@@ -190,7 +190,7 @@ public class MCFLibXmlCoreContext {
 	 *
 	 *	@return	The XML Core Parser which owns this element handler.
 	 */
-	public MCFLibXmlCoreParser getParser() {
+	public YCFLibXmlCoreParser getParser() {
 		return( parser );
 	}
 
@@ -199,7 +199,7 @@ public class MCFLibXmlCoreContext {
 	 *
 	 *	@param	coreParser	The parser which owns this instance.
 	 */
-	protected void setParser( MCFLibXmlCoreParser coreParser ) {
+	protected void setParser( YCFLibXmlCoreParser coreParser ) {
 		assert coreParser != null : "coreParser (arg 1) is null";
 		parser = coreParser;
 	}
@@ -211,7 +211,7 @@ public class MCFLibXmlCoreContext {
 	 *
 	 *	@return	Log4J log
 	 */
-	public IMCFLibMessageLog getLog() {
+	public IYCFLibMessageLog getLog() {
 		if( log != null ) {
 			return( log );
 		}
@@ -226,7 +226,7 @@ public class MCFLibXmlCoreContext {
 	 *
 	 *	@param	jlog	The log to use for runtime processing messages
 	 */
-	public void setLog( IMCFLibMessageLog jlog ) {
+	public void setLog( IYCFLibMessageLog jlog ) {
 		log = jlog;
 	}
 
@@ -255,7 +255,7 @@ public class MCFLibXmlCoreContext {
 	 *
 	 *	@return	The element handler selected for processing the current element.
 	 */
-	public MCFLibXmlCoreElementHandler getElementHandler() {
+	public YCFLibXmlCoreElementHandler getElementHandler() {
 		return( elementHandler );
 	}
 
@@ -264,7 +264,7 @@ public class MCFLibXmlCoreContext {
 	 *
 	 *	@param	handler	The XmlCoreElementHandler selected to process the element.
 	 */
-	protected void setElementHandler( MCFLibXmlCoreElementHandler handler ) {
+	protected void setElementHandler( YCFLibXmlCoreElementHandler handler ) {
 		assert handler != null : "handler (arg 1) is null";
 		elementHandler = handler;
 	}
@@ -275,7 +275,7 @@ public class MCFLibXmlCoreContext {
 	 *	@param	qName	The QName of the element or document being processed.
 	 *	@param	handler	The XmlCoreElementHandler selected to process the element.
 	 */
-	public void setQNameElementHandler( String qName, MCFLibXmlCoreElementHandler handler ) {
+	public void setQNameElementHandler( String qName, YCFLibXmlCoreElementHandler handler ) {
 		assert elementQName == null : "Element context QName has already been set";
 		assert qName != null && qName.length() > 0 : "qName (arg 1) is null or empty";
 		assert handler != null : "handler (arg 2) is null";

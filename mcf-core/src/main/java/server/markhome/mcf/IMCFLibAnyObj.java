@@ -1,5 +1,5 @@
 /**
- *	server.markhome.mcf-core - Mark's Code Fractal Core Services
+ *	server.markhome.ycf-core - Mark's Code Fractal Core Services
  *
  *	Copyright 2026 Mark Stephen Sobkow (mark.sobkow@gmail.com)
  *
@@ -18,19 +18,22 @@
  *	SPDX-License-Identifier: Apache-2.0
 **/
 
-package server.markhome.mcf;
+package server.markhome.ycf;
 
 import org.teavm.jso.JSExport;
 import org.teavm.jso.JSObject;
 import org.teavm.jso.JSProperty;
 
-public interface IMCFLibAnyObj extends JSObject {
+import java.util.*;
+
+
+public interface IYCFLibAnyObj extends JSObject {
 	public String getGenDefName();
-	public IMCFLibAnyObj getObjScope();
+	public IYCFLibAnyObj getObjScope();
 	public String getObjName();
 	public String getObjQualifiedName();
 	public String getObjFullName();
-	public IMCFLibAnyObj getNamedObject( Class<?> qualifyingClass, String objName );
-	public IMCFLibAnyObj getNamedObject( String objName );
-	public IMCFLibAnyObj getObjQualifier( Class<?> qualifyingClass );
+	public IYCFLibAnyObj getNamedObject( Class<?> qualifyingClass, String objName );
+	public IYCFLibAnyObj getNamedObject( String objName );
+	public IYCFLibAnyObj getObjQualifier( Class<?> qualifyingClass );
 }

@@ -1,5 +1,5 @@
 /**
- *	server.markhome.mcf-core - Mark's Code Fractal Core Services
+ *	server.markhome.ycf-core - Mark's Code Fractal Core Services
  *
  *	Copyright 2026 Mark Stephen Sobkow (mark.sobkow@gmail.com)
  *
@@ -18,7 +18,7 @@
  *	SPDX-License-Identifier: Apache-2.0
 **/
 
-package server.markhome.mcf;
+package server.markhome.ycf;
 
 import org.teavm.jso.JSExport;
 import org.teavm.jso.JSObject;
@@ -31,22 +31,22 @@ import java.util.Arrays;
 import java.util.Comparator;
 
 /**
- * Base class for MCFLib database key hashes.
+ * Base class for YCFLib database key hashes.
  *
  * This foundation class provides essential support for n-digit hashes, usually based on the sizes of commmon hash algorithms like SHA-256, SHA-512, etc. It
  * includes methods for byte manipulation, comparison, and static initialization of hash buffers. It is designed to be extended by specific hash
- * implementations, such as MCFLibKeyHash256 or MCFLibKeyHash512. It also provides a consistent way to handle the underlying byte arrays, ensuring that all
+ * implementations, such as YCFLibKeyHash256 or YCFLibKeyHash512. It also provides a consistent way to handle the underlying byte arrays, ensuring that all
  * derived classes can be compared and manipulated uniformly. One issue is that the base class may provide the "gateway" for synchronization of the hash buffer
  * attributes, so the static class data defined here is used as the thread synchronization coordinator, rather than attributes of the specialization classes. To
  * be fair, whether is even an issue really depends on what the JDK and JVM fine-print processing rules say about such specific cases.
  *
  * @author msobkow
  */
-public abstract class MCFLibKeyHashBase<T extends MCFLibKeyHashBase<T>> implements Comparator<T>, Comparable<T> {
+public abstract class YCFLibKeyHashBase<T extends YCFLibKeyHashBase<T>> implements Comparator<T>, Comparable<T> {
 
 	static final String hexDigits = "0123456789abcdef";
 	static final int UUID6_INDEX = 0;
-	static final int UUID6_LENGTH = MCFLibUuid6.TOTAL_BYTES;
+	static final int UUID6_LENGTH = YCFLibUuid6.TOTAL_BYTES;
 	static final int COUNTER_INDEX = 28;
 	static final int COUNTER_LENGTH = 8;
 	static final int CLUSTERCODE_INDEX = 36;
@@ -76,14 +76,14 @@ public abstract class MCFLibKeyHashBase<T extends MCFLibKeyHashBase<T>> implemen
 		}
 		try {
 			hashBuffer = new ByteBuffer[CONCURRENT_DIGESTS];
-			MCFLibHostAddr.initAddrHeader();
+			YCFLibHostAddr.initAddrHeader();
 			long pid = ProcessHandle.current().pid();
 			long tid = Thread.currentThread().getId();
 			for (int i = 0; i < CONCURRENT_DIGESTS; i++) {
-				MCFLibUuid6 u = MCFLibUuid6.generateUuid6();
+				YCFLibUuid6 u = YCFLibUuid6.generateUuid6();
 				hashBuffer[i] = ByteBuffer.allocate(TOTAL_BYTES);
 				byte[] uub = u.getBytes();
-				for (int j = 0; j < MCFLibUuid6.TOTAL_BYTES; j++) {
+				for (int j = 0; j < YCFLibUuid6.TOTAL_BYTES; j++) {
 					hashBuffer[i].put(uub[j]);
 				}
 				hashBuffer[i].putLong(COUNTER_INDEX, counter);
@@ -248,17 +248,17 @@ public abstract class MCFLibKeyHashBase<T extends MCFLibKeyHashBase<T>> implemen
 
 	protected abstract MessageDigest[] getM();
 
-	public MCFLibKeyHashBase() {
+	public YCFLibKeyHashBase() {
 	}
 
 	/**
 	 * This is the hex code of the underlying ID. THIS IS NOT A HASHING FUNCTION.
 	 */
-	public MCFLibKeyHashBase(String hexId) {
+	public YCFLibKeyHashBase(String hexId) {
 		setBytes(bytesFromHex(hexId));
 	}
 
-	public MCFLibKeyHashBase(byte[] anId) {
+	public YCFLibKeyHashBase(byte[] anId) {
 		if (anId == null) {
 			// allowed
 		} else if (anId.length > getHashLength()) {
@@ -270,7 +270,7 @@ public abstract class MCFLibKeyHashBase<T extends MCFLibKeyHashBase<T>> implemen
 		}
 	}
 
-	public MCFLibKeyHashBase(T otherKey) {
+	public YCFLibKeyHashBase(T otherKey) {
 		if (otherKey == null) {
 			setBytes(new byte[getHashLength()]);
 			return;
@@ -280,7 +280,7 @@ public abstract class MCFLibKeyHashBase<T extends MCFLibKeyHashBase<T>> implemen
 		setBytes(_newId);
 	}
 
-	public MCFLibKeyHashBase(int notUsed) {
+	public YCFLibKeyHashBase(int notUsed) {
 		initStatics();
 		int thid = (int) (Math.abs(rotator++) % CONCURRENT_DIGESTS);
 		synchronized (hashBuffer[thid]) {

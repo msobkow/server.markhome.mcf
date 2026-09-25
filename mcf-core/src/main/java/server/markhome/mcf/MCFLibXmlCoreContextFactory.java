@@ -1,5 +1,5 @@
 /**
- *	server.markhome.mcf-core - Mark's Code Fractal Core Services
+ *	server.markhome.ycf-core - Mark's Code Fractal Core Services
  *
  *	Copyright 2026 Mark Stephen Sobkow (mark.sobkow@gmail.com)
  *
@@ -18,7 +18,7 @@
  *	SPDX-License-Identifier: Apache-2.0
 **/
 
-package server.markhome.mcf;
+package server.markhome.ycf;
 
 import org.teavm.jso.JSExport;
 import org.teavm.jso.JSObject;
@@ -26,20 +26,20 @@ import org.teavm.jso.JSProperty;
 
 import java.util.*;
 
-import server.markhome.mcf.IMCFLibMessageLog;
+import server.markhome.ycf.IYCFLibMessageLog;
 
 /**
  *	An XML Core Context Factory instantiates new instances
  *	derived from XmlCoreContext. 
  */
-public interface MCFLibXmlCoreContextFactory {
+public interface YCFLibXmlCoreContextFactory {
 
 	/**
 	 *	Get the application processing logger.
 	 *
 	 *	@return	The application processing Log4J Logger.
 	 */
-	public IMCFLibMessageLog getLog();
+	public IYCFLibMessageLog getLog();
 
 	/**
 	 *	Copy an XML Core Context.
@@ -48,21 +48,21 @@ public interface MCFLibXmlCoreContextFactory {
 	 *	@param	qName	The QName of the element about to be processed.
 	 *	@param	handler	The XmlCoreElementHandler which will be used for processing.
 	 */
-	public MCFLibXmlCoreContext newXmlCoreContext(
-		MCFLibXmlCoreContext src,
+	public YCFLibXmlCoreContext newXmlCoreContext(
+		YCFLibXmlCoreContext src,
 		String qName,
-		MCFLibXmlCoreElementHandler handler );
+		YCFLibXmlCoreElementHandler handler );
 
 	/**
 	 *	Construct a "root" XML Core Context instance.
 	 *
 	 *	@param	coreParser	The parser which owns this instance.
-	 *	@param	log	IMCFLibMessageLog to use, if null, use parser's logger.
+	 *	@param	log	IYCFLibMessageLog to use, if null, use parser's logger.
 	 *	@param	handler	The XmlCoreElementHandler which will be processing the doc root.
 	 */
-	public MCFLibXmlCoreContext newXmlCoreContext(
-		MCFLibXmlCoreParser coreParser,
-		IMCFLibMessageLog jLogger,
-		MCFLibXmlCoreElementHandler elementHandler );
+	public YCFLibXmlCoreContext newXmlCoreContext(
+		YCFLibXmlCoreParser coreParser,
+		IYCFLibMessageLog jLogger,
+		YCFLibXmlCoreElementHandler elementHandler );
 
 }

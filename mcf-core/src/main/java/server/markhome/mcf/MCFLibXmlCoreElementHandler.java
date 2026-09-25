@@ -1,5 +1,5 @@
 /**
- *	server.markhome.mcf-core - Mark's Code Fractal Core Services
+ *	server.markhome.ycf-core - Mark's Code Fractal Core Services
  *
  *	Copyright 2026 Mark Stephen Sobkow (mark.sobkow@gmail.com)
  *
@@ -18,7 +18,7 @@
  *	SPDX-License-Identifier: Apache-2.0
 **/
 
-package server.markhome.mcf;
+package server.markhome.ycf;
 
 import org.teavm.jso.JSExport;
 import org.teavm.jso.JSObject;
@@ -26,7 +26,7 @@ import org.teavm.jso.JSProperty;
 
 import java.util.*;
 
-import server.markhome.mcf.IMCFLibMessageLog;
+import server.markhome.ycf.IYCFLibMessageLog;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 
@@ -37,17 +37,17 @@ import org.xml.sax.SAXException;
  *	Each element parse context has a map by QName, resolving to
  *	XmlCoreElementParser instances.
  */
-public abstract class MCFLibXmlCoreElementHandler {
+public abstract class YCFLibXmlCoreElementHandler {
 
 	/**
 	 *	The XML Core Parser which owns this Element Handler.
 	 */
-	private MCFLibXmlCoreParser parser = null;
+	private YCFLibXmlCoreParser parser = null;
 
 	/**
 	 *	The Map by QName for resolving sub-element handlers.
 	 */
-	private Map<String,MCFLibXmlCoreElementHandler> elementHandler = new HashMap<String,MCFLibXmlCoreElementHandler>();
+	private Map<String,YCFLibXmlCoreElementHandler> elementHandler = new HashMap<String,YCFLibXmlCoreElementHandler>();
 
 //	Constructors
 
@@ -60,7 +60,7 @@ public abstract class MCFLibXmlCoreElementHandler {
 	 *
 	 *	@param	coreParser	The parser which owns this instance.
 	 */
-	public MCFLibXmlCoreElementHandler( MCFLibXmlCoreParser coreParser ) {
+	public YCFLibXmlCoreElementHandler( YCFLibXmlCoreParser coreParser ) {
 		assert coreParser != null : "coreParser (arg 1) is null";
 		// Deprecated by Log4J 2 debugLogger.setLevel( Level.INFO );
 		setParser( coreParser );
@@ -73,9 +73,9 @@ public abstract class MCFLibXmlCoreElementHandler {
 	 *
 	 *	@return	Logger
 	 */
-	public IMCFLibMessageLog getLog() {
-		MCFLibXmlCoreContext context = ( parser != null ) ? parser.getCurContext() : null;
-		IMCFLibMessageLog retval = ( context != null ) ? context.getLog() : null;
+	public IYCFLibMessageLog getLog() {
+		YCFLibXmlCoreContext context = ( parser != null ) ? parser.getCurContext() : null;
+		IYCFLibMessageLog retval = ( context != null ) ? context.getLog() : null;
 		if( retval == null ) {
 			if( parser != null ) {
 				retval = parser.getLog();
@@ -91,7 +91,7 @@ public abstract class MCFLibXmlCoreElementHandler {
 	 *
 	 *	@return	The XML Core Parser which owns this element handler.
 	 */
-	public MCFLibXmlCoreParser getParser() {
+	public YCFLibXmlCoreParser getParser() {
 		return( parser );
 	}
 
@@ -100,7 +100,7 @@ public abstract class MCFLibXmlCoreElementHandler {
 	 *
 	 *	@param	coreParser	The parser which owns this instance.
 	 */
-	protected void setParser( MCFLibXmlCoreParser coreParser ) {
+	protected void setParser( YCFLibXmlCoreParser coreParser ) {
 		assert coreParser != null : "coreParser (arg 1) is null";
 		parser = coreParser;
 	}
@@ -114,7 +114,7 @@ public abstract class MCFLibXmlCoreElementHandler {
 	 *	@param	qName	The QName to map to the handler
 	 *	@param	handler	The XmlCoreElementHandler to process the element events.
 	 */
-	public void addElementHandler( String qName, MCFLibXmlCoreElementHandler handler ) {
+	public void addElementHandler( String qName, YCFLibXmlCoreElementHandler handler ) {
 		assert qName != null && qName.length() > 0 : "qName (arg 1) is null or empty";
 		assert handler != null : "handler (arg 2) is null";
 		assert ! elementHandler.containsKey( qName ) : "Duplicate qName=\"" + qName + "\" in elementHandler map";
@@ -127,8 +127,8 @@ public abstract class MCFLibXmlCoreElementHandler {
 	 *	@param	qName	The QName used to locate the handler.
 	 *	@return	The XmlCoreElementHandler mapped to the specified name or null.
 	 */
-	public MCFLibXmlCoreElementHandler getElementHandler( String qName ) {
-		MCFLibXmlCoreElementHandler retval = (MCFLibXmlCoreElementHandler)elementHandler.get( qName );
+	public YCFLibXmlCoreElementHandler getElementHandler( String qName ) {
+		YCFLibXmlCoreElementHandler retval = (YCFLibXmlCoreElementHandler)elementHandler.get( qName );
 		return( retval );
 	}
 

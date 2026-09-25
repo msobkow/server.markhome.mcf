@@ -1,5 +1,5 @@
 /**
- *	server.markhome.mcf-core - Mark's Code Fractal Core Services
+ *	server.markhome.ycf-core - Mark's Code Fractal Core Services
  *
  *	Copyright 2026 Mark Stephen Sobkow (mark.sobkow@gmail.com)
  *
@@ -18,7 +18,7 @@
  *	SPDX-License-Identifier: Apache-2.0
 **/
 
-package server.markhome.mcf;
+package server.markhome.ycf;
 
 import org.teavm.jso.JSExport;
 import org.teavm.jso.JSObject;
@@ -26,24 +26,20 @@ import org.teavm.jso.JSProperty;
 
 import java.util.*;
 
-
-import java.util.ArrayList;
-import java.util.Iterator;
-
-public class MCFLibFiringList
-extends ArrayList<MCFLibFireOnInstanceOf>
+public class YCFLibFiringList
+extends ArrayList<YCFLibFireOnInstanceOf>
 {
-    public MCFLibFiringList() {
+    public YCFLibFiringList() {
     	super();
     }
 
-    public void fireOnInstanceOf( IMCFLibAnyObj obj ) {
+    public void fireOnInstanceOf( IYCFLibAnyObj obj ) {
     	if( obj == null ) {
     		return;
     	}
     	if( ! isEmpty() ) {
-	    	MCFLibFireOnInstanceOf curToFire;
-	    	Iterator<MCFLibFireOnInstanceOf> iterToFire = iterator();
+	    	YCFLibFireOnInstanceOf curToFire;
+	    	Iterator<YCFLibFireOnInstanceOf> iterToFire = iterator();
 	    	while( iterToFire.hasNext() ) {
 	    		curToFire = iterToFire.next();
 	    		if( curToFire != null ) {

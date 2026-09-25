@@ -1,5 +1,5 @@
 /**
- *	server.markhome.mcf-core - Mark's Code Fractal Core Services
+ *	server.markhome.ycf-core - Mark's Code Fractal Core Services
  *
  *	Copyright 2026 Mark Stephen Sobkow (mark.sobkow@gmail.com)
  *
@@ -18,7 +18,7 @@
  *	SPDX-License-Identifier: Apache-2.0
 **/
 
-package server.markhome.mcf;
+package server.markhome.ycf;
 
 import org.teavm.jso.JSExport;
 import org.teavm.jso.JSObject;
@@ -33,8 +33,8 @@ import java.time.format.DateTimeFormatter;
 
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.text.StringEscapeUtils;
-import server.markhome.mmcf.v3_1.mcflib.MCFLibArgumentUnderflowException;
-import server.markhome.mmcf.v3_1.mcflib.MCFLibNullArgumentException;
+import server.markhome.ycf.v3_1.ycflib.MCFLibArgumentUnderflowException;
+import server.markhome.ycf.v3_1.ycflib.MCFLibNullArgumentException;
 
 /**
  * MCFLibXmlUtil provides a wide variety of XML field parsers and formatters, which are also used for JSON data streaming. The XML String methods need to be redone to use a proper XML mapping library/package.

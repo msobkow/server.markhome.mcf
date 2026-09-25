@@ -1,5 +1,5 @@
 /**
- *	server.markhome.mcf-core - Mark's Code Fractal Core Services
+ *	server.markhome.ycf-core - Mark's Code Fractal Core Services
  *
  *	Copyright 2026 Mark Stephen Sobkow (mark.sobkow@gmail.com)
  *
@@ -18,7 +18,7 @@
  *	SPDX-License-Identifier: Apache-2.0
 **/
 
-package server.markhome.mcf;
+package server.markhome.ycf;
 
 import org.teavm.jso.JSExport;
 import org.teavm.jso.JSObject;
@@ -38,13 +38,13 @@ import java.util.Set;
  *
  * @author msobkow
  */
-public interface IMCFLibKeyHash384 extends JSObject {
+public interface IYCFLibKeyHash384 extends JSObject {
 	static final public int HASH_LENGTH = 48; // hash size in bytes
 	static final public int HASH_LENGTH_STRING = HASH_LENGTH * 2; // SHA-1 hash size as a string
 	static final String HASH_ALGO = "SHA-384";
 	static final String hexDigits = "0123456789abcdef";
 	static final int UUID6_INDEX = 0;
-	static final int UUID6_LENGTH = MCFLibUuid6.TOTAL_BYTES;
+	static final int UUID6_LENGTH = YCFLibUuid6.TOTAL_BYTES;
 	static final int COUNTER_INDEX = 28;
 	static final int COUNTER_LENGTH = 8;
 	static final int CLUSTERCODE_INDEX = 36;
@@ -116,9 +116,9 @@ public interface IMCFLibKeyHash384 extends JSObject {
 		}
 	}
 
-	public int compareTo(IMCFLibKeyHash384 o);
+	public int compareTo(IYCFLibKeyHash384 o);
 
-	public default int compare(IMCFLibKeyHash384 h1, IMCFLibKeyHash384 h2) {
+	public default int compare(IYCFLibKeyHash384 h1, IYCFLibKeyHash384 h2) {
 		if (h1 == null) {
 			if (h2 == null) {
 				return 0;
@@ -162,7 +162,7 @@ public interface IMCFLibKeyHash384 extends JSObject {
 		return 0;
 	}
 
-	public IMCFLibKeyHash384 deepClone();
+	public IYCFLibKeyHash384 deepClone();
 
   public default int getHashLength() {
     return HASH_LENGTH;
@@ -195,7 +195,7 @@ public interface IMCFLibKeyHash384 extends JSObject {
     return b;
   }
 
-  public static boolean isNull(IMCFLibKeyHash384 anId) {
+  public static boolean isNull(IYCFLibKeyHash384 anId) {
     return anId == null || anId.isNull();
   }
 

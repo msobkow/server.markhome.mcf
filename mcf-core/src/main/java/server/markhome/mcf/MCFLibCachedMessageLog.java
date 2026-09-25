@@ -1,5 +1,5 @@
 /**
- *	server.markhome.mcf-core - Mark's Code Fractal Core Services
+ *	server.markhome.ycf-core - Mark's Code Fractal Core Services
  *
  *	Copyright 2026 Mark Stephen Sobkow (mark.sobkow@gmail.com)
  *
@@ -18,7 +18,7 @@
  *	SPDX-License-Identifier: Apache-2.0
 **/
 
-package server.markhome.mcf;
+package server.markhome.ycf;
 
 import org.teavm.jso.JSExport;
 import org.teavm.jso.JSObject;
@@ -26,8 +26,8 @@ import org.teavm.jso.JSProperty;
 
 import java.io.*;
 
-public class MCFLibCachedMessageLog
-implements IMCFLibMessageLog {
+public class YCFLibCachedMessageLog
+implements IYCFLibMessageLog {
 
 	private StringBuilder cacheContents = new StringBuilder();
 	private int		   	indent = 0;
@@ -35,7 +35,7 @@ implements IMCFLibMessageLog {
 	/**
 	 *	Default constructor.
 	 */
-	public MCFLibCachedMessageLog() {
+	public YCFLibCachedMessageLog() {
 		indent = 0;
 	}
 

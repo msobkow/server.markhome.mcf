@@ -1,5 +1,5 @@
 /**
- *	server.markhome.mcf-core - Mark's Code Fractal Core Services
+ *	server.markhome.ycf-core - Mark's Code Fractal Core Services
  *
  *	Copyright 2026 Mark Stephen Sobkow (mark.sobkow@gmail.com)
  *
@@ -18,23 +18,23 @@
  *	SPDX-License-Identifier: Apache-2.0
 **/
 
-package server.markhome.mcf;
+package server.markhome.ycf;
 
 import org.teavm.jso.JSExport;
 import org.teavm.jso.JSObject;
 import org.teavm.jso.JSProperty;
 
-import server.markhome.mcf.Inz;
+import server.markhome.ycf.Inz;
 
 /**
- * MCFLibDataNotFoundException is thrown when data cannot be found that should exist
+ * YCFLibDataNotFoundException is thrown when data cannot be found that should exist
  */
-public class MCFLibDataNotFoundException extends IllegalStateException {
+public class YCFLibDataNotFoundException extends IllegalStateException {
 
 	protected String localMessage = null;
 	protected Object indexKey = null;
 
-	public MCFLibDataNotFoundException(
+	public YCFLibDataNotFoundException(
 		String enMsg,
 		String xMsg )
 	{
@@ -42,7 +42,7 @@ public class MCFLibDataNotFoundException extends IllegalStateException {
 		this.localMessage = xMsg;
 	}
 
-	public MCFLibDataNotFoundException(
+	public YCFLibDataNotFoundException(
 		String enMsg,
 		String xMsg,
 		Throwable th)
@@ -51,37 +51,37 @@ public class MCFLibDataNotFoundException extends IllegalStateException {
 			this.localMessage = xMsg;
 	}
 
-	public MCFLibDataNotFoundException(
+	public YCFLibDataNotFoundException(
 		Class<?> throwingClass,
 		String methName,
 		String enMsg,
 		String xMsg )
 	{
-		super( String.format(Inz.s("mcflib.MCFLibArgumentException.TcmnMsg"),
+		super( String.format(Inz.s("ycflib.YCFLibArgumentException.TcmnMsg"),
 				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg : "" )));
-		this.localMessage = String.format(Inz.x("mcflib.MCFLibArgumentException.TcmnMsg"),
+		this.localMessage = String.format(Inz.x("ycflib.YCFLibArgumentException.TcmnMsg"),
 				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				( ( ( xMsg != null ) && ( xMsg.length() > 0 ) ) ? xMsg : (enMsg != null && enMsg.length() > 0) ? enMsg : ""));
 	}
 
-	public MCFLibDataNotFoundException(
+	public YCFLibDataNotFoundException(
 		Class<?> throwingClass,
 		String methName,
 		String enMsg,
 		String xMsg,
 		Throwable th )
 	{
-		super( String.format(Inz.s("mcflib.MCFLibArgumentException.TcmnMsg"),
+		super( String.format(Inz.s("ycflib.YCFLibArgumentException.TcmnMsg"),
 				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg : "" )),
 				th );
-		this.localMessage = String.format(Inz.x("mcflib.MCFLibArgumentException.TcmnMsg"),
+		this.localMessage = String.format(Inz.x("ycflib.YCFLibArgumentException.TcmnMsg"),
 				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				( ( ( xMsg != null ) && ( xMsg.length() > 0 ) ) ? xMsg : (enMsg != null && enMsg.length() > 0) ? enMsg : ""));
 	}
 
-	public MCFLibDataNotFoundException(
+	public YCFLibDataNotFoundException(
 		Class<?> throwingClass,
 		String methName,
 		int argNo,
@@ -89,19 +89,19 @@ public class MCFLibDataNotFoundException extends IllegalStateException {
 		String enMsg,
 		String xMsg )
 	{
-		super( String.format(Inz.s("mcflib.MCFLibArgumentException.TcmnArgMsg"),
+		super( String.format(Inz.s("ycflib.YCFLibArgumentException.TcmnArgMsg"),
 				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				argNo,
 				argName,
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg	: "" ) ));
-		this.localMessage = String.format(Inz.x("mcflib.MCFLibArgumentException.TcmnArgMsg"),
+		this.localMessage = String.format(Inz.x("ycflib.YCFLibArgumentException.TcmnArgMsg"),
 				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				argNo,
 				argName,
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg	: "" ) );
 	}
 
-	public MCFLibDataNotFoundException(
+	public YCFLibDataNotFoundException(
 		Class<?> throwingClass,
 		String methName,
 		int argNo,
@@ -110,49 +110,49 @@ public class MCFLibDataNotFoundException extends IllegalStateException {
 		String xMsg,
 		Throwable th )
 	{
-		super( String.format(Inz.s("mcflib.MCFLibArgumentException.TcmnArgMsg"),
+		super( String.format(Inz.s("ycflib.YCFLibArgumentException.TcmnArgMsg"),
 				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				argNo,
 				argName,
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg	: "" ) ),
 				th );
-		this.localMessage = String.format(Inz.x("mcflib.MCFLibArgumentException.TcmnArgMsg"),
+		this.localMessage = String.format(Inz.x("ycflib.YCFLibArgumentException.TcmnArgMsg"),
 				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				argNo,
 				argName,
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg	: "" ) );
 	}
 
-	public MCFLibDataNotFoundException(
+	public YCFLibDataNotFoundException(
 		String enFieldName,
 		String xFieldName,
 		String enMsg,
 		String xMsg )
 	{
-		super( String.format(Inz.s("mcflib.MCFLibArgumentException.FldMsg"),
+		super( String.format(Inz.s("ycflib.YCFLibArgumentException.FldMsg"),
 				enFieldName,
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg	: "" ) ));
-		this.localMessage = String.format(Inz.x("mcflib.MCFLibArgumentException.FldMsg"),
+		this.localMessage = String.format(Inz.x("ycflib.YCFLibArgumentException.FldMsg"),
 				(xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName,
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg	: "" ) );
 	}
 
-	public MCFLibDataNotFoundException(
+	public YCFLibDataNotFoundException(
 		String enFieldName,
 		String xFieldName,
 		String methName,
 		String enMsg,
 		String xMsg )
 	{
-		super( String.format(Inz.s("mcflib.MCFLibArgumentException.FldMsg"),
+		super( String.format(Inz.s("ycflib.YCFLibArgumentException.FldMsg"),
 				enFieldName + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "()"	: "" ),
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg : "" ) ));
-		this.localMessage = String.format(Inz.x("mcflib.MCFLibArgumentException.FldMsg"),
+		this.localMessage = String.format(Inz.x("ycflib.YCFLibArgumentException.FldMsg"),
 				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName)	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				( ( ( xMsg != null ) && ( xMsg.length() > 0 ) ) ? xMsg : (enMsg != null && enMsg.length() > 0) ? enMsg : "") );
 	}
 
-	public MCFLibDataNotFoundException(
+	public YCFLibDataNotFoundException(
 		String enFieldName,
 		String xFieldName,
 		String methName,
@@ -160,16 +160,16 @@ public class MCFLibDataNotFoundException extends IllegalStateException {
 		String xMsg,
 		Throwable th )
 	{
-		super( String.format(Inz.s("mcflib.MCFLibArgumentException.FldMsg"),
+		super( String.format(Inz.s("ycflib.YCFLibArgumentException.FldMsg"),
 				enFieldName + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "()"	: "" ),
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg : "" ) ),
 				th );
-		this.localMessage = String.format(Inz.x("mcflib.MCFLibArgumentException.FldMsg"),
+		this.localMessage = String.format(Inz.x("ycflib.YCFLibArgumentException.FldMsg"),
 				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName)	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				( ( ( xMsg != null ) && ( xMsg.length() > 0 ) ) ? xMsg : (enMsg != null && enMsg.length() > 0) ? enMsg : "") );
 	}
 
-	public MCFLibDataNotFoundException(
+	public YCFLibDataNotFoundException(
 		String enFieldName,
 		String xFieldName,
 		String methName,
@@ -178,19 +178,19 @@ public class MCFLibDataNotFoundException extends IllegalStateException {
 		String enMsg,
 		String xMsg )
 	{
-		super(String.format(Inz.s("mcflib.MCFLibArgumentException.FldArgMsg"),
+		super(String.format(Inz.s("ycflib.YCFLibArgumentException.FldArgMsg"),
 				enFieldName + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				argNo,
 				argName,
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg : "" ) ));
-		this.localMessage = String.format(Inz.x("mcflib.MCFLibArgumentException.FldArgMsg"),
+		this.localMessage = String.format(Inz.x("ycflib.YCFLibArgumentException.FldArgMsg"),
 				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName)	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				argNo,
 				argName,
 				( ( ( xMsg != null ) && ( xMsg.length() > 0 ) ) ? xMsg : (enMsg != null && enMsg.length() > 0) ? enMsg : "") );
 	}
 
-	public MCFLibDataNotFoundException(
+	public YCFLibDataNotFoundException(
 		String enFieldName,
 		String xFieldName,
 		String methName,
@@ -200,72 +200,72 @@ public class MCFLibDataNotFoundException extends IllegalStateException {
 		String xMsg,
 		Throwable th )
 	{
-		super( String.format(Inz.s("mcflib.MCFLibArgumentException.FldArgMsg"),
+		super( String.format(Inz.s("ycflib.YCFLibArgumentException.FldArgMsg"),
 				enFieldName + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				argNo,
 				argName,
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg : "" ) ),
 				th );
-		this.localMessage = String.format(Inz.x("mcflib.MCFLibArgumentException.FldArgMsg"),
+		this.localMessage = String.format(Inz.x("ycflib.YCFLibArgumentException.FldArgMsg"),
 				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName)	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				argNo,
 				argName,
 				( ( ( xMsg != null ) && ( xMsg.length() > 0 ) ) ? xMsg : (enMsg != null && enMsg.length() > 0) ? enMsg : "") );
 	}
 
-	public MCFLibDataNotFoundException()
+	public YCFLibDataNotFoundException()
 	{
-		super(String.format(Inz.s("mcflib.MCFLibDataNotFound.default"), "" ).trim());
-		this.localMessage = String.format(Inz.x("mcflib.MCFLibDataNotFound.default"), "" ).trim();
+		super(String.format(Inz.s("ycflib.YCFLibDataNotFound.default"), "" ).trim());
+		this.localMessage = String.format(Inz.x("ycflib.YCFLibDataNotFound.default"), "" ).trim();
 	}
 
-	public MCFLibDataNotFoundException(
+	public YCFLibDataNotFoundException(
 		Class<?> throwingClass,
 		String methName )
 	{
-		super(String.format(Inz.s("mcflib.MCFLibDataNotFound.default"),
+		super(String.format(Inz.s("ycflib.YCFLibDataNotFound.default"),
 				throwingClass.getName() + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" )).trim());
-		this.localMessage = String.format(Inz.x("mcflib.MCFLibDataNotFound.default"),
+		this.localMessage = String.format(Inz.x("ycflib.YCFLibDataNotFound.default"),
 				throwingClass.getName() + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" )).trim();
 	}
 
-	public MCFLibDataNotFoundException(
+	public YCFLibDataNotFoundException(
 		Class<?> throwingClass,
 		String methName,
 		Throwable th )
 	{
-		super(String.format(Inz.s("mcflib.MCFLibDataNotFound.default"),
+		super(String.format(Inz.s("ycflib.YCFLibDataNotFound.default"),
 				throwingClass.getName() + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" )).trim(),
 				th );
-		this.localMessage = String.format(Inz.x("mcflib.MCFLibDataNotFound.default"),
+		this.localMessage = String.format(Inz.x("ycflib.YCFLibDataNotFound.default"),
 				throwingClass.getName() + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" )).trim();
 	}
 
-	public MCFLibDataNotFoundException(
+	public YCFLibDataNotFoundException(
 		Class<?> throwingClass,
 		String methName,
 		String enArgIndexName,
 		String xArgIndexName,
 		Object argKey )
 	{
-		super( (argKey != null) ? String.format(Inz.s("mcflib.MCFLibDataNotFound.indexkey"),//%1$s Detected violation of unique index %2$s for key %3$s
+		super( (argKey != null) ? String.format(Inz.s("ycflib.YCFLibDataNotFound.indexkey"),//%1$s Detected violation of unique index %2$s for key %3$s
 					throwingClass.getName() + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 					enArgIndexName,
 					argKey.toString())
-				: String.format(Inz.s("mcflib.MCFLibDataNotFound.index"),//%1$s Detected violation of unique index %2$s
+				: String.format(Inz.s("ycflib.YCFLibDataNotFound.index"),//%1$s Detected violation of unique index %2$s
 					throwingClass.getName() + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 					enArgIndexName));
-		this.localMessage = (argKey != null) ? String.format(Inz.x("mcflib.MCFLibDataNotFound.indexkey"),//%1$s Detected violation of unique index %2$s for key %3$s
+		this.localMessage = (argKey != null) ? String.format(Inz.x("ycflib.YCFLibDataNotFound.indexkey"),//%1$s Detected violation of unique index %2$s for key %3$s
 					throwingClass.getName() + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 					(xArgIndexName != null && !xArgIndexName.isEmpty()) ? xArgIndexName : enArgIndexName,
 					argKey.toString())
-				: String.format(Inz.x("mcflib.MCFLibDataNotFound.index"),//%1$s Detected violation of unique index %2$s
+				: String.format(Inz.x("ycflib.YCFLibDataNotFound.index"),//%1$s Detected violation of unique index %2$s
 					throwingClass.getName() + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 					(xArgIndexName != null && !xArgIndexName.isEmpty()) ? xArgIndexName : enArgIndexName);
 		this.indexKey = argKey;
 	}
 
-	public MCFLibDataNotFoundException(
+	public YCFLibDataNotFoundException(
 		Class<?> throwingClass,
 		String methName,
 		String enArgIndexName,
@@ -273,18 +273,18 @@ public class MCFLibDataNotFoundException extends IllegalStateException {
 		Object argKey,
 		Throwable th )
 	{
-		super( (argKey != null) ? String.format(Inz.s("mcflib.MCFLibDataNotFound.indexkey"),//%1$s Detected violation of unique index %2$s for key %3$s
+		super( (argKey != null) ? String.format(Inz.s("ycflib.YCFLibDataNotFound.indexkey"),//%1$s Detected violation of unique index %2$s for key %3$s
 					throwingClass.getName() + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 					enArgIndexName,
 					argKey.toString())
-				: String.format(Inz.s("mcflib.MCFLibDataNotFound.index"),//%1$s Detected violation of unique index %2$s
+				: String.format(Inz.s("ycflib.YCFLibDataNotFound.index"),//%1$s Detected violation of unique index %2$s
 					throwingClass.getName() + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 					enArgIndexName));
-		this.localMessage = (argKey != null) ? String.format(Inz.x("mcflib.MCFLibDataNotFound.indexkey"),//%1$s Detected violation of unique index %2$s for key %3$s
+		this.localMessage = (argKey != null) ? String.format(Inz.x("ycflib.YCFLibDataNotFound.indexkey"),//%1$s Detected violation of unique index %2$s for key %3$s
 					throwingClass.getName() + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 					(xArgIndexName != null && !xArgIndexName.isEmpty()) ? xArgIndexName : enArgIndexName,
 					argKey.toString())
-				: String.format(Inz.x("mcflib.MCFLibDataNotFound.index"),//%1$s Detected violation of unique index %2$s
+				: String.format(Inz.x("ycflib.YCFLibDataNotFound.index"),//%1$s Detected violation of unique index %2$s
 					throwingClass.getName() + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 					(xArgIndexName != null && !xArgIndexName.isEmpty()) ? xArgIndexName : enArgIndexName);
 		this.indexKey = argKey;

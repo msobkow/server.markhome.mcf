@@ -1,5 +1,5 @@
 /**
- *	server.markhome.mcf-core - Mark's Code Fractal Core Services
+ *	server.markhome.ycf-core - Mark's Code Fractal Core Services
  *
  *	Copyright 2026 Mark Stephen Sobkow (mark.sobkow@gmail.com)
  *
@@ -18,7 +18,7 @@
  *	SPDX-License-Identifier: Apache-2.0
 **/
 
-package server.markhome.mcf;
+package server.markhome.ycf;
 
 import org.teavm.jso.JSExport;
 import org.teavm.jso.JSObject;
@@ -26,11 +26,11 @@ import org.teavm.jso.JSProperty;
 
 import java.util.*;
 
-import server.markhome.mmcf.v3_1.mcflib.Inz;
-import server.markhome.mmcf.v3_1.mcflib.MCFLibXmlUtil;
+import server.markhome.mycf.v3_1.ycflib.Inz;
+import server.markhome.mycf.v3_1.ycflib.YCFLibXmlUtil;
 
 /**
- * The MCFRelationType defines the common relationship types found in a generic business ERD model.
+ * The YCFRelationType defines the common relationship types found in a generic business ERD model.
  * 
  * Note that Container-Component, Parent-Child, and Master-Detail are NOT identical relationships.
  * For example, there can only be one Container relationship from a Component to it's document Container,
@@ -44,7 +44,7 @@ import server.markhome.mmcf.v3_1.mcflib.MCFLibXmlUtil;
  * formats, so the JSON data stream looks like it is comprised of XML data which has just had it's structural
  * details changed.
  * 
- * @see MCFLibXmlUtil
+ * @see YCFLibXmlUtil
  * 
  * The Lookup relationship is special; it implies that the target does not allow deletion and has to be pre-loaded and cached by the client and middleware.
  * You can add new lookups, but you can't delete them. It also doesn't block deletion of the object which defines the relationship.
@@ -52,21 +52,21 @@ import server.markhome.mmcf.v3_1.mcflib.MCFLibXmlUtil;
  * The Unknown relationship does not do cascading deletes, but nor does it block deletion of the object which defines the relationship.
  */
 @SuppressWarnings("unused")
-public enum MCFRelationType {
-    Container("N", "Container", "mcflib.MCFRelationType.Container"),
-    Component("P", "Component", "mcflib.MCFRelationType.Component"),
-    Parent( "P", "Parent", "mcflib.MCFRelationType.Parent"),
-    Child("C", "Child", "mcflib.MCFRelationType.Child"),
-    Master("M", "Master", "mcflib.MCFRelationType.Master"),
-    Detail("D", "Detail", "mcflib.MCFRelationType.Detail"),
-    Lookup("L", "Lookup", "mcflib.MCFRelationType.Lookup"),
-    Unknown("U", "Unknown", "mcflib.MCFRelationType.Unknown");
+public enum YCFRelationType {
+    Container("N", "Container", "ycflib.YCFRelationType.Container"),
+    Component("P", "Component", "ycflib.YCFRelationType.Component"),
+    Parent( "P", "Parent", "ycflib.YCFRelationType.Parent"),
+    Child("C", "Child", "ycflib.YCFRelationType.Child"),
+    Master("M", "Master", "ycflib.YCFRelationType.Master"),
+    Detail("D", "Detail", "ycflib.YCFRelationType.Detail"),
+    Lookup("L", "Lookup", "ycflib.YCFRelationType.Lookup"),
+    Unknown("U", "Unknown", "ycflib.YCFRelationType.Unknown");
 
     private final String key;
     private final String label;
     private final String inzLabelKey;
 
-    private MCFRelationType(String key, String label, String inzLabelKey) {
+    private YCFRelationType(String key, String label, String inzLabelKey) {
         this.key = key;
         this.label = label;
         this.inzLabelKey = inzLabelKey;

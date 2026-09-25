@@ -1,5 +1,5 @@
 /**
- *	server.markhome.mcf-core - Mark's Code Fractal Core Services
+ *	server.markhome.ycf-core - Mark's Code Fractal Core Services
  *
  *	Copyright 2026 Mark Stephen Sobkow (mark.sobkow@gmail.com)
  *
@@ -18,18 +18,18 @@
  *	SPDX-License-Identifier: Apache-2.0
 **/
 
-package server.markhome.mcf;
+package server.markhome.ycf;
 
 import org.teavm.jso.JSExport;
 import org.teavm.jso.JSObject;
 import org.teavm.jso.JSProperty;
 
-import server.markhome.mcf.Inz;
+import server.markhome.ycf.Inz;
 
 /**
- * MCFLibStaleCacheDetectedException is thrown when a cache or the objects in the cache have become stale and need to be refreshed from persistent storage before proceeding.
+ * YCFLibStaleCacheDetectedException is thrown when a cache or the objects in the cache have become stale and need to be refreshed from persistent storage before proceeding.
  */
-public class MCFLibStaleCacheDetectedException extends IllegalStateException {
+public class YCFLibStaleCacheDetectedException extends IllegalStateException {
 
 	protected String localMessage = null;
 	protected String enMsgCause = null;
@@ -38,7 +38,7 @@ public class MCFLibStaleCacheDetectedException extends IllegalStateException {
 	protected String xTargetTable = null;
 	protected Object indexKey = null;
 
-	public MCFLibStaleCacheDetectedException(
+	public YCFLibStaleCacheDetectedException(
 		String enMsg,
 		String xMsg )
 	{
@@ -46,7 +46,7 @@ public class MCFLibStaleCacheDetectedException extends IllegalStateException {
 		this.localMessage = xMsg;
 	}
 
-	public MCFLibStaleCacheDetectedException(
+	public YCFLibStaleCacheDetectedException(
 		String enMsg,
 		String xMsg,
 		Throwable th)
@@ -55,37 +55,37 @@ public class MCFLibStaleCacheDetectedException extends IllegalStateException {
 			this.localMessage = xMsg;
 	}
 
-	public MCFLibStaleCacheDetectedException(
+	public YCFLibStaleCacheDetectedException(
 		Class<?> throwingClass,
 		String methName,
 		String enMsg,
 		String xMsg )
 	{
-		super( String.format(Inz.s("mcflib.MCFLibArgumentException.TcmnMsg"),
+		super( String.format(Inz.s("ycflib.YCFLibArgumentException.TcmnMsg"),
 				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg : "" )));
-		this.localMessage = String.format(Inz.x("mcflib.MCFLibArgumentException.TcmnMsg"),
+		this.localMessage = String.format(Inz.x("ycflib.YCFLibArgumentException.TcmnMsg"),
 				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				( ( ( xMsg != null ) && ( xMsg.length() > 0 ) ) ? xMsg : (enMsg != null && enMsg.length() > 0) ? enMsg : ""));
 	}
 
-	public MCFLibStaleCacheDetectedException(
+	public YCFLibStaleCacheDetectedException(
 		Class<?> throwingClass,
 		String methName,
 		String enMsg,
 		String xMsg,
 		Throwable th )
 	{
-		super( String.format(Inz.s("mcflib.MCFLibArgumentException.TcmnMsg"),
+		super( String.format(Inz.s("ycflib.YCFLibArgumentException.TcmnMsg"),
 				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg : "" )),
 				th );
-		this.localMessage = String.format(Inz.x("mcflib.MCFLibArgumentException.TcmnMsg"),
+		this.localMessage = String.format(Inz.x("ycflib.YCFLibArgumentException.TcmnMsg"),
 				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				( ( ( xMsg != null ) && ( xMsg.length() > 0 ) ) ? xMsg : (enMsg != null && enMsg.length() > 0) ? enMsg : ""));
 	}
 
-	public MCFLibStaleCacheDetectedException(
+	public YCFLibStaleCacheDetectedException(
 		Class<?> throwingClass,
 		String methName,
 		int argNo,
@@ -93,19 +93,19 @@ public class MCFLibStaleCacheDetectedException extends IllegalStateException {
 		String enMsg,
 		String xMsg )
 	{
-		super( String.format(Inz.s("mcflib.MCFLibArgumentException.TcmnArgMsg"),
+		super( String.format(Inz.s("ycflib.YCFLibArgumentException.TcmnArgMsg"),
 				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				argNo,
 				argName,
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg	: "" ) ));
-		this.localMessage = String.format(Inz.x("mcflib.MCFLibArgumentException.TcmnArgMsg"),
+		this.localMessage = String.format(Inz.x("ycflib.YCFLibArgumentException.TcmnArgMsg"),
 				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				argNo,
 				argName,
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg	: "" ) );
 	}
 
-	public MCFLibStaleCacheDetectedException(
+	public YCFLibStaleCacheDetectedException(
 		Class<?> throwingClass,
 		String methName,
 		int argNo,
@@ -114,49 +114,49 @@ public class MCFLibStaleCacheDetectedException extends IllegalStateException {
 		String xMsg,
 		Throwable th )
 	{
-		super( String.format(Inz.s("mcflib.MCFLibArgumentException.TcmnArgMsg"),
+		super( String.format(Inz.s("ycflib.YCFLibArgumentException.TcmnArgMsg"),
 				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				argNo,
 				argName,
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg	: "" ) ),
 				th );
-		this.localMessage = String.format(Inz.x("mcflib.MCFLibArgumentException.TcmnArgMsg"),
+		this.localMessage = String.format(Inz.x("ycflib.YCFLibArgumentException.TcmnArgMsg"),
 				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				argNo,
 				argName,
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg	: "" ) );
 	}
 
-	public MCFLibStaleCacheDetectedException(
+	public YCFLibStaleCacheDetectedException(
 		String enFieldName,
 		String xFieldName,
 		String enMsg,
 		String xMsg )
 	{
-		super( String.format(Inz.s("mcflib.MCFLibArgumentException.FldMsg"),
+		super( String.format(Inz.s("ycflib.YCFLibArgumentException.FldMsg"),
 				enFieldName,
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg	: "" ) ));
-		this.localMessage = String.format(Inz.x("mcflib.MCFLibArgumentException.FldMsg"),
+		this.localMessage = String.format(Inz.x("ycflib.YCFLibArgumentException.FldMsg"),
 				(xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName,
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg	: "" ) );
 	}
 
-	public MCFLibStaleCacheDetectedException(
+	public YCFLibStaleCacheDetectedException(
 		String enFieldName,
 		String xFieldName,
 		String methName,
 		String enMsg,
 		String xMsg )
 	{
-		super( String.format(Inz.s("mcflib.MCFLibArgumentException.FldMsg"),
+		super( String.format(Inz.s("ycflib.YCFLibArgumentException.FldMsg"),
 				enFieldName + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "()"	: "" ),
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg : "" ) ));
-		this.localMessage = String.format(Inz.x("mcflib.MCFLibArgumentException.FldMsg"),
+		this.localMessage = String.format(Inz.x("ycflib.YCFLibArgumentException.FldMsg"),
 				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName)	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				( ( ( xMsg != null ) && ( xMsg.length() > 0 ) ) ? xMsg : (enMsg != null && enMsg.length() > 0) ? enMsg : "") );
 	}
 
-	public MCFLibStaleCacheDetectedException(
+	public YCFLibStaleCacheDetectedException(
 		String enFieldName,
 		String xFieldName,
 		String methName,
@@ -164,16 +164,16 @@ public class MCFLibStaleCacheDetectedException extends IllegalStateException {
 		String xMsg,
 		Throwable th )
 	{
-		super( String.format(Inz.s("mcflib.MCFLibArgumentException.FldMsg"),
+		super( String.format(Inz.s("ycflib.YCFLibArgumentException.FldMsg"),
 				enFieldName + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "()"	: "" ),
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg : "" ) ),
 				th );
-		this.localMessage = String.format(Inz.x("mcflib.MCFLibArgumentException.FldMsg"),
+		this.localMessage = String.format(Inz.x("ycflib.YCFLibArgumentException.FldMsg"),
 				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName)	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				( ( ( xMsg != null ) && ( xMsg.length() > 0 ) ) ? xMsg : (enMsg != null && enMsg.length() > 0) ? enMsg : "") );
 	}
 
-	public MCFLibStaleCacheDetectedException(
+	public YCFLibStaleCacheDetectedException(
 		String enFieldName,
 		String xFieldName,
 		String methName,
@@ -182,19 +182,19 @@ public class MCFLibStaleCacheDetectedException extends IllegalStateException {
 		String enMsg,
 		String xMsg )
 	{
-		super(String.format(Inz.s("mcflib.MCFLibArgumentException.FldArgMsg"),
+		super(String.format(Inz.s("ycflib.YCFLibArgumentException.FldArgMsg"),
 				enFieldName + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				argNo,
 				argName,
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg : "" ) ));
-		this.localMessage = String.format(Inz.x("mcflib.MCFLibArgumentException.FldArgMsg"),
+		this.localMessage = String.format(Inz.x("ycflib.YCFLibArgumentException.FldArgMsg"),
 				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName)	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				argNo,
 				argName,
 				( ( ( xMsg != null ) && ( xMsg.length() > 0 ) ) ? xMsg : (enMsg != null && enMsg.length() > 0) ? enMsg : "") );
 	}
 
-	public MCFLibStaleCacheDetectedException(
+	public YCFLibStaleCacheDetectedException(
 		String enFieldName,
 		String xFieldName,
 		String methName,
@@ -204,54 +204,54 @@ public class MCFLibStaleCacheDetectedException extends IllegalStateException {
 		String xMsg,
 		Throwable th )
 	{
-		super( String.format(Inz.s("mcflib.MCFLibArgumentException.FldArgMsg"),
+		super( String.format(Inz.s("ycflib.YCFLibArgumentException.FldArgMsg"),
 				enFieldName + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				argNo,
 				argName,
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg : "" ) ),
 				th );
-		this.localMessage = String.format(Inz.x("mcflib.MCFLibArgumentException.FldArgMsg"),
+		this.localMessage = String.format(Inz.x("ycflib.YCFLibArgumentException.FldArgMsg"),
 				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName)	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				argNo,
 				argName,
 				( ( ( xMsg != null ) && ( xMsg.length() > 0 ) ) ? xMsg : (enMsg != null && enMsg.length() > 0) ? enMsg : "") );
 	}
 
-	public MCFLibStaleCacheDetectedException()
+	public YCFLibStaleCacheDetectedException()
 	{
-		super(String.format(Inz.s("mcflib.MCFLibStaleCacheDetectedException.default"), "").trim());
-		this.localMessage = String.format(Inz.x("mcflib.MCFLibStaleCacheDetectedException.default"), "").trim();
+		super(String.format(Inz.s("ycflib.YCFLibStaleCacheDetectedException.default"), "").trim());
+		this.localMessage = String.format(Inz.x("ycflib.YCFLibStaleCacheDetectedException.default"), "").trim();
 	}
 
-	public MCFLibStaleCacheDetectedException(Throwable th)
+	public YCFLibStaleCacheDetectedException(Throwable th)
 	{
-		super(String.format(Inz.s("mcflib.MCFLibStaleCacheDetectedException.default"), "").trim(), th);
-		this.localMessage = String.format(Inz.x("mcflib.MCFLibStaleCacheDetectedException.default"), "").trim();
+		super(String.format(Inz.s("ycflib.YCFLibStaleCacheDetectedException.default"), "").trim(), th);
+		this.localMessage = String.format(Inz.x("ycflib.YCFLibStaleCacheDetectedException.default"), "").trim();
 	}
 
-	public MCFLibStaleCacheDetectedException(
+	public YCFLibStaleCacheDetectedException(
 		Class<?> throwingClass,
 		String methName )
 	{
-		super(String.format(Inz.s("mcflib.MCFLibStaleCacheDetectedException.default"),
+		super(String.format(Inz.s("ycflib.YCFLibStaleCacheDetectedException.default"),
 				throwingClass.getName() + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" )));
-		this.localMessage = String.format(Inz.x("mcflib.MCFLibStaleCacheDetectedException.default"),
+		this.localMessage = String.format(Inz.x("ycflib.YCFLibStaleCacheDetectedException.default"),
 				throwingClass.getName() + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ));
 	}
 
-	public MCFLibStaleCacheDetectedException(
+	public YCFLibStaleCacheDetectedException(
 		Class<?> throwingClass,
 		String methName,
 		Throwable th )
 	{
-		super(String.format(Inz.s("mcflib.MCFLibStaleCacheDetectedException.default"),
+		super(String.format(Inz.s("ycflib.YCFLibStaleCacheDetectedException.default"),
 				throwingClass.getName() + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" )),
 			th);
-		this.localMessage = String.format(Inz.x("mcflib.MCFLibStaleCacheDetectedException.default"),
+		this.localMessage = String.format(Inz.x("ycflib.YCFLibStaleCacheDetectedException.default"),
 				throwingClass.getName() + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ));
 	}
 
-	public MCFLibStaleCacheDetectedException(
+	public YCFLibStaleCacheDetectedException(
 		Class<?> throwingClass,
 		String methName,
 		String enMsgCause,
@@ -261,37 +261,37 @@ public class MCFLibStaleCacheDetectedException extends IllegalStateException {
 		Object argKey )
 	{
 		super( ((enTargetTable != null && !enTargetTable.isEmpty()) ?
-					((argKey != null) ? String.format(Inz.s("mcflib.MCFLibStaleCacheDetectedException.causetargetkey"),//"%1$sStale cache detected due to %2$s by %3$s key %4$s"
+					((argKey != null) ? String.format(Inz.s("ycflib.YCFLibStaleCacheDetectedException.causetargetkey"),//"%1$sStale cache detected due to %2$s by %3$s key %4$s"
 							throwingClass.getName() + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " "),
 							enMsgCause,
 							enTargetTable,
 							argKey.toString())
-						: String.format(Inz.s("mcflib.MCFLibStaleCacheDetectedException.causetarget"),//"%1$sStale cache detected due to %2$s by %3$s
+						: String.format(Inz.s("ycflib.YCFLibStaleCacheDetectedException.causetarget"),//"%1$sStale cache detected due to %2$s by %3$s
 							throwingClass.getName() + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " "),
 							enMsgCause,
 							enTargetTable))
-					: ((argKey != null) ? String.format(Inz.s("mcflib.MCFLibStaleCacheDetectedException.causekey"),//"%1$sStale cache detected due to %2$s key %4$s"
+					: ((argKey != null) ? String.format(Inz.s("ycflib.YCFLibStaleCacheDetectedException.causekey"),//"%1$sStale cache detected due to %2$s key %4$s"
 							throwingClass.getName() + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " "),
 							enMsgCause,
 							argKey.toString())
-						: String.format(Inz.s("mcflib.MCFLibStaleCacheDetectedException.cause"),//"%1$sStale cache detected due to %2$s
+						: String.format(Inz.s("ycflib.YCFLibStaleCacheDetectedException.cause"),//"%1$sStale cache detected due to %2$s
 							throwingClass.getName() + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " "),
 							enMsgCause))));
 		this.localMessage = (((xTargetTable != null && !xTargetTable.isEmpty()) || (enTargetTable != null && !enTargetTable.isEmpty()) ?
-					((argKey != null) ? String.format(Inz.x("mcflib.MCFLibStaleCacheDetectedException.causetargetkey"),//"%1$sStale cache detected due to %2$s by %3$s key %4$s"
+					((argKey != null) ? String.format(Inz.x("ycflib.YCFLibStaleCacheDetectedException.causetargetkey"),//"%1$sStale cache detected due to %2$s by %3$s key %4$s"
 							throwingClass.getName() + (( methName != null && !methName.isEmpty())? ("." + methName + "()") : ""),
 							((xMsgCause != null && !xMsgCause.isEmpty()) ? xMsgCause : enMsgCause),
 							(xTargetTable != null && !xTargetTable.isEmpty()) ? xTargetTable : enTargetTable,
 							argKey.toString())
-						: String.format(Inz.x("mcflib.MCFLibStaleCacheDetectedException.causetarget"),//"%1$sStale cache detected due to %2$s by %3$s
+						: String.format(Inz.x("ycflib.YCFLibStaleCacheDetectedException.causetarget"),//"%1$sStale cache detected due to %2$s by %3$s
 							throwingClass.getName() + (( methName != null && !methName.isEmpty())? ("." + methName + "()") : ""),
 							((xMsgCause != null && !xMsgCause.isEmpty()) ? xMsgCause : enMsgCause),
 							(xTargetTable != null && !xTargetTable.isEmpty()) ? xTargetTable : enTargetTable))
-					: ((argKey != null) ? String.format(Inz.x("mcflib.MCFLibStaleCacheDetectedException.causekey"),//"%1$sStale cache detected due to %2$s key %4$s"
+					: ((argKey != null) ? String.format(Inz.x("ycflib.YCFLibStaleCacheDetectedException.causekey"),//"%1$sStale cache detected due to %2$s key %4$s"
 							throwingClass.getName() + (( methName != null && !methName.isEmpty())? ("." + methName + "()") : ""),
 							((xMsgCause != null && !xMsgCause.isEmpty()) ? xMsgCause : enMsgCause),
 							argKey.toString())
-						: String.format(Inz.x("mcflib.MCFLibStaleCacheDetectedException.cause"),//"%1$sStale cache detected due to %2$s
+						: String.format(Inz.x("ycflib.YCFLibStaleCacheDetectedException.cause"),//"%1$sStale cache detected due to %2$s
 							throwingClass.getName() + (( methName != null && !methName.isEmpty())? ("." + methName + "()") : ""),
 							((xMsgCause != null && !xMsgCause.isEmpty()) ? xMsgCause : enMsgCause)))));
 		this.enMsgCause = enMsgCause;
@@ -301,7 +301,7 @@ public class MCFLibStaleCacheDetectedException extends IllegalStateException {
 		this.indexKey = argKey;
 	}
 
-	public MCFLibStaleCacheDetectedException(
+	public YCFLibStaleCacheDetectedException(
 		Class<?> throwingClass,
 		String methName,
 		String enMsgCause,
@@ -312,38 +312,38 @@ public class MCFLibStaleCacheDetectedException extends IllegalStateException {
 		Throwable th )
 	{
 		super( ((enTargetTable != null && !enTargetTable.isEmpty()) ?
-					((argKey != null) ? String.format(Inz.s("mcflib.MCFLibStaleCacheDetectedException.causetargetkey"),//"%1$sStale cache detected due to %2$s by %3$s key %4$s"
+					((argKey != null) ? String.format(Inz.s("ycflib.YCFLibStaleCacheDetectedException.causetargetkey"),//"%1$sStale cache detected due to %2$s by %3$s key %4$s"
 							throwingClass.getName() + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " "),
 							enMsgCause,
 							enTargetTable,
 							argKey.toString())
-						: String.format(Inz.s("mcflib.MCFLibStaleCacheDetectedException.causetarget"),//"%1$sStale cache detected due to %2$s by %3$s
+						: String.format(Inz.s("ycflib.YCFLibStaleCacheDetectedException.causetarget"),//"%1$sStale cache detected due to %2$s by %3$s
 							throwingClass.getName() + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " "),
 							enMsgCause,
 							enTargetTable))
-					: ((argKey != null) ? String.format(Inz.s("mcflib.MCFLibStaleCacheDetectedException.causekey"),//"%1$sStale cache detected due to %2$s key %4$s"
+					: ((argKey != null) ? String.format(Inz.s("ycflib.YCFLibStaleCacheDetectedException.causekey"),//"%1$sStale cache detected due to %2$s key %4$s"
 							throwingClass.getName() + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " "),
 							enMsgCause,
 							argKey.toString())
-						: String.format(Inz.s("mcflib.MCFLibStaleCacheDetectedException.cause"),//"%1$sStale cache detected due to %2$s
+						: String.format(Inz.s("ycflib.YCFLibStaleCacheDetectedException.cause"),//"%1$sStale cache detected due to %2$s
 							throwingClass.getName() + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " "),
 							enMsgCause))),
 			th);
 		this.localMessage = (((xTargetTable != null && !xTargetTable.isEmpty()) || (enTargetTable != null && !enTargetTable.isEmpty()) ?
-					((argKey != null) ? String.format(Inz.x("mcflib.MCFLibStaleCacheDetectedException.causetargetkey"),//"%1$sStale cache detected due to %2$s by %3$s key %4$s"
+					((argKey != null) ? String.format(Inz.x("ycflib.YCFLibStaleCacheDetectedException.causetargetkey"),//"%1$sStale cache detected due to %2$s by %3$s key %4$s"
 							throwingClass.getName() + (( methName != null && !methName.isEmpty())? ("." + methName + "()") : ""),
 							((xMsgCause != null && !xMsgCause.isEmpty()) ? xMsgCause : enMsgCause),
 							(xTargetTable != null && !xTargetTable.isEmpty()) ? xTargetTable : enTargetTable,
 							argKey.toString())
-						: String.format(Inz.x("mcflib.MCFLibStaleCacheDetectedException.causetarget"),//"%1$sStale cache detected due to %2$s by %3$s
+						: String.format(Inz.x("ycflib.YCFLibStaleCacheDetectedException.causetarget"),//"%1$sStale cache detected due to %2$s by %3$s
 							throwingClass.getName() + (( methName != null && !methName.isEmpty())? ("." + methName + "()") : ""),
 							((xMsgCause != null && !xMsgCause.isEmpty()) ? xMsgCause : enMsgCause),
 							(xTargetTable != null && !xTargetTable.isEmpty()) ? xTargetTable : enTargetTable))
-					: ((argKey != null) ? String.format(Inz.x("mcflib.MCFLibStaleCacheDetectedException.causekey"),//"%1$sStale cache detected due to %2$s key %4$s"
+					: ((argKey != null) ? String.format(Inz.x("ycflib.YCFLibStaleCacheDetectedException.causekey"),//"%1$sStale cache detected due to %2$s key %4$s"
 							throwingClass.getName() + (( methName != null && !methName.isEmpty())? ("." + methName + "()") : ""),
 							((xMsgCause != null && !xMsgCause.isEmpty()) ? xMsgCause : enMsgCause),
 							argKey.toString())
-						: String.format(Inz.x("mcflib.MCFLibStaleCacheDetectedException.cause"),//"%1$sStale cache detected due to %2$s
+						: String.format(Inz.x("ycflib.YCFLibStaleCacheDetectedException.cause"),//"%1$sStale cache detected due to %2$s
 							throwingClass.getName() + (( methName != null && !methName.isEmpty())? ("." + methName + "()") : ""),
 							((xMsgCause != null && !xMsgCause.isEmpty()) ? xMsgCause : enMsgCause)))));
 		this.enMsgCause = enMsgCause;

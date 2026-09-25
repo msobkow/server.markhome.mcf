@@ -1,5 +1,5 @@
 /**
- *	server.markhome.mcf-core - Mark's Code Fractal Core Services
+ *	server.markhome.ycf-core - Mark's Code Fractal Core Services
  *
  *	Copyright 2026 Mark Stephen Sobkow (mark.sobkow@gmail.com)
  *
@@ -18,20 +18,20 @@
  *	SPDX-License-Identifier: Apache-2.0
 **/
 
-package server.markhome.mcf;
+package server.markhome.ycf;
 
 import org.teavm.jso.JSExport;
 import org.teavm.jso.JSObject;
 import org.teavm.jso.JSProperty;
 
-public interface IMCFLibEntry extends JSObject {
+public interface IYCFLibEntry extends JSObject {
 
 	/**
 	 *	The public resource name for the parent library.
 	 *
 	 *	Implementations should define a public static final constant string prefixed by the uppercase library name matching the following signature:
 	 *
-	 *	<tt>public static final String MCF_LIB_PARENT_NAME = "server.markhome";</tt>
+	 *	<tt>public static final String YCF_LIB_PARENT_NAME = "server.markhome";</tt>
 	 */
 
 	/**
@@ -39,7 +39,7 @@ public interface IMCFLibEntry extends JSObject {
 	 *
 	 *	Implementations should define a public static final constant string prefixed by the uppercase library name matching the following signature:
 	 *
-	 *	<tt>public static final String MCF_LIB_PARENT_VERSION = "3.1.42-2026091111";</tt>
+	 *	<tt>public static final String YCF_LIB_PARENT_VERSION = "3.1.42-2026091111";</tt>
 	 */
 
 	/**
@@ -47,7 +47,7 @@ public interface IMCFLibEntry extends JSObject {
 	 *
 	 *	Implementations should define a public static final constant string prefixed by the uppercase library name matching the following signature:
 	 *
-	 *	<tt>public static final String MCF_LIB_NAME = MCF_LIB_PARENT_NAME + ".mcf";</tt>
+	 *	<tt>public static final String YCF_LIB_NAME = YCF_LIB_PARENT_NAME + ".ycf";</tt>
 	 */
 
 	/**
@@ -55,19 +55,19 @@ public interface IMCFLibEntry extends JSObject {
 	 *
 	 *	Implementations should define a public static final constant string prefixed by the uppercase library name matching the following signature:
 	 *
-	 *	<tt>public static final String MCF_LIB_VERSION = MCF_LIB_PARENT_VERSION;</tt>
+	 *	<tt>public static final String YCF_LIB_VERSION = YCF_LIB_PARENT_VERSION;</tt>
 	 */
 
 	/**
 	 *	Implementations must be a singleton, returning the same instance over and over after initialization. How this is achieved may vary.
 	 *
-	 *	<tt>protected final static singleton = new AtomicReference<MCFLibEntry>(null);</tt>
+	 *	<tt>protected final static singleton = new AtomicReference<YCFLibEntry>(null);</tt>
 	 */
 
 	/**
 	 *	Default constructor is protected so that only a singleton can be created.
 	 *
-	 *	<tt>protected MCFLibEntry { }</tt>
+	 *	<tt>protected YCFLibEntry { }</tt>
 	 */
 
 	/**
@@ -75,17 +75,17 @@ public interface IMCFLibEntry extends JSObject {
 	 *
 	 *	Implementations should define a public static final method with the following signature, using the uppercase package name before "Lib" as appropriate.
 	 *
-	 *	<tt>public final static MCFLibEntry getMCFLibEntrySingleton()</tt>
+	 *	<tt>public final static YCFLibEntry getYCFLibEntrySingleton()</tt>
 	 *
 	 *	@return Return the library singleton. Always returns the same instance after the first invocation unless reset(true) is invoked.
 	 */
 
 	/**
-	 *	Get an instance. Because this is a singleton, getInstance() always returns null, as it just invokes MCFLibEntry() under the hood.
+	 *	Get an instance. Because this is a singleton, getInstance() always returns null, as it just invokes YCFLibEntry() under the hood.
 	 *
 	 *	Implementations should define a public static final method with the following signature, using the uppercase package name before "Lib" as appropriate.
 	 *
-	 *	<tt>public final static MCFLibEntry getMCFLibEntryInstance()</tt>
+	 *	<tt>public final static YCFLibEntry getYCFLibEntryInstance()</tt>
 	 *
 	 *	@return The instance, if any. Always returns null.
 	 */
@@ -95,31 +95,31 @@ public interface IMCFLibEntry extends JSObject {
 	 *
 	 *	Implementations should define a public static final method with the following signature, using the uppercase package name before "Lib" as appropriate.
 	 *
-	 *	<tt>public static boolean execMCFLibEntryLibReset(boolean yesReally)</tt>
+	 *	<tt>public static boolean execYCFLibEntryLibReset(boolean yesReally)</tt>
 	 *
 	 *	@param	yesReally Are you sure you want to reset the value?
 	 */
 
 	/**
-	 *	Get an instance, if possible.  Invokes getMCFLibEntryInstance() under the hood.
+	 *	Get an instance, if possible.  Invokes getYCFLibEntryInstance() under the hood.
 	 *
 	 *	@return Return an instance if dynamically allocated, otherwise null. Because this is a singleton, null will always be returned.
 	 */
 	@JSProperty
-	public MCFLibEntry getInstance();
+	public YCFLibEntry getInstance();
 
 	/**
-	 *	Get the singleton instance, if any. Invokes getMCFLibEntrySingleton() under the hood.
+	 *	Get the singleton instance, if any. Invokes getYCFLibEntrySingleton() under the hood.
 	 *
 	 *	@return Return the library singleton, if any. Always returns the same value after the first invocation unless reset(true) is invoked.
 	 */
 	@JSProperty
-	public MCFLibEntry getSingleton();
+	public YCFLibEntry getSingleton();
 
 	/**
 	 *	Reset the singleton and any other data caches after an application reload or other package or executable reloading event.
 	 *
-	 *	Invokes execMCFLibEntryReset(false) under the hood.
+	 *	Invokes execYCFLibEntryReset(false) under the hood.
 	 *
 	 *	@return True if the library was reinitialized, false if the code detected that the library has not been used since the last reinitialization.
 	 */
@@ -129,7 +129,7 @@ public interface IMCFLibEntry extends JSObject {
 	/**
 	 *	Reset the singleton and any other data caches after an application reload or other package or executable reloading event.
 	 *
-	 *	Invokes execMCFLibEntryReset(yesReally) under the hood.
+	 *	Invokes execYCFLibEntryReset(yesReally) under the hood.
 	 *
 	 *	@param	yesReally Are you sure you want to reset the value?
 	 *

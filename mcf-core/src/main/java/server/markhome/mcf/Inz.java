@@ -1,5 +1,5 @@
 /**
- *	server.markhome.mcf-core - Mark's Code Fractal Core Services
+ *	server.markhome.ycf-core - Mark's Code Fractal Core Services
  *
  *	Copyright 2026 Mark Stephen Sobkow (mark.sobkow@gmail.com)
  *
@@ -18,7 +18,7 @@
  *	SPDX-License-Identifier: Apache-2.0
 **/
 
-package server.markhome.mcf;
+package server.markhome.ycf;
 
 import org.teavm.jso.JSExport;
 import org.teavm.jso.JSObject;
@@ -35,22 +35,22 @@ import java.util.concurrent.atomic.AtomicReference;
  * and providing access to translations through the InzLang class.
  */
 public class Inz {
-//    public static final String CFLIB_INZ_PATH = "/server.markhome.mcf.v3_1.cflib/src/main/resources/inz/langs";
-    public static final String CFLIB_INZ_PATH = "resource://inz/langs";
+//    public static final String YCFLIB_INZ_PATH = "/server.markhome.ycf.v3_1.cflib/src/main/resources/inz/langs";
+    public static final String YCFLIB_INZ_PATH = "resource://inz/langs";
 
     /**
      * The language file path is a list of semicolon-separated path names to language file directories.
      * In each directory may be any number of 2 or 5 letter .properties files which are loaded on a per-language basis,
      * with the pre-".properties" portion of the file name used as the language code.
-     * The built-in default path is "resource:server.markhome.mcf.langs".  Although the only populated
+     * The built-in default path is "resource:server.markhome.ycf.langs".  Although the only populated
      * language in that resource directory is "en", there is a hierarchy of accepted language codes and their fallbacks
      * defined with no actual translations in them, so the default for CFLib is to report all exceptions in English.
      */
     protected static ArrayList<InzPathEntry> pathEntries = new ArrayList<>();
     static {
         // Add the default CFLib Inz path entry
-        pathEntries.add(new InzPathEntry(Inz.class, CFLIB_INZ_PATH));
-//        pathEntries.add(new InzPathEntry("/opt/mcf/v3_1/java" + CFLIB_INZ_PATH));
+        pathEntries.add(new InzPathEntry(Inz.class, YCFLIB_INZ_PATH));
+//        pathEntries.add(new InzPathEntry("/opt/ycf/v3_1/java" + YCFLIB_INZ_PATH));
     }
 
     /**
@@ -72,14 +72,14 @@ public class Inz {
     protected static AtomicReference<IInzEffectiveLangCode> effectiveLangCallback = new AtomicReference<>(null);
 
     /**
-     * The CFLib InzEntry references resource:server.markhome.mcf.langs and
+     * The CFLib InzEntry references resource:server.markhome.ycf.langs and
      * defines the hierarchy of language codes.  All other language codes hierarchy information
      * is ignored and overwritten by the hierarchy information from the CFLib InzEntry.
      */
-    public static final InzEntry CFLIB_INZ_ENTRY;
+    public static final InzEntry YCFLIB_INZ_ENTRY;
     static {
-        CFLIB_INZ_ENTRY = new InzEntry(pathEntries.get(0));
-        entries.add(CFLIB_INZ_ENTRY);
+        YCFLIB_INZ_ENTRY = new InzEntry(pathEntries.get(0));
+        entries.add(YCFLIB_INZ_ENTRY);
     }
 
     /**
@@ -162,7 +162,7 @@ public class Inz {
         }
         if (entries.size() <= 1) {
             if (entries.isEmpty()) {
-                entries.add(CFLIB_INZ_ENTRY); // Ensure the CFLib InzEntry is
+                entries.add(YCFLIB_INZ_ENTRY); // Ensure the CFLib InzEntry is
             }
             for (int idx = 1; idx < pathEntries.size(); idx++) {
                 InzPathEntry pathEntry = pathEntries.get(idx);

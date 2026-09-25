@@ -1,5 +1,5 @@
 /**
- *	server.markhome.mcf-core - Mark's Code Fractal Core Services
+ *	server.markhome.ycf-core - Mark's Code Fractal Core Services
  *
  *	Copyright 2026 Mark Stephen Sobkow (mark.sobkow@gmail.com)
  *
@@ -18,7 +18,7 @@
  *	SPDX-License-Identifier: Apache-2.0
 **/
 
-package server.markhome.mcf;
+package server.markhome.ycf;
 
 import org.teavm.jso.JSExport;
 import org.teavm.jso.JSObject;
@@ -27,21 +27,21 @@ import org.teavm.jso.JSProperty;
 import java.util.*;
 
 /**
- * MCFLibReqKeyHash224 extends MCFLibKeyHash224 with the appropriate behavior for the isNull() and setNull() method signatures.
+ * YCFLibReqKeyHash224 extends YCFLibKeyHash224 with the appropriate behavior for the isNull() and setNull() method signatures.
  *
  * @author msobkow
  */
-public class MCFLibReqKeyHash224 extends MCFLibKeyHash224 implements IMCFLibRequired, IMCFLibReqKeyHash224 {
+public class YCFLibReqKeyHash224 extends YCFLibKeyHash224 implements IYCFLibRequired, IYCFLibReqKeyHash224 {
 
 	/**
 	 *	Is this value null?
 	 *
-	 *	@throws MCFLibInvalidStateException if the superclass implementation of isNull() returns true.
+	 *	@throws YCFLibInvalidStateException if the superclass implementation of isNull() returns true.
 	 */
 	@Override
 	public boolean isNull() {
 		if (super.isNull()) {
-			throw new MCFLibInvalidStateException(getClass(), "isNull", 0, "super.isNull()", "superclass value is not allowed to be null", null);
+			throw new YCFLibInvalidStateException(getClass(), "isNull", 0, "super.isNull()", "superclass value is not allowed to be null", null);
 		}
 		return(false);
 	}
@@ -49,10 +49,10 @@ public class MCFLibReqKeyHash224 extends MCFLibKeyHash224 implements IMCFLibRequ
 	/**
 	 *	Make this value null.
 	 *
-	 *	@throws MCFLibNullArgumentException
+	 *	@throws YCFLibNullArgumentException
 	 */
 	@Override
 	public void setNull() {
-		throw new MCFLibNullArgumentException(getClass(), "setNull", 0, "required-attribute");
+		throw new YCFLibNullArgumentException(getClass(), "setNull", 0, "required-attribute");
 	}
 }

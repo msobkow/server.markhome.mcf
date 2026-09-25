@@ -1,5 +1,5 @@
 /**
- *	server.markhome.mcf-core - Mark's Code Fractal Core Services
+ *	server.markhome.ycf-core - Mark's Code Fractal Core Services
  *
  *	Copyright 2026 Mark Stephen Sobkow (mark.sobkow@gmail.com)
  *
@@ -18,7 +18,7 @@
  *	SPDX-License-Identifier: Apache-2.0
 **/
 
-package server.markhome.mcf;
+package server.markhome.ycf;
 
 import org.teavm.jso.JSExport;
 import org.teavm.jso.JSObject;
@@ -27,14 +27,14 @@ import org.teavm.jso.JSProperty;
 import java.util.*;
 
 /**
- * MCFLibPermissionDeniedException is thrown when data cannot be found that should exist
+ * YCFLibPermissionDeniedException is thrown when data cannot be found that should exist
  */
-public class MCFLibPermissionDeniedException extends SecurityException {
+public class YCFLibPermissionDeniedException extends SecurityException {
 
 	protected String localMessage = null;
 	protected Object indexKey = null;
 
-	public MCFLibPermissionDeniedException(
+	public YCFLibPermissionDeniedException(
 		String enMsg,
 		String xMsg )
 	{
@@ -42,7 +42,7 @@ public class MCFLibPermissionDeniedException extends SecurityException {
 		this.localMessage = xMsg;
 	}
 
-	public MCFLibPermissionDeniedException(
+	public YCFLibPermissionDeniedException(
 		String enMsg,
 		String xMsg,
 		Throwable th)
@@ -51,37 +51,37 @@ public class MCFLibPermissionDeniedException extends SecurityException {
 			this.localMessage = xMsg;
 	}
 
-	public MCFLibPermissionDeniedException(
+	public YCFLibPermissionDeniedException(
 		Class<?> throwingClass,
 		String methName,
 		String enMsg,
 		String xMsg )
 	{
-		super( String.format(Inz.s("mcflib.MCFLibPermissionDeniedException.TcmnMsg"),
+		super( String.format(Inz.s("ycflib.YCFLibPermissionDeniedException.TcmnMsg"),
 				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg : "" )));
-		this.localMessage = String.format(Inz.x("mcflib.MCFLibPermissionDeniedException.TcmnMsg"),
+		this.localMessage = String.format(Inz.x("ycflib.YCFLibPermissionDeniedException.TcmnMsg"),
 				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				( ( ( xMsg != null ) && ( xMsg.length() > 0 ) ) ? xMsg : (enMsg != null && enMsg.length() > 0) ? enMsg : ""));
 	}
 
-	public MCFLibPermissionDeniedException(
+	public YCFLibPermissionDeniedException(
 		Class<?> throwingClass,
 		String methName,
 		String enMsg,
 		String xMsg,
 		Throwable th )
 	{
-		super( String.format(Inz.s("mcflib.MCFLibPermissionDeniedException.TcmnMsg"),
+		super( String.format(Inz.s("ycflib.YCFLibPermissionDeniedException.TcmnMsg"),
 				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg : "" )),
 				th );
-		this.localMessage = String.format(Inz.x("mcflib.MCFLibPermissionDeniedException.TcmnMsg"),
+		this.localMessage = String.format(Inz.x("ycflib.YCFLibPermissionDeniedException.TcmnMsg"),
 				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				( ( ( xMsg != null ) && ( xMsg.length() > 0 ) ) ? xMsg : (enMsg != null && enMsg.length() > 0) ? enMsg : ""));
 	}
 
-	public MCFLibPermissionDeniedException(
+	public YCFLibPermissionDeniedException(
 		Class<?> throwingClass,
 		String methName,
 		int argNo,
@@ -89,19 +89,19 @@ public class MCFLibPermissionDeniedException extends SecurityException {
 		String enMsg,
 		String xMsg )
 	{
-		super( String.format(Inz.s("mcflib.MCFLibPermissionDeniedException.TcmnArgMsg"),
+		super( String.format(Inz.s("ycflib.YCFLibPermissionDeniedException.TcmnArgMsg"),
 				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				argNo,
 				argName,
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg	: "" ) ));
-		this.localMessage = String.format(Inz.x("mcflib.MCFLibPermissionDeniedException.TcmnArgMsg"),
+		this.localMessage = String.format(Inz.x("ycflib.YCFLibPermissionDeniedException.TcmnArgMsg"),
 				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				argNo,
 				argName,
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg	: "" ) );
 	}
 
-	public MCFLibPermissionDeniedException(
+	public YCFLibPermissionDeniedException(
 		Class<?> throwingClass,
 		String methName,
 		int argNo,
@@ -110,49 +110,49 @@ public class MCFLibPermissionDeniedException extends SecurityException {
 		String xMsg,
 		Throwable th )
 	{
-		super( String.format(Inz.s("mcflib.MCFLibPermissionDeniedException.TcmnArgMsg"),
+		super( String.format(Inz.s("ycflib.YCFLibPermissionDeniedException.TcmnArgMsg"),
 				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				argNo,
 				argName,
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg	: "" ) ),
 				th );
-		this.localMessage = String.format(Inz.x("mcflib.MCFLibPermissionDeniedException.TcmnArgMsg"),
+		this.localMessage = String.format(Inz.x("ycflib.YCFLibPermissionDeniedException.TcmnArgMsg"),
 				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				argNo,
 				argName,
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg	: "" ) );
 	}
 
-	public MCFLibPermissionDeniedException(
+	public YCFLibPermissionDeniedException(
 		String enFieldName,
 		String xFieldName,
 		String enMsg,
 		String xMsg )
 	{
-		super( String.format(Inz.s("mcflib.MCFLibPermissionDeniedException.FldMsg"),
+		super( String.format(Inz.s("ycflib.YCFLibPermissionDeniedException.FldMsg"),
 				enFieldName,
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg	: "" ) ));
-		this.localMessage = String.format(Inz.x("mcflib.MCFLibPermissionDeniedException.FldMsg"),
+		this.localMessage = String.format(Inz.x("ycflib.YCFLibPermissionDeniedException.FldMsg"),
 				(xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName,
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg	: "" ) );
 	}
 
-	public MCFLibPermissionDeniedException(
+	public YCFLibPermissionDeniedException(
 		String enFieldName,
 		String xFieldName,
 		String methName,
 		String enMsg,
 		String xMsg )
 	{
-		super( String.format(Inz.s("mcflib.MCFLibPermissionDeniedException.FldMsg"),
+		super( String.format(Inz.s("ycflib.YCFLibPermissionDeniedException.FldMsg"),
 				enFieldName + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "()"	: "" ),
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg : "" ) ));
-		this.localMessage = String.format(Inz.x("mcflib.MCFLibPermissionDeniedException.FldMsg"),
+		this.localMessage = String.format(Inz.x("ycflib.YCFLibPermissionDeniedException.FldMsg"),
 				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName)	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				( ( ( xMsg != null ) && ( xMsg.length() > 0 ) ) ? xMsg : (enMsg != null && enMsg.length() > 0) ? enMsg : "") );
 	}
 
-	public MCFLibPermissionDeniedException(
+	public YCFLibPermissionDeniedException(
 		String enFieldName,
 		String xFieldName,
 		String methName,
@@ -160,16 +160,16 @@ public class MCFLibPermissionDeniedException extends SecurityException {
 		String xMsg,
 		Throwable th )
 	{
-		super( String.format(Inz.s("mcflib.MCFLibPermissionDeniedException.FldMsg"),
+		super( String.format(Inz.s("ycflib.YCFLibPermissionDeniedException.FldMsg"),
 				enFieldName + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "()"	: "" ),
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg : "" ) ),
 				th );
-		this.localMessage = String.format(Inz.x("mcflib.MCFLibPermissionDeniedException.FldMsg"),
+		this.localMessage = String.format(Inz.x("ycflib.YCFLibPermissionDeniedException.FldMsg"),
 				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName)	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				( ( ( xMsg != null ) && ( xMsg.length() > 0 ) ) ? xMsg : (enMsg != null && enMsg.length() > 0) ? enMsg : "") );
 	}
 
-	public MCFLibPermissionDeniedException(
+	public YCFLibPermissionDeniedException(
 		String enFieldName,
 		String xFieldName,
 		String methName,
@@ -178,19 +178,19 @@ public class MCFLibPermissionDeniedException extends SecurityException {
 		String enMsg,
 		String xMsg )
 	{
-		super(String.format(Inz.s("mcflib.MCFLibPermissionDeniedException.FldArgMsg"),
+		super(String.format(Inz.s("ycflib.YCFLibPermissionDeniedException.FldArgMsg"),
 				enFieldName + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				argNo,
 				argName,
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg : "" ) ));
-		this.localMessage = String.format(Inz.x("mcflib.MCFLibPermissionDeniedException.FldArgMsg"),
+		this.localMessage = String.format(Inz.x("ycflib.YCFLibPermissionDeniedException.FldArgMsg"),
 				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName)	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				argNo,
 				argName,
 				( ( ( xMsg != null ) && ( xMsg.length() > 0 ) ) ? xMsg : (enMsg != null && enMsg.length() > 0) ? enMsg : "") );
 	}
 
-	public MCFLibPermissionDeniedException(
+	public YCFLibPermissionDeniedException(
 		String enFieldName,
 		String xFieldName,
 		String methName,
@@ -200,48 +200,48 @@ public class MCFLibPermissionDeniedException extends SecurityException {
 		String xMsg,
 		Throwable th )
 	{
-		super( String.format(Inz.s("mcflib.MCFLibPermissionDeniedException.FldArgMsg"),
+		super( String.format(Inz.s("ycflib.YCFLibPermissionDeniedException.FldArgMsg"),
 				enFieldName + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				argNo,
 				argName,
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg : "" ) ),
 				th );
-		this.localMessage = String.format(Inz.x("mcflib.MCFLibPermissionDeniedException.FldArgMsg"),
+		this.localMessage = String.format(Inz.x("ycflib.YCFLibPermissionDeniedException.FldArgMsg"),
 				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName)	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				argNo,
 				argName,
 				( ( ( xMsg != null ) && ( xMsg.length() > 0 ) ) ? xMsg : (enMsg != null && enMsg.length() > 0) ? enMsg : "") );
 	}
 
-	public MCFLibPermissionDeniedException()
+	public YCFLibPermissionDeniedException()
 	{
-		super(String.format(Inz.s("mcflib.MCFLibPermissionDenied.default"), "" ).trim());
-		this.localMessage = String.format(Inz.x("mcflib.MCFLibPermissionDenied.default"), "" ).trim();
+		super(String.format(Inz.s("ycflib.YCFLibPermissionDenied.default"), "" ).trim());
+		this.localMessage = String.format(Inz.x("ycflib.YCFLibPermissionDenied.default"), "" ).trim();
 	}
 
-	public MCFLibPermissionDeniedException(
+	public YCFLibPermissionDeniedException(
 		Class<?> throwingClass,
 		String methName )
 	{
-		super(String.format(Inz.s("mcflib.MCFLibPermissionDenied.default"),
+		super(String.format(Inz.s("ycflib.YCFLibPermissionDenied.default"),
 				throwingClass.getName() + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" )).trim());
-		this.localMessage = String.format(Inz.x("mcflib.MCFLibPermissionDenied.default"),
+		this.localMessage = String.format(Inz.x("ycflib.YCFLibPermissionDenied.default"),
 				throwingClass.getName() + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" )).trim();
 	}
 
-	public MCFLibPermissionDeniedException(
+	public YCFLibPermissionDeniedException(
 		Class<?> throwingClass,
 		String methName,
 		Throwable th )
 	{
-		super(String.format(Inz.s("mcflib.MCFLibPermissionDenied.default"),
+		super(String.format(Inz.s("ycflib.YCFLibPermissionDenied.default"),
 				throwingClass.getName() + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" )).trim(),
 				th );
-		this.localMessage = String.format(Inz.x("mcflib.MCFLibPermissionDenied.default"),
+		this.localMessage = String.format(Inz.x("ycflib.YCFLibPermissionDenied.default"),
 				throwingClass.getName() + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" )).trim();
 	}
 
-	public MCFLibPermissionDeniedException(
+	public YCFLibPermissionDeniedException(
 		Class<?> throwingClass,
 		String methName,
 		String permGroupName,
@@ -249,13 +249,13 @@ public class MCFLibPermissionDeniedException extends SecurityException {
 		String tableName,
 		String userId )
 	{
-		super(String.format(Inz.s("mcflib.MCFLibPermissionDenied.full"),
+		super(String.format(Inz.s("ycflib.YCFLibPermissionDenied.full"),
 				throwingClass.getName() + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 			permGroupName,
 			schemaName,
 			tableName,
 			userId));
-		this.localMessage = String.format(Inz.x("mcflib.MCFLibPermissionDenied.full"),
+		this.localMessage = String.format(Inz.x("ycflib.YCFLibPermissionDenied.full"),
 				throwingClass.getName() + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 			permGroupName,
 			schemaName,
@@ -263,7 +263,7 @@ public class MCFLibPermissionDeniedException extends SecurityException {
 			userId);
 	}
 
-	public MCFLibPermissionDeniedException(
+	public YCFLibPermissionDeniedException(
 		Class<?> throwingClass,
 		String methName,
 		String permGroupName,
@@ -272,14 +272,14 @@ public class MCFLibPermissionDeniedException extends SecurityException {
 		String userId,
 		Throwable th )
 	{
-		super(String.format(Inz.s("mcflib.MCFLibPermissionDenied.full"),
+		super(String.format(Inz.s("ycflib.YCFLibPermissionDenied.full"),
 				throwingClass.getName() + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 			permGroupName,
 			schemaName,
 			tableName,
 			userId),
 		th);
-		this.localMessage = String.format(Inz.x("mcflib.MCFLibPermissionDenied.full"),
+		this.localMessage = String.format(Inz.x("ycflib.YCFLibPermissionDenied.full"),
 				throwingClass.getName() + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 			permGroupName,
 			schemaName,

@@ -1,5 +1,5 @@
 /**
- *	server.markhome.mcf-core - Mark's Code Fractal Core Services
+ *	server.markhome.ycf-core - Mark's Code Fractal Core Services
  *
  *	Copyright 2026 Mark Stephen Sobkow (mark.sobkow@gmail.com)
  *
@@ -18,29 +18,30 @@
  *	SPDX-License-Identifier: Apache-2.0
 **/
 
-package server.markhome.mcf;
+package server.markhome.ycf;
+
 
 import org.teavm.jso.JSExport;
 import org.teavm.jso.JSObject;
 import org.teavm.jso.JSProperty;
 
-import server.markhome.mcf.Inz;
+import server.markhome.ycf.Inz;
 
 /**
- * MCFLibEmptyArgumentException is thrown when an argument is null or empty.
+ * YCFLibEmptyArgumentException is thrown when an argument is null or empty.
  */
-public class MCFLibInvalidStateException extends MCFLibArgumentException {
+public class YCFLibInvalidStateException extends YCFLibArgumentException {
 
 	// Inherited constructor patterns
 
-	public MCFLibInvalidStateException(
+	public YCFLibInvalidStateException(
 		String enMsg,
 		String xMsg )
 	{
 		super(enMsg, xMsg);
 	}
 
-	public MCFLibInvalidStateException(
+	public YCFLibInvalidStateException(
 		String enMsg,
 		String xMsg,
 		Throwable th)
@@ -48,7 +49,7 @@ public class MCFLibInvalidStateException extends MCFLibArgumentException {
 			super(enMsg, xMsg, th);
 	}
 
-//	public MCFLibInvalidStateException(
+//	public YCFLibInvalidStateException(
 //		Class<?> throwingClass,
 //		String methName,
 //		String enMsg,
@@ -57,7 +58,7 @@ public class MCFLibInvalidStateException extends MCFLibArgumentException {
 //		super(throwingClass, methName, enMsg, xMsg);
 //	}
 
-//	public MCFLibInvalidStateException(
+//	public YCFLibInvalidStateException(
 //		Class<?> throwingClass,
 //		String methName,
 //		String enMsg,
@@ -67,7 +68,7 @@ public class MCFLibInvalidStateException extends MCFLibArgumentException {
 //		super(throwingClass, methName, enMsg, xMsg, th);
 //	}
 
-	public MCFLibInvalidStateException(
+	public YCFLibInvalidStateException(
 	 	Class<?> throwingClass,
 	 	String methName,
 	 	int argNo,
@@ -78,7 +79,7 @@ public class MCFLibInvalidStateException extends MCFLibArgumentException {
 	 	super(throwingClass, methName, argNo, argName, enMsg, xMsg);
 	}
 
-	public MCFLibInvalidStateException(
+	public YCFLibInvalidStateException(
 	 	Class<?> throwingClass,
 	 	String methName,
 	 	int argNo,
@@ -90,7 +91,7 @@ public class MCFLibInvalidStateException extends MCFLibArgumentException {
 	 	super(throwingClass, methName, argNo, argName, enMsg, xMsg, th);
 	}
 
-	public MCFLibInvalidStateException(
+	public YCFLibInvalidStateException(
 		String enFieldName,
 		String xFieldName,
 		String enMsg,
@@ -99,7 +100,7 @@ public class MCFLibInvalidStateException extends MCFLibArgumentException {
 		super(enFieldName, xFieldName, enMsg, xMsg);
 	}
 
-//	public MCFLibInvalidStateException(
+//	public YCFLibInvalidStateException(
 //		String enFieldName,
 //		String xFieldName,
 //		String methName,
@@ -109,7 +110,7 @@ public class MCFLibInvalidStateException extends MCFLibArgumentException {
 //		super(enFieldName, xFieldName, methName, enMsg, xMsg);
 //	}
 
-//	public MCFLibInvalidStateException(
+//	public YCFLibInvalidStateException(
 //		String enFieldName,
 //		String xFieldName,
 //		String methName,
@@ -120,7 +121,7 @@ public class MCFLibInvalidStateException extends MCFLibArgumentException {
 //		super(enFieldName, xFieldName, methName, enMsg, xMsg, th);
 //	}
 
-	public MCFLibInvalidStateException(
+	public YCFLibInvalidStateException(
 	 	String enFieldName,
 		String xFieldName,
 	 	String methName,
@@ -132,7 +133,7 @@ public class MCFLibInvalidStateException extends MCFLibArgumentException {
 	 	super(enFieldName, xFieldName, methName, argNo, argName, enMsg, xMsg);
 	}
 
-	public MCFLibInvalidStateException(
+	public YCFLibInvalidStateException(
 	 	String enFieldName,
 		String xFieldName,
 	 	String methName,
@@ -147,52 +148,52 @@ public class MCFLibInvalidStateException extends MCFLibArgumentException {
 
 	// Custom/most-often-used constructors
 
-	public MCFLibInvalidStateException(
+	public YCFLibInvalidStateException(
 		Class<?> throwingClass,
 		String methName,
 		String enReason,
 		String xReason )
 	{
-		super(String.format(Inz.s("mcflib.MCFLibInvalidStateException.TcmnMsg"),
+		super(String.format(Inz.s("ycflib.YCFLibInvalidStateException.TcmnMsg"),
 				throwingClass.getName()	+ ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "()" : "" ),
 				enReason),
-			String.format(Inz.x("mcflib.MCFLibInvalidStateException.TcmnMsg"),
+			String.format(Inz.x("ycflib.YCFLibInvalidStateException.TcmnMsg"),
 				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				xReason));
 	}
 
-	public MCFLibInvalidStateException(
+	public YCFLibInvalidStateException(
 		Class<?> throwingClass,
 		String methName,
 		String enReason,
 		String xReason,
 		Throwable th )
 	{
-		super(String.format(Inz.s("mcflib.MCFLibInvalidStateException.TcmnMsg"),
+		super(String.format(Inz.s("ycflib.YCFLibInvalidStateException.TcmnMsg"),
 				throwingClass.getName()	+ ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "()" : "" ),
 				enReason),
-		String.format(Inz.x("mcflib.MCFLibInvalidStateException.TcmnMsg"),
+		String.format(Inz.x("ycflib.YCFLibInvalidStateException.TcmnMsg"),
 				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				xReason),
 			th);
 	}
 
-	public MCFLibInvalidStateException(
+	public YCFLibInvalidStateException(
 		String enFieldName,
 		String xFieldName,
 		String methName,
 		String enReason,
 		String xReason )
 	{
-		super(String.format(Inz.s("mcflib.MCFLibInvalidStateException.FldMsg"),
+		super(String.format(Inz.s("ycflib.YCFLibInvalidStateException.FldMsg"),
 				enFieldName + ( ( methName != null && !methName.isEmpty()) ? "." + methName + "()"	: "" ),
 				enReason),
-		String.format(Inz.x("mcflib.MCFLibInvalidStateException.FldMsg"),
+		String.format(Inz.x("ycflib.YCFLibInvalidStateException.FldMsg"),
 				enFieldName + ( ( methName != null && !methName.isEmpty()) ? "." + methName + "()"	: "" ),
 				xReason));
 	}
 
-	public MCFLibInvalidStateException(
+	public YCFLibInvalidStateException(
 		String enFieldName,
 		String xFieldName,
 		String methName,
@@ -200,10 +201,10 @@ public class MCFLibInvalidStateException extends MCFLibArgumentException {
 		String xReason,
 		Throwable th )
 	{
-		super(String.format(Inz.s("mcflib.MCFLibInvalidStateException.FldMsg"),
+		super(String.format(Inz.s("ycflib.YCFLibInvalidStateException.FldMsg"),
 				enFieldName + ( ( methName != null && !methName.isEmpty()) ? "." + methName + "()"	: "" ),
 				enReason),
-		String.format(Inz.x("mcflib.MCFLibInvalidStateException.FldMsg"),
+		String.format(Inz.x("ycflib.YCFLibInvalidStateException.FldMsg"),
 				enFieldName + ( ( methName != null && !methName.isEmpty()) ? "." + methName + "()"	: "" ),
 				xReason),
 				th );

@@ -1,5 +1,5 @@
 /**
- *	server.markhome.mcf-core - Mark's Code Fractal Core Services
+ *	server.markhome.ycf-core - Mark's Code Fractal Core Services
  *
  *	Copyright 2026 Mark Stephen Sobkow (mark.sobkow@gmail.com)
  *
@@ -18,7 +18,7 @@
  *	SPDX-License-Identifier: Apache-2.0
 **/
 
-package server.markhome.mcf;
+package server.markhome.ycf;
 
 import org.teavm.jso.JSExport;
 import org.teavm.jso.JSObject;
@@ -28,16 +28,16 @@ import java.util.*;
 
 
 /**
- * MCFLibOptKeyHash128 extends MCFLibKeyHash128 with the appropriate behavior for the isNull() and setNull() method signatures.
+ * YCFLibOptKeyHash128 extends YCFLibKeyHash128 with the appropriate behavior for the isNull() and setNull() method signatures.
  *
  * @author msobkow
  */
-public class MCFLibOptKeyHash128 extends MCFLibKeyHash128 implements IMCFLibOptional, IMCFLibOptKeyHash128 {
+public class YCFLibOptKeyHash128 extends YCFLibKeyHash128 implements IYCFLibOptional, IYCFLibOptKeyHash128 {
 
 	/**
 	 *	Make this value null.
 	 *
-	 *	@throws MCFLibNullArgumentException
+	 *	@throws YCFLibNullArgumentException
 	 */
 	@Override
 	public void setNull() {

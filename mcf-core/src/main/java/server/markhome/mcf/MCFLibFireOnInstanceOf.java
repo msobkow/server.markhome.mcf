@@ -1,5 +1,5 @@
 /**
- *	server.markhome.mcf-core - Mark's Code Fractal Core Services
+ *	server.markhome.ycf-core - Mark's Code Fractal Core Services
  *
  *	Copyright 2026 Mark Stephen Sobkow (mark.sobkow@gmail.com)
  *
@@ -18,24 +18,24 @@
  *	SPDX-License-Identifier: Apache-2.0
 **/
 
-package server.markhome.mcf;
+package server.markhome.ycf;
 
 import org.teavm.jso.JSExport;
 import org.teavm.jso.JSObject;
 import org.teavm.jso.JSProperty;
 
-public class MCFLibFireOnInstanceOf {
+public class YCFLibFireOnInstanceOf {
 	
 	protected Class<?> instOf = null;
 
-    public MCFLibFireOnInstanceOf() {
+    public YCFLibFireOnInstanceOf() {
     	setInstanceOf( Object.class );
     }
 
     public void setInstanceOf(Class<?> value) {
     	final String S_ProcName = "setInstanceOf";
         if( value == null ) {
-            throw new MCFLibNullArgumentException( getClass(),
+            throw new YCFLibNullArgumentException( getClass(),
                 S_ProcName,
                 1,
                 "value" );
@@ -47,7 +47,7 @@ public class MCFLibFireOnInstanceOf {
         return( instOf );
     }
 
-    public boolean isInstanceOf( IMCFLibAnyObj obj ) {
+    public boolean isInstanceOf( IYCFLibAnyObj obj ) {
     	if( obj == null ) {
     		return( false );
     	}
@@ -59,16 +59,16 @@ public class MCFLibFireOnInstanceOf {
     	return( instOf.isInstance( obj ) );
     }
 
-    public void onInstanceOf( IMCFLibAnyObj obj ) {
+    public void onInstanceOf( IYCFLibAnyObj obj ) {
         final String S_ProcName = "onInstanceOf";
         if( obj == null ) {
             return;
         }
-        throw new MCFLibNotImplementedYetException( getClass(),
+        throw new YCFLibNotImplementedYetException( getClass(),
         	S_ProcName );
     }
 
-    public final void fireOnInstanceOf( IMCFLibAnyObj obj ) {
+    public final void fireOnInstanceOf( IYCFLibAnyObj obj ) {
     	if( obj == null ) {
     		return;
     	}

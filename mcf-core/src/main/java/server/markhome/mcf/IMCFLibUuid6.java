@@ -1,5 +1,5 @@
 /**
- *	server.markhome.mcf-core - Mark's Code Fractal Core Services
+ *	server.markhome.ycf-core - Mark's Code Fractal Core Services
  *
  *	Copyright 2026 Mark Stephen Sobkow (mark.sobkow@gmail.com)
  *
@@ -18,7 +18,7 @@
  *	SPDX-License-Identifier: Apache-2.0
 **/
 
-package server.markhome.mcf;
+package server.markhome.ycf;
 
 import org.teavm.jso.JSExport;
 import org.teavm.jso.JSObject;
@@ -59,10 +59,10 @@ import java.util.Arrays;
  * 
  * @author msobkow
  */
-public interface IMCFLibUuid6 extends JSObject {
-    public static final int IPV6_LENGTH = MCFLibHostAddr.IPV6_LENGTH;
-    public static final int IPV4_LENGTH = MCFLibHostAddr.IPV4_LENGTH;
-    public static final int IPV4_PAD = MCFLibHostAddr.IPV4_PAD;
+public interface IYCFLibUuid6 extends JSObject {
+    public static final int IPV6_LENGTH = YCFLibHostAddr.IPV6_LENGTH;
+    public static final int IPV4_LENGTH = YCFLibHostAddr.IPV4_LENGTH;
+    public static final int IPV4_PAD = YCFLibHostAddr.IPV4_PAD;
 
     public final static int STAMP_START = 0;
     public final static int STAMP_BYTES = 6;

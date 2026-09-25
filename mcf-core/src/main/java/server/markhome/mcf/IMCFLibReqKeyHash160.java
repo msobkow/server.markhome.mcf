@@ -1,5 +1,5 @@
 /**
- *	server.markhome.mcf-core - Mark's Code Fractal Core Services
+ *	server.markhome.ycf-core - Mark's Code Fractal Core Services
  *
  *	Copyright 2026 Mark Stephen Sobkow (mark.sobkow@gmail.com)
  *
@@ -18,7 +18,7 @@
  *	SPDX-License-Identifier: Apache-2.0
 **/
 
-package server.markhome.mcf;
+package server.markhome.ycf;
 
 import org.teavm.jso.JSExport;
 import org.teavm.jso.JSObject;
@@ -27,16 +27,16 @@ import org.teavm.jso.JSProperty;
 import java.util.*;
 
 /**
- * IMCFLibReqKeyHash160 extends IMCFLibKeyHash160 with the setNull() method signature.
+ * IYCFLibReqKeyHash160 extends IYCFLibKeyHash160 with the setNull() method signature.
  *
  * @author msobkow
  */
-public interface IMCFLibReqKeyHash160 extends IMCFLibKeyHash160 {
+public interface IYCFLibReqKeyHash160 extends IYCFLibKeyHash160 {
 
 	/**
 	 *	Make this value null.
 	 *
-	 *	@throws MCFLibNullArgumentException
+	 *	@throws YCFLibNullArgumentException
 	 */
 	public void setNull();
 }

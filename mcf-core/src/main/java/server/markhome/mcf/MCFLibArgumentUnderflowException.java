@@ -1,5 +1,5 @@
 /**
- *	server.markhome.mcf-core - Mark's Code Fractal Core Services
+ *	server.markhome.ycf-core - Mark's Code Fractal Core Services
  *
  *	Copyright 2026 Mark Stephen Sobkow (mark.sobkow@gmail.com)
  *
@@ -18,7 +18,7 @@
  *	SPDX-License-Identifier: Apache-2.0
 **/
 
-package server.markhome.mcf;
+package server.markhome.ycf;
 
 import org.teavm.jso.JSExport;
 import org.teavm.jso.JSObject;
@@ -26,23 +26,23 @@ import org.teavm.jso.JSProperty;
 
 import java.util.*;
 
-import server.markhome.mcf.Inz;
+import server.markhome.ycf.Inz;
 
 import java.math.*;
 
 /**
- * MCFLibArgumentUnderflowException is thrown when an argument is under the minimum value allowed.
+ * YCFLibArgumentUnderflowException is thrown when an argument is under the minimum value allowed.
  */
-public class MCFLibArgumentUnderflowException extends MCFLibArgumentException {
+public class YCFLibArgumentUnderflowException extends YCFLibArgumentException {
 
-	public MCFLibArgumentUnderflowException(
+	public YCFLibArgumentUnderflowException(
 		String enMsg,
 		String xMsg )
 	{
 		super( enMsg, xMsg );
 	}
 
-	public MCFLibArgumentUnderflowException(
+	public YCFLibArgumentUnderflowException(
 		String enMsg,
 		String xMsg,
 		Throwable th )
@@ -50,7 +50,7 @@ public class MCFLibArgumentUnderflowException extends MCFLibArgumentException {
 		super( enMsg, xMsg, th );
 	}
 
-	public MCFLibArgumentUnderflowException(
+	public YCFLibArgumentUnderflowException(
 		Class<?> throwingClass,
 		String methName,
 		String enMsg,
@@ -59,7 +59,7 @@ public class MCFLibArgumentUnderflowException extends MCFLibArgumentException {
 		super( throwingClass, methName, enMsg, xMsg );
 	}
 
-	public MCFLibArgumentUnderflowException(
+	public YCFLibArgumentUnderflowException(
 		Class<?> throwingClass,
 		String methName,
 		String enMsg,
@@ -69,7 +69,7 @@ public class MCFLibArgumentUnderflowException extends MCFLibArgumentException {
 		super( throwingClass, methName, enMsg, xMsg, th );
 	}
 
-	// public MCFLibArgumentUnderflowException(
+	// public YCFLibArgumentUnderflowException(
 	// 	Class<?> throwingClass,
 	// 	String methName,
 	// 	int argNo,
@@ -80,7 +80,7 @@ public class MCFLibArgumentUnderflowException extends MCFLibArgumentException {
 	// 	super( throwingClass, methName, argNo, argName, enMsg, xMsg );
 	// }
 
-	// public MCFLibArgumentUnderflowException(
+	// public YCFLibArgumentUnderflowException(
 	// 	Class<?> throwingClass,
 	// 	String methName,
 	// 	int argNo,
@@ -92,7 +92,7 @@ public class MCFLibArgumentUnderflowException extends MCFLibArgumentException {
 	// 	super( throwingClass, methName, argNo, argName, enMsg, xMsg, th );
 	// }
 
-	public MCFLibArgumentUnderflowException(
+	public YCFLibArgumentUnderflowException(
 		Class<?> throwingClass,
 		String methName,
 		int argNo,
@@ -100,13 +100,13 @@ public class MCFLibArgumentUnderflowException extends MCFLibArgumentException {
 		short argValue,
 		short minValue )
 	{
-		super(String.format(Inz.s("mcflib.MCFLibArgumentUnderflowException.decimal.TcmnArgMsg"),
+		super(String.format(Inz.s("ycflib.YCFLibArgumentUnderflowException.decimal.TcmnArgMsg"),
 				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? "." + methName + "()" : ""),
 				argNo,
 				argName,
 				argValue,
 				minValue),
-			String.format(Inz.x("mcflib.MCFLibArgumentUnderflowException.decimal.TcmnArgMsg"),
+			String.format(Inz.x("ycflib.YCFLibArgumentUnderflowException.decimal.TcmnArgMsg"),
 				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? "." + methName + "()" : ""),
 				argNo,
 				argName,
@@ -114,7 +114,7 @@ public class MCFLibArgumentUnderflowException extends MCFLibArgumentException {
 				minValue));
 	}
 
-	public MCFLibArgumentUnderflowException(
+	public YCFLibArgumentUnderflowException(
 		Class<?> throwingClass,
 		String methName,
 		int argNo,
@@ -123,13 +123,13 @@ public class MCFLibArgumentUnderflowException extends MCFLibArgumentException {
 		short minValue,
 		Throwable th )
 	{
-		super(String.format(Inz.s("mcflib.MCFLibArgumentUnderflowException.decimal.TcmnArgMsg"),
+		super(String.format(Inz.s("ycflib.YCFLibArgumentUnderflowException.decimal.TcmnArgMsg"),
 				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? "." + methName + "()" : ""),
 				argNo,
 				argName,
 				argValue,
 				minValue),
-			String.format(Inz.x("mcflib.MCFLibArgumentUnderflowException.decimal.TcmnArgMsg"),
+			String.format(Inz.x("ycflib.YCFLibArgumentUnderflowException.decimal.TcmnArgMsg"),
 				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? "." + methName + "()" : ""),
 				argNo,
 				argName,
@@ -138,7 +138,7 @@ public class MCFLibArgumentUnderflowException extends MCFLibArgumentException {
 			th);
 	}
 
-	public MCFLibArgumentUnderflowException(
+	public YCFLibArgumentUnderflowException(
 		Class<?> throwingClass,
 		String methName,
 		int argNo,
@@ -146,13 +146,13 @@ public class MCFLibArgumentUnderflowException extends MCFLibArgumentException {
 		int argValue,
 		int minValue )
 	{
-		super(String.format(Inz.s("mcflib.MCFLibArgumentUnderflowException.decimal.TcmnArgMsg"),
+		super(String.format(Inz.s("ycflib.YCFLibArgumentUnderflowException.decimal.TcmnArgMsg"),
 				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? "." + methName + "()" : ""),
 				argNo,
 				argName,
 				argValue,
 				minValue),
-			String.format(Inz.x("mcflib.MCFLibArgumentUnderflowException.decimal.TcmnArgMsg"),
+			String.format(Inz.x("ycflib.YCFLibArgumentUnderflowException.decimal.TcmnArgMsg"),
 				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? "." + methName + "()" : ""),
 				argNo,
 				argName,
@@ -160,7 +160,7 @@ public class MCFLibArgumentUnderflowException extends MCFLibArgumentException {
 				minValue));
 	}
 
-	public MCFLibArgumentUnderflowException(
+	public YCFLibArgumentUnderflowException(
 		Class<?> throwingClass,
 		String methName,
 		int argNo,
@@ -169,13 +169,13 @@ public class MCFLibArgumentUnderflowException extends MCFLibArgumentException {
 		int minValue,
 		Throwable th )
 	{
-		super(String.format(Inz.s("mcflib.MCFLibArgumentUnderflowException.decimal.TcmnArgMsg"),
+		super(String.format(Inz.s("ycflib.YCFLibArgumentUnderflowException.decimal.TcmnArgMsg"),
 				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? "." + methName + "()" : ""),
 				argNo,
 				argName,
 				argValue,
 				minValue),
-			String.format(Inz.x("mcflib.MCFLibArgumentUnderflowException.decimal.TcmnArgMsg"),
+			String.format(Inz.x("ycflib.YCFLibArgumentUnderflowException.decimal.TcmnArgMsg"),
 				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? "." + methName + "()" : ""),
 				argNo,
 				argName,
@@ -184,7 +184,7 @@ public class MCFLibArgumentUnderflowException extends MCFLibArgumentException {
 			th);
 	}
 
-	public MCFLibArgumentUnderflowException(
+	public YCFLibArgumentUnderflowException(
 		Class<?> throwingClass,
 		String methName,
 		int argNo,
@@ -192,13 +192,13 @@ public class MCFLibArgumentUnderflowException extends MCFLibArgumentException {
 		long argValue,
 		long minValue )
 	{
-		super(String.format(Inz.s("mcflib.MCFLibArgumentUnderflowException.decimal.TcmnArgMsg"),
+		super(String.format(Inz.s("ycflib.YCFLibArgumentUnderflowException.decimal.TcmnArgMsg"),
 				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? "." + methName + "()" : ""),
 				argNo,
 				argName,
 				argValue,
 				minValue),
-			String.format(Inz.x("mcflib.MCFLibArgumentUnderflowException.decimal.TcmnArgMsg"),
+			String.format(Inz.x("ycflib.YCFLibArgumentUnderflowException.decimal.TcmnArgMsg"),
 				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? "." + methName + "()" : ""),
 				argNo,
 				argName,
@@ -206,7 +206,7 @@ public class MCFLibArgumentUnderflowException extends MCFLibArgumentException {
 				minValue));
 	}
 
-	public MCFLibArgumentUnderflowException(
+	public YCFLibArgumentUnderflowException(
 		Class<?> throwingClass,
 		String methName,
 		int argNo,
@@ -215,13 +215,13 @@ public class MCFLibArgumentUnderflowException extends MCFLibArgumentException {
 		long minValue,
 		Throwable th )
 	{
-		super(String.format(Inz.s("mcflib.MCFLibArgumentUnderflowException.decimal.TcmnArgMsg"),
+		super(String.format(Inz.s("ycflib.YCFLibArgumentUnderflowException.decimal.TcmnArgMsg"),
 				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? "." + methName + "()" : ""),
 				argNo,
 				argName,
 				argValue,
 				minValue),
-			String.format(Inz.x("mcflib.MCFLibArgumentUnderflowException.decimal.TcmnArgMsg"),
+			String.format(Inz.x("ycflib.YCFLibArgumentUnderflowException.decimal.TcmnArgMsg"),
 				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? "." + methName + "()" : ""),
 				argNo,
 				argName,
@@ -230,7 +230,7 @@ public class MCFLibArgumentUnderflowException extends MCFLibArgumentException {
 			th);
 	}
 
-	public MCFLibArgumentUnderflowException(
+	public YCFLibArgumentUnderflowException(
 		Class<?> throwingClass,
 		String methName,
 		int argNo,
@@ -238,13 +238,13 @@ public class MCFLibArgumentUnderflowException extends MCFLibArgumentException {
 		float argValue,
 		float minValue )
 	{
-		super(String.format(Inz.s("mcflib.MCFLibArgumentUnderflowException.float.TcmnArgMsg"),
+		super(String.format(Inz.s("ycflib.YCFLibArgumentUnderflowException.float.TcmnArgMsg"),
 				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? "." + methName + "()" : ""),
 				argNo,
 				argName,
 				argValue,
 				minValue),
-			String.format(Inz.x("mcflib.MCFLibArgumentUnderflowException.float.TcmnArgMsg"),
+			String.format(Inz.x("ycflib.YCFLibArgumentUnderflowException.float.TcmnArgMsg"),
 				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? "." + methName + "()" : ""),
 				argNo,
 				argName,
@@ -252,7 +252,7 @@ public class MCFLibArgumentUnderflowException extends MCFLibArgumentException {
 				minValue));
 	}
 
-	public MCFLibArgumentUnderflowException(
+	public YCFLibArgumentUnderflowException(
 		Class<?> throwingClass,
 		String methName,
 		int argNo,
@@ -261,13 +261,13 @@ public class MCFLibArgumentUnderflowException extends MCFLibArgumentException {
 		float minValue,
 		Throwable th )
 	{
-		super(String.format(Inz.s("mcflib.MCFLibArgumentUnderflowException.float.TcmnArgMsg"),
+		super(String.format(Inz.s("ycflib.YCFLibArgumentUnderflowException.float.TcmnArgMsg"),
 				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? "." + methName + "()" : ""),
 				argNo,
 				argName,
 				argValue,
 				minValue),
-			String.format(Inz.x("mcflib.MCFLibArgumentUnderflowException.float.TcmnArgMsg"),
+			String.format(Inz.x("ycflib.YCFLibArgumentUnderflowException.float.TcmnArgMsg"),
 				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? "." + methName + "()" : ""),
 				argNo,
 				argName,
@@ -276,7 +276,7 @@ public class MCFLibArgumentUnderflowException extends MCFLibArgumentException {
 			th);
 	}
 
-	public MCFLibArgumentUnderflowException(
+	public YCFLibArgumentUnderflowException(
 		Class<?> throwingClass,
 		String methName,
 		int argNo,
@@ -284,13 +284,13 @@ public class MCFLibArgumentUnderflowException extends MCFLibArgumentException {
 		double argValue,
 		double minValue )
 	{
-		super(String.format(Inz.s("mcflib.MCFLibArgumentUnderflowException.float.TcmnArgMsg"),
+		super(String.format(Inz.s("ycflib.YCFLibArgumentUnderflowException.float.TcmnArgMsg"),
 				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? "." + methName + "()" : ""),
 				argNo,
 				argName,
 				argValue,
 				minValue),
-			String.format(Inz.x("mcflib.MCFLibArgumentUnderflowException.float.TcmnArgMsg"),
+			String.format(Inz.x("ycflib.YCFLibArgumentUnderflowException.float.TcmnArgMsg"),
 				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? "." + methName + "()" : ""),
 				argNo,
 				argName,
@@ -298,7 +298,7 @@ public class MCFLibArgumentUnderflowException extends MCFLibArgumentException {
 				minValue));
 	}
 
-	public MCFLibArgumentUnderflowException(
+	public YCFLibArgumentUnderflowException(
 		Class<?> throwingClass,
 		String methName,
 		int argNo,
@@ -307,13 +307,13 @@ public class MCFLibArgumentUnderflowException extends MCFLibArgumentException {
 		double minValue,
 		Throwable th )
 	{
-		super(String.format(Inz.s("mcflib.MCFLibArgumentUnderflowException.float.TcmnArgMsg"),
+		super(String.format(Inz.s("ycflib.YCFLibArgumentUnderflowException.float.TcmnArgMsg"),
 				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? "." + methName + "()" : ""),
 				argNo,
 				argName,
 				argValue,
 				minValue),
-			String.format(Inz.x("mcflib.MCFLibArgumentUnderflowException.float.TcmnArgMsg"),
+			String.format(Inz.x("ycflib.YCFLibArgumentUnderflowException.float.TcmnArgMsg"),
 				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? "." + methName + "()" : ""),
 				argNo,
 				argName,
@@ -322,7 +322,7 @@ public class MCFLibArgumentUnderflowException extends MCFLibArgumentException {
 			th);
 	}
 
-	public MCFLibArgumentUnderflowException(
+	public YCFLibArgumentUnderflowException(
 		Class<?> throwingClass,
 		String methName,
 		int argNo,
@@ -330,13 +330,13 @@ public class MCFLibArgumentUnderflowException extends MCFLibArgumentException {
 		Calendar argValue,
 		Calendar minValue )
 	{
-		super(String.format(Inz.s("mcflib.MCFLibArgumentUnderflowException.string.TcmnArgMsg"),
+		super(String.format(Inz.s("ycflib.YCFLibArgumentUnderflowException.string.TcmnArgMsg"),
 				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? "." + methName + "()" : ""),
 				argNo,
 				argName,
 				argValue.toString(),
 				minValue.toString()),
-			String.format(Inz.x("mcflib.MCFLibArgumentUnderflowException.string.TcmnArgMsg"),
+			String.format(Inz.x("ycflib.YCFLibArgumentUnderflowException.string.TcmnArgMsg"),
 				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? "." + methName + "()" : ""),
 				argNo,
 				argName,
@@ -344,7 +344,7 @@ public class MCFLibArgumentUnderflowException extends MCFLibArgumentException {
 				minValue.toString()));
 	}
 
-	public MCFLibArgumentUnderflowException(
+	public YCFLibArgumentUnderflowException(
 		Class<?> throwingClass,
 		String methName,
 		int argNo,
@@ -353,13 +353,13 @@ public class MCFLibArgumentUnderflowException extends MCFLibArgumentException {
 		Calendar minValue,
 		Throwable th )
 	{
-		super(String.format(Inz.s("mcflib.MCFLibArgumentUnderflowException.string.TcmnArgMsg"),
+		super(String.format(Inz.s("ycflib.YCFLibArgumentUnderflowException.string.TcmnArgMsg"),
 				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? "." + methName + "()" : ""),
 				argNo,
 				argName,
 				argValue.toString(),
 				minValue.toString()),
-			String.format(Inz.x("mcflib.MCFLibArgumentUnderflowException.string.TcmnArgMsg"),
+			String.format(Inz.x("ycflib.YCFLibArgumentUnderflowException.string.TcmnArgMsg"),
 				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? "." + methName + "()" : ""),
 				argNo,
 				argName,
@@ -368,7 +368,7 @@ public class MCFLibArgumentUnderflowException extends MCFLibArgumentException {
 			th);
 	}
 
-	public MCFLibArgumentUnderflowException(
+	public YCFLibArgumentUnderflowException(
 		Class<?> throwingClass,
 		String methName,
 		int argNo,
@@ -376,13 +376,13 @@ public class MCFLibArgumentUnderflowException extends MCFLibArgumentException {
 		String argValue,
 		String minValue )
 	{
-		super(String.format(Inz.s("mcflib.MCFLibArgumentUnderflowException.string.TcmnArgMsg"),
+		super(String.format(Inz.s("ycflib.YCFLibArgumentUnderflowException.string.TcmnArgMsg"),
 				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? "." + methName + "()" : ""),
 				argNo,
 				argName,
 				argValue,
 				minValue),
-			String.format(Inz.x("mcflib.MCFLibArgumentUnderflowException.string.TcmnArgMsg"),
+			String.format(Inz.x("ycflib.YCFLibArgumentUnderflowException.string.TcmnArgMsg"),
 				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? "." + methName + "()" : ""),
 				argNo,
 				argName,
@@ -390,7 +390,7 @@ public class MCFLibArgumentUnderflowException extends MCFLibArgumentException {
 				minValue));
 	}
 
-	public MCFLibArgumentUnderflowException(
+	public YCFLibArgumentUnderflowException(
 		Class<?> throwingClass,
 		String methName,
 		int argNo,
@@ -399,13 +399,13 @@ public class MCFLibArgumentUnderflowException extends MCFLibArgumentException {
 		String minValue,
 		Throwable th )
 	{
-		super(String.format(Inz.s("mcflib.MCFLibArgumentUnderflowException.string.TcmnArgMsg"),
+		super(String.format(Inz.s("ycflib.YCFLibArgumentUnderflowException.string.TcmnArgMsg"),
 				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? "." + methName + "()" : ""),
 				argNo,
 				argName,
 				argValue,
 				minValue),
-			String.format(Inz.x("mcflib.MCFLibArgumentUnderflowException.string.TcmnArgMsg"),
+			String.format(Inz.x("ycflib.YCFLibArgumentUnderflowException.string.TcmnArgMsg"),
 				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? "." + methName + "()" : ""),
 				argNo,
 				argName,
@@ -414,7 +414,7 @@ public class MCFLibArgumentUnderflowException extends MCFLibArgumentException {
 			th);
 	}
 
-	public MCFLibArgumentUnderflowException(
+	public YCFLibArgumentUnderflowException(
 		Class<?> throwingClass,
 		String methName,
 		int argNo,
@@ -422,13 +422,13 @@ public class MCFLibArgumentUnderflowException extends MCFLibArgumentException {
 		BigDecimal argValue,
 		BigDecimal minValue )
 	{
-		super(String.format(Inz.s("mcflib.MCFLibArgumentUnderflowException.string.TcmnArgMsg"),
+		super(String.format(Inz.s("ycflib.YCFLibArgumentUnderflowException.string.TcmnArgMsg"),
 				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? "." + methName + "()" : ""),
 				argNo,
 				argName,
 				argValue.toString(),
 				minValue.toString()),
-			String.format(Inz.x("mcflib.MCFLibArgumentUnderflowException.string.TcmnArgMsg"),
+			String.format(Inz.x("ycflib.YCFLibArgumentUnderflowException.string.TcmnArgMsg"),
 				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? "." + methName + "()" : ""),
 				argNo,
 				argName,
@@ -436,7 +436,7 @@ public class MCFLibArgumentUnderflowException extends MCFLibArgumentException {
 				minValue.toString()));
 	}
 
-	public MCFLibArgumentUnderflowException(
+	public YCFLibArgumentUnderflowException(
 		Class<?> throwingClass,
 		String methName,
 		int argNo,
@@ -445,13 +445,13 @@ public class MCFLibArgumentUnderflowException extends MCFLibArgumentException {
 		BigDecimal minValue,
 		Throwable th )
 	{
-		super(String.format(Inz.s("mcflib.MCFLibArgumentUnderflowException.string.TcmnArgMsg"),
+		super(String.format(Inz.s("ycflib.YCFLibArgumentUnderflowException.string.TcmnArgMsg"),
 				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? "." + methName + "()" : ""),
 				argNo,
 				argName,
 				argValue.toString(),
 				minValue.toString()),
-			String.format(Inz.x("mcflib.MCFLibArgumentUnderflowException.string.TcmnArgMsg"),
+			String.format(Inz.x("ycflib.YCFLibArgumentUnderflowException.string.TcmnArgMsg"),
 				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? "." + methName + "()" : ""),
 				argNo,
 				argName,
@@ -460,7 +460,7 @@ public class MCFLibArgumentUnderflowException extends MCFLibArgumentException {
 			th);
 	}
 
-	public MCFLibArgumentUnderflowException(
+	public YCFLibArgumentUnderflowException(
 		String enFieldName,
 		String xFieldName,
 		String enMsg,
@@ -469,7 +469,7 @@ public class MCFLibArgumentUnderflowException extends MCFLibArgumentException {
 		super( enFieldName, xFieldName, enMsg, xMsg );
 	}
 
-	public MCFLibArgumentUnderflowException(
+	public YCFLibArgumentUnderflowException(
 		String enFieldName,
 		String xFieldName,
 		String methName,
@@ -479,7 +479,7 @@ public class MCFLibArgumentUnderflowException extends MCFLibArgumentException {
 		super( enFieldName, xFieldName, methName, enMsg, xMsg );
 	}
 
-	public MCFLibArgumentUnderflowException(
+	public YCFLibArgumentUnderflowException(
 		String enFieldName,
 		String xFieldName,
 		String methName,
@@ -490,7 +490,7 @@ public class MCFLibArgumentUnderflowException extends MCFLibArgumentException {
 		super( enFieldName, xFieldName, methName, enMsg, xMsg, th );
 	}
 
-// 	public MCFLibArgumentUnderflowException(
+// 	public YCFLibArgumentUnderflowException(
 // 		String enFieldName,
 // 		String xFieldName,
 // 		String methName,
@@ -502,7 +502,7 @@ public class MCFLibArgumentUnderflowException extends MCFLibArgumentException {
 // 		super( enFieldName, xFieldName, methName, argNo, argName, enMsg, xMsg );
 // 	}
 
-// 	public MCFLibArgumentUnderflowException(
+// 	public YCFLibArgumentUnderflowException(
 // 		String enFieldName,
 // 		String xFieldName,
 // 		String methName,
@@ -515,7 +515,7 @@ public class MCFLibArgumentUnderflowException extends MCFLibArgumentException {
 // 		super( enFieldName, xFieldName, methName, argNo, argName, enMsg, xMsg, th );
 // 	}
 
-	public MCFLibArgumentUnderflowException(
+	public YCFLibArgumentUnderflowException(
 		String enFieldName,
 		String xFieldName,
 		String methName,
@@ -524,13 +524,13 @@ public class MCFLibArgumentUnderflowException extends MCFLibArgumentException {
 		short argValue,
 		short minValue )
 	{
-		super(String.format(Inz.s("mcflib.MCFLibArgumentUnderflowException.decimal.FldArgMsg"),
+		super(String.format(Inz.s("ycflib.YCFLibArgumentUnderflowException.decimal.FldArgMsg"),
 				enFieldName + (( methName != null && !methName.isEmpty()) ? "." + methName + "()" : ""),
 				argNo,
 				argName,
 				argValue,
 				minValue),
-			String.format(Inz.x("mcflib.MCFLibArgumentUnderflowException.decimal.FldArgMsg"),
+			String.format(Inz.x("ycflib.YCFLibArgumentUnderflowException.decimal.FldArgMsg"),
 				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName) + (( methName != null && !methName.isEmpty()) ? "." + methName + "()" : ""),
 				argNo,
 				(argName),
@@ -538,7 +538,7 @@ public class MCFLibArgumentUnderflowException extends MCFLibArgumentException {
 				minValue));
 	}
 
-	public MCFLibArgumentUnderflowException(
+	public YCFLibArgumentUnderflowException(
 		String enFieldName,
 		String xFieldName,
 		String methName,
@@ -548,13 +548,13 @@ public class MCFLibArgumentUnderflowException extends MCFLibArgumentException {
 		short minValue,
 		Throwable th )
 	{
-		super(String.format(Inz.s("mcflib.MCFLibArgumentUnderflowException.decimal.FldArgMsg"),
+		super(String.format(Inz.s("ycflib.YCFLibArgumentUnderflowException.decimal.FldArgMsg"),
 				enFieldName + (( methName != null && !methName.isEmpty()) ? "." + methName + "()" : ""),
 				argNo,
 				argName,
 				argValue,
 				minValue),
-			String.format(Inz.x("mcflib.MCFLibArgumentUnderflowException.decimal.FldArgMsg"),
+			String.format(Inz.x("ycflib.YCFLibArgumentUnderflowException.decimal.FldArgMsg"),
 				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName) + (( methName != null && !methName.isEmpty()) ? "." + methName + "()" : ""),
 				argNo,
 				(argName),
@@ -563,7 +563,7 @@ public class MCFLibArgumentUnderflowException extends MCFLibArgumentException {
 			th);
 	}
 
-	public MCFLibArgumentUnderflowException(
+	public YCFLibArgumentUnderflowException(
 		String enFieldName,
 		String xFieldName,
 		String methName,
@@ -572,13 +572,13 @@ public class MCFLibArgumentUnderflowException extends MCFLibArgumentException {
 		int argValue,
 		int minValue )
 	{
-		super(String.format(Inz.s("mcflib.MCFLibArgumentUnderflowException.decimal.FldArgMsg"),
+		super(String.format(Inz.s("ycflib.YCFLibArgumentUnderflowException.decimal.FldArgMsg"),
 				enFieldName + (( methName != null && !methName.isEmpty()) ? "." + methName + "()" : ""),
 				argNo,
 				argName,
 				argValue,
 				minValue),
-			String.format(Inz.x("mcflib.MCFLibArgumentUnderflowException.decimal.FldArgMsg"),
+			String.format(Inz.x("ycflib.YCFLibArgumentUnderflowException.decimal.FldArgMsg"),
 				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName) + (( methName != null && !methName.isEmpty()) ? "." + methName + "()" : ""),
 				argNo,
 				(argName),
@@ -586,7 +586,7 @@ public class MCFLibArgumentUnderflowException extends MCFLibArgumentException {
 				minValue));
 	}
 
-	public MCFLibArgumentUnderflowException(
+	public YCFLibArgumentUnderflowException(
 		String enFieldName,
 		String xFieldName,
 		String methName,
@@ -596,13 +596,13 @@ public class MCFLibArgumentUnderflowException extends MCFLibArgumentException {
 		int minValue,
 		Throwable th )
 	{
-		super(String.format(Inz.s("mcflib.MCFLibArgumentUnderflowException.decimal.FldArgMsg"),
+		super(String.format(Inz.s("ycflib.YCFLibArgumentUnderflowException.decimal.FldArgMsg"),
 				enFieldName + (( methName != null && !methName.isEmpty()) ? "." + methName + "()" : ""),
 				argNo,
 				argName,
 				argValue,
 				minValue),
-			String.format(Inz.x("mcflib.MCFLibArgumentUnderflowException.decimal.FldArgMsg"),
+			String.format(Inz.x("ycflib.YCFLibArgumentUnderflowException.decimal.FldArgMsg"),
 				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName) + (( methName != null && !methName.isEmpty()) ? "." + methName + "()" : ""),
 				argNo,
 				(argName),
@@ -611,7 +611,7 @@ public class MCFLibArgumentUnderflowException extends MCFLibArgumentException {
 			th);
 	}
 
-	public MCFLibArgumentUnderflowException(
+	public YCFLibArgumentUnderflowException(
 		String enFieldName,
 		String xFieldName,
 		String methName,
@@ -620,13 +620,13 @@ public class MCFLibArgumentUnderflowException extends MCFLibArgumentException {
 		long argValue,
 		long minValue )
 	{
-		super(String.format(Inz.s("mcflib.MCFLibArgumentUnderflowException.decimal.FldArgMsg"),
+		super(String.format(Inz.s("ycflib.YCFLibArgumentUnderflowException.decimal.FldArgMsg"),
 				enFieldName + (( methName != null && !methName.isEmpty()) ? "." + methName + "()" : ""),
 				argNo,
 				argName,
 				argValue,
 				minValue),
-			String.format(Inz.x("mcflib.MCFLibArgumentUnderflowException.decimal.FldArgMsg"),
+			String.format(Inz.x("ycflib.YCFLibArgumentUnderflowException.decimal.FldArgMsg"),
 				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName) + (( methName != null && !methName.isEmpty()) ? "." + methName + "()" : ""),
 				argNo,
 				(argName),
@@ -634,7 +634,7 @@ public class MCFLibArgumentUnderflowException extends MCFLibArgumentException {
 				minValue));
 	}
 
-	public MCFLibArgumentUnderflowException(
+	public YCFLibArgumentUnderflowException(
 		String enFieldName,
 		String xFieldName,
 		String methName,
@@ -644,13 +644,13 @@ public class MCFLibArgumentUnderflowException extends MCFLibArgumentException {
 		long minValue,
 		Throwable th )
 	{
-		super(String.format(Inz.s("mcflib.MCFLibArgumentUnderflowException.decimal.FldArgMsg"),
+		super(String.format(Inz.s("ycflib.YCFLibArgumentUnderflowException.decimal.FldArgMsg"),
 				enFieldName + (( methName != null && !methName.isEmpty()) ? "." + methName + "()" : ""),
 				argNo,
 				argName,
 				argValue,
 				minValue),
-			String.format(Inz.x("mcflib.MCFLibArgumentUnderflowException.decimal.FldArgMsg"),
+			String.format(Inz.x("ycflib.YCFLibArgumentUnderflowException.decimal.FldArgMsg"),
 				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName) + (( methName != null && !methName.isEmpty()) ? "." + methName + "()" : ""),
 				argNo,
 				(argName),
@@ -659,7 +659,7 @@ public class MCFLibArgumentUnderflowException extends MCFLibArgumentException {
 			th);
 	}
 
-	public MCFLibArgumentUnderflowException(
+	public YCFLibArgumentUnderflowException(
 		String enFieldName,
 		String xFieldName,
 		String methName,
@@ -668,13 +668,13 @@ public class MCFLibArgumentUnderflowException extends MCFLibArgumentException {
 		float argValue,
 		float minValue )
 	{
-		super(String.format(Inz.s("mcflib.MCFLibArgumentUnderflowException.float.FldArgMsg"),
+		super(String.format(Inz.s("ycflib.YCFLibArgumentUnderflowException.float.FldArgMsg"),
 				enFieldName + (( methName != null && !methName.isEmpty()) ? "." + methName + "()" : ""),
 				argNo,
 				argName,
 				argValue,
 				minValue),
-			String.format(Inz.x("mcflib.MCFLibArgumentUnderflowException.float.FldArgMsg"),
+			String.format(Inz.x("ycflib.YCFLibArgumentUnderflowException.float.FldArgMsg"),
 				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName) + (( methName != null && !methName.isEmpty()) ? "." + methName + "()" : ""),
 				argNo,
 				(argName),
@@ -682,7 +682,7 @@ public class MCFLibArgumentUnderflowException extends MCFLibArgumentException {
 				minValue));
 	}
 
-	public MCFLibArgumentUnderflowException(
+	public YCFLibArgumentUnderflowException(
 		String enFieldName,
 		String xFieldName,
 		String methName,
@@ -692,13 +692,13 @@ public class MCFLibArgumentUnderflowException extends MCFLibArgumentException {
 		float minValue,
 		Throwable th )
 	{
-		super(String.format(Inz.s("mcflib.MCFLibArgumentUnderflowException.float.FldArgMsg"),
+		super(String.format(Inz.s("ycflib.YCFLibArgumentUnderflowException.float.FldArgMsg"),
 				enFieldName + (( methName != null && !methName.isEmpty()) ? "." + methName + "()" : ""),
 				argNo,
 				argName,
 				argValue,
 				minValue),
-			String.format(Inz.x("mcflib.MCFLibArgumentUnderflowException.float.FldArgMsg"),
+			String.format(Inz.x("ycflib.YCFLibArgumentUnderflowException.float.FldArgMsg"),
 				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName) + (( methName != null && !methName.isEmpty()) ? "." + methName + "()" : ""),
 				argNo,
 				(argName),
@@ -707,7 +707,7 @@ public class MCFLibArgumentUnderflowException extends MCFLibArgumentException {
 			th);
 	}
 
-	public MCFLibArgumentUnderflowException(
+	public YCFLibArgumentUnderflowException(
 		String enFieldName,
 		String xFieldName,
 		String methName,
@@ -716,13 +716,13 @@ public class MCFLibArgumentUnderflowException extends MCFLibArgumentException {
 		double argValue,
 		double minValue )
 	{
-		super(String.format(Inz.s("mcflib.MCFLibArgumentUnderflowException.float.FldArgMsg"),
+		super(String.format(Inz.s("ycflib.YCFLibArgumentUnderflowException.float.FldArgMsg"),
 				enFieldName + (( methName != null && !methName.isEmpty()) ? "." + methName + "()" : ""),
 				argNo,
 				argName,
 				argValue,
 				minValue),
-			String.format(Inz.x("mcflib.MCFLibArgumentUnderflowException.float.FldArgMsg"),
+			String.format(Inz.x("ycflib.YCFLibArgumentUnderflowException.float.FldArgMsg"),
 				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName) + (( methName != null && !methName.isEmpty()) ? "." + methName + "()" : ""),
 				argNo,
 				(argName),
@@ -730,7 +730,7 @@ public class MCFLibArgumentUnderflowException extends MCFLibArgumentException {
 				minValue));
 	}
 
-	public MCFLibArgumentUnderflowException(
+	public YCFLibArgumentUnderflowException(
 		String enFieldName,
 		String xFieldName,
 		String methName,
@@ -740,13 +740,13 @@ public class MCFLibArgumentUnderflowException extends MCFLibArgumentException {
 		double minValue,
 		Throwable th )
 	{
-		super(String.format(Inz.s("mcflib.MCFLibArgumentUnderflowException.float.FldArgMsg"),
+		super(String.format(Inz.s("ycflib.YCFLibArgumentUnderflowException.float.FldArgMsg"),
 				enFieldName + (( methName != null && !methName.isEmpty()) ? "." + methName + "()" : ""),
 				argNo,
 				argName,
 				argValue,
 				minValue),
-			String.format(Inz.x("mcflib.MCFLibArgumentUnderflowException.float.FldArgMsg"),
+			String.format(Inz.x("ycflib.YCFLibArgumentUnderflowException.float.FldArgMsg"),
 				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName) + (( methName != null && !methName.isEmpty()) ? "." + methName + "()" : ""),
 				argNo,
 				(argName),
@@ -755,7 +755,7 @@ public class MCFLibArgumentUnderflowException extends MCFLibArgumentException {
 			th);
 	}
 
-	public MCFLibArgumentUnderflowException(
+	public YCFLibArgumentUnderflowException(
 		String enFieldName,
 		String xFieldName,
 		String methName,
@@ -764,13 +764,13 @@ public class MCFLibArgumentUnderflowException extends MCFLibArgumentException {
 		Calendar argValue,
 		Calendar minValue )
 	{
-		super(String.format(Inz.s("mcflib.MCFLibArgumentUnderflowException.float.FldArgMsg"),
+		super(String.format(Inz.s("ycflib.YCFLibArgumentUnderflowException.float.FldArgMsg"),
 				enFieldName + (( methName != null && !methName.isEmpty()) ? "." + methName + "()" : ""),
 				argNo,
 				argName,
 				argValue.toString(),
 				minValue.toString()),
-			String.format(Inz.x("mcflib.MCFLibArgumentUnderflowException.float.FldArgMsg"),
+			String.format(Inz.x("ycflib.YCFLibArgumentUnderflowException.float.FldArgMsg"),
 				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName) + (( methName != null && !methName.isEmpty()) ? "." + methName + "()" : ""),
 				argNo,
 				(argName),
@@ -778,7 +778,7 @@ public class MCFLibArgumentUnderflowException extends MCFLibArgumentException {
 				minValue.toString()));
 	}
 
-	public MCFLibArgumentUnderflowException(
+	public YCFLibArgumentUnderflowException(
 		String enFieldName,
 		String xFieldName,
 		String methName,
@@ -788,13 +788,13 @@ public class MCFLibArgumentUnderflowException extends MCFLibArgumentException {
 		Calendar minValue,
 		Throwable th )
 	{
-		super(String.format(Inz.s("mcflib.MCFLibArgumentUnderflowException.float.FldArgMsg"),
+		super(String.format(Inz.s("ycflib.YCFLibArgumentUnderflowException.float.FldArgMsg"),
 				enFieldName + (( methName != null && !methName.isEmpty()) ? "." + methName + "()" : ""),
 				argNo,
 				argName,
 				argValue.toString(),
 				minValue.toString()),
-			String.format(Inz.x("mcflib.MCFLibArgumentUnderflowException.float.FldArgMsg"),
+			String.format(Inz.x("ycflib.YCFLibArgumentUnderflowException.float.FldArgMsg"),
 				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName) + (( methName != null && !methName.isEmpty()) ? "." + methName + "()" : ""),
 				argNo,
 				(argName),
@@ -803,7 +803,7 @@ public class MCFLibArgumentUnderflowException extends MCFLibArgumentException {
 			th);
 	}
 
-	public MCFLibArgumentUnderflowException(
+	public YCFLibArgumentUnderflowException(
 		String enFieldName,
 		String xFieldName,
 		String methName,
@@ -812,13 +812,13 @@ public class MCFLibArgumentUnderflowException extends MCFLibArgumentException {
 		String argValue,
 		String minValue )
 	{
-		super(String.format(Inz.s("mcflib.MCFLibArgumentUnderflowException.float.FldArgMsg"),
+		super(String.format(Inz.s("ycflib.YCFLibArgumentUnderflowException.float.FldArgMsg"),
 				enFieldName + (( methName != null && !methName.isEmpty()) ? "." + methName + "()" : ""),
 				argNo,
 				argName,
 				argValue,
 				minValue),
-			String.format(Inz.x("mcflib.MCFLibArgumentUnderflowException.float.FldArgMsg"),
+			String.format(Inz.x("ycflib.YCFLibArgumentUnderflowException.float.FldArgMsg"),
 				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName) + (( methName != null && !methName.isEmpty()) ? "." + methName + "()" : ""),
 				argNo,
 				(argName),
@@ -826,7 +826,7 @@ public class MCFLibArgumentUnderflowException extends MCFLibArgumentException {
 				minValue));
 	}
 
-	public MCFLibArgumentUnderflowException(
+	public YCFLibArgumentUnderflowException(
 		String enFieldName,
 		String xFieldName,
 		String methName,
@@ -836,13 +836,13 @@ public class MCFLibArgumentUnderflowException extends MCFLibArgumentException {
 		String minValue,
 		Throwable th )
 	{
-		super(String.format(Inz.s("mcflib.MCFLibArgumentUnderflowException.float.FldArgMsg"),
+		super(String.format(Inz.s("ycflib.YCFLibArgumentUnderflowException.float.FldArgMsg"),
 				enFieldName + (( methName != null && !methName.isEmpty()) ? "." + methName + "()" : ""),
 				argNo,
 				argName,
 				argValue,
 				minValue),
-			String.format(Inz.x("mcflib.MCFLibArgumentUnderflowException.float.FldArgMsg"),
+			String.format(Inz.x("ycflib.YCFLibArgumentUnderflowException.float.FldArgMsg"),
 				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName) + (( methName != null && !methName.isEmpty()) ? "." + methName + "()" : ""),
 				argNo,
 				(argName),
@@ -851,7 +851,7 @@ public class MCFLibArgumentUnderflowException extends MCFLibArgumentException {
 			th);
 	}
 
-	public MCFLibArgumentUnderflowException(
+	public YCFLibArgumentUnderflowException(
 		String enFieldName,
 		String xFieldName,
 		String methName,
@@ -860,13 +860,13 @@ public class MCFLibArgumentUnderflowException extends MCFLibArgumentException {
 		BigDecimal argValue,
 		BigDecimal minValue )
 	{
-		super(String.format(Inz.s("mcflib.MCFLibArgumentUnderflowException.float.FldArgMsg"),
+		super(String.format(Inz.s("ycflib.YCFLibArgumentUnderflowException.float.FldArgMsg"),
 				enFieldName + (( methName != null && !methName.isEmpty()) ? "." + methName + "()" : ""),
 				argNo,
 				argName,
 				argValue.toString(),
 				minValue.toString()),
-			String.format(Inz.x("mcflib.MCFLibArgumentUnderflowException.float.FldArgMsg"),
+			String.format(Inz.x("ycflib.YCFLibArgumentUnderflowException.float.FldArgMsg"),
 				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName) + (( methName != null && !methName.isEmpty()) ? "." + methName + "()" : ""),
 				argNo,
 				(argName),
@@ -874,7 +874,7 @@ public class MCFLibArgumentUnderflowException extends MCFLibArgumentException {
 				minValue.toString()));
 	}
 
-	public MCFLibArgumentUnderflowException(
+	public YCFLibArgumentUnderflowException(
 		String enFieldName,
 		String xFieldName,
 		String methName,
@@ -884,13 +884,13 @@ public class MCFLibArgumentUnderflowException extends MCFLibArgumentException {
 		BigDecimal minValue,
 		Throwable th )
 	{
-		super(String.format(Inz.s("mcflib.MCFLibArgumentUnderflowException.float.FldArgMsg"),
+		super(String.format(Inz.s("ycflib.YCFLibArgumentUnderflowException.float.FldArgMsg"),
 				enFieldName + (( methName != null && !methName.isEmpty()) ? "." + methName + "()" : ""),
 				argNo,
 				argName,
 				argValue.toString(),
 				minValue.toString()),
-			String.format(Inz.x("mcflib.MCFLibArgumentUnderflowException.float.FldArgMsg"),
+			String.format(Inz.x("ycflib.YCFLibArgumentUnderflowException.float.FldArgMsg"),
 				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName) + (( methName != null && !methName.isEmpty()) ? "." + methName + "()" : ""),
 				argNo,
 				(argName),

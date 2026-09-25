@@ -1,5 +1,5 @@
 /**
- *	server.markhome.mcf-core - Mark's Code Fractal Core Services
+ *	server.markhome.ycf-core - Mark's Code Fractal Core Services
  *
  *	Copyright 2026 Mark Stephen Sobkow (mark.sobkow@gmail.com)
  *
@@ -18,18 +18,18 @@
  *	SPDX-License-Identifier: Apache-2.0
 **/
 
-package server.markhome.mcf;
+package server.markhome.ycf;
 
 import org.teavm.jso.JSExport;
 import org.teavm.jso.JSObject;
 import org.teavm.jso.JSProperty;
 
-import server.markhome.mcf.Inz;
+import server.markhome.ycf.Inz;
 
 /**
- * MCFLibDependentsDetectedException is thrown when an object cannot be deleted because it has dependent objects which are not flagged for cascading deletes.
+ * YCFLibDependentsDetectedException is thrown when an object cannot be deleted because it has dependent objects which are not flagged for cascading deletes.
  */
-public class MCFLibDependentsDetectedException extends MCFLibRuntimeException {
+public class YCFLibDependentsDetectedException extends YCFLibRuntimeException {
 
 	protected String enRelnType = null;
 	protected String xRelnType = null;
@@ -42,14 +42,14 @@ public class MCFLibDependentsDetectedException extends MCFLibRuntimeException {
 
 	protected Object indexKey = null;
 
-	public MCFLibDependentsDetectedException(
+	public YCFLibDependentsDetectedException(
 		String enMsg,
 		String xMsg )
 	{
 		super( enMsg, xMsg );
 	}
 
-	public MCFLibDependentsDetectedException(
+	public YCFLibDependentsDetectedException(
 		String enMsg,
 		String xMsg,
 		Object indexKey )
@@ -58,7 +58,7 @@ public class MCFLibDependentsDetectedException extends MCFLibRuntimeException {
 		this.indexKey = indexKey;
 	}
 
-	public MCFLibDependentsDetectedException(
+	public YCFLibDependentsDetectedException(
 		Class<?> throwingClass,
 		String methName,
 		String enMsg,
@@ -67,7 +67,7 @@ public class MCFLibDependentsDetectedException extends MCFLibRuntimeException {
 		super( throwingClass, methName, enMsg, xMsg );
 	}
 
-	public MCFLibDependentsDetectedException(
+	public YCFLibDependentsDetectedException(
 		Class<?> throwingClass,
 		String methName,
 		String enMsg,
@@ -78,7 +78,7 @@ public class MCFLibDependentsDetectedException extends MCFLibRuntimeException {
 		this.indexKey = indexKey;
 	}
 
-	public MCFLibDependentsDetectedException(
+	public YCFLibDependentsDetectedException(
 		Class<?> throwingClass,
 		String methName,
 		String enMsg,
@@ -88,7 +88,7 @@ public class MCFLibDependentsDetectedException extends MCFLibRuntimeException {
 		super( throwingClass, methName, enMsg, xMsg, th );
 	}
 
-	public MCFLibDependentsDetectedException(
+	public YCFLibDependentsDetectedException(
 		Class<?> throwingClass,
 		String methName,
 		String enMsg,
@@ -100,64 +100,64 @@ public class MCFLibDependentsDetectedException extends MCFLibRuntimeException {
 		this.indexKey = indexKey;
 	}
 
-	public MCFLibDependentsDetectedException(
+	public YCFLibDependentsDetectedException(
 		Class<?> throwingClass,
 		String methName,
 		Throwable th )
 	{
 		super( 
-				String.format(Inz.s("mcflib.MCFLibDependentsDetectedException.sqlexcept"),
+				String.format(Inz.s("ycflib.YCFLibDependentsDetectedException.sqlexcept"),
 					(throwingClass.getName() + (( methName != null && !methName.isEmpty())? ("." + methName + "()") : "")),
 					th.getMessage()),
-				String.format(Inz.x("mcflib.MCFLibDependentsDetectedException.sqlexcept"),
+				String.format(Inz.x("ycflib.YCFLibDependentsDetectedException.sqlexcept"),
 					(throwingClass.getName() + (( methName != null && !methName.isEmpty())? ("." + methName + "()") : "")),
 					th.getMessage()),
 				th);
 	}
 
-	public MCFLibDependentsDetectedException(
+	public YCFLibDependentsDetectedException(
 		Class<?> throwingClass,
 		String methName,
 		Object indexKey )
 	{
 		super( ((indexKey != null)
-					? String.format(Inz.s("mcflib.MCFLibDependentsDetectedException.indexKey"),
+					? String.format(Inz.s("ycflib.YCFLibDependentsDetectedException.indexKey"),
 						(throwingClass.getName() + ((methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" )),
 						indexKey.toString())
-					: String.format(Inz.s("mcflib.MCFLibDependentsDetectedException.default"),
+					: String.format(Inz.s("ycflib.YCFLibDependentsDetectedException.default"),
 						(throwingClass.getName() + ((methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" )))),
 				((indexKey != null)
-					? String.format(Inz.x("mcflib.MCFLibDependentsDetectedException.indexKey"),
+					? String.format(Inz.x("ycflib.YCFLibDependentsDetectedException.indexKey"),
 						(throwingClass.getName() + (( methName != null && !methName.isEmpty())? ("." + methName + "()") : "")),
 						indexKey.toString())
-					: String.format(Inz.s("mcflib.MCFLibDependentsDetectedException.default"),
+					: String.format(Inz.s("ycflib.YCFLibDependentsDetectedException.default"),
 						(throwingClass.getName() + (( methName != null && !methName.isEmpty())? ("." + methName + "()") : "")))));
 		this.indexKey = indexKey;
 	}
 
-	public MCFLibDependentsDetectedException(
+	public YCFLibDependentsDetectedException(
 		Class<?> throwingClass,
 		String methName,
 		Object indexKey,
 		Throwable th)
 	{
 		super( ((indexKey != null)
-					? String.format(Inz.s("mcflib.MCFLibDependentsDetectedException.indexKey"),
+					? String.format(Inz.s("ycflib.YCFLibDependentsDetectedException.indexKey"),
 						(throwingClass.getName() + ((methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" )),
 						indexKey.toString())
-					: String.format(Inz.s("mcflib.MCFLibDependentsDetectedException.default"),
+					: String.format(Inz.s("ycflib.YCFLibDependentsDetectedException.default"),
 						(throwingClass.getName() + ((methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" )))),
 				((indexKey != null)
-					? String.format(Inz.x("mcflib.MCFLibDependentsDetectedException.indexKey"),
+					? String.format(Inz.x("ycflib.YCFLibDependentsDetectedException.indexKey"),
 						(throwingClass.getName() + (( methName != null && !methName.isEmpty())? ("." + methName + "()") : "")),
 						indexKey.toString())
-					: String.format(Inz.s("mcflib.MCFLibDependentsDetectedException.default"),
+					: String.format(Inz.s("ycflib.YCFLibDependentsDetectedException.default"),
 						(throwingClass.getName() + (( methName != null && !methName.isEmpty())? ("." + methName + "()") : "")))),
 				th);
 		this.indexKey = indexKey;
 	}
 
-	public MCFLibDependentsDetectedException(
+	public YCFLibDependentsDetectedException(
 		Class<?> throwingClass,
 		String methName,
 		String enRelationType,
@@ -169,20 +169,20 @@ public class MCFLibDependentsDetectedException extends MCFLibRuntimeException {
 		Object indexKey )
 	{
 		super( ((indexKey != null) ?
-				String.format(Inz.s("mcflib.MCFLibDependentsDetectedException.indexKey"),
+				String.format(Inz.s("ycflib.YCFLibDependentsDetectedException.indexKey"),
 					(throwingClass.getName() + ((methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "")),
 					enRelationType, enRelationName, enTargetName, indexKey.toString())
-				: String.format(Inz.s("mcflib.MCFLibDependentsDetectedException.default"),
+				: String.format(Inz.s("ycflib.YCFLibDependentsDetectedException.default"),
 					(throwingClass.getName() + ((methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "")),
 					enRelationType, enRelationName, enTargetName)),
 			((indexKey != null) ?
-				String.format(Inz.x("mcflib.MCFLibDependentsDetectedException.indexKey"),
+				String.format(Inz.x("ycflib.YCFLibDependentsDetectedException.indexKey"),
 					(throwingClass.getName() + (( methName != null && !methName.isEmpty())? ("." + methName + "()") : "")),
 					(xRelationType != null && !xRelationType.isEmpty()) ? xRelationType : enRelationType,
 					(xRelationName != null && !xRelationName.isEmpty()) ? xRelationName : enRelationName,
 					(xTargetName != null && !xTargetName.isEmpty()) ? xTargetName : enTargetName,
 					indexKey.toString())
-				: String.format(Inz.s("mcflib.MCFLibDependentsDetectedException.default"),
+				: String.format(Inz.s("ycflib.YCFLibDependentsDetectedException.default"),
 					(throwingClass.getName() + (( methName != null && !methName.isEmpty())? ("." + methName + "()") : "")),
 					(xRelationType != null && !xRelationType.isEmpty()) ? xRelationType : enRelationType,
 					(xRelationName != null && !xRelationName.isEmpty()) ? xRelationName : enRelationName,
@@ -196,7 +196,7 @@ public class MCFLibDependentsDetectedException extends MCFLibRuntimeException {
 		this.indexKey = indexKey;
 	}
 
-	public MCFLibDependentsDetectedException(
+	public YCFLibDependentsDetectedException(
 		Class<?> throwingClass,
 		String methName,
 		String enRelationType,
@@ -209,20 +209,20 @@ public class MCFLibDependentsDetectedException extends MCFLibRuntimeException {
 		Throwable th )
 	{
 		super( ((indexKey != null) ?
-				String.format(Inz.s("mcflib.MCFLibDependentsDetectedException.indexKey"),
+				String.format(Inz.s("ycflib.YCFLibDependentsDetectedException.indexKey"),
 					(throwingClass.getName() + ((methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "")),
 					enRelationType, enRelationName, enTargetName, indexKey.toString())
-				: String.format(Inz.s("mcflib.MCFLibDependentsDetectedException.default"),
+				: String.format(Inz.s("ycflib.YCFLibDependentsDetectedException.default"),
 					(throwingClass.getName() + ((methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "")),
 					enRelationType, enRelationName, enTargetName)),
 			((indexKey != null) ?
-				String.format(Inz.x("mcflib.MCFLibDependentsDetectedException.indexKey"),
+				String.format(Inz.x("ycflib.YCFLibDependentsDetectedException.indexKey"),
 					(throwingClass.getName() + (( methName != null && !methName.isEmpty())? ("." + methName + "()") : "")),
 					(xRelationType != null && !xRelationType.isEmpty()) ? xRelationType : enRelationType,
 					(xRelationName != null && !xRelationName.isEmpty()) ? xRelationName : enRelationName,
 					(xTargetName != null && !xTargetName.isEmpty()) ? xTargetName : enTargetName,
 					indexKey.toString())
-				: String.format(Inz.s("mcflib.MCFLibDependentsDetectedException.default"),
+				: String.format(Inz.s("ycflib.YCFLibDependentsDetectedException.default"),
 					(throwingClass.getName() + (( methName != null && !methName.isEmpty())? ("." + methName + "()") : "")),
 					(xRelationType != null && !xRelationType.isEmpty()) ? xRelationType : enRelationType,
 					(xRelationName != null && !xRelationName.isEmpty()) ? xRelationName : enRelationName,

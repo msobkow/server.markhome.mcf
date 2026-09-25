@@ -1,5 +1,5 @@
 /**
- *	server.markhome.mcf-core - Mark's Code Fractal Core Services
+ *	server.markhome.ycf-core - Mark's Code Fractal Core Services
  *
  *	Copyright 2026 Mark Stephen Sobkow (mark.sobkow@gmail.com)
  *
@@ -18,7 +18,8 @@
  *	SPDX-License-Identifier: Apache-2.0
 **/
 
-package server.markhome.mcf;
+package server.markhome.ycf;
+
 
 import org.teavm.jso.JSExport;
 import org.teavm.jso.JSObject;
@@ -39,18 +40,18 @@ import java.util.Set;
  *
  * @author msobkow
  */
-public class MCFLibKeyHash384 extends MCFLibKeyHashBase<MCFLibKeyHash384> implements IMCFLibKeyHash384, Serializable {
+public class YCFLibKeyHash384 extends YCFLibKeyHashBase<YCFLibKeyHash384> implements IYCFLibKeyHash384, Serializable {
   static final long serialVersionUID = 202608160344L;
   protected byte[] bytes;
 
   @Override
   @SuppressWarnings("unchecked")
-  public int compareTo(IMCFLibKeyHash384 o) {
-    int result = compare((IMCFLibKeyHash384) this, o);
+  public int compareTo(IYCFLibKeyHash384 o) {
+    int result = compare((IYCFLibKeyHash384) this, o);
     return result;
   }
 
-  static public int compareOrdered(IMCFLibKeyHash384 h1, IMCFLibKeyHash384 h2) {
+  static public int compareOrdered(IYCFLibKeyHash384 h1, IYCFLibKeyHash384 h2) {
     if (h1 == null) {
       if (h2 == null) {
         return 0;
@@ -132,46 +133,46 @@ public class MCFLibKeyHash384 extends MCFLibKeyHashBase<MCFLibKeyHash384> implem
     return b;
   }
 
-  public static MCFLibKeyHash384 fromHex(String string) {
+  public static YCFLibKeyHash384 fromHex(String string) {
     byte[] b = sbytesFromHex(string);
-    MCFLibKeyHash384 h = new MCFLibKeyHash384();
+    YCFLibKeyHash384 h = new YCFLibKeyHash384();
     h.bytes = b;
     return h;
   }
 
-  public static Comparator<IMCFLibKeyHash384> getComparator() {
+  public static Comparator<IYCFLibKeyHash384> getComparator() {
 
-    return new Comparator<IMCFLibKeyHash384>() {
+    return new Comparator<IYCFLibKeyHash384>() {
       @Override
-      public int compare(IMCFLibKeyHash384 a, IMCFLibKeyHash384 b) {
+      public int compare(IYCFLibKeyHash384 a, IYCFLibKeyHash384 b) {
         return compareOrdered(a, b);
       }
     };
   }
 
-  public MCFLibKeyHash384() {
+  public YCFLibKeyHash384() {
     super();
   }
 
   /**
    * This is the hex code of the underlying ID. THIS IS NOT A HASHING FUNCTION.
    */
-  public MCFLibKeyHash384(String hexId) {
+  public YCFLibKeyHash384(String hexId) {
     super(hexId);
   }
 
-  public MCFLibKeyHash384(byte[] anId) {
+  public YCFLibKeyHash384(byte[] anId) {
     super(anId);
   }
 
-  public MCFLibKeyHash384(IMCFLibKeyHash384 otherKey) {
+  public YCFLibKeyHash384(IYCFLibKeyHash384 otherKey) {
 	bytes = new byte[HASH_LENGTH];
 	if(otherKey != null) {
 		System.arraycopy(otherKey.getBytes(), 0, bytes, 0, HASH_LENGTH);
 	}
   }
 
-  public MCFLibKeyHash384(IMCFLibKeyHash512 otherKey) {
+  public YCFLibKeyHash384(IYCFLibKeyHash512 otherKey) {
     super();
     if (otherKey == null) {
       bytes = new byte[HASH_LENGTH];
@@ -182,8 +183,8 @@ public class MCFLibKeyHash384 extends MCFLibKeyHashBase<MCFLibKeyHash384> implem
     this.bytes = _newId;
   }
 
-  public static MCFLibKeyHash384 fromInt(int v) {
-    MCFLibKeyHash384 h = nullGet();
+  public static YCFLibKeyHash384 fromInt(int v) {
+    YCFLibKeyHash384 h = nullGet();
     h.bytes[3] = (byte) (v & 0xFF);
     h.bytes[2] = (byte) ((v >> 8) & 0xFF);
     h.bytes[1] = (byte) ((v >> 16) & 0xFF);
@@ -191,11 +192,11 @@ public class MCFLibKeyHash384 extends MCFLibKeyHashBase<MCFLibKeyHash384> implem
     return h;
   }
 
-  public MCFLibKeyHash384(int notUsed) {
+  public YCFLibKeyHash384(int notUsed) {
     super(notUsed);
   }
 
-  public static final boolean isNull(MCFLibKeyHash384 anId) {
+  public static final boolean isNull(YCFLibKeyHash384 anId) {
     return anId == null || anId.isNull();
   }
 
@@ -207,8 +208,8 @@ public class MCFLibKeyHash384 extends MCFLibKeyHashBase<MCFLibKeyHash384> implem
   /**
    * Get a new hash object with the key set to all 0s
    */
-  static public MCFLibKeyHash384 nullGet() {
-    MCFLibKeyHash384 k = new MCFLibKeyHash384(new byte[HASH_LENGTH]);
+  static public YCFLibKeyHash384 nullGet() {
+    YCFLibKeyHash384 k = new YCFLibKeyHash384(new byte[HASH_LENGTH]);
     return k;
   }
 
@@ -239,61 +240,61 @@ public class MCFLibKeyHash384 extends MCFLibKeyHashBase<MCFLibKeyHash384> implem
       System.arraycopy(newBytes, offset, bytes, 0, Math.min(HASH_LENGTH,length));
   }
 
-  public static MCFLibKeyHash384 hash(String text) {
+  public static YCFLibKeyHash384 hash(String text) {
     if (text != null) {
       try {
         MessageDigest md = MessageDigest.getInstance(HASH_ALGO);
         byte[] buf = text.getBytes("UTF-8");
         md.update(buf);
 
-        return new MCFLibKeyHash384(md.digest());
+        return new YCFLibKeyHash384(md.digest());
       }
       catch (Exception ex) {
       }
     }
-    return new MCFLibKeyHash384(0);
+    return new YCFLibKeyHash384(0);
   }
 
-  public static MCFLibKeyHash384 hash(byte[] payload) {
+  public static YCFLibKeyHash384 hash(byte[] payload) {
     try {
       MessageDigest md = MessageDigest.getInstance(HASH_ALGO);
       md.update(payload);
 
-      return new MCFLibKeyHash384(md.digest());
+      return new YCFLibKeyHash384(md.digest());
     }
     catch (Exception ex) {
     }
-    return new MCFLibKeyHash384(0);
+    return new YCFLibKeyHash384(0);
   }
 
-  public static MCFLibKeyHash384 hash(byte[]... payload) {
+  public static YCFLibKeyHash384 hash(byte[]... payload) {
     try {
       MessageDigest md = MessageDigest.getInstance(HASH_ALGO);
       for (byte[] bs : payload) {
         md.update(bs);
       }
 
-      return new MCFLibKeyHash384(md.digest());
+      return new YCFLibKeyHash384(md.digest());
     }
     catch (Exception ex) {
     }
-    return new MCFLibKeyHash384(0);
+    return new YCFLibKeyHash384(0);
   }
 
-  public static MCFLibKeyHash384 hash(IMCFLibKeyHash384... payload) {
+  public static YCFLibKeyHash384 hash(IYCFLibKeyHash384... payload) {
     try {
       MessageDigest md = MessageDigest.getInstance(HASH_ALGO);
-      for (IMCFLibKeyHash384 k : payload) {
+      for (IYCFLibKeyHash384 k : payload) {
         md.update(k.getBytes());
       }
-      return new MCFLibKeyHash384(md.digest());
+      return new YCFLibKeyHash384(md.digest());
     }
     catch (Exception ex) {
     }
-    return new MCFLibKeyHash384(0);
+    return new YCFLibKeyHash384(0);
   }
 
-  public static MCFLibKeyHash384 hash(int[] payload) {
+  public static YCFLibKeyHash384 hash(int[] payload) {
     try {
       MessageDigest md = MessageDigest.getInstance(HASH_ALGO);
       for (int x : payload) {
@@ -303,19 +304,19 @@ public class MCFLibKeyHash384 extends MCFLibKeyHashBase<MCFLibKeyHash384> implem
         md.update((byte) (x & 255));
       }
 
-      return new MCFLibKeyHash384(md.digest());
+      return new YCFLibKeyHash384(md.digest());
     }
     catch (Exception ex) {
     }
-    return new MCFLibKeyHash384(0);
+    return new YCFLibKeyHash384(0);
   }
 
   @Override
-  public MCFLibKeyHash384 deepClone() {
-    return new MCFLibKeyHash384(this);
+  public YCFLibKeyHash384 deepClone() {
+    return new YCFLibKeyHash384(this);
   }
 
-  static public MCFLibKeyHash384 fromHexQuick(String string) {
+  static public YCFLibKeyHash384 fromHexQuick(String string) {
     if (string == null) {
       return null;
     }
@@ -341,21 +342,21 @@ public class MCFLibKeyHash384 extends MCFLibKeyHashBase<MCFLibKeyHash384> implem
     }
   }
 
-  public static final MCFLibKeyHash384[] toMCFLibKeyHash384(String[] ids) {
+  public static final YCFLibKeyHash384[] toYCFLibKeyHash384(String[] ids) {
     if (ids == null) {
       return null;
     }
     if (ids.length == 0) {
-      return new MCFLibKeyHash384[0];
+      return new YCFLibKeyHash384[0];
     }
-    MCFLibKeyHash384[] r = new MCFLibKeyHash384[ids.length];
+    YCFLibKeyHash384[] r = new YCFLibKeyHash384[ids.length];
     for (int i = 0; i < ids.length; i++) {
-      r[i] = new MCFLibKeyHash384(ids[i]);
+      r[i] = new YCFLibKeyHash384(ids[i]);
     }
     return r;
   }
 
-  public static final List<MCFLibKeyHash384> toMCFLibKeyHash384List(String[] ids) {
+  public static final List<YCFLibKeyHash384> toYCFLibKeyHash384List(String[] ids) {
 
     if (ids == null) {
       return null;
@@ -363,15 +364,15 @@ public class MCFLibKeyHash384 extends MCFLibKeyHashBase<MCFLibKeyHash384> implem
     if (ids.length == 0) {
       return Collections.emptyList();
     }
-    List<MCFLibKeyHash384> r = new ArrayList<MCFLibKeyHash384>(ids.length);
+    List<YCFLibKeyHash384> r = new ArrayList<YCFLibKeyHash384>(ids.length);
     for (int i = 0; i < ids.length; i++) {
-      r.add(new MCFLibKeyHash384(ids[i]));
+      r.add(new YCFLibKeyHash384(ids[i]));
     }
     return r;
 
   }
 
-  public static final Set<MCFLibKeyHash384> toMCFLibKeyHash384Set(String[] ids) {
+  public static final Set<YCFLibKeyHash384> toYCFLibKeyHash384Set(String[] ids) {
 
     if (ids == null) {
       return null;
@@ -379,9 +380,9 @@ public class MCFLibKeyHash384 extends MCFLibKeyHashBase<MCFLibKeyHash384> implem
     if (ids.length == 0) {
       return Collections.emptySet();
     }
-    Set<MCFLibKeyHash384> r = new HashSet<MCFLibKeyHash384>(ids.length);
+    Set<YCFLibKeyHash384> r = new HashSet<YCFLibKeyHash384>(ids.length);
     for (int i = 0; i < ids.length; i++) {
-      r.add(new MCFLibKeyHash384(ids[i]));
+      r.add(new YCFLibKeyHash384(ids[i]));
     }
     return r;
 

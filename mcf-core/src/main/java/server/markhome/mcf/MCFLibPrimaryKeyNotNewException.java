@@ -1,5 +1,5 @@
 /**
- *	server.markhome.mcf-core - Mark's Code Fractal Core Services
+ *	server.markhome.ycf-core - Mark's Code Fractal Core Services
  *
  *	Copyright 2026 Mark Stephen Sobkow (mark.sobkow@gmail.com)
  *
@@ -18,7 +18,7 @@
  *	SPDX-License-Identifier: Apache-2.0
 **/
 
-package server.markhome.mcf;
+package server.markhome.ycf;
 
 import org.teavm.jso.JSExport;
 import org.teavm.jso.JSObject;
@@ -26,17 +26,17 @@ import org.teavm.jso.JSProperty;
 
 import java.util.*;
 
-import server.markhome.mcf.Inz;
+import server.markhome.ycf.Inz;
 
 /**
- * MCFLibPrimaryKeyNotNewException is thrown when keys collide in the database, either because an existing concatenated key collides, or because by some huge fluke of fate the MCFLib dbutil data types generate collisions.  With the larger bit sizes, that should be so rare that it is not considered worth preventing or recovering from in code.
+ * YCFLibPrimaryKeyNotNewException is thrown when keys collide in the database, either because an existing concatenated key collides, or because by some huge fluke of fate the YCFLib dbutil data types generate collisions.  With the larger bit sizes, that should be so rare that it is not considered worth preventing or recovering from in code.
  */
-public class MCFLibPrimaryKeyNotNewException extends IllegalStateException {
+public class YCFLibPrimaryKeyNotNewException extends IllegalStateException {
 
 	protected String localMessage = null;
 	protected Object indexKey = null;
 
-	public MCFLibPrimaryKeyNotNewException(
+	public YCFLibPrimaryKeyNotNewException(
 		String enMsg,
 		String xMsg )
 	{
@@ -44,7 +44,7 @@ public class MCFLibPrimaryKeyNotNewException extends IllegalStateException {
 		this.localMessage = xMsg;
 	}
 
-	public MCFLibPrimaryKeyNotNewException(
+	public YCFLibPrimaryKeyNotNewException(
 		String enMsg,
 		String xMsg,
 		Throwable th)
@@ -53,37 +53,37 @@ public class MCFLibPrimaryKeyNotNewException extends IllegalStateException {
 			this.localMessage = xMsg;
 	}
 
-	public MCFLibPrimaryKeyNotNewException(
+	public YCFLibPrimaryKeyNotNewException(
 		Class<?> throwingClass,
 		String methName,
 		String enMsg,
 		String xMsg )
 	{
-		super( String.format(Inz.s("mcflib.MCFLibArgumentException.TcmnMsg"),
+		super( String.format(Inz.s("ycflib.YCFLibArgumentException.TcmnMsg"),
 				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg : "" )));
-		this.localMessage = String.format(Inz.x("mcflib.MCFLibArgumentException.TcmnMsg"),
+		this.localMessage = String.format(Inz.x("ycflib.YCFLibArgumentException.TcmnMsg"),
 				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				( ( ( xMsg != null ) && ( xMsg.length() > 0 ) ) ? xMsg : (enMsg != null && enMsg.length() > 0) ? enMsg : ""));
 	}
 
-	public MCFLibPrimaryKeyNotNewException(
+	public YCFLibPrimaryKeyNotNewException(
 		Class<?> throwingClass,
 		String methName,
 		String enMsg,
 		String xMsg,
 		Throwable th )
 	{
-		super( String.format(Inz.s("mcflib.MCFLibArgumentException.TcmnMsg"),
+		super( String.format(Inz.s("ycflib.YCFLibArgumentException.TcmnMsg"),
 				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg : "" )),
 				th );
-		this.localMessage = String.format(Inz.x("mcflib.MCFLibArgumentException.TcmnMsg"),
+		this.localMessage = String.format(Inz.x("ycflib.YCFLibArgumentException.TcmnMsg"),
 				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				( ( ( xMsg != null ) && ( xMsg.length() > 0 ) ) ? xMsg : (enMsg != null && enMsg.length() > 0) ? enMsg : ""));
 	}
 
-	public MCFLibPrimaryKeyNotNewException(
+	public YCFLibPrimaryKeyNotNewException(
 		Class<?> throwingClass,
 		String methName,
 		int argNo,
@@ -91,19 +91,19 @@ public class MCFLibPrimaryKeyNotNewException extends IllegalStateException {
 		String enMsg,
 		String xMsg )
 	{
-		super( String.format(Inz.s("mcflib.MCFLibArgumentException.TcmnArgMsg"),
+		super( String.format(Inz.s("ycflib.YCFLibArgumentException.TcmnArgMsg"),
 				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				argNo,
 				argName,
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg	: "" ) ));
-		this.localMessage = String.format(Inz.x("mcflib.MCFLibArgumentException.TcmnArgMsg"),
+		this.localMessage = String.format(Inz.x("ycflib.YCFLibArgumentException.TcmnArgMsg"),
 				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				argNo,
 				argName,
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg	: "" ) );
 	}
 
-	public MCFLibPrimaryKeyNotNewException(
+	public YCFLibPrimaryKeyNotNewException(
 		Class<?> throwingClass,
 		String methName,
 		int argNo,
@@ -112,49 +112,49 @@ public class MCFLibPrimaryKeyNotNewException extends IllegalStateException {
 		String xMsg,
 		Throwable th )
 	{
-		super( String.format(Inz.s("mcflib.MCFLibArgumentException.TcmnArgMsg"),
+		super( String.format(Inz.s("ycflib.YCFLibArgumentException.TcmnArgMsg"),
 				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				argNo,
 				argName,
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg	: "" ) ),
 				th );
-		this.localMessage = String.format(Inz.x("mcflib.MCFLibArgumentException.TcmnArgMsg"),
+		this.localMessage = String.format(Inz.x("ycflib.YCFLibArgumentException.TcmnArgMsg"),
 				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				argNo,
 				argName,
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg	: "" ) );
 	}
 
-	public MCFLibPrimaryKeyNotNewException(
+	public YCFLibPrimaryKeyNotNewException(
 		String enFieldName,
 		String xFieldName,
 		String enMsg,
 		String xMsg )
 	{
-		super( String.format(Inz.s("mcflib.MCFLibArgumentException.FldMsg"),
+		super( String.format(Inz.s("ycflib.YCFLibArgumentException.FldMsg"),
 				enFieldName,
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg	: "" ) ));
-		this.localMessage = String.format(Inz.x("mcflib.MCFLibArgumentException.FldMsg"),
+		this.localMessage = String.format(Inz.x("ycflib.YCFLibArgumentException.FldMsg"),
 				(xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName,
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg	: "" ) );
 	}
 
-	public MCFLibPrimaryKeyNotNewException(
+	public YCFLibPrimaryKeyNotNewException(
 		String enFieldName,
 		String xFieldName,
 		String methName,
 		String enMsg,
 		String xMsg )
 	{
-		super( String.format(Inz.s("mcflib.MCFLibArgumentException.FldMsg"),
+		super( String.format(Inz.s("ycflib.YCFLibArgumentException.FldMsg"),
 				enFieldName + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "()"	: "" ),
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg : "" ) ));
-		this.localMessage = String.format(Inz.x("mcflib.MCFLibArgumentException.FldMsg"),
+		this.localMessage = String.format(Inz.x("ycflib.YCFLibArgumentException.FldMsg"),
 				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName)	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				( ( ( xMsg != null ) && ( xMsg.length() > 0 ) ) ? xMsg : (enMsg != null && enMsg.length() > 0) ? enMsg : "") );
 	}
 
-	public MCFLibPrimaryKeyNotNewException(
+	public YCFLibPrimaryKeyNotNewException(
 		String enFieldName,
 		String xFieldName,
 		String methName,
@@ -162,16 +162,16 @@ public class MCFLibPrimaryKeyNotNewException extends IllegalStateException {
 		String xMsg,
 		Throwable th )
 	{
-		super( String.format(Inz.s("mcflib.MCFLibArgumentException.FldMsg"),
+		super( String.format(Inz.s("ycflib.YCFLibArgumentException.FldMsg"),
 				enFieldName + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "()"	: "" ),
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg : "" ) ),
 				th );
-		this.localMessage = String.format(Inz.x("mcflib.MCFLibArgumentException.FldMsg"),
+		this.localMessage = String.format(Inz.x("ycflib.YCFLibArgumentException.FldMsg"),
 				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName)	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				( ( ( xMsg != null ) && ( xMsg.length() > 0 ) ) ? xMsg : (enMsg != null && enMsg.length() > 0) ? enMsg : "") );
 	}
 
-	public MCFLibPrimaryKeyNotNewException(
+	public YCFLibPrimaryKeyNotNewException(
 		String enFieldName,
 		String xFieldName,
 		String methName,
@@ -180,19 +180,19 @@ public class MCFLibPrimaryKeyNotNewException extends IllegalStateException {
 		String enMsg,
 		String xMsg )
 	{
-		super(String.format(Inz.s("mcflib.MCFLibArgumentException.FldArgMsg"),
+		super(String.format(Inz.s("ycflib.YCFLibArgumentException.FldArgMsg"),
 				enFieldName + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				argNo,
 				argName,
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg : "" ) ));
-		this.localMessage = String.format(Inz.x("mcflib.MCFLibArgumentException.FldArgMsg"),
+		this.localMessage = String.format(Inz.x("ycflib.YCFLibArgumentException.FldArgMsg"),
 				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName)	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				argNo,
 				argName,
 				( ( ( xMsg != null ) && ( xMsg.length() > 0 ) ) ? xMsg : (enMsg != null && enMsg.length() > 0) ? enMsg : "") );
 	}
 
-	public MCFLibPrimaryKeyNotNewException(
+	public YCFLibPrimaryKeyNotNewException(
 		String enFieldName,
 		String xFieldName,
 		String methName,
@@ -202,85 +202,85 @@ public class MCFLibPrimaryKeyNotNewException extends IllegalStateException {
 		String xMsg,
 		Throwable th )
 	{
-		super( String.format(Inz.s("mcflib.MCFLibArgumentException.FldArgMsg"),
+		super( String.format(Inz.s("ycflib.YCFLibArgumentException.FldArgMsg"),
 				enFieldName + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				argNo,
 				argName,
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg : "" ) ),
 				th );
-		this.localMessage = String.format(Inz.x("mcflib.MCFLibArgumentException.FldArgMsg"),
+		this.localMessage = String.format(Inz.x("ycflib.YCFLibArgumentException.FldArgMsg"),
 				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName)	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				argNo,
 				argName,
 				( ( ( xMsg != null ) && ( xMsg.length() > 0 ) ) ? xMsg : (enMsg != null && enMsg.length() > 0) ? enMsg : "") );
 	}
 
-	public MCFLibPrimaryKeyNotNewException()
+	public YCFLibPrimaryKeyNotNewException()
 	{
-		super( String.format(Inz.s("mcflib.MCFLibPrimaryKeyNotNewException.default"), "") );
-		this.localMessage = String.format(Inz.x("mcflib.MCFLibPrimaryKeyNotNewException.default"), "");
+		super( String.format(Inz.s("ycflib.YCFLibPrimaryKeyNotNewException.default"), "") );
+		this.localMessage = String.format(Inz.x("ycflib.YCFLibPrimaryKeyNotNewException.default"), "");
 	}
 
-	public MCFLibPrimaryKeyNotNewException(
+	public YCFLibPrimaryKeyNotNewException(
 		Class<?> throwingClass,
 		String methName )
 	{
-		super( String.format(Inz.s("mcflib.MCFLibPrimaryKeyNotNewException.default"),
+		super( String.format(Inz.s("ycflib.YCFLibPrimaryKeyNotNewException.default"),
 				throwingClass.getName()	+ ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " " )));
-		this.localMessage = String.format(Inz.x("mcflib.MCFLibPrimaryKeyNotNewException.default"),
+		this.localMessage = String.format(Inz.x("ycflib.YCFLibPrimaryKeyNotNewException.default"),
 				throwingClass.getName()	+ ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " " ));
 	}
 
-	public MCFLibPrimaryKeyNotNewException(
+	public YCFLibPrimaryKeyNotNewException(
 		Class<?> throwingClass,
 		String methName,
 		Throwable th )
 	{
-		super(String.format(Inz.s("mcflib.MCFLibPrimaryKeyNotNewException.default"),
+		super(String.format(Inz.s("ycflib.YCFLibPrimaryKeyNotNewException.default"),
 				throwingClass.getName()	+ ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " " )),
 				th );
-		this.localMessage = String.format(Inz.x("mcflib.MCFLibPrimaryKeyNotNewException.default"),
+		this.localMessage = String.format(Inz.x("ycflib.YCFLibPrimaryKeyNotNewException.default"),
 				throwingClass.getName()	+ ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " " ));
 	}
 
-	public MCFLibPrimaryKeyNotNewException(
+	public YCFLibPrimaryKeyNotNewException(
 		Class<?> throwingClass,
 		String methName,
 		Object indexKey )
 	{
 		super( ((indexKey != null)
-					? String.format(Inz.s("mcflib.MCFLibPrimaryKeyNotNewException.pkey"),
+					? String.format(Inz.s("ycflib.YCFLibPrimaryKeyNotNewException.pkey"),
 						(throwingClass.getName() + ((methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" )),
 						indexKey.toString())
-					: String.format(Inz.s("mcflib.MCFLibPrimaryKeyNotNewException.default"),
+					: String.format(Inz.s("ycflib.YCFLibPrimaryKeyNotNewException.default"),
 						(throwingClass.getName() + ((methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" )))));
 		this.localMessage = ((indexKey != null)
-					? String.format(Inz.x("mcflib.MCFLibPrimaryKeyNotNewException.pkey"),
+					? String.format(Inz.x("ycflib.YCFLibPrimaryKeyNotNewException.pkey"),
 						(throwingClass.getName() + (( methName != null && !methName.isEmpty())? ("." + methName + "()") : "")),
 						indexKey.toString())
-					: String.format(Inz.s("mcflib.MCFLibPrimaryKeyNotNewException.default"),
+					: String.format(Inz.s("ycflib.YCFLibPrimaryKeyNotNewException.default"),
 						(throwingClass.getName() + (( methName != null && !methName.isEmpty())? ("." + methName + "()") : ""))));
 		this.indexKey = indexKey;
 	}
 
-	public MCFLibPrimaryKeyNotNewException(
+	public YCFLibPrimaryKeyNotNewException(
 		Class<?> throwingClass,
 		String methName,
 		Object indexKey,
 		Throwable th)
 	{
 		super( ((indexKey != null)
-					? String.format(Inz.s("mcflib.MCFLibPrimaryKeyNotNewException.pkey"),
+					? String.format(Inz.s("ycflib.YCFLibPrimaryKeyNotNewException.pkey"),
 						(throwingClass.getName() + ((methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" )),
 						indexKey.toString())
-					: String.format(Inz.s("mcflib.MCFLibPrimaryKeyNotNewException.default"),
+					: String.format(Inz.s("ycflib.YCFLibPrimaryKeyNotNewException.default"),
 						(throwingClass.getName() + ((methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" )))),
 			th);
 		this.localMessage = ((indexKey != null)
-					? String.format(Inz.x("mcflib.MCFLibPrimaryKeyNotNewException.pkey"),
+					? String.format(Inz.x("ycflib.YCFLibPrimaryKeyNotNewException.pkey"),
 						(throwingClass.getName() + (( methName != null && !methName.isEmpty())? ("." + methName + "()") : "")),
 						indexKey.toString())
-					: String.format(Inz.s("mcflib.MCFLibPrimaryKeyNotNewException.default"),
+					: String.format(Inz.s("ycflib.YCFLibPrimaryKeyNotNewException.default"),
 						(throwingClass.getName() + (( methName != null && !methName.isEmpty())? ("." + methName + "()") : ""))));
 		this.indexKey = indexKey;
 	}

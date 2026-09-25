@@ -1,5 +1,5 @@
 /**
- *	server.markhome.mcf-core - Mark's Code Fractal Core Services
+ *	server.markhome.ycf-core - Mark's Code Fractal Core Services
  *
  *	Copyright 2026 Mark Stephen Sobkow (mark.sobkow@gmail.com)
  *
@@ -18,7 +18,7 @@
  *	SPDX-License-Identifier: Apache-2.0
 **/
 
-package server.markhome.mcf;
+package server.markhome.ycf;
 
 import org.teavm.jso.JSExport;
 import org.teavm.jso.JSObject;
@@ -28,10 +28,10 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 /**
- * The MCFLibHostAddr is a packed address for either IPV4 or IPV6 addresses, with indicators and detectors for which is which.
+ * The YCFLibHostAddr is a packed address for either IPV4 or IPV6 addresses, with indicators and detectors for which is which.
  * @author msobkow
  */
-public final class MCFLibHostAddr {
+public final class YCFLibHostAddr {
     public static final int IPV6_LENGTH = 16;
     public static final int IPV4_LENGTH = 4;
     public static final int IPV4_PAD = IPV6_LENGTH - IPV4_LENGTH;

@@ -1,5 +1,5 @@
 /**
- *	server.markhome.mcf-core - Mark's Code Fractal Core Services
+ *	server.markhome.ycf-core - Mark's Code Fractal Core Services
  *
  *	Copyright 2026 Mark Stephen Sobkow (mark.sobkow@gmail.com)
  *
@@ -18,7 +18,7 @@
  *	SPDX-License-Identifier: Apache-2.0
 **/
 
-package server.markhome.mcf;
+package server.markhome.ycf;
 
 import org.teavm.jso.JSExport;
 import org.teavm.jso.JSObject;
@@ -27,10 +27,10 @@ import org.teavm.jso.JSProperty;
 import java.util.*;
 
 /**
- * IMCFLibOptional is the base interface used to specify the accessors used to manipulate optional values.
+ * IYCFLibOptional is the base interface used to specify the accessors used to manipulate optional values.
  * @author msobkow
  */
-public interface IMCFLibRequired extends JSObject {
+public interface IYCFLibRequired extends JSObject {
 
 	/**
 	 *	Is this value null?
@@ -42,6 +42,6 @@ public interface IMCFLibRequired extends JSObject {
 	 *	Make this value null.
 	 */
 	public default void setNull() {
-		throw new MCFLibNullArgumentException(getClass(), "setNull", 0, "value");
+		throw new YCFLibNullArgumentException(getClass(), "setNull", 0, "value");
 	};
 }

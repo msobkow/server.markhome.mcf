@@ -1,5 +1,5 @@
 /**
- *	server.markhome.mcf-core - Mark's Code Fractal Core Services
+ *	server.markhome.ycf-core - Mark's Code Fractal Core Services
  *
  *	Copyright 2026 Mark Stephen Sobkow (mark.sobkow@gmail.com)
  *
@@ -18,29 +18,29 @@
  *	SPDX-License-Identifier: Apache-2.0
 **/
 
-package server.markhome.mcf;
+package server.markhome.ycf;
 
 import org.teavm.jso.JSExport;
 import org.teavm.jso.JSObject;
 import org.teavm.jso.JSProperty;
 
-import server.markhome.mcf.Inz;
+import server.markhome.ycf.Inz;
 
 /**
- * MCFLibCollisionDetectedException is thrown when there is already an existing entry with the specified key that conflicts with new data or other data changes.
+ * YCFLibCollisionDetectedException is thrown when there is already an existing entry with the specified key that conflicts with new data or other data changes.
  */
-public class MCFLibCollisionDetectedException extends MCFLibRuntimeException {
+public class YCFLibCollisionDetectedException extends YCFLibRuntimeException {
 
 	protected Object indexKey = null;
 
-	public MCFLibCollisionDetectedException(
+	public YCFLibCollisionDetectedException(
 		String enMsg,
 		String xMsg )
 	{
 		super( enMsg, xMsg );
 	}
 
-	public MCFLibCollisionDetectedException(
+	public YCFLibCollisionDetectedException(
 		Class<?> throwingClass,
 		String methName,
 		String enMsg,
@@ -49,7 +49,7 @@ public class MCFLibCollisionDetectedException extends MCFLibRuntimeException {
 		super( throwingClass, methName, enMsg, xMsg );
 	}
 
-	public MCFLibCollisionDetectedException(
+	public YCFLibCollisionDetectedException(
 		Class<?> throwingClass,
 		String methName,
 		String enMsg,
@@ -59,43 +59,43 @@ public class MCFLibCollisionDetectedException extends MCFLibRuntimeException {
 		super( throwingClass, methName,  enMsg, xMsg, th );
 	}
 
-	public MCFLibCollisionDetectedException(
+	public YCFLibCollisionDetectedException(
 		Class<?> throwingClass,
 		String methName,
 		Object argKey )
 	{
 		super( ((argKey != null)
-					? String.format(Inz.s("mcflib.MCFLibCollisionDetectedException.pkey"),
+					? String.format(Inz.s("ycflib.YCFLibCollisionDetectedException.pkey"),
 						(throwingClass.getName() + ((methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" )),
 						argKey.toString())
-					: String.format(Inz.s("mcflib.MCFLibCollisionDetectedException.default"),
+					: String.format(Inz.s("ycflib.YCFLibCollisionDetectedException.default"),
 						(throwingClass.getName() + ((methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" )))),
 				((argKey != null)
-					? String.format(Inz.x("mcflib.MCFLibCollisionDetectedException.pkey"),
+					? String.format(Inz.x("ycflib.YCFLibCollisionDetectedException.pkey"),
 						(throwingClass.getName() + ((methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "")),
 						argKey.toString())
-					: String.format(Inz.s("mcflib.MCFLibCollisionDetectedException.default"),
+					: String.format(Inz.s("ycflib.YCFLibCollisionDetectedException.default"),
 						(throwingClass.getName() + ((methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "")))));
 		indexKey = argKey;
 	}
 
-	public MCFLibCollisionDetectedException(
+	public YCFLibCollisionDetectedException(
 		Class<?> throwingClass,
 		String methName,
 		Object argKey,
 		Throwable th )
 	{
 		super( ((argKey != null)
-					? String.format(Inz.s("mcflib.MCFLibCollisionDetectedException.pkey"),
+					? String.format(Inz.s("ycflib.YCFLibCollisionDetectedException.pkey"),
 						(throwingClass.getName() + ((methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "")),
 						argKey.toString())
-					: String.format(Inz.s("mcflib.MCFLibCollisionDetectedException.default"),
+					: String.format(Inz.s("ycflib.YCFLibCollisionDetectedException.default"),
 						(throwingClass.getName() + ((methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "")))),
 				((argKey != null)
-					? String.format(Inz.x("mcflib.MCFLibCollisionDetectedException.pkey"),
+					? String.format(Inz.x("ycflib.YCFLibCollisionDetectedException.pkey"),
 						(throwingClass.getName() + ((methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "")),
 						argKey.toString())
-					: String.format(Inz.s("mcflib.MCFLibCollisionDetectedException.default"),
+					: String.format(Inz.s("ycflib.YCFLibCollisionDetectedException.default"),
 						(throwingClass.getName() + ((methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "")))),
 				th);
 		indexKey = argKey;

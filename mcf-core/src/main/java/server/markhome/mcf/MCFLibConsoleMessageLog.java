@@ -1,5 +1,5 @@
 /**
- *	server.markhome.mcf-core - Mark's Code Fractal Core Services
+ *	server.markhome.ycf-core - Mark's Code Fractal Core Services
  *
  *	Copyright 2026 Mark Stephen Sobkow (mark.sobkow@gmail.com)
  *
@@ -18,7 +18,7 @@
  *	SPDX-License-Identifier: Apache-2.0
 **/
 
-package server.markhome.mcf;
+package server.markhome.ycf;
 
 import org.teavm.jso.JSExport;
 import org.teavm.jso.JSObject;
@@ -32,8 +32,8 @@ import java.util.*;
 /**
  *	Implement the OmfMessageLogInterface over a Log4J Logger.
  */
-public class MCFLibConsoleMessageLog
-implements IMCFLibMessageLog {
+public class YCFLibConsoleMessageLog
+implements IYCFLibMessageLog {
 
 	/**
 	 *	Handle for the current file output stream.
@@ -48,7 +48,7 @@ implements IMCFLibMessageLog {
 	/**
 	 *	Default constructor.
 	 */
-	public MCFLibConsoleMessageLog() {
+	public YCFLibConsoleMessageLog() {
 		indent = 0;
 	}
 	

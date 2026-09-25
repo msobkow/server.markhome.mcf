@@ -1,5 +1,5 @@
 /**
- *	server.markhome.mcf-core - Mark's Code Fractal Core Services
+ *	server.markhome.ycf-core - Mark's Code Fractal Core Services
  *
  *	Copyright 2026 Mark Stephen Sobkow (mark.sobkow@gmail.com)
  *
@@ -18,29 +18,29 @@
  *	SPDX-License-Identifier: Apache-2.0
 **/
 
-package server.markhome.mcf;
+package server.markhome.ycf;
 
 import org.teavm.jso.JSExport;
 import org.teavm.jso.JSObject;
 import org.teavm.jso.JSProperty;
 
-import server.markhome.mcf.Inz;
+import server.markhome.ycf.Inz;
 
 /**
- * MCFLibDbException is thrown when a JPA database persistent store exception is thrown and caught/mapped.
+ * YCFLibDbException is thrown when a JPA database persistent store exception is thrown and caught/mapped.
  */
-public class MCFLibDbException extends MCFLibRuntimeException {
+public class YCFLibDbException extends YCFLibRuntimeException {
 
 	protected Object indexKey = null;
 
-	public MCFLibDbException(
+	public YCFLibDbException(
 		String enMsg,
 		String xMsg )
 	{
 		super( enMsg, xMsg );
 	}
 
-	public MCFLibDbException(
+	public YCFLibDbException(
 		String enMsg,
 		String xMsg,
 		Object indexKey )
@@ -49,7 +49,7 @@ public class MCFLibDbException extends MCFLibRuntimeException {
 		this.indexKey = indexKey;
 	}
 
-	public MCFLibDbException(
+	public YCFLibDbException(
 		Class<?> throwingClass,
 		String methName,
 		String enMsg,
@@ -58,7 +58,7 @@ public class MCFLibDbException extends MCFLibRuntimeException {
 		super( throwingClass, methName, enMsg, xMsg );
 	}
 
-	public MCFLibDbException(
+	public YCFLibDbException(
 		Class<?> throwingClass,
 		String methName,
 		String enMsg,
@@ -69,7 +69,7 @@ public class MCFLibDbException extends MCFLibRuntimeException {
 		this.indexKey = indexKey;
 	}
 
-	public MCFLibDbException(
+	public YCFLibDbException(
 		Class<?> throwingClass,
 		String methName,
 		String enMsg,
@@ -79,7 +79,7 @@ public class MCFLibDbException extends MCFLibRuntimeException {
 		super( throwingClass, methName, enMsg, xMsg, th );
 	}
 
-	public MCFLibDbException(
+	public YCFLibDbException(
 		Class<?> throwingClass,
 		String methName,
 		String enMsg,
@@ -91,57 +91,57 @@ public class MCFLibDbException extends MCFLibRuntimeException {
 		this.indexKey = indexKey;
 	}
 
-	public MCFLibDbException(
+	public YCFLibDbException(
 		Class<?> throwingClass,
 		String methName,
 		Throwable th )
 	{
-		super(	String.format(Inz.s("mcflib.MCFLibDbException.sqlexcept"),
+		super(	String.format(Inz.s("ycflib.YCFLibDbException.sqlexcept"),
 					(throwingClass.getName() + (( methName != null && !methName.isEmpty())? ("." + methName + "()") : "")),
 					th.getMessage()),
-				String.format(Inz.x("mcflib.MCFLibDbException.sqlexcept"),
+				String.format(Inz.x("ycflib.YCFLibDbException.sqlexcept"),
 					(throwingClass.getName() + (( methName != null && !methName.isEmpty())? ("." + methName + "()") : "")),
 					th.getMessage()),
 				th);
 	}
 
-	public MCFLibDbException(
+	public YCFLibDbException(
 		Class<?> throwingClass,
 		String methName,
 		Object indexKey )
 	{
 		super( ((indexKey != null)
-					? String.format(Inz.s("mcflib.MCFLibDbException.pkey"),
+					? String.format(Inz.s("ycflib.YCFLibDbException.pkey"),
 						(throwingClass.getName() + (( methName != null && !methName.isEmpty())? ("." + methName + "()") : "")),
 						indexKey.toString())
-					: String.format(Inz.s("mcflib.MCFLibDbException.default"),
+					: String.format(Inz.s("ycflib.YCFLibDbException.default"),
 						(throwingClass.getName() + (( methName != null && !methName.isEmpty())? ("." + methName + "()") : "")))),
 				((indexKey != null)
-					? String.format(Inz.x("mcflib.MCFLibDbException.pkey"),
+					? String.format(Inz.x("ycflib.YCFLibDbException.pkey"),
 						(throwingClass.getName() + (( methName != null && !methName.isEmpty())? ("." + methName + "()") : "")),
 						indexKey.toString())
-					: String.format(Inz.s("mcflib.MCFLibDbException.default"),
+					: String.format(Inz.s("ycflib.YCFLibDbException.default"),
 						(throwingClass.getName() + (( methName != null && !methName.isEmpty())? ("." + methName + "()") : "")))));
 		this.indexKey = indexKey;
 	}
 
-	public MCFLibDbException(
+	public YCFLibDbException(
 		Class<?> throwingClass,
 		String methName,
 		Object indexKey,
 		Throwable th)
 	{
 		super( ((indexKey != null)
-					? String.format(Inz.s("mcflib.MCFLibDbException.pkey"),
+					? String.format(Inz.s("ycflib.YCFLibDbException.pkey"),
 						(throwingClass.getName() + (( methName != null && !methName.isEmpty())? ("." + methName + "()") : "")),
 						indexKey.toString())
-					: String.format(Inz.s("mcflib.MCFLibDbException.default"),
+					: String.format(Inz.s("ycflib.YCFLibDbException.default"),
 						(throwingClass.getName() + (( methName != null && !methName.isEmpty())? ("." + methName + "()") : "")))),
 				((indexKey != null)
-					? String.format(Inz.x("mcflib.MCFLibDbException.pkey"),
+					? String.format(Inz.x("ycflib.YCFLibDbException.pkey"),
 						(throwingClass.getName() + (( methName != null && !methName.isEmpty())? ("." + methName + "()") : "")),
 						indexKey.toString())
-					: String.format(Inz.s("mcflib.MCFLibDbException.default"),
+					: String.format(Inz.s("ycflib.YCFLibDbException.default"),
 						(throwingClass.getName() + (( methName != null && !methName.isEmpty())? ("." + methName + "()") : "")))),
 			th);
 		this.indexKey = indexKey;
