@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.1.0 http://maven.apache.org/xsd/maven-4.1.0.xsd" root="true">
+	<modelVersion>4.1.0</modelVersion>
+
+	<parent>
+		<groupId>server</groupId>
+		<artifactId>server.markhome</artifactId>
+		<version>20260918</version>
+	</parent>
+
+	<artifactId>server.markhome.mcf.mcf-teavm</artifactId>
+	<version>0.14.1-20260918</version>
+	<!-- Use "pom" packaging so Maven does not try to compile Java code itself -->
+	<packaging>pom</packaging>
+
+	<properties>
+		<!-- Select correct executable script based on OS -->
+		<gradle.executable>${executable.extension}</gradle.executable>
+	</properties>
+
+	<profiles>
+		<profile>
+			<id>window-properties</id>
+			<activation>
+				<os><family>windows</family></os>
+			</activation>
+			<properties>
+				<executable.extension>gradlew.bat</executable.extension>
+			</properties>
+		</profile>
+		<profile>
+			<id>unix-properties</id>
+			<activation>
+				<os><family>unix</family></os>
+			</activation>
+			<properties>
+				<executable.extension>./gradlew</executable.extension>
+			</properties>
+		</profile>
+	</profiles>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>${commons.exec-plugin.version}</version>
+				<executions>
+					<!-- Trigger Gradle clean during Maven clean -->
+					<execution>
+						<id>gradle-clean</id>
+						<phase>clean</phase>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+						<configuration>
+							<executable>${gradle.executable}</executable>
+							<arguments>
+								<argument>clean</argument>
+							</arguments>
+						</configuration>
+					</execution>
+					<!-- Trigger Gradle build during Maven package -->
+					<execution>
+						<id>gradle-build</id>
+						<phase>package</phase>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+						<configuration>
+							<executable>${gradle.executable}</executable>
+							<arguments>
+								<argument>build</argument>
+							</arguments>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>
+

@@ -8,7 +8,9 @@
 	<description>Mark's Code Fractal</description>
 	<packaging>jar</packaging>
 
-	<modules></modules>
+	<modules>
+		<module>mcf-teavm</module>
+	</modules>
 
 	<properties>
 		<rat.skip>true</rat.skip>
