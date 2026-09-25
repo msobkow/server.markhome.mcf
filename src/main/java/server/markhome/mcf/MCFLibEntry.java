@@ -24,8 +24,8 @@ import org.teavm.jso.JSObject;
 import org.teavm.jso.JSProperty;
 import java.util.concurrent.atomic.AtomicReference;
 
-@JSExportClasses({IMcfLibEntry.class, McfLibEntry.class })
-public final class McfLibEntry implements IMcfLibEntry {
+@JSExportClasses({IMCFLibEntry.class, MCFLibEntry.class })
+public final class MCFLibEntry implements IMCFLibEntry {
 
 	/**
 	 *	The public resource name for the parent library.
@@ -66,32 +66,32 @@ public final class McfLibEntry implements IMcfLibEntry {
 	/**
 	 *	Implementations must be a singleton, returning the same instance over and over after initialization. How this is achieved may vary.
 	 *
-	 *	<tt>protected final static singleton = new AtomicReference<McfLibEntry>(null);</tt>
+	 *	<tt>protected final static singleton = new AtomicReference<MCFLibEntry>(null);</tt>
 	 */
-	protected final static AtomicReference<McfLibEntry> singleton = new AtomicReference<McfLibEntry>(null);
+	protected final static AtomicReference<MCFLibEntry> singleton = new AtomicReference<MCFLibEntry>(null);
 
 	/**
 	 *	Default constructor is protected so that only a singleton can be created.
 	 *
-	 *	<tt>protected McfLibEntry { }</tt>
+	 *	<tt>protected MCFLibEntry { }</tt>
 	 */
 	@JSExport
-	protected McfLibEntry() { }
+	protected MCFLibEntry() { }
 
 	/**
 	 *	Get the singleton.
 	 *
 	 *	Implementations should define a public static final method with the following signature, using the uppercase package name before "Lib" as appropriate.
 	 *
-	 *	<tt>public final static McfLibEntry getMcfLibEntrySingleton()</tt>
+	 *	<tt>public final static MCFLibEntry getMCFLibEntrySingleton()</tt>
 	 *
 	 *	@return Return the library singleton. Always returns the same instance after the first invocation unless reset(true) is invoked.
 	 */
 	@JSExport
-	public final static McfLibEntry getMcfLibEntrySingleton() {
-		McfLibEntry retval = singleton.get();
+	public final static MCFLibEntry getMCFLibEntrySingleton() {
+		MCFLibEntry retval = singleton.get();
 		if( retval == null ) {
-			retval = new McfLibEntry();
+			retval = new MCFLibEntry();
 			singleton.compareAndSet(null, retval);
 			retval = singleton.get();
 		}
@@ -99,29 +99,29 @@ public final class McfLibEntry implements IMcfLibEntry {
 	}
 
 	/**
-	 *	Get an instance. Because this is a singleton, getInstance() always returns null, as it just invokes McfLibEntry() under the hood.
+	 *	Get an instance. Because this is a singleton, getInstance() always returns null, as it just invokes MCFLibEntry() under the hood.
 	 *
 	 *	Implementations should define a public static final method with the following signature, using the uppercase package name before "Lib" as appropriate.
 	 *
-	 *	<tt>public final static McfLibEntry getMcfLibEntryInstance()</tt>
+	 *	<tt>public final static MCFLibEntry getMCFLibEntryInstance()</tt>
 	 *
 	 *	@return The instance, if any. Always returns null.
 	 */
 	@JSExport
-	public static McfLibEntry getMcfLibEntryInstance() { return(null); }
+	public static MCFLibEntry getMCFLibEntryInstance() { return(null); }
 
 	/**
 	 *	Reset the singleton and any data caches after an application reload or other package or executable reloading event.
 	 *
 	 *	Implementations should define a public static final method with the following signature, using the uppercase package name before "Lib" as appropriate.
 	 *
-	 *	<tt>public static boolean execMcfLibEntryLibReset(boolean yesReally)</tt>
+	 *	<tt>public static boolean execMCFLibEntryLibReset(boolean yesReally)</tt>
 	 *
 	 *	@param	yesReally Are you sure you want to reset the value?
 	 */
 	@JSExport
-	public static boolean execMcfLibEntryLibReset(boolean yesReally) {
-		McfLibEntry sgl = singleton.get();
+	public static boolean execMCFLibEntryLibReset(boolean yesReally) {
+		MCFLibEntry sgl = singleton.get();
 		boolean retval;
 		if (sgl == null || yesReally) {
 			retval = false;
@@ -130,7 +130,7 @@ public final class McfLibEntry implements IMcfLibEntry {
 				singleton.compareAndSet(sgl, null);
 			}
 
-			sgl = getMcfLibEntrySingleton();
+			sgl = getMCFLibEntrySingleton();
 			assert sgl != null: "Singleton must not be null after initialization";
 
 			retval = true;
@@ -142,20 +142,20 @@ public final class McfLibEntry implements IMcfLibEntry {
 	}
 
 	/**
-	 *	Get an instance, if possible.  Invokes getMcfLibEntryInstance() under the hood.
+	 *	Get an instance, if possible.  Invokes getMCFLibEntryInstance() under the hood.
 	 *
 	 *	@return Return an instance if dynamically allocated, otherwise null. Because this is a singleton, null will always be returned.
 	 */
 	@JSExport
-	public McfLibEntry getInstance() { return(getMcfLibEntryInstance()); }
+	public MCFLibEntry getInstance() { return(getMCFLibEntryInstance()); }
 
 	/**
-	 *	Get the singleton instance, if any. Invokes getMcfLibEntrySingleton() under the hood.
+	 *	Get the singleton instance, if any. Invokes getMCFLibEntrySingleton() under the hood.
 	 *
 	 *	@return Return the library singleton, if any. Always returns the same value after the first invocation unless reset(true) is invoked.
 	 */
 	@JSExport
-	public McfLibEntry getSingleton() { return(getMcfLibEntrySingleton()); }
+	public MCFLibEntry getSingleton() { return(getMCFLibEntrySingleton()); }
 
 	/**
 	 *	Reset the singleton and any other data caches after an application reload or other package or executable reloading event.
@@ -170,12 +170,12 @@ public final class McfLibEntry implements IMcfLibEntry {
 	/**
 	 *	Reset the singleton and any other data caches after an application reload or other package or executable reloading event.
 	 *
-	 *	Invokes execMcfLibEntryReset(false) under the hood.
+	 *	Invokes execMCFLibEntryReset(false) under the hood.
 	 *
 	 *	@return True if the library was reinitialized, false if the code detected that the library has not been used since the last reinitialization.
 	 */
 	@JSExport
-	public boolean libReset(boolean yesReally) { return execMcfLibEntryLibReset(yesReally); }
+	public boolean libReset(boolean yesReally) { return execMCFLibEntryLibReset(yesReally); }
 
 	/**
 	 *	Reset the singleton and any data caches after an application reload or other package or executable reloading event.
@@ -185,7 +185,7 @@ public final class McfLibEntry implements IMcfLibEntry {
 	 *	@return	True if the singleton was reset, false if the singleton was set and yesReally was false.
 	 */
 	@JSExport
-	public boolean resetLib(boolean yesReally) { return execMcfLibEntryLibReset(yesReally); }
+	public boolean resetLib(boolean yesReally) { return execMCFLibEntryLibReset(yesReally); }
 
 	/**
 	 *	Reset the singleton and any data caches after an application reload or other package or executable reloading event.

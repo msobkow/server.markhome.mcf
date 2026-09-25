@@ -22,7 +22,7 @@ import org.teavm.jso.JSExport;
 import org.teavm.jso.JSObject;
 import org.teavm.jso.JSProperty;
 
-public interface IMcfLibEntry extends JSObject {
+public interface IMCFLibEntry extends JSObject {
 
 	/**
 	 *	The public resource name for the parent library.
@@ -59,13 +59,13 @@ public interface IMcfLibEntry extends JSObject {
 	/**
 	 *	Implementations must be a singleton, returning the same instance over and over after initialization. How this is achieved may vary.
 	 *
-	 *	<tt>protected final static singleton = new AtomicReference<McfLibEntry>(null);</tt>
+	 *	<tt>protected final static singleton = new AtomicReference<MCFLibEntry>(null);</tt>
 	 */
 
 	/**
 	 *	Default constructor is protected so that only a singleton can be created.
 	 *
-	 *	<tt>protected McfLibEntry { }</tt>
+	 *	<tt>protected MCFLibEntry { }</tt>
 	 */
 
 	/**
@@ -73,17 +73,17 @@ public interface IMcfLibEntry extends JSObject {
 	 *
 	 *	Implementations should define a public static final method with the following signature, using the uppercase package name before "Lib" as appropriate.
 	 *
-	 *	<tt>public final static McfLibEntry getMcfLibEntrySingleton()</tt>
+	 *	<tt>public final static MCFLibEntry getMCFLibEntrySingleton()</tt>
 	 *
 	 *	@return Return the library singleton. Always returns the same instance after the first invocation unless reset(true) is invoked.
 	 */
 
 	/**
-	 *	Get an instance. Because this is a singleton, getInstance() always returns null, as it just invokes McfLibEntry() under the hood.
+	 *	Get an instance. Because this is a singleton, getInstance() always returns null, as it just invokes MCFLibEntry() under the hood.
 	 *
 	 *	Implementations should define a public static final method with the following signature, using the uppercase package name before "Lib" as appropriate.
 	 *
-	 *	<tt>public final static McfLibEntry getMcfLibEntryInstance()</tt>
+	 *	<tt>public final static MCFLibEntry getMCFLibEntryInstance()</tt>
 	 *
 	 *	@return The instance, if any. Always returns null.
 	 */
@@ -93,31 +93,31 @@ public interface IMcfLibEntry extends JSObject {
 	 *
 	 *	Implementations should define a public static final method with the following signature, using the uppercase package name before "Lib" as appropriate.
 	 *
-	 *	<tt>public static boolean execMcfLibEntryLibReset(boolean yesReally)</tt>
+	 *	<tt>public static boolean execMCFLibEntryLibReset(boolean yesReally)</tt>
 	 *
 	 *	@param	yesReally Are you sure you want to reset the value?
 	 */
 
 	/**
-	 *	Get an instance, if possible.  Invokes getMcfLibEntryInstance() under the hood.
+	 *	Get an instance, if possible.  Invokes getMCFLibEntryInstance() under the hood.
 	 *
 	 *	@return Return an instance if dynamically allocated, otherwise null. Because this is a singleton, null will always be returned.
 	 */
 	@JSProperty
-	public McfLibEntry getInstance();
+	public MCFLibEntry getInstance();
 
 	/**
-	 *	Get the singleton instance, if any. Invokes getMcfLibEntrySingleton() under the hood.
+	 *	Get the singleton instance, if any. Invokes getMCFLibEntrySingleton() under the hood.
 	 *
 	 *	@return Return the library singleton, if any. Always returns the same value after the first invocation unless reset(true) is invoked.
 	 */
 	@JSProperty
-	public McfLibEntry getSingleton();
+	public MCFLibEntry getSingleton();
 
 	/**
 	 *	Reset the singleton and any other data caches after an application reload or other package or executable reloading event.
 	 *
-	 *	Invokes execMcfLibEntryReset(false) under the hood.
+	 *	Invokes execMCFLibEntryReset(false) under the hood.
 	 *
 	 *	@return True if the library was reinitialized, false if the code detected that the library has not been used since the last reinitialization.
 	 */
@@ -127,7 +127,7 @@ public interface IMcfLibEntry extends JSObject {
 	/**
 	 *	Reset the singleton and any other data caches after an application reload or other package or executable reloading event.
 	 *
-	 *	Invokes execMcfLibEntryReset(yesReally) under the hood.
+	 *	Invokes execMCFLibEntryReset(yesReally) under the hood.
 	 *
 	 *	@param	yesReally Are you sure you want to reset the value?
 	 *
