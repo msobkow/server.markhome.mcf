@@ -1,0 +1,10 @@
+1,$s:^IMCF\(.*\)$:mv $MCF_HOME/server.markhome.mcf/mcf-core/src/main/java/server/mcf/IMCF\1 $MCF_HOME/server.markhome.mcf/mcf-core/src/main/java/server/mcf/IYCF\1:g
+1,$s:^MCF\(.*\)$:mv $MCF_HOME/server.markhome.mcf/mcf-core/src/main/java/server/mcf/MCF\1 $MCF_HOME/server.markhome.mcf/mcf-core/src/main/java/server/mcf/YCF\1${newline}if [ ! -f $MCF_HOME/server.markhome.mcf/mcf-core/src/main/java/server/markhome/mcf/IYCF\1 ]${newline}then${newline}	cp $MCF_HOME/server.markhome.mcf/mcf-core/src/main/java/server/markhome/mcf/YCF\1 $MCF_HOME/server.markhome.mcf/mcf-core/src/main/java/server/markhome/mcf/IYCF\1${newline}fi${newline}:g
+1,$g:^[Y]:d
+1,$g:^[I]:d
+0i
+newline="\"
+.
+w $MCF_HOME/v3_1-changes.sh
+q
+
