@@ -26,16 +26,26 @@ import org.teavm.jso.JSProperty;
 
 import java.util.*;
 
-/**
- *  IIInzEffectiveLangCode callbacks implementing this interface are registered with IInz to allow different user presentation layers to wire a current-session-language type hook based on the APIs for the presentation layer, instead of making assumptions or imposing restrictions on how such callbacks are registered.
- * 
- *  @see IInz
- */
-public interface IIInzEffectiveLangCode {
 
-    /**
-     * Get the current effective language id for NLS translation.
-     * @return
-     */
-    public String getEffectiveLangCode();
+/**
+ * IYCFOptKeyHash128 extends IYCFKeyHash128 with the appropriate behavior for the isNull() and setNull() method signatures.
+ *
+ * @author msobkow
+ */
+public class IYCFOptKeyHash128 extends IYCFKeyHash128 implements IIYCFOptional, IIYCFOptKeyHash128 {
+
+	/**
+	 *	Make this value null.
+	 *
+	 *	@throws IYCFNullArgumentException
+	 */
+	@Override
+	public void setNull() {
+		byte[] ba = getBytes();
+		if (ba != null ) {
+			for( int i = 0; i < ba.length; i++ ) {
+				ba[i] = 0;
+			}
+		}
+	}
 }

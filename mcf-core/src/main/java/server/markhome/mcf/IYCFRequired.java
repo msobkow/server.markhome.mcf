@@ -27,15 +27,21 @@ import org.teavm.jso.JSProperty;
 import java.util.*;
 
 /**
- *  IIInzEffectiveLangCode callbacks implementing this interface are registered with IInz to allow different user presentation layers to wire a current-session-language type hook based on the APIs for the presentation layer, instead of making assumptions or imposing restrictions on how such callbacks are registered.
- * 
- *  @see IInz
+ * IIYCFOptional is the base interface used to specify the accessors used to manipulate optional values.
+ * @author msobkow
  */
-public interface IIInzEffectiveLangCode {
+public interface IIYCFRequired extends JSObject {
 
-    /**
-     * Get the current effective language id for NLS translation.
-     * @return
-     */
-    public String getEffectiveLangCode();
+	/**
+	 *	Is this value null?
+	 *	@return true if the value is null, otherwise false
+	 */
+	public default boolean isNull() { return false; }
+
+	/**
+	 *	Make this value null.
+	 */
+	public default void setNull() {
+		throw new IYCFNullArgumentException(getClass(), "setNull", 0, "value");
+	};
 }

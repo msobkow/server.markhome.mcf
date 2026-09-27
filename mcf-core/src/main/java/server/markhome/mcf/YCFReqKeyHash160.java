@@ -27,15 +27,32 @@ import org.teavm.jso.JSProperty;
 import java.util.*;
 
 /**
- *  IIInzEffectiveLangCode callbacks implementing this interface are registered with IInz to allow different user presentation layers to wire a current-session-language type hook based on the APIs for the presentation layer, instead of making assumptions or imposing restrictions on how such callbacks are registered.
- * 
- *  @see IInz
+ * YYCFReqKeyHash160 extends YYCFKeyHash160 with the appropriate behavior for the isNull() and setNull() method signatures.
+ *
+ * @author msobkow
  */
-public interface IIInzEffectiveLangCode {
+public class YYCFReqKeyHash160 extends YYCFKeyHash160 implements IYYCFRequired, IYYCFReqKeyHash160 {
 
-    /**
-     * Get the current effective language id for NLS translation.
-     * @return
-     */
-    public String getEffectiveLangCode();
+	/**
+	 *	Is this value null?
+	 *
+	 *	@throws YYCFInvalidStateException if the superclass implementation of isNull() returns true.
+	 */
+	@Override
+	public boolean isNull() {
+		if (super.isNull()) {
+			throw new YYCFInvalidStateException(getClass(), "isNull", 0, "super.isNull()", "superclass value is not allowed to be null", null);
+		}
+		return(false);
+	}
+
+	/**
+	 *	Make this value null.
+	 *
+	 *	@throws YYCFNullArgumentException
+	 */
+	@Override
+	public void setNull() {
+		throw new YYCFNullArgumentException(getClass(), "setNull", 0, "required-attribute");
+	}
 }

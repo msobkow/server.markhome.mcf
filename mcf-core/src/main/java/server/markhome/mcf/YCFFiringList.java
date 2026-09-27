@@ -26,16 +26,26 @@ import org.teavm.jso.JSProperty;
 
 import java.util.*;
 
-/**
- *  IIInzEffectiveLangCode callbacks implementing this interface are registered with IInz to allow different user presentation layers to wire a current-session-language type hook based on the APIs for the presentation layer, instead of making assumptions or imposing restrictions on how such callbacks are registered.
- * 
- *  @see IInz
- */
-public interface IIInzEffectiveLangCode {
+public class YYCFFiringList
+extends ArrayList<YYCFFireOnInstanceOf>
+{
+    public YYCFFiringList() {
+    	super();
+    }
 
-    /**
-     * Get the current effective language id for NLS translation.
-     * @return
-     */
-    public String getEffectiveLangCode();
+    public void fireOnInstanceOf( IYYCFAnyObj obj ) {
+    	if( obj == null ) {
+    		return;
+    	}
+    	if( ! isEmpty() ) {
+	    	YYCFFireOnInstanceOf curToFire;
+	    	Iterator<YYCFFireOnInstanceOf> iterToFire = iterator();
+	    	while( iterToFire.hasNext() ) {
+	    		curToFire = iterToFire.next();
+	    		if( curToFire != null ) {
+	    			curToFire.fireOnInstanceOf( obj );
+	    		}
+	    	}
+    	}
+    }
 }

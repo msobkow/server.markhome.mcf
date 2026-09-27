@@ -27,10 +27,10 @@ import org.teavm.jso.JSProperty;
 import java.util.*;
 
 import server.markhome.mycf.v3_1.ycflib.Inz;
-import server.markhome.mycf.v3_1.ycflib.YCFLibXmlUtil;
+import server.markhome.mycf.v3_1.ycflib.IYCFXmlUtil;
 
 /**
- * The YCFRelationType defines the common relationship types found in a generic business ERD model.
+ * The IYCFRelationType defines the common relationship types found in a generic business ERD model.
  * 
  * Note that Container-Component, Parent-Child, and Master-Detail are NOT identical relationships.
  * For example, there can only be one Container relationship from a Component to it's document Container,
@@ -44,7 +44,7 @@ import server.markhome.mycf.v3_1.ycflib.YCFLibXmlUtil;
  * formats, so the JSON data stream looks like it is comprised of XML data which has just had it's structural
  * details changed.
  * 
- * @see YCFLibXmlUtil
+ * @see IYCFXmlUtil
  * 
  * The Lookup relationship is special; it implies that the target does not allow deletion and has to be pre-loaded and cached by the client and middleware.
  * You can add new lookups, but you can't delete them. It also doesn't block deletion of the object which defines the relationship.
@@ -52,21 +52,21 @@ import server.markhome.mycf.v3_1.ycflib.YCFLibXmlUtil;
  * The Unknown relationship does not do cascading deletes, but nor does it block deletion of the object which defines the relationship.
  */
 @SuppressWarnings("unused")
-public enum YCFRelationType {
-    Container("N", "Container", "ycflib.YCFRelationType.Container"),
-    Component("P", "Component", "ycflib.YCFRelationType.Component"),
-    Parent( "P", "Parent", "ycflib.YCFRelationType.Parent"),
-    Child("C", "Child", "ycflib.YCFRelationType.Child"),
-    Master("M", "Master", "ycflib.YCFRelationType.Master"),
-    Detail("D", "Detail", "ycflib.YCFRelationType.Detail"),
-    Lookup("L", "Lookup", "ycflib.YCFRelationType.Lookup"),
-    Unknown("U", "Unknown", "ycflib.YCFRelationType.Unknown");
+public enum IYCFRelationType {
+    Container("N", "Container", "ycflib.IYCFRelationType.Container"),
+    Component("P", "Component", "ycflib.IYCFRelationType.Component"),
+    Parent( "P", "Parent", "ycflib.IYCFRelationType.Parent"),
+    Child("C", "Child", "ycflib.IYCFRelationType.Child"),
+    Master("M", "Master", "ycflib.IYCFRelationType.Master"),
+    Detail("D", "Detail", "ycflib.IYCFRelationType.Detail"),
+    Lookup("L", "Lookup", "ycflib.IYCFRelationType.Lookup"),
+    Unknown("U", "Unknown", "ycflib.IYCFRelationType.Unknown");
 
     private final String key;
     private final String label;
     private final String inzLabelKey;
 
-    private YCFRelationType(String key, String label, String inzLabelKey) {
+    private IYCFRelationType(String key, String label, String inzLabelKey) {
         this.key = key;
         this.label = label;
         this.inzLabelKey = inzLabelKey;
