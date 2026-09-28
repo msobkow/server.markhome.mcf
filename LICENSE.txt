@@ -1,4 +1,4 @@
-server.markhome.mcf
+server.markhome.ycf Yorkton Code Fractal
 
 Copyright 2026 Mark Stephen Sobkow (mark.sobkow@gmail.com)
 

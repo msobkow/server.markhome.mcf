@@ -10,7 +10,7 @@
 	<version>20260930</version>
 	<groupId>server.markhome.ycf</groupId>
 	<name>server.markhome.ycf-core</name>
-	<description>Mark's Code Fractal Core Services</description>
+	<description>Yorkton Code Fractal Core Services</description>
 	<packaging>jar</packaging>
 
 	<modules>
