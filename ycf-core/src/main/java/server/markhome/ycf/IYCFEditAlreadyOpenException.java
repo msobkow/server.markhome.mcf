@@ -29,7 +29,7 @@ import server.markhome.ycf.Inz;
 /**
  * You can not open an edit if an object is already open for edit.
  */
-public class IYCFEditAlreadyOpenException extends IllegalStateException {
+public interface IYCFEditAlreadyOpenException extends JSObject {
 
 	protected String localMessage = null;
 

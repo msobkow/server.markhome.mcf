@@ -40,7 +40,7 @@ import java.util.Set;
  *
  * @author msobkow
  */
-public class IYCFKeyHash256 extends IYCFKeyHashBase<IYCFKeyHash256> implements IIYCFKeyHash256, Serializable {
+public interface IYCFKeyHash256 extends IYCFKeyHashBase<IYCFKeyHash256> implements Serializable {
   static final long serialVersionUID = 202608160343L;
   protected byte[] bytes;
 

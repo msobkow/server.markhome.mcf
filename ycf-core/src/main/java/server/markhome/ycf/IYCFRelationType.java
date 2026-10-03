@@ -52,7 +52,7 @@ import server.markhome.mycf.v3_1.ycflib.IYCFXmlUtil;
  * The Unknown relationship does not do cascading deletes, but nor does it block deletion of the object which defines the relationship.
  */
 @SuppressWarnings("unused")
-public enum IYCFRelationType {
+public enum IYCFRelationType implements JSOBject {
     Container("N", "Container", "ycflib.IYCFRelationType.Container"),
     Component("P", "Component", "ycflib.IYCFRelationType.Component"),
     Parent( "P", "Parent", "ycflib.IYCFRelationType.Parent"),

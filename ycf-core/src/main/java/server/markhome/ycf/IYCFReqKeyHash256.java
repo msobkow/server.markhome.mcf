@@ -29,7 +29,7 @@ import org.teavm.jso.JSProperty;
  *
  * @author msobkow
  */
-public class IYCFReqKeyHash256 extends IYCFKeyHash256 implements IIYCFRequired, IIYCFReqKeyHash256 {
+public interface IYCFReqKeyHash256 extends IYCFKeyHash256 implements IIYCFRequired {
 
 	/**
 	 *	Is this value null?

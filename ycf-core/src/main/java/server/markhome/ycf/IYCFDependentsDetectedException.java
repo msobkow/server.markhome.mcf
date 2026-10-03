@@ -29,7 +29,7 @@ import server.markhome.ycf.Inz;
 /**
  * IYCFDependentsDetectedException is thrown when an object cannot be deleted because it has dependent objects which are not flagged for cascading deletes.
  */
-public class IYCFDependentsDetectedException extends IYCFRuntimeException {
+public interface IYCFDependentsDetectedException extends IYCFRuntimeException {
 
 	protected String enRelnType = null;
 	protected String xRelnType = null;

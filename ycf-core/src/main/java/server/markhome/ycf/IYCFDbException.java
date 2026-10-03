@@ -29,7 +29,7 @@ import server.markhome.ycf.Inz;
 /**
  * IYCFDbException is thrown when a JPA database persistent store exception is thrown and caught/mapped.
  */
-public class IYCFDbException extends IYCFRuntimeException {
+public interface IYCFDbException extends IYCFRuntimeException {
 
 	protected Object indexKey = null;
 

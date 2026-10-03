@@ -30,7 +30,7 @@ import server.markhome.ycf.Inz;
 /**
  * IYCFInvalidArgumentException is thrown when an argument is invalid for some reason, usually specified by nationalized cause phrases.
  */
-public class IYCFInvalidArgumentException extends IYCFArgumentException {
+public interface IYCFInvalidArgumentException extends IYCFArgumentException {
 
 	// Inherited constructor patterns
 

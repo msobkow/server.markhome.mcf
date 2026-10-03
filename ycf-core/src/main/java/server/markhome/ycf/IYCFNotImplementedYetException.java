@@ -31,7 +31,7 @@ import server.markhome.ycf.Inz;
 /**
  * IYCFNotImplementedYetException is thrown when a method is not implemented yet, but is expected to be fleshed out in the future.
  */
-public class IYCFNotImplementedYetException extends IllegalStateException {
+public interface IYCFNotImplementedYetException extends JSObject {
 
 	protected String localMessage = null;
 

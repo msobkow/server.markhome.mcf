@@ -26,8 +26,7 @@ import org.teavm.jso.JSProperty;
 
 import java.io.*;
 
-public class IYCFCachedMessageLog
-implements IIYCFMessageLog {
+public interface IYCFCachedMessageLog implements IIYCFMessageLog {
 
 	private StringBuilder cacheContents = new StringBuilder();
 	private int		   	indent = 0;

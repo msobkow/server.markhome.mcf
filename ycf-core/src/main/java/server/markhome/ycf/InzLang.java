@@ -62,7 +62,7 @@ import java.util.Properties;
  * 
  * @author Mark Stephen Sobkow
  */
-public class InzLang implements Comparable<InzLang> {
+public class InzLang implements IInzLang {
     public final static String LANG_CODE_PROP = "_InzLangCode";
     public final static String ENGLISH_NAME_PROP = "_InzEnglishName";
     public final static String NLS_NAME_PROP = "_InzNlsName";

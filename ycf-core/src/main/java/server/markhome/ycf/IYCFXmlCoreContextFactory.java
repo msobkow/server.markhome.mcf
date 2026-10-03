@@ -32,7 +32,7 @@ import server.markhome.ycf.IIYCFMessageLog;
  *	An XML Core Context Factory instantiates new instances
  *	derived from XmlCoreContext. 
  */
-public interface IYCFXmlCoreContextFactory {
+public interface IYCFXmlCoreContextFactory extends JSObject {
 
 	/**
 	 *	Get the application processing logger.

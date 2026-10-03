@@ -34,7 +34,7 @@ import java.util.concurrent.atomic.AtomicReference;
  * The Inz class is responsible for loading language files, managing language codes,
  * and providing access to translations through the InzLang class.
  */
-public class Inz {
+public class Inz implements IInz {
 //    public static final String YCFLIB_INZ_PATH = "/server.markhome.ycf.v3_1.cflib/src/main/resources/inz/langs";
     public static final String YCFLIB_INZ_PATH = "resource://inz/langs";
 

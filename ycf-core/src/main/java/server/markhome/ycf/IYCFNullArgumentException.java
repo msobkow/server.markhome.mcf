@@ -31,7 +31,7 @@ import server.markhome.ycf.Inz;
 /**
  * IYCFNullArgumentException is thrown when a required argument is null.
  */
-public class IYCFNullArgumentException extends IYCFArgumentException {
+public interface IYCFNullArgumentException extends IYCFArgumentException {
 
 	// Inherited constructor patterns
 

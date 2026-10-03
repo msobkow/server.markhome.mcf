@@ -31,7 +31,7 @@ import java.util.*;
  *
  * @author msobkow
  */
-public class IYCFReqKeyHash512 extends IYCFKeyHash512 implements IIYCFRequired, IIYCFReqKeyHash512 {
+public interface IYCFReqKeyHash512 extends IYCFKeyHash512 implements IIYCFRequired {
 
 	/**
 	 *	Is this value null?

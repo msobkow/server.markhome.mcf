@@ -20,7 +20,6 @@
 
 package server.markhome.ycf;
 
-
 import org.teavm.jso.JSExport;
 import org.teavm.jso.JSObject;
 import org.teavm.jso.JSProperty;
@@ -40,7 +39,7 @@ import java.util.Set;
  *
  * @author msobkow
  */
-public class IYCFKeyHash384 extends IYCFKeyHashBase<IYCFKeyHash384> implements IIYCFKeyHash384, Serializable {
+public interface IYCFKeyHash384 extends IYCFKeyHashBase<IYCFKeyHash384> implements Serializable {
   static final long serialVersionUID = 202608160344L;
   protected byte[] bytes;
 

@@ -57,7 +57,7 @@ import java.util.Arrays;
  * 
  * @author msobkow
  */
-public class IYCFUuid6 implements java.io.Serializable, Comparable<IYCFUuid6>, IIYCFUuid6 {
+public interface IYCFUuid6 extends JSObject implements java.io.Serializable, Comparable<IYCFUuid6> {
 
     /*
      * The random number generator used by this class to create random

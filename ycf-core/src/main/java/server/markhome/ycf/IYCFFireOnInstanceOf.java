@@ -24,7 +24,7 @@ import org.teavm.jso.JSExport;
 import org.teavm.jso.JSObject;
 import org.teavm.jso.JSProperty;
 
-public class IYCFFireOnInstanceOf {
+public interface IYCFFireOnInstanceOf extends JSObject {
 	
 	protected Class<?> instOf = null;
 

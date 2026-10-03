@@ -31,7 +31,7 @@ import java.util.*;
  * 
  *  @see IInz
  */
-public interface IIInzEffectiveLangCode {
+public interface IIInzEffectiveLangCode extends JSObject {
 
     /**
      * Get the current effective language id for NLS translation.

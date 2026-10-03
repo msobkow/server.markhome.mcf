@@ -30,7 +30,7 @@ import java.util.*;
  *
  * @author msobkow
  */
-public class IYCFOptKeyHash224 extends IYCFKeyHash224 implements IIYCFOptional, IIYCFOptKeyHash224 {
+public interface IYCFOptKeyHash224 extends IYCFKeyHash224 implements IIYCFOptional {
 
 	/**
 	 *	Make this value null.

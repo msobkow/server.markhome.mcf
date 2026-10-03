@@ -29,7 +29,7 @@ import server.markhome.ycf.Inz;
 /**
  * IYCFEmptyArgumentException is thrown when an argument is null or empty.
  */
-public class IYCFEmptyArgumentException extends IYCFArgumentException {
+public interface IYCFEmptyArgumentException extends IYCFArgumentException {
 
 	// Inherited constructor patterns
 

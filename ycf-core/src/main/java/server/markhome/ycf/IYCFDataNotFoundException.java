@@ -29,7 +29,7 @@ import server.markhome.ycf.Inz;
 /**
  * IYCFDataNotFoundException is thrown when data cannot be found that should exist
  */
-public class IYCFDataNotFoundException extends IllegalStateException {
+public interface IYCFDataNotFoundException extends JSObject {
 
 	protected String localMessage = null;
 	protected Object indexKey = null;

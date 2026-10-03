@@ -31,7 +31,7 @@ import java.util.*;
  *
  * @author msobkow
  */
-public class IYCFOptKeyHash384 extends IYCFKeyHash384 implements IIYCFOptional, IIYCFOptKeyHash384 {
+public interface IYCFOptKeyHash384 extends IYCFKeyHash384 implements IIYCFOptional {
 
 	/**
 	 *	Make this value null.

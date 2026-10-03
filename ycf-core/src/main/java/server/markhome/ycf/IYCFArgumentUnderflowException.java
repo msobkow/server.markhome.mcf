@@ -33,7 +33,7 @@ import java.math.*;
 /**
  * IYCFArgumentUnderflowException is thrown when an argument is under the minimum value allowed.
  */
-public class IYCFArgumentUnderflowException extends IYCFArgumentException {
+public interface IYCFArgumentUnderflowException extends IYCFArgumentException {
 
 	public IYCFArgumentUnderflowException(
 		String enMsg,

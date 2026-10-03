@@ -39,7 +39,7 @@ import java.util.Set;
  *
  * @author msobkow
  */
-public class IYCFKeyHash512 extends IYCFKeyHashBase<IYCFKeyHash512> implements IIYCFKeyHash512, Serializable {
+public interface IYCFKeyHash512 extends IYCFKeyHashBase<IYCFKeyHash512> implements Serializable {
   static final long serialVersionUID = 202608160345L;
   protected byte[] bytes;
 

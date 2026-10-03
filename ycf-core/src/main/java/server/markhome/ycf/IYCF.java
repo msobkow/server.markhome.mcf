@@ -52,7 +52,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
  *	model instead of toleratin the resource load overhead of the default
  *	Java NLS strin resource approach.
  */
-public class IYCF {
+public interface IYCF extends JSObject {
 	public final static String LinkName = "IYCF";
 	public final static String LinkVersion = "2.13.11195";
 

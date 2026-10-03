@@ -33,7 +33,7 @@ import java.math.*;
 /**
  * IYCFArgumentRangeException indicates that a value did not fall with the range minValue to maxValue, inclusive.
  */
-public class IYCFArgumentRangeException extends IYCFArgumentException {
+public interface IYCFArgumentRangeException extends IYCFArgumentException {
 	
 	public IYCFArgumentRangeException(
 		String enMsg,

@@ -31,7 +31,7 @@ import server.markhome.ycf.Inz;
 /**
  * IYCFUniqueIndexViolationException is thrown when there is a violation of a unique index other than the primary key index for an underlying table.
  */
-public class IYCFUniqueIndexViolationException extends IllegalStateException {
+public interface IYCFUniqueIndexViolationException extends JSObject {
 
 	protected String localMessage = null;
 	protected Object indexKey = null;

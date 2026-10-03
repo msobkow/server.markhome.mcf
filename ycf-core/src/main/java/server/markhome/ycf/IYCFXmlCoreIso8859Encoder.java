@@ -32,7 +32,7 @@ import java.text.StringCharacterIterator;
  *	The XmlCoreIso8859Encoder converts native strings and characters
  *	to HTML/XML escaped text.
  */
-public class IYCFXmlCoreIso8859Encoder {
+public interface IYCFXmlCoreIso8859Encoder extends JSObject {
 
 	protected char		ch;
 	protected byte		len;

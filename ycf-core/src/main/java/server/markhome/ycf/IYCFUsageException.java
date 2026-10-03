@@ -29,7 +29,7 @@ import java.util.*;
 /**
  * IYCFUsageException is thrown when a method is being used in the wrong sequence or the wrong way, such trying to look up values in a cache before the cache has been initialized and primed with lookup data.
  */
-public class IYCFUsageException extends IllegalStateException {
+public interface IYCFUsageException extends JSObject {
 
 	protected String localMessage = null;
 

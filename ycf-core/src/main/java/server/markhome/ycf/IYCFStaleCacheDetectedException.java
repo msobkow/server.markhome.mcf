@@ -29,7 +29,7 @@ import server.markhome.ycf.Inz;
 /**
  * IYCFStaleCacheDetectedException is thrown when a cache or the objects in the cache have become stale and need to be refreshed from persistent storage before proceeding.
  */
-public class IYCFStaleCacheDetectedException extends IllegalStateException {
+public interface IYCFStaleCacheDetectedException extends JSObject {
 
 	protected String localMessage = null;
 	protected String enMsgCause = null;

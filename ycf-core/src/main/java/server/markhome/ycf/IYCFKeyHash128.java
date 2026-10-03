@@ -38,7 +38,7 @@ import java.util.Set;
  *
  * @author msobkow
  */
-public class IYCFKeyHash128 extends IYCFKeyHashBase<IYCFKeyHash128> implements IIYCFKeyHash128, Serializable {
+public interface IYCFKeyHash128 extends IYCFKeyHashBase<IYCFKeyHash128> implements Serializable {
   static final long serialVersionUID = 202608160340L;
   protected byte[] bytes;
 

@@ -29,7 +29,7 @@ import java.util.*;
 /**
  * IYCFPermissionDeniedException is thrown when data cannot be found that should exist
  */
-public class IYCFPermissionDeniedException extends SecurityException {
+public interface IYCFPermissionDeniedException extends JSObject {
 
 	protected String localMessage = null;
 	protected Object indexKey = null;

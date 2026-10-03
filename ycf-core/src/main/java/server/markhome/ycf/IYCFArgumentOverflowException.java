@@ -31,7 +31,7 @@ import java.math.*;
 /**
  * IYCFArgumentOverflowException indicates that an argument exceeds the permitted value range.
  */
-public class IYCFArgumentOverflowException extends IYCFArgumentException {
+public interface IYCFArgumentOverflowException extends IYCFArgumentException {
 
 	public IYCFArgumentOverflowException(
 		String enMsg,

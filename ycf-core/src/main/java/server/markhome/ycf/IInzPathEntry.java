@@ -33,7 +33,7 @@ import java.io.InputStream;
  * An IInzPathEntry can represent either a resource path, in which case it needs to specify a interface for resource loading, and use a path
  * that starts with "resource:", or a file system path, in which case it accesses files directly from the file system.
  */
-public final class IInzPathEntry {
+public final interface IInzPathEntry extends JSObject {
 
     private String path;
     private Class<?> clazz;

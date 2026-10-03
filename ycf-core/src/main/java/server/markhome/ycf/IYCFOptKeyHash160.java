@@ -29,7 +29,7 @@ import org.teavm.jso.JSProperty;
  *
  * @author msobkow
  */
-public class IYCFOptKeyHash160 extends IYCFKeyHash160 implements IIYCFOptional, IIYCFOptKeyHash160 {
+public interface IYCFOptKeyHash160 extends IYCFKeyHash160 implements IIYCFOptional {
 
 	/**
 	 *	Make this value null.

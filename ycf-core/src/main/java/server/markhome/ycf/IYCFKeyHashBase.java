@@ -42,7 +42,7 @@ import java.util.Comparator;
  *
  * @author msobkow
  */
-public abstract class IYCFKeyHashBase<T extends IYCFKeyHashBase<T>> implements Comparator<T>, Comparable<T> {
+public abstract interface IYCFKeyHashBase<T extends IYCFKeyHashBase<T>> implements Comparator<T>, Comparable<T> {
 
 	static final String hexDigits = "0123456789abcdef";
 	static final int UUID6_INDEX = 0;

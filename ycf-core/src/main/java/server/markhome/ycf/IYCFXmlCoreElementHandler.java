@@ -37,7 +37,7 @@ import org.xml.sax.SAXException;
  *	Each element parse context has a map by QName, resolving to
  *	XmlCoreElementParser instances.
  */
-public abstract class IYCFXmlCoreElementHandler {
+public abstract interface IYCFXmlCoreElementHandler extends JSObject {
 
 	/**
 	 *	The XML Core Parser which owns this Element Handler.

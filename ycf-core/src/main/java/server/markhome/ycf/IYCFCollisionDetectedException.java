@@ -29,7 +29,7 @@ import server.markhome.ycf.Inz;
 /**
  * IYCFCollisionDetectedException is thrown when there is already an existing entry with the specified key that conflicts with new data or other data changes.
  */
-public class IYCFCollisionDetectedException extends IYCFRuntimeException {
+public interface IYCFCollisionDetectedException extends IYCFRuntimeException {
 
 	protected Object indexKey = null;
 

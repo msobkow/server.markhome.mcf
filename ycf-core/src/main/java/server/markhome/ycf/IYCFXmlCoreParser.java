@@ -45,9 +45,7 @@ import server.markhome.ycf.IIYCFMessageLog;
  *
  *	@see	http://xerces.apache.org/
  */
-public abstract class IYCFXmlCoreParser
-extends DefaultHandler
-implements IYCFXmlCoreContextFactory
+public abstract interface IYCFXmlCoreParser extends IYCFXmlCoreContextFactory
 {
 
 //	Constants

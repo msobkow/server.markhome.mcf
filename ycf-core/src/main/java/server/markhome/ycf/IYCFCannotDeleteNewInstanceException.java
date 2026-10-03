@@ -31,7 +31,7 @@ import server.markhome.ycf.Inz;
 /**
  * You can not open an edit if an object is already open for edit.
  */
-public class IYCFCannotDeleteNewInstanceException extends IllegalStateException {
+public interface IYCFCannotDeleteNewInstanceException extends JSObject {
 
 	protected String localMessage = null;
 

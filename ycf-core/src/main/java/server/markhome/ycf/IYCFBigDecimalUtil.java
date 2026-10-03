@@ -28,7 +28,7 @@ import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.text.Format;
 
-public class IYCFBigDecimalUtil {
+public interface IYCFBigDecimalUtil extends JSObject {
 
 	public final static int MAX_DIGITS = 31;
 	public final static int MAX_PRECISION = 30;

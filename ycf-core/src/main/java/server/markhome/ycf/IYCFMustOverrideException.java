@@ -31,7 +31,7 @@ import server.markhome.ycf.Inz;
 /**
  * If a base class only implements a method to allow it to be instantiated but it is only valid when a subclass specializes it, IYCFMustOverrideException is thrown by that base implementation.
  */
-public class IYCFMustOverrideException extends IllegalStateException {
+public interface IYCFMustOverrideException extends JSObject {
 
 	protected String localMessage = null;
 

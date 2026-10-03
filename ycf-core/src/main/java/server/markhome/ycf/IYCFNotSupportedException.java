@@ -29,7 +29,7 @@ import server.markhome.ycf.Inz;
 /**
  * IYCFNotSupportedException is thrown when a method is not supported by a particular class.  This is distinct from MustOverride and NotImplementedYet in that the method will never be valid for this interface.
  */
-public class IYCFNotSupportedException extends UnsupportedOperationException {
+public interface IYCFNotSupportedException extends JSObject {
 
 	protected String localMessage = null;
 

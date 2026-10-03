@@ -33,7 +33,7 @@ import java.io.InputStream;
  * An InzPathEntry can represent either a resource path, in which case it needs to specify a class for resource loading, and use a path
  * that starts with "resource:", or a file system path, in which case it accesses files directly from the file system.
  */
-public final class InzPathEntry {
+public final class InzPathEntry implements IInzPathEntry {
 
     private String path;
     private Class<?> clazz;

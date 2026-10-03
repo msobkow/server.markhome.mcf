@@ -31,7 +31,7 @@ import server.markhome.ycf.Inz;
 /**
  * IYCFUnrecognizedAttributeException is primarily thrown by the manufacted XML parsers.
  */
-public class IYCFUnrecognizedAttributeException extends NoSuchElementException {
+public interface IYCFUnrecognizedAttributeException extends JSObject {
 
 	protected String localMessage = null;
 	protected String locInfo = null;

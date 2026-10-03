@@ -26,8 +26,7 @@ import org.teavm.jso.JSProperty;
 
 import java.util.*;
 
-public class IYCFFiringList
-extends ArrayList<IYCFFireOnInstanceOf>
+public interface IYCFFiringList extends JSObject
 {
     public IYCFFiringList() {
     	super();

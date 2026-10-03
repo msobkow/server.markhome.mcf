@@ -28,8 +28,7 @@ import java.util.*;
 
 import java.util.concurrent.atomic.AtomicReference;
 
-@JSExportClasses({IIYCFEntry.class, IYCFEntry.interface })
-public final class IYCFEntry implements IIYCFEntry {
+public final interface IYCFEntry extends JSObject {
 
 	/**
 	 *	The public resource name for the parent library.

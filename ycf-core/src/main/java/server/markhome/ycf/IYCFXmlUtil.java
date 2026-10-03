@@ -39,7 +39,7 @@ import server.markhome.ycf.v3_1.ycflib.MIYCFNullArgumentException;
 /**
  * MIYCFXmlUtil provides a wide variety of XML field parsers and formatters, which are also used for JSON data streaming. The XML String methods need to be redone to use a proper XML mapping library/package.
  */
-public class MIYCFXmlUtil {
+public interface MIYCFXmlUtil extends JSObject {
 
 	public final static Calendar localCalendar = new GregorianCalendar();
 	public final static int localTZOffsetMillis = localCalendar.get( Calendar.ZONE_OFFSET );

@@ -29,7 +29,7 @@ import server.markhome.ycf.Inz;
 /**
  * IYCFUnsupportedClassException is thrown when an argument is not a supported interface instance or derivative.
  */
-public class IYCFUnsupportedClassException extends IllegalStateException {
+public interface IYCFUnsupportedClassException extends JSObject {
 
 	protected String localMessage = null;
 

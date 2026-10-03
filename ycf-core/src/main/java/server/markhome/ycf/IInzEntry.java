@@ -44,7 +44,7 @@ import java.util.Properties;
  * @see IInz
  * @see IInzLang
  */
-public class IInzEntry {
+public interface IInzEntry extends JSObject {
     protected IInzPathEntry pathEntry = null;
     protected HashMap<String, IInzLang> langs = new HashMap<>();
     

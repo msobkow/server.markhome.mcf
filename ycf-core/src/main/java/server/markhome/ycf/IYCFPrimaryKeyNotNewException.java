@@ -31,7 +31,7 @@ import server.markhome.ycf.Inz;
 /**
  * IYCFPrimaryKeyNotNewException is thrown when keys collide in the database, either because an existing concatenated key collides, or because by some huge fluke of fate the IYCF dbutil data types generate collisions.  With the larger bit sizes, that should be so rare that it is not considered worth preventing or recovering from in code.
  */
-public class IYCFPrimaryKeyNotNewException extends IllegalStateException {
+public interface IYCFPrimaryKeyNotNewException extends JSObject {
 
 	protected String localMessage = null;
 	protected Object indexKey = null;

@@ -43,7 +43,7 @@ import server.markhome.ycf.IYCFNullArgumentException;
  *	An XmlCoreSaxParser is an abstract JAXP DefaultHandler
  *	specialized for SAX2 parsing. 
  */
-public abstract class IYCFXmlCoreSaxParser extends IYCFXmlCoreParser {
+public abstract interface IYCFXmlCoreSaxParser extends IYCFXmlCoreParser {
 
 //	Instance Attributes
 

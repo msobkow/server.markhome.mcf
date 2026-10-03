@@ -31,7 +31,7 @@ import server.markhome.ycf.Inz;
 /**
  * IYCFUnresolvedRelationException is thrown when there is no target object for a foreign key found.
  */
-public class IYCFUnresolvedRelationException extends IllegalStateException {
+public interface IYCFUnresolvedRelationException extends JSObject {
 
 	protected String localMessage = null;
 

@@ -34,7 +34,7 @@ import server.markhome.ycf.IIYCFMessageLog;
  *	at the start of each element or document and popped
  *	at the end of their processing.
  */
-public class IYCFXmlCoreContext {
+public interface IYCFXmlCoreContext extends JSObject {
 
 	/**
 	 *	Context stack chain.

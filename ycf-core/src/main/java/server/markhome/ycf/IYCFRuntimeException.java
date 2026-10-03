@@ -31,7 +31,7 @@ import server.markhome.ycf.Inz;
 /**
  * The base exception for many others in the IYCF exception hierarchy, IYCFRuntimeException specializes RuntimException with localization hooks and support
  */
-public class IYCFRuntimeException extends RuntimeException {
+public interface IYCFRuntimeException extends JSObject {
 
 	protected String localMessage = null;
 

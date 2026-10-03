@@ -32,8 +32,7 @@ import java.util.*;
 /**
  *	Implement the OmfMessageLogInterface over a Log4J Logger.
  */
-public class IYCFConsoleMessageLog
-implements IIYCFMessageLog {
+public interface IYCFConsoleMessageLog extends IIYCFMessageLog {
 
 	/**
 	 *	Handle for the current file output stream.
